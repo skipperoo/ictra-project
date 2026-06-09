@@ -1,0 +1,21 @@
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 00 00 00 02 00
+pci 0000:00:02.0: vgaarb: VGA decodes changed: olddecodes=none,decodes=io+mem:owns=io+mem
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+rcu: 	0-...!: (1 GPs behind) idle=98bc/1/0x4000000000000000 softirq=172008/172009 fqs=4
+rcu: 	(detected by 0, t=22446 jiffies, g=270005, q=171 ncpus=2)
+rcu: INFO: Stall ended during stack backtracing.
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+rcu: 	0-...!: (1 GPs behind) idle=98bc/1/0x4000000000000000 softirq=172008/172009 fqs=4
+rcu: 	(detected by 0, t=22446 jiffies, g=270005, q=171 ncpus=2)
+rcu: INFO: Stall ended during stack backtracing.
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to send rpc
+fd=3 want=552 sent=0 n=-1 (errno 32: Broken pipe)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

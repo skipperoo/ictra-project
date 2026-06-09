@@ -1,0 +1,111 @@
+random: crng reseeded on system resumption
+sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+random: crng reseeded on system resumption
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+rcu: 	0-....: (4099 ticks this GP) idle=6f0c/1/0x4000000000000000 softirq=154782/154783 fqs=6508
+rcu: 	(detected by 1, t=21002 jiffies, g=247133, q=87881 ncpus=2)
+Sending NMI from CPU 1 to CPUs 0:
+NMI backtrace for cpu 0
+CPU: 0 UID: 0 PID: 52 Comm: scsi_eh_1 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:virt_spin_lock arch/x86/include/asm/paravirt-spinlock.h:139 [inline]
+RIP: 0010:queued_spin_lock_slowpath+0x41a/0xb60 kernel/locking/qspinlock.c:141
+Code: 00 8b 03 3d 00 01 00 00 74 df 41 89 c7 44 89 7c 24 50 41 81 ff ff 00 00 00 0f 87 5b fd ff ff e9 99 fe ff ff 89 44 24 40 f3 90 <e9> 89 fc ff ff 65 8b 2d 0e bf 02 03 be 08 00 00 00 48 89 e8 48 c1
+RSP: 0018:ffff88806d008c90 EFLAGS: 00000002
+RAX: 0000000000000001 RBX: ffffffffbdc87680 RCX: ffffffffbca6bdb5
+RDX: 0000000000000001 RSI: 0000000000000004 RDI: ffffffffbdc87680
+RBP: 0000000000000003 R08: 0000000000000000 R09: fffffbfff7b90ed0
+R10: ffffffffbdc87683 R11: 0000000000000095 R12: 1ffff1100da01194
+R13: fffffbfff7b90ed0 R14: 0000000000000001 R15: ffff88806d008cd0
+FS:  0000000000000000(0000) GS:ffff8880ad588000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f32dcaa6d58 CR3: 000000003688a006 CR4: 0000000000170ef0
+Call Trace:
+ <IRQ>
+ queued_spin_lock include/asm-generic/qspinlock.h:114 [inline]
+ do_raw_spin_lock include/linux/spinlock.h:187 [inline]
+ __raw_spin_lock_irqsave include/linux/spinlock_api_smp.h:133 [inline]
+ _raw_spin_lock_irqsave+0xd4/0xe0 kernel/locking/spinlock.c:166
+ rcu_report_qs_rdp+0x77/0x330 kernel/rcu/tree.c:2451
+ rcu_check_quiescent_state kernel/rcu/tree.c:2521 [inline]
+ rcu_core+0x1a4/0x1800 kernel/rcu/tree.c:2854
+ handle_softirqs+0x195/0x600 kernel/softirq.c:622
+ __do_softirq kernel/softirq.c:656 [inline]
+ invoke_softirq kernel/softirq.c:496 [inline]
+ __irq_exit_rcu+0x5c/0x130 kernel/softirq.c:735
+ instr_sysvec_apic_timer_interrupt arch/x86/kernel/apic/apic.c:1061 [inline]
+ sysvec_apic_timer_interrupt+0x7a/0xa0 arch/x86/kernel/apic/apic.c:1061
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20 arch/x86/include/asm/idtentry.h:697
+RIP: 0010:__sanitizer_cov_trace_pc+0x0/0x70 kernel/kcov.c:210
+Code: 8b 11 49 8b 34 24 b9 05 00 00 00 eb 82 66 66 2e 0f 1f 84 00 00 00 00 00 66 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 <f3> 0f 1e fa 65 8b 05 d5 a5 22 06 48 8b 0c 24 65 48 8b 15 b1 a5 22
+RSP: 0018:ffff888002aa75b0 EFLAGS: 00000293
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: ffffffffb969a260
+RDX: ffff8880022dd780 RSI: 0000000000000000 RDI: 0000000000000007
+RBP: 0000000000000036 R08: 0000000000000001 R09: ffff8880022dd780
+R10: 0000000000000200 R11: 000000000016a530 R12: 0000000000000000
+R13: 1ffff11000554ebb R14: 0000000000000200 R15: ffff8880291ea300
+ console_trylock_spinning kernel/printk/printk.c:2045 [inline]
+ vprintk_emit+0x596/0x630 kernel/printk/printk.c:2478
+ dev_vprintk_emit+0x2fa/0x340 drivers/base/core.c:4930
+ dev_printk_emit+0xd2/0x10d drivers/base/core.c:4941
+ __dev_printk+0xcb/0x100 drivers/base/core.c:4953
+ _dev_printk+0xe8/0x130 drivers/base/core.c:4970
+ scsi_log_print_sense_hdr+0x46d/0x690 drivers/scsi/scsi_logging.c:338
+ scsi_log_print_sense+0xba/0x200 drivers/scsi/scsi_logging.c:349
+ scsi_io_completion_action drivers/scsi/scsi_lib.c:949 [inline]
+ scsi_io_completion+0xfd9/0x12d0 drivers/scsi/scsi_lib.c:1108
+ scsi_eh_flush_done_q+0x326/0x490 drivers/scsi/scsi_error.c:2283
+ ata_scsi_port_error_handler+0x1380/0x1a30 drivers/ata/libata-eh.c:811
+ ata_scsi_error+0x236/0x3a0 drivers/ata/libata-eh.c:579
+ scsi_error_handler+0x259/0xe70 drivers/scsi/scsi_error.c:2395
+ kthread+0x32e/0x400 kernel/kthread.c:436
+ ret_from_fork+0x3b4/0x7e0 arch/x86/kernel/process.c:158
+ ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:245
+ </TASK>
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 00 00 00 40 00
+blk_print_req_error: 3998 callbacks suppressed
+I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x4000 phys_seg 33 prio class 2
+sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 40 00 00 40 00
+I/O error, dev sr0, sector 256 op 0x0:(READ) flags 0x4000 phys_seg 33 prio class 2
+sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 80 00 00 40 00
+I/O error, dev sr0, sector 512 op 0x0:(READ) flags 0x4000 phys_seg 33 prio class 2
+sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 c0 00 00 40 00
+I/O error, dev sr0, sector 768 op 0x0:(READ) flags 0x4000 phys_seg 33 prio class 2
+sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 01 00 00 00 40 00
+I/O error, dev sr0, sector 1024 op 0x0:(READ) flags 0x4000 phys_seg 33 prio class 2
+sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 01 40 00 00 40 00
+I/O error, dev sr0, sector 1280 op 0x0:(READ) flags 0x4000 phys_seg 33 prio class 2
+sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 01 80 00 00 40 00
+I/O error, dev sr0, sector 1536 op 0x0:(READ) flags 0x4000 phys_seg 33 prio class 2
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1792 op 0x0:(READ) flags 0x0 phys_seg 32 prio class 2
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

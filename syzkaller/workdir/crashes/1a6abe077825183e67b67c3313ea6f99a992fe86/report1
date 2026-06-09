@@ -1,0 +1,147 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+rcu: 	Tasks blocked on level-0 rcu_node (CPUs 0-1): P8426
+rcu: 	(detected by 1, t=21005 jiffies, g=55557, q=87768 ncpus=2)
+task:syz.3.1563      state:R  running task     stack:24216 pid:8426  tgid:8425  ppid:170    task_flags:0x20400140 flags:0x00080012
+Call Trace:
+ <IRQ>
+ sched_show_task kernel/sched/core.c:8140 [inline]
+ sched_show_task+0x414/0x4e0 kernel/sched/core.c:8115
+ rcu_print_detail_task_stall_rnp kernel/rcu/tree_stall.h:292 [inline]
+ print_other_cpu_stall kernel/rcu/tree_stall.h:681 [inline]
+ check_cpu_stall kernel/rcu/tree_stall.h:856 [inline]
+ rcu_pending kernel/rcu/tree.c:3679 [inline]
+ rcu_sched_clock_irq.cold+0x895/0xb24 kernel/rcu/tree.c:2716
+ update_process_times+0x130/0x1e0 kernel/time/timer.c:2475
+ tick_sched_handle kernel/time/tick-sched.c:298 [inline]
+ tick_nohz_handler+0x316/0x700 kernel/time/tick-sched.c:319
+ __run_hrtimer kernel/time/hrtimer.c:1930 [inline]
+ __hrtimer_run_queues+0x2ad/0x6b0 kernel/time/hrtimer.c:1994
+ hrtimer_interrupt+0x371/0x740 kernel/time/hrtimer.c:2113
+ local_apic_timer_interrupt arch/x86/kernel/apic/apic.c:1050 [inline]
+ __sysvec_apic_timer_interrupt+0x8d/0x2a0 arch/x86/kernel/apic/apic.c:1067
+ instr_sysvec_apic_timer_interrupt arch/x86/kernel/apic/apic.c:1061 [inline]
+ sysvec_apic_timer_interrupt+0x75/0xa0 arch/x86/kernel/apic/apic.c:1061
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20 arch/x86/include/asm/idtentry.h:697
+RIP: 0010:console_flush_one_record+0x82c/0xa70 kernel/printk/printk.c:3270
+Code: 48 89 44 24 20 48 8d 68 01 4c 89 e8 48 c1 e8 03 42 80 3c 30 00 0f 85 1c 02 00 00 49 89 6f 58 eb 8f e8 a8 5a 1d 00 fb 4c 89 e8 <48> c1 e8 03 42 80 3c 30 00 0f 84 73 ff ff ff 4c 89 ef e8 5d 4a 55
+RSP: 0018:ffff88800473e748 EFLAGS: 00000246
+RAX: ffffffff96a87038 RBX: 0000000000000001 RCX: ffffffff92097fa8
+RDX: 0000000000080000 RSI: ffffc9000148f000 RDI: 0000000000000007
+RBP: 0000000000000200 R08: 0000000000000001 R09: ffff8880031d4600
+R10: 0000000000000200 R11: 303a303a31207273 R12: 0000000000002d71
+R13: ffffffff96a87038 R14: dffffc0000000000 R15: ffffffff96a86fe0
+ console_flush_all kernel/printk/printk.c:3343 [inline]
+ __console_flush_and_unlock kernel/printk/printk.c:3373 [inline]
+ console_unlock+0x123/0x2e0 kernel/printk/printk.c:3413
+ vprintk_emit+0x421/0x630 kernel/printk/printk.c:2479
+ dev_vprintk_emit+0x2fa/0x340 drivers/base/core.c:4930
+ dev_printk_emit+0xd2/0x10d drivers/base/core.c:4941
+ __dev_printk+0xcb/0x100 drivers/base/core.c:4953
+ _dev_printk+0xe8/0x130 drivers/base/core.c:4970
+ scmd_printk.cold+0x38/0x4f drivers/scsi/scsi_logging.c:103
+ sr_init_command+0xa63/0xbc0 drivers/scsi/sr.c:432
+ scsi_prepare_cmd drivers/scsi/scsi_lib.c:1730 [inline]
+ scsi_queue_rq+0x10b2/0x3510 drivers/scsi/scsi_lib.c:1878
+ blk_mq_dispatch_rq_list+0x3e3/0x1e30 block/blk-mq.c:2148
+ __blk_mq_do_dispatch_sched block/blk-mq-sched.c:168 [inline]
+ blk_mq_do_dispatch_sched block/blk-mq-sched.c:182 [inline]
+ __blk_mq_sched_dispatch_requests+0xcf1/0x1690 block/blk-mq-sched.c:307
+ blk_mq_sched_dispatch_requests+0xd7/0x1c0 block/blk-mq-sched.c:329
+ blk_mq_run_hw_queue+0x87b/0xb50 block/blk-mq.c:2386
+ blk_mq_dispatch_list+0x457/0x1170 block/blk-mq.c:2949
+ blk_mq_flush_plug_list+0x14c/0x640 block/blk-mq.c:2997
+ __blk_flush_plug+0x258/0x460 block/blk-core.c:1230
+ blk_finish_plug block/blk-core.c:1257 [inline]
+ __submit_bio+0x731/0xa60 block/blk-core.c:649
+ __submit_bio_noacct_mq block/blk-core.c:722 [inline]
+ submit_bio_noacct_nocheck+0x427/0xb80 block/blk-core.c:753
+ submit_bio_noacct+0x5ce/0x1060 block/blk-core.c:884
+ submit_bh fs/buffer.c:2742 [inline]
+ block_read_full_folio+0x1c8/0x760 fs/buffer.c:2344
+ filemap_read_folio+0x4a/0x1c0 mm/filemap.c:2502
+ filemap_fault+0x213a/0x2cb0 mm/filemap.c:3647
+ __do_fault+0x109/0x2d0 mm/memory.c:5474
+ do_read_fault mm/memory.c:5909 [inline]
+ do_fault mm/memory.c:6043 [inline]
+ do_pte_missing mm/memory.c:4566 [inline]
+ handle_pte_fault mm/memory.c:6427 [inline]
+ __handle_mm_fault+0x12de/0x2710 mm/memory.c:6565
+ handle_mm_fault+0x1d2/0x5c0 mm/memory.c:6734
+ faultin_page mm/gup.c:1126 [inline]
+ __get_user_pages+0x1000/0x26f0 mm/gup.c:1428
+ populate_vma_page_range+0x1aa/0x240 mm/gup.c:1860
+ __mm_populate+0x107/0x3a0 mm/gup.c:1963
+ mm_populate include/linux/mm.h:4137 [inline]
+ vm_mmap_pgoff+0x2de/0x380 mm/util.c:586
+ ksys_mmap_pgoff+0x445/0x570 mm/mmap.c:606
+ __do_sys_mmap arch/x86/kernel/sys_x86_64.c:89 [inline]
+ __se_sys_mmap arch/x86/kernel/sys_x86_64.c:82 [inline]
+ __x64_sys_mmap+0x125/0x190 arch/x86/kernel/sys_x86_64.c:82
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7fedba1facb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fedb8c57028 EFLAGS: 00000246 ORIG_RAX: 0000000000000009
+RAX: ffffffffffffffda RBX: 00007fedba475fa0 RCX: 00007fedba1facb9
+RDX: 0000000001000004 RSI: 0000000000002000 RDI: 0000200000ffb000
+RBP: 00007fedba268bf7 R08: 0000000000000006 R09: 000000003cae6000
+R10: 000000000000a012 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fedba476038 R14: 00007fedba475fa0 R15: 00007ffeb2ccf578
+ </TASK>
+rcu: INFO: rcu_preempt detected expedited stalls on CPUs/tasks: {
+blk_print_req_error: 5469 callbacks suppressed
+I/O error, dev sr0, sector 1988403 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+buffer_io_error: 5479 callbacks suppressed
+Buffer I/O error on dev sr0, logical block 1988403, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+ } 21343 jiffies s: 4429 root: 0x0/.
+rcu: INFO: Expedited stall ended before state dump start
+I/O error, dev sr0, sector 1988404 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988404, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988405 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988405, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988406 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988406, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988407 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988407, async page read
+syz.3.1563 (8426) used greatest stack depth: 24216 bytes left
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+I/O error, dev sr0, sector 1988403 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+buffer_io_error: 5479 callbacks suppressed
+Buffer I/O error on dev sr0, logical block 1988403, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+ } 21343 jiffies s: 4429 root: 0x0/.
+rcu: INFO: Expedited stall ended before state dump start
+I/O error, dev sr0, sector 1988404 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988404, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988405 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988405, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988406 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988406, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988407 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988407, async page read
+syz.3.1563 (8426) used greatest stack depth: 24216 bytes left
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

@@ -1,0 +1,42 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+pci 0000:00:02.0: vgaarb: VGA decodes changed: olddecodes=io+mem,decodes=none:owns=io+mem
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+rcu: 	0-...!: (1 GPs behind) idle=ef4c/1/0x4000000000000000 softirq=600471/600472 fqs=4
+rcu: 	(detected by 0, t=21050 jiffies, g=950237, q=289 ncpus=2)
+rcu: INFO: Stall ended during stack backtracing.
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+blk_print_req_error: 4105 callbacks suppressed
+I/O error, dev sr0, sector 1988402 op 0x0:(READ) flags 0x0 phys_seg 6 prio class 2
+buffer_io_error: 4112 callbacks suppressed
+Buffer I/O error on dev sr0, logical block 1988402, async page read
+Buffer I/O error on dev sr0, logical block 1988403, async page read
+Buffer I/O error on dev sr0, logical block 1988404, async page read
+Buffer I/O error on dev sr0, logical block 1988405, async page read
+Buffer I/O error on dev sr0, logical block 1988406, async page read
+Buffer I/O error on dev sr0, logical block 1988407, async page read
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+rcu: 	0-...!: (1 GPs behind) idle=ef4c/1/0x4000000000000000 softirq=600471/600472 fqs=4
+rcu: 	(detected by 0, t=21050 jiffies, g=950237, q=289 ncpus=2)
+rcu: INFO: Stall ended during stack backtracing.
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+blk_print_req_error: 4105 callbacks suppressed
+I/O error, dev sr0, sector 1988402 op 0x0:(READ) flags 0x0 phys_seg 6 prio class 2
+buffer_io_error: 4112 callbacks suppressed
+Buffer I/O error on dev sr0, logical block 1988402, async page read
+Buffer I/O error on dev sr0, logical block 1988403, async page read
+Buffer I/O error on dev sr0, logical block 1988404, async page read
+Buffer I/O error on dev sr0, logical block 1988405, async page read
+Buffer I/O error on dev sr0, logical block 1988406, async page read
+Buffer I/O error on dev sr0, logical block 1988407, async page read
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

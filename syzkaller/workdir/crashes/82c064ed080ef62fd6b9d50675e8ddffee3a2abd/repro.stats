@@ -1,0 +1,359 @@
+Extracting prog: 43.38028325s
+Minimizing prog: 6m24.512050771s
+Simplifying prog options: 0s
+Extracting C: 22.623944273s
+Simplifying C: 1m49.432937203s
+
+
+extracting reproducer from 92 programs
+first checking the prog from the crash report
+single: executing 1 programs separately with timeout 30s
+testing program (duration=30s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat-ictra_heap_oob-openat-write$sndseq-write-openat$dir-openat$cgroup_int-openat$tcp_mem-openat$cgroup_pressure-mmap-write$tcp_mem-writev-mmap
+detailed listing:
+executing program 0:
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+ictra_heap_oob(0xbaadf00d, 0x13)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+write$sndseq(r1, 0x0, 0x0)
+write(r0, &(0x7f0000000140)="c53d73da59646d1b8c3ccef1e574373b5e9f31c7123dbc7f39dc14c3e1f96eb24e915eca40104005bf84ffb6cd2a0d4325384175b721044898fe09c09d4cf4d65475eaa1f1805c6a48e196a70aa8ecb2cf0569d4c71a9c4c7f7c45826b3918c8bc9d1e", 0x63)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file0\x00', 0x240, 0x11)
+openat$cgroup_int(r0, &(0x7f00000000c0)='cpu.max.burst\x00', 0x2, 0x0)
+r2 = openat$tcp_mem(0xffffffffffffff9c, &(0x7f0000000000)='/proc/sys/net/ipv4/tcp_wmem\x00', 0x1, 0x0)
+openat$cgroup_pressure(r0, &(0x7f0000000100)='memory.pressure\x00', 0x2, 0x0)
+mmap(&(0x7f0000ffd000/0x2000)=nil, 0x2000, 0x2000000, 0x3ff809bb55cc457a, 0xffffffffffffffff, 0x2fc12000)
+write$tcp_mem(r2, &(0x7f0000000040)={0x6, 0x20, 0x30000, 0x20, 0x6}, 0x48)
+writev(r2, &(0x7f0000000280)=[{&(0x7f0000000500)="b71de27a48eb9737950000000000000000f94d54618f84216ba9e1eeba33779e56081181b896706b79e51e636d2dcdb9c654b1a1c6102364c57d153d61f3238fcd2c8ee9757fb5ea7c4034b4940e0f1f443271cb0d36997a28aabf6950fbbede5f07a2a3561153888469062263cd23d100712844285c40eadce7b48e1ffc08c6bfdd592d5547375b9160a53f3a8f1b10b13341f686ff106670a35339c3d849b7d932bb4e9f0049068ef08bb096047152d6bef8593b198eb965353f25c28d8cc58486f56400", 0xc5}, {&(0x7f0000000180)="c76b17f3d99ef5c3a1a5b55e406dbb2c3ca0dac917839888f6e03418d15d0431ce31e519aadca328dc1806d3928f25d7047fff42498ffe535fab0e25c22e6b34bfe29dd079b177c103b794b8c6fa7faa8262cd3dbc19fce4378b1cee5529af9b2e4c1850187f1d2d056433445235bcdb6d8fb686d14c94234ba5ff157ca5d775dadc4fd0d005a5e311b7d5bff3d8798252562ce2d10cf6c8472a2abd68891020def0103c9b9d5d5757e850c514da10bc17a5dcc191288737c1e60280bcaf1ee9a711ad3c79", 0xc5}], 0x2)
+mmap(&(0x7f0000000000/0x200000)=nil, 0x200000, 0x3, 0x32, 0x0, 0x0)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+single: successfully extracted reproducer
+found reproducer with 13 syscalls
+minimizing guilty program
+testing program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat-ictra_heap_oob-openat-write$sndseq-write-openat$dir-openat$cgroup_int-openat$tcp_mem-openat$cgroup_pressure-mmap-write$tcp_mem-writev
+detailed listing:
+executing program 0:
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+ictra_heap_oob(0xbaadf00d, 0x13)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+write$sndseq(r1, 0x0, 0x0)
+write(r0, &(0x7f0000000140)="c53d73da59646d1b8c3ccef1e574373b5e9f31c7123dbc7f39dc14c3e1f96eb24e915eca40104005bf84ffb6cd2a0d4325384175b721044898fe09c09d4cf4d65475eaa1f1805c6a48e196a70aa8ecb2cf0569d4c71a9c4c7f7c45826b3918c8bc9d1e", 0x63)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file0\x00', 0x240, 0x11)
+openat$cgroup_int(r0, &(0x7f00000000c0)='cpu.max.burst\x00', 0x2, 0x0)
+r2 = openat$tcp_mem(0xffffffffffffff9c, &(0x7f0000000000)='/proc/sys/net/ipv4/tcp_wmem\x00', 0x1, 0x0)
+openat$cgroup_pressure(r0, &(0x7f0000000100)='memory.pressure\x00', 0x2, 0x0)
+mmap(&(0x7f0000ffd000/0x2000)=nil, 0x2000, 0x2000000, 0x3ff809bb55cc457a, 0xffffffffffffffff, 0x2fc12000)
+write$tcp_mem(r2, &(0x7f0000000040)={0x6, 0x20, 0x30000, 0x20, 0x6}, 0x48)
+writev(r2, &(0x7f0000000280)=[{&(0x7f0000000500)="b71de27a48eb9737950000000000000000f94d54618f84216ba9e1eeba33779e56081181b896706b79e51e636d2dcdb9c654b1a1c6102364c57d153d61f3238fcd2c8ee9757fb5ea7c4034b4940e0f1f443271cb0d36997a28aabf6950fbbede5f07a2a3561153888469062263cd23d100712844285c40eadce7b48e1ffc08c6bfdd592d5547375b9160a53f3a8f1b10b13341f686ff106670a35339c3d849b7d932bb4e9f0049068ef08bb096047152d6bef8593b198eb965353f25c28d8cc58486f56400", 0xc5}, {&(0x7f0000000180)="c76b17f3d99ef5c3a1a5b55e406dbb2c3ca0dac917839888f6e03418d15d0431ce31e519aadca328dc1806d3928f25d7047fff42498ffe535fab0e25c22e6b34bfe29dd079b177c103b794b8c6fa7faa8262cd3dbc19fce4378b1cee5529af9b2e4c1850187f1d2d056433445235bcdb6d8fb686d14c94234ba5ff157ca5d775dadc4fd0d005a5e311b7d5bff3d8798252562ce2d10cf6c8472a2abd68891020def0103c9b9d5d5757e850c514da10bc17a5dcc191288737c1e60280bcaf1ee9a711ad3c79", 0xc5}], 0x2)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat-ictra_heap_oob-openat-write$sndseq-write-openat$dir-openat$cgroup_int-openat$tcp_mem-openat$cgroup_pressure-mmap-write$tcp_mem
+detailed listing:
+executing program 0:
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+ictra_heap_oob(0xbaadf00d, 0x13)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+write$sndseq(r1, 0x0, 0x0)
+write(r0, &(0x7f0000000140)="c53d73da59646d1b8c3ccef1e574373b5e9f31c7123dbc7f39dc14c3e1f96eb24e915eca40104005bf84ffb6cd2a0d4325384175b721044898fe09c09d4cf4d65475eaa1f1805c6a48e196a70aa8ecb2cf0569d4c71a9c4c7f7c45826b3918c8bc9d1e", 0x63)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file0\x00', 0x240, 0x11)
+openat$cgroup_int(r0, &(0x7f00000000c0)='cpu.max.burst\x00', 0x2, 0x0)
+r2 = openat$tcp_mem(0xffffffffffffff9c, &(0x7f0000000000)='/proc/sys/net/ipv4/tcp_wmem\x00', 0x1, 0x0)
+openat$cgroup_pressure(r0, &(0x7f0000000100)='memory.pressure\x00', 0x2, 0x0)
+mmap(&(0x7f0000ffd000/0x2000)=nil, 0x2000, 0x2000000, 0x3ff809bb55cc457a, 0xffffffffffffffff, 0x2fc12000)
+write$tcp_mem(r2, &(0x7f0000000040)={0x6, 0x20, 0x30000, 0x20, 0x6}, 0x48)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat-ictra_heap_oob-openat-write$sndseq-write-openat$dir-openat$cgroup_int-openat$tcp_mem-openat$cgroup_pressure-mmap
+detailed listing:
+executing program 0:
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+ictra_heap_oob(0xbaadf00d, 0x13)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+write$sndseq(r1, 0x0, 0x0)
+write(r0, &(0x7f0000000140)="c53d73da59646d1b8c3ccef1e574373b5e9f31c7123dbc7f39dc14c3e1f96eb24e915eca40104005bf84ffb6cd2a0d4325384175b721044898fe09c09d4cf4d65475eaa1f1805c6a48e196a70aa8ecb2cf0569d4c71a9c4c7f7c45826b3918c8bc9d1e", 0x63)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file0\x00', 0x240, 0x11)
+openat$cgroup_int(r0, &(0x7f00000000c0)='cpu.max.burst\x00', 0x2, 0x0)
+openat$tcp_mem(0xffffffffffffff9c, &(0x7f0000000000)='/proc/sys/net/ipv4/tcp_wmem\x00', 0x1, 0x0)
+openat$cgroup_pressure(r0, &(0x7f0000000100)='memory.pressure\x00', 0x2, 0x0)
+mmap(&(0x7f0000ffd000/0x2000)=nil, 0x2000, 0x2000000, 0x3ff809bb55cc457a, 0xffffffffffffffff, 0x2fc12000)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat-ictra_heap_oob-openat-write$sndseq-write-openat$dir-openat$cgroup_int-openat$tcp_mem-openat$cgroup_pressure
+detailed listing:
+executing program 0:
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+ictra_heap_oob(0xbaadf00d, 0x13)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+write$sndseq(r1, 0x0, 0x0)
+write(r0, &(0x7f0000000140)="c53d73da59646d1b8c3ccef1e574373b5e9f31c7123dbc7f39dc14c3e1f96eb24e915eca40104005bf84ffb6cd2a0d4325384175b721044898fe09c09d4cf4d65475eaa1f1805c6a48e196a70aa8ecb2cf0569d4c71a9c4c7f7c45826b3918c8bc9d1e", 0x63)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file0\x00', 0x240, 0x11)
+openat$cgroup_int(r0, &(0x7f00000000c0)='cpu.max.burst\x00', 0x2, 0x0)
+openat$tcp_mem(0xffffffffffffff9c, &(0x7f0000000000)='/proc/sys/net/ipv4/tcp_wmem\x00', 0x1, 0x0)
+openat$cgroup_pressure(r0, &(0x7f0000000100)='memory.pressure\x00', 0x2, 0x0)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat-ictra_heap_oob-openat-write$sndseq-write-openat$dir-openat$cgroup_int-openat$tcp_mem
+detailed listing:
+executing program 0:
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+ictra_heap_oob(0xbaadf00d, 0x13)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+write$sndseq(r1, 0x0, 0x0)
+write(r0, &(0x7f0000000140)="c53d73da59646d1b8c3ccef1e574373b5e9f31c7123dbc7f39dc14c3e1f96eb24e915eca40104005bf84ffb6cd2a0d4325384175b721044898fe09c09d4cf4d65475eaa1f1805c6a48e196a70aa8ecb2cf0569d4c71a9c4c7f7c45826b3918c8bc9d1e", 0x63)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file0\x00', 0x240, 0x11)
+openat$cgroup_int(r0, &(0x7f00000000c0)='cpu.max.burst\x00', 0x2, 0x0)
+openat$tcp_mem(0xffffffffffffff9c, &(0x7f0000000000)='/proc/sys/net/ipv4/tcp_wmem\x00', 0x1, 0x0)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat-ictra_heap_oob-openat-write$sndseq-write-openat$dir-openat$cgroup_int
+detailed listing:
+executing program 0:
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+ictra_heap_oob(0xbaadf00d, 0x13)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+write$sndseq(r1, 0x0, 0x0)
+write(r0, &(0x7f0000000140)="c53d73da59646d1b8c3ccef1e574373b5e9f31c7123dbc7f39dc14c3e1f96eb24e915eca40104005bf84ffb6cd2a0d4325384175b721044898fe09c09d4cf4d65475eaa1f1805c6a48e196a70aa8ecb2cf0569d4c71a9c4c7f7c45826b3918c8bc9d1e", 0x63)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file0\x00', 0x240, 0x11)
+openat$cgroup_int(r0, &(0x7f00000000c0)='cpu.max.burst\x00', 0x2, 0x0)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat-ictra_heap_oob-openat-write$sndseq-write-openat$dir
+detailed listing:
+executing program 0:
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+ictra_heap_oob(0xbaadf00d, 0x13)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+write$sndseq(r1, 0x0, 0x0)
+write(r0, &(0x7f0000000140)="c53d73da59646d1b8c3ccef1e574373b5e9f31c7123dbc7f39dc14c3e1f96eb24e915eca40104005bf84ffb6cd2a0d4325384175b721044898fe09c09d4cf4d65475eaa1f1805c6a48e196a70aa8ecb2cf0569d4c71a9c4c7f7c45826b3918c8bc9d1e", 0x63)
+openat$dir(0xffffffffffffff9c, &(0x7f0000000300)='./file0\x00', 0x240, 0x11)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat-ictra_heap_oob-openat-write$sndseq-write
+detailed listing:
+executing program 0:
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+ictra_heap_oob(0xbaadf00d, 0x13)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+write$sndseq(r1, 0x0, 0x0)
+write(r0, &(0x7f0000000140)="c53d73da59646d1b8c3ccef1e574373b5e9f31c7123dbc7f39dc14c3e1f96eb24e915eca40104005bf84ffb6cd2a0d4325384175b721044898fe09c09d4cf4d65475eaa1f1805c6a48e196a70aa8ecb2cf0569d4c71a9c4c7f7c45826b3918c8bc9d1e", 0x63)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat-ictra_heap_oob-openat-write$sndseq
+detailed listing:
+executing program 0:
+openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+ictra_heap_oob(0xbaadf00d, 0x13)
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+write$sndseq(r0, 0x0, 0x0)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat-ictra_heap_oob-openat
+detailed listing:
+executing program 0:
+openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+ictra_heap_oob(0xbaadf00d, 0x13)
+openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat-ictra_heap_oob
+detailed listing:
+executing program 0:
+openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+ictra_heap_oob(0xbaadf00d, 0x13)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): openat
+detailed listing:
+executing program 0:
+openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+
+program did not crash
+testing program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_heap_oob
+detailed listing:
+executing program 0:
+ictra_heap_oob(0xbaadf00d, 0x13)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+extracting C reproducer
+testing compiled C program (duration=35.806744113s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_heap_oob
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+simplifying C reproducer
+testing compiled C program (duration=35.806744113s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_heap_oob
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing compiled C program (duration=35.806744113s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:false Cgroups:false BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_heap_oob
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing compiled C program (duration=35.806744113s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_heap_oob
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing compiled C program (duration=35.806744113s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_heap_oob
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing compiled C program (duration=35.806744113s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_heap_oob
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing compiled C program (duration=35.806744113s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:false Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_heap_oob
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+testing program (duration=35.806744113s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:false Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_heap_oob
+detailed listing:
+executing program 0:
+ictra_heap_oob(0xbaadf00d, 0x13)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+validation run: crashed=true
+testing program (duration=35.806744113s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:false Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_heap_oob
+detailed listing:
+executing program 0:
+ictra_heap_oob(0xbaadf00d, 0x13)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+validation run: crashed=true
+testing program (duration=35.806744113s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:false Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_heap_oob
+detailed listing:
+executing program 0:
+ictra_heap_oob(0xbaadf00d, 0x13)
+
+program crashed: KASAN: slab-out-of-bounds Write in sys_ictra_heap_oob
+validation run: crashed=true
+reproducing took 10m41.127797441s
+repro crashed as (corrupted=false):
+cgroup: Unknown subsys name 'cpuset'
+cgroup: Unknown subsys name 'rlimit'
+cgroup: Unknown subsys name 'memory'
+==================================================================
+BUG: KASAN: slab-out-of-bounds in __do_sys_ictra_heap_oob kernel/sys.c:3103 [inline]
+BUG: KASAN: slab-out-of-bounds in __se_sys_ictra_heap_oob kernel/sys.c:3091 [inline]
+BUG: KASAN: slab-out-of-bounds in __x64_sys_ictra_heap_oob+0xfa/0x140 kernel/sys.c:3091
+Write of size 19 at addr ffff888002130540 by task syz.3.17/1161
+
+CPU: 0 UID: 0 PID: 1161 Comm: syz.3.17 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ check_region_inline mm/kasan/generic.c:186 [inline]
+ kasan_check_range+0x10f/0x1e0 mm/kasan/generic.c:200
+ __asan_memset+0x23/0x50 mm/kasan/shadow.c:84
+ __do_sys_ictra_heap_oob kernel/sys.c:3103 [inline]
+ __se_sys_ictra_heap_oob kernel/sys.c:3091 [inline]
+ __x64_sys_ictra_heap_oob+0xfa/0x140 kernel/sys.c:3091
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f81334bacb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007ffc1da024b8 EFLAGS: 00000246 ORIG_RAX: 00000000000001d9
+RAX: ffffffffffffffda RBX: 00007f8133735fa0 RCX: 00007f81334bacb9
+RDX: 0000000000000000 RSI: 0000000000000013 RDI: 00000000baadf00d
+RBP: 00007f8133528bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f8133735fac R14: 00007f8133735fa0 R15: 00007f8133735fa0
+ </TASK>
+
+Allocated by task 1161:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kmalloc_noprof include/linux/slab.h:950 [inline]
+ __do_sys_ictra_heap_oob kernel/sys.c:3097 [inline]
+ __se_sys_ictra_heap_oob kernel/sys.c:3091 [inline]
+ __x64_sys_ictra_heap_oob+0xa5/0x140 kernel/sys.c:3091
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff888002130540
+ which belongs to the cache kmalloc-16 of size 16
+The buggy address is located 0 bytes inside of
+ allocated 16-byte region [ffff888002130540, ffff888002130550)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff888002130a60 pfn:0x2130
+flags: 0x100000000000200(workingset|node=0|zone=1)
+page_type: f5(slab)
+raw: 0100000000000200 ffff888001041640 ffff888001040290 ffffea0000084310
+raw: ffff888002130a60 0000000000800059 00000000f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff888002130400: 00 01 fc fc 00 01 fc fc 00 00 fc fc fa fb fc fc
+ ffff888002130480: 00 01 fc fc 00 01 fc fc fa fb fc fc fa fb fc fc
+>ffff888002130500: fa fb fc fc fa fb fc fc 00 00 fc fc 00 06 fc fc
+                                                 ^
+ ffff888002130580: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+ ffff888002130600: fa fb fc fc fa fb fc fc fa fb fc fc 00 00 fc fc
+==================================================================
+
+final repro crashed as (corrupted=false):
+cgroup: Unknown subsys name 'cpuset'
+cgroup: Unknown subsys name 'rlimit'
+cgroup: Unknown subsys name 'memory'
+==================================================================
+BUG: KASAN: slab-out-of-bounds in __do_sys_ictra_heap_oob kernel/sys.c:3103 [inline]
+BUG: KASAN: slab-out-of-bounds in __se_sys_ictra_heap_oob kernel/sys.c:3091 [inline]
+BUG: KASAN: slab-out-of-bounds in __x64_sys_ictra_heap_oob+0xfa/0x140 kernel/sys.c:3091
+Write of size 19 at addr ffff888002130540 by task syz.3.17/1161
+
+CPU: 0 UID: 0 PID: 1161 Comm: syz.3.17 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ check_region_inline mm/kasan/generic.c:186 [inline]
+ kasan_check_range+0x10f/0x1e0 mm/kasan/generic.c:200
+ __asan_memset+0x23/0x50 mm/kasan/shadow.c:84
+ __do_sys_ictra_heap_oob kernel/sys.c:3103 [inline]
+ __se_sys_ictra_heap_oob kernel/sys.c:3091 [inline]
+ __x64_sys_ictra_heap_oob+0xfa/0x140 kernel/sys.c:3091
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f81334bacb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007ffc1da024b8 EFLAGS: 00000246 ORIG_RAX: 00000000000001d9
+RAX: ffffffffffffffda RBX: 00007f8133735fa0 RCX: 00007f81334bacb9
+RDX: 0000000000000000 RSI: 0000000000000013 RDI: 00000000baadf00d
+RBP: 00007f8133528bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f8133735fac R14: 00007f8133735fa0 R15: 00007f8133735fa0
+ </TASK>
+
+Allocated by task 1161:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kmalloc_noprof include/linux/slab.h:950 [inline]
+ __do_sys_ictra_heap_oob kernel/sys.c:3097 [inline]
+ __se_sys_ictra_heap_oob kernel/sys.c:3091 [inline]
+ __x64_sys_ictra_heap_oob+0xa5/0x140 kernel/sys.c:3091
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff888002130540
+ which belongs to the cache kmalloc-16 of size 16
+The buggy address is located 0 bytes inside of
+ allocated 16-byte region [ffff888002130540, ffff888002130550)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff888002130a60 pfn:0x2130
+flags: 0x100000000000200(workingset|node=0|zone=1)
+page_type: f5(slab)
+raw: 0100000000000200 ffff888001041640 ffff888001040290 ffffea0000084310
+raw: ffff888002130a60 0000000000800059 00000000f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff888002130400: 00 01 fc fc 00 01 fc fc 00 00 fc fc fa fb fc fc
+ ffff888002130480: 00 01 fc fc 00 01 fc fc fa fb fc fc fa fb fc fc
+>ffff888002130500: fa fb fc fc fa fb fc fc 00 00 fc fc 00 06 fc fc
+                                                 ^
+ ffff888002130580: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+ ffff888002130600: fa fb fc fc fa fb fc fc fa fb fc fc 00 00 fc fc
+==================================================================
+

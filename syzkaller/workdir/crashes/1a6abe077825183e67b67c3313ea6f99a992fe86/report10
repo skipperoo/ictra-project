@@ -1,0 +1,29 @@
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 07 95 cc 00 00 02 00
+sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+rcu: 	(detected by 1, t=21002 jiffies, g=104493, q=87045 ncpus=2)
+rcu: All QSes seen, last rcu_preempt kthread activity 1 (4294833167-4294833166), jiffies_till_next_fqs=3, root ->qsmask 0x0
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 07 95 cc 00 00 02 00
+blk_print_req_error: 5441 callbacks suppressed
+I/O error, dev sr0, sector 1988400 op 0x0:(READ) flags 0x0 phys_seg 8 prio class 2
+buffer_io_error: 5374 callbacks suppressed
+Buffer I/O error on dev sr0, logical block 1988400, async page read
+Buffer I/O error on dev sr0, logical block 1988401, async page read
+Buffer I/O error on dev sr0, logical block 1988402, async page read
+Buffer I/O error on dev sr0, logical block 1988403, async page read
+Buffer I/O error on dev sr0, logical block 1988404, async page read
+Buffer I/O error on dev sr0, logical block 1988405, async page read
+Buffer I/O error on dev sr0, logical block 1988406, async page read
+Buffer I/O error on dev sr0, logical block 1988407, async page read
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

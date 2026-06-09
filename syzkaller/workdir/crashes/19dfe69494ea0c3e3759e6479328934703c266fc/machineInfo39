@@ -1,0 +1,34 @@
+QEMU emulator version 10.1.3 (qemu-10.1.3-1.fc43)
+qemu-system-x86_64 ["-m" "2048" "-smp" "2" "-chardev" "socket,id=SOCKSYZ,server=on,wait=off,host=localhost,port=42670" "-mon" "chardev=SOCKSYZ,mode=control" "-display" "none" "-serial" "stdio" "-no-reboot" "-name" "VM-0" "-device" "virtio-rng-pci" "-enable-kvm" "-cpu" "host,migratable=off" "-device" "e1000,netdev=net0" "-netdev" "user,id=net0,restrict=on,hostfwd=tcp:127.0.0.1:14903-:22" "-hda" "/home/leonardo/Documents/University/ICTRA/project/image/buildroot/output/images/rootfs.ext4" "-snapshot" "-kernel" "/home/leonardo/Documents/University/ICTRA/project/linux/arch/x86/boot/bzImage" "-append" "root=/dev/sda console=ttyS0 net.ifnames=0 root=/dev/sda console=ttyS0 selinux=0 mitigations=off panic=1"]
+
+[CPU Info]
+processor           : 0, 1
+vendor_id           : GenuineIntel
+cpu family          : 6
+model               : 158
+model name          : Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
+stepping            : 10
+microcode           : 0xfa
+cpu MHz             : 2592.000
+cache size          : 16384 KB
+physical id         : 0
+siblings            : 2
+core id             : 0, 1
+cpu cores           : 2
+apicid              : 0, 1
+initial apicid      : 0, 1
+fpu                 : yes
+fpu_exception       : yes
+cpuid level         : 22
+wp                  : yes
+flags               : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 ss ht syscall nx pdpe1gb rdtscp lm constant_tsc arch_perfmon rep_good nopl xtopology nonstop_tsc cpuid tsc_known_freq pni pclmulqdq vmx ssse3 fma cx16 pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd ibrs ibpb stibp tpr_shadow flexpriority ept vpid ept_ad fsgsbase tsc_adjust sgx bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt xsaveopt xsavec xgetbv1 xsaves arat vnmi umip sgx_lc md_clear flush_l1d arch_capabilities
+vmx flags           : vnmi preemption_timer invvpid ept_x_only ept_ad ept_1gb flexpriority tsc_offset vtpr mtf vapic ept vpid unrestricted_guest shadow_vmcs pml
+bugs                : cpu_meltdown spectre_v1 spectre_v2 spec_store_bypass l1tf mds swapgs srbds mmio_stale_data retbleed bhi spectre_v2_user
+bogomips            : 5184.00
+clflush size        : 64
+cache_alignment     : 64
+address sizes       : 39 bits physical, 48 bits virtual
+power management    : 
+
+--------------------------------------------------------------------------------
+

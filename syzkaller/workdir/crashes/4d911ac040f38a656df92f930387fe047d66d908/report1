@@ -1,0 +1,115 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+pci 0000:00:02.0: vgaarb: VGA decodes changed: olddecodes=none,decodes=none:owns=io+mem
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+clocksource: Marking clocksource tsc unstable due to frequency skew
+rcu: 	0-....: (1 GPs behind) idle=9654/1/0x4000000000000000 softirq=206218/206218 fqs=5209
+rcu: 	(detected by 1, t=21002 jiffies, g=335065, q=298 ncpus=2)
+Sending NMI from CPU 1 to CPUs 0:
+NMI backtrace for cpu 0
+CPU: 0 UID: 0 PID: 20185 Comm: syz.0.11775 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:io_serial_in+0x65/0x80 drivers/tty/serial/8250/8250_port.c:401
+Code: 8d 7d 08 0f b6 8d c1 00 00 00 48 b8 00 00 00 00 00 fc ff df 48 89 fa 48 c1 ea 03 d3 e3 80 3c 02 00 75 18 66 03 5d 08 89 da ec <0f> b6 c0 5b 5d c3 cc cc cc cc e8 3c 9c 1c ff eb c4 e8 c5 9c 1c ff
+RSP: 0018:ffff88806d008770 EFLAGS: 00000006
+RAX: dffffc0000000005 RBX: 00000000000003f9 RCX: 0000000000000000
+RDX: 00000000000003f9 RSI: 0000000000000001 RDI: ffffffffaa367468
+RBP: ffffffffaa367460 R08: 0000000000000001 R09: ffff888011da4600
+R10: 0000000000000000 R11: 303a303a31207273 R12: 0000000000000000
+R13: ffffffffaa3676c0 R14: ffffffffaa367478 R15: 0000000000000000
+FS:  00007f66c09766c0(0000) GS:ffff8880c2d88000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f66c1e106c0 CR3: 0000000004ce6005 CR4: 0000000000170ef0
+Call Trace:
+ <IRQ>
+ serial_port_in include/linux/serial_core.h:806 [inline]
+ serial8250_console_write+0x1ce/0x15c0 drivers/tty/serial/8250/8250_port.c:3321
+ console_emit_next_record kernel/printk/printk.c:3183 [inline]
+ console_flush_one_record+0x725/0xa70 kernel/printk/printk.c:3269
+ console_flush_all kernel/printk/printk.c:3343 [inline]
+ __console_flush_and_unlock kernel/printk/printk.c:3373 [inline]
+ console_unlock+0x123/0x2e0 kernel/printk/printk.c:3413
+ vprintk_emit+0x421/0x630 kernel/printk/printk.c:2479
+ _printk+0xcf/0x110 kernel/printk/printk.c:2504
+ watchdog_print_freq_skew kernel/time/clocksource.c:583 [inline]
+ watchdog_check_result kernel/time/clocksource.c:628 [inline]
+ clocksource_watchdog kernel/time/clocksource.c:668 [inline]
+ clocksource_watchdog.cold+0x46/0x1f3 kernel/time/clocksource.c:643
+ call_timer_fn+0x39/0x2e0 kernel/time/timer.c:1748
+ expire_timers kernel/time/timer.c:1799 [inline]
+ __run_timers+0x6e3/0x9b0 kernel/time/timer.c:2374
+ __run_timer_base kernel/time/timer.c:2386 [inline]
+ __run_timer_base kernel/time/timer.c:2378 [inline]
+ run_timer_base kernel/time/timer.c:2395 [inline]
+ run_timer_softirq+0xe2/0x2a0 kernel/time/timer.c:2403
+ handle_softirqs+0x195/0x600 kernel/softirq.c:622
+ __do_softirq kernel/softirq.c:656 [inline]
+ invoke_softirq kernel/softirq.c:496 [inline]
+ __irq_exit_rcu+0x5c/0x130 kernel/softirq.c:735
+ instr_sysvec_apic_timer_interrupt arch/x86/kernel/apic/apic.c:1061 [inline]
+ sysvec_apic_timer_interrupt+0x7a/0xa0 arch/x86/kernel/apic/apic.c:1061
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20 arch/x86/include/asm/idtentry.h:697
+RIP: 0010:preempt_schedule_irq+0x43/0x80 kernel/sched/core.c:7513
+Code: 3b 0f 04 03 48 ba 00 00 00 00 00 fc ff df 48 89 eb 48 c1 eb 03 48 01 d3 f6 c4 02 75 2e 65 ff 05 33 0f 04 03 fb bf 01 00 00 00 <e8> c8 bc ff ff fa 65 ff 0d 20 0f 04 03 80 3b 00 75 12 48 8b 45 00
+RSP: 0018:ffff888031a87aa8 EFLAGS: 00000202
+RAX: 0000000000000046 RBX: ffffed10023b48c0 RCX: ffffffffa3c90a90
+RDX: dffffc0000000000 RSI: 0000000000000000 RDI: 0000000000000001
+RBP: ffff888011da4600 R08: 0000000000000001 R09: ffff888011da4600
+R10: 0000000000000000 R11: 0000000000000000 R12: ffff888031a87b08
+R13: 0000000000000000 R14: 0000000000000000 R15: 0000000000000000
+ irqentry_exit_to_kernel_mode_preempt include/linux/irq-entry-common.h:468 [inline]
+ irqentry_exit_to_kernel_mode include/linux/irq-entry-common.h:539 [inline]
+ irqentry_exit+0xce/0x5c0 kernel/entry/common.c:164
+ asm_sysvec_reschedule_ipi+0x1a/0x20 arch/x86/include/asm/idtentry.h:702
+RIP: 0010:__raw_spin_unlock_irqrestore include/linux/spinlock_api_smp.h:179 [inline]
+RIP: 0010:_raw_spin_unlock_irqrestore+0x3e/0x70 kernel/locking/spinlock.c:198
+Code: fa 48 c1 ea 03 0f b6 04 02 48 89 fa 83 e2 07 38 d0 7f 04 84 c0 75 2c c6 07 00 f7 c6 00 02 00 00 74 01 fb 65 ff 0d e2 cb 02 03 <74> 09 48 83 c4 10 c3 cc cc cc cc e8 52 97 90 fc 48 83 c4 10 c3 cc
+RSP: 0018:ffff888031a87bb8 EFLAGS: 00000286
+RAX: 0000000000000004 RBX: ffff888001c5c000 RCX: ffffffffa4fb67c3
+RDX: 0000000000000000 RSI: 0000000000000246 RDI: ffffffffaa35e900
+RBP: ffff888012815800 R08: 0000000000000001 R09: ffff888011da4600
+R10: 0000000000000000 R11: 303a303a31207273 R12: 000000000000000d
+R13: 1ffff11006350f7d R14: ffff888031a87c68 R15: 0000200000000080
+ vga_arb_write+0x755/0x11a0 drivers/pci/vgaarb.c:1376
+ vfs_write+0x288/0xec0 fs/read_write.c:701
+ ksys_write+0x12d/0x250 fs/read_write.c:755
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f66c1f3acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f66c0976028 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007f66c21b6090 RCX: 00007f66c1f3acb9
+RDX: 000000000000000d RSI: 0000200000000080 RDI: 0000000000000003
+RBP: 00007f66c1fa8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f66c21b6128 R14: 00007f66c21b6090 R15: 00007ffefe4b5a28
+ </TASK>
+clocksource: Watchdog               kvm-clock interval:             4428ns
+clocksource: Clocksource                  tsc interval:             4208ns
+tsc: Marking TSC unstable due to clocksource watchdog
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+blk_print_req_error: 5178 callbacks suppressed
+I/O error, dev sr0, sector 1988403 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+buffer_io_error: 4864 callbacks suppressed
+Buffer I/O error on dev sr0, logical block 1988403, async page read
+sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 07 95 cd 00 00 01 00
+I/O error, dev sr0, sector 1988404 op 0x0:(READ) flags 0x0 phys_seg 4 prio class 2
+Buffer I/O error on dev sr0, logical block 1988404, async page read
+Buffer I/O error on dev sr0, logical block 1988405, async page read
+Buffer I/O error on dev sr0, logical block 1988406, async page read
+Buffer I/O error on dev sr0, logical block 1988407, async page read
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

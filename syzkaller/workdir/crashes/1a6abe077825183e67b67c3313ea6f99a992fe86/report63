@@ -1,0 +1,29 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+blk_print_req_error: 5571 callbacks suppressed
+I/O error, dev sr0, sector 1988407 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+rcu: 	Tasks blocked on level-0 rcu_node (CPUs 0-1): P17029
+rcu: 	(detected by 0, t=21012 jiffies, g=315077, q=98266 ncpus=2)
+task:syz.8.11382     state:R
+buffer_io_error: 5469 callbacks suppressed
+Buffer I/O error on dev sr0, logical block 1988407, async page read
+  running task     stack:24216 pid:17029 tgid:17028 ppid:7138   task_flags:0x20400140 flags:0x00080012
+Call Trace:
+ <TASK>
+ </TASK>
+clocksource: Marking clocksource tsc unstable due to frequency skew
+clocksource: Watchdog               kvm-clock interval:             2861ns
+clocksource: Clocksource                  tsc interval:             2796ns
+tsc: Marking TSC unstable due to clocksource watchdog
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

@@ -1,0 +1,62 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+binfmt_misc: register: failed to install interpreter file ./cgroup/cgroup.procs
+rcu: INFO: rcu_preempt self-detected stall on CPU
+rcu: 	1-....: (4308 ticks this GP) idle=3254/1/0x4000000000000000 softirq=556267/556279 fqs=4125
+rcu: 	(t=21000 jiffies g=833481 q=79106 ncpus=2)
+CPU: 1 UID: 0 PID: 4881 Comm: syz.5.30324 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:console_flush_one_record+0x82c/0xa70 kernel/printk/printk.c:3270
+Code: 48 89 44 24 20 48 8d 68 01 4c 89 e8 48 c1 e8 03 42 80 3c 30 00 0f 85 1c 02 00 00 49 89 6f 58 eb 8f e8 a8 5a 1d 00 fb 4c 89 e8 <48> c1 e8 03 42 80 3c 30 00 0f 84 73 ff ff ff 4c 89 ef e8 5d 4a 55
+RSP: 0018:ffff88801c1af928 EFLAGS: 00000246
+RAX: ffffffffad687038 RBX: 0000000000000001 RCX: ffffffffa8c97fa8
+RDX: 0000000000080000 RSI: ffffc90000c82000 RDI: 0000000000000007
+RBP: 0000000000000200 R08: 0000000000000001 R09: ffff88801e058000
+R10: 0000000000000200 R11: 303a303a31207273 R12: 000000000001ec5d
+R13: ffffffffad687038 R14: dffffc0000000000 R15: ffffffffad686fe0
+FS:  00007fc53bb866c0(0000) GS:ffff8880b7488000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fc53d0206c0 CR3: 0000000012e07005 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ console_flush_all kernel/printk/printk.c:3343 [inline]
+ __console_flush_and_unlock kernel/printk/printk.c:3373 [inline]
+ console_unlock+0x123/0x2e0 kernel/printk/printk.c:3413
+ vprintk_emit+0x421/0x630 kernel/printk/printk.c:2479
+ _printk+0xcf/0x110 kernel/printk/printk.c:2504
+ bm_register_write.cold+0x30/0x49 fs/binfmt_misc.c:823
+ vfs_write+0x288/0xec0 fs/read_write.c:701
+ ksys_write+0x12d/0x250 fs/read_write.c:755
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7fc53d14acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fc53bb86028 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007fc53d3c6090 RCX: 00007fc53d14acb9
+RDX: 000000000000003b RSI: 0000200000000000 RDI: 0000000000000004
+RBP: 00007fc53d1b8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fc53d3c6128 R14: 00007fc53d3c6090 R15: 00007ffc970ae9c8
+ </TASK>
+scsi_io_completion_action: 22 callbacks suppressed
+sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=22s
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 07 95 cd 00 00 01 00
+blk_print_req_error: 4333 callbacks suppressed
+I/O error, dev sr0, sector 1988404 op 0x0:(READ) flags 0x0 phys_seg 4 prio class 2
+buffer_io_error: 4362 callbacks suppressed
+Buffer I/O error on dev sr0, logical block 1988404, async page read
+Buffer I/O error on dev sr0, logical block 1988405, async page read
+Buffer I/O error on dev sr0, logical block 1988406, async page read
+Buffer I/O error on dev sr0, logical block 1988407, async page read
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

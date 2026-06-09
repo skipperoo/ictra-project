@@ -1,0 +1,73 @@
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 00 00 00 02 00
+I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x800 phys_seg 2 prio class 2
+==================================================================
+BUG: KASAN: slab-out-of-bounds in __do_sys_ictra_heap_oob kernel/sys.c:3103 [inline]
+BUG: KASAN: slab-out-of-bounds in __se_sys_ictra_heap_oob kernel/sys.c:3091 [inline]
+BUG: KASAN: slab-out-of-bounds in __x64_sys_ictra_heap_oob+0xfa/0x140 kernel/sys.c:3091
+Write of size 31 at addr ffff888005fbc240 by task syz.2.230/2640
+
+CPU: 0 UID: 0 PID: 2640 Comm: syz.2.230 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #8 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ check_region_inline mm/kasan/generic.c:186 [inline]
+ kasan_check_range+0x10f/0x1e0 mm/kasan/generic.c:200
+ __asan_memset+0x23/0x50 mm/kasan/shadow.c:84
+ __do_sys_ictra_heap_oob kernel/sys.c:3103 [inline]
+ __se_sys_ictra_heap_oob kernel/sys.c:3091 [inline]
+ __x64_sys_ictra_heap_oob+0xfa/0x140 kernel/sys.c:3091
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f3ca05facb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f3c9f015028 EFLAGS: 00000246 ORIG_RAX: 00000000000001d9
+RAX: ffffffffffffffda RBX: 00007f3ca0876180 RCX: 00007f3ca05facb9
+RDX: 0000000000000000 RSI: 000000000000001f RDI: 00000000baadf00d
+RBP: 00007f3ca0668bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f3ca0876218 R14: 00007f3ca0876180 R15: 00007fffd2aadb28
+ </TASK>
+
+Allocated by task 2640:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kmalloc_noprof include/linux/slab.h:950 [inline]
+ __do_sys_ictra_heap_oob kernel/sys.c:3097 [inline]
+ __se_sys_ictra_heap_oob kernel/sys.c:3091 [inline]
+ __x64_sys_ictra_heap_oob+0xa5/0x140 kernel/sys.c:3091
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff888005fbc240
+ which belongs to the cache kmalloc-16 of size 16
+The buggy address is located 0 bytes inside of
+ allocated 16-byte region [ffff888005fbc240, ffff888005fbc250)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff888005fbc480 pfn:0x5fbc
+flags: 0x100000000000200(workingset|node=0|zone=1)
+page_type: f5(slab)
+raw: 0100000000000200 ffff888001041640 ffffea0000063ed0 ffff888001040290
+raw: ffff888005fbc480 0000000000800024 00000000f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff888005fbc100: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffff888005fbc180: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+>ffff888005fbc200: fc fc fc fc fc fc fc fc 00 00 fc fc fa fb fc fc
+                                                 ^
+ ffff888005fbc280: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+ ffff888005fbc300: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+==================================================================
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

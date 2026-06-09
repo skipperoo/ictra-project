@@ -1,0 +1,82 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+rcu: 	Tasks blocked on level-0 rcu_node (CPUs 0-1): P15570/1:b.el
+rcu: 	(detected by 1, t=25323 jiffies, g=307253, q=96738 ncpus=2)
+task:syz.5.10739     state:R  running task     stack:24680 pid:15570 tgid:15569 ppid:14366  task_flags:0x20400140 flags:0x00080002
+blk_print_req_error: 5785 callbacks suppressed
+I/O error, dev sr0, sector 20223 op 0x0:(READ) flags 0x0 phys_seg 32 prio class 2
+Call Trace:
+ <TASK>
+ </TASK>
+rcu: rcu_preempt kthread timer wakeup didn't happen for 4349 jiffies! g307253 f0x0 RCU_GP_WAIT_FQS(5) ->state=0x402
+rcu: 	Possible timer handling issue on cpu=1 timer-softirq=64528
+rcu: rcu_preempt kthread starved for 4350 jiffies! g307253 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x402 ->cpu=1
+rcu: 	Unless rcu_preempt kthread gets sufficient CPU time, OOM is now expected behavior.
+rcu: RCU grace-period kthread stack dump:
+task:rcu_preempt     state:I stack:29272 pid:15    tgid:15    ppid:2      task_flags:0x208040 flags:0x00080000
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5388 [inline]
+ __schedule+0xdfa/0x3d30 kernel/sched/core.c:7189
+ __schedule_loop kernel/sched/core.c:7268 [inline]
+ schedule+0x6f/0x2c0 kernel/sched/core.c:7283
+ schedule_timeout+0x11e/0x240 kernel/time/sleep_timeout.c:99
+ rcu_gp_fqs_loop+0x1d6/0xd80 kernel/rcu/tree.c:2095
+ rcu_gp_kthread+0x328/0x480 kernel/rcu/tree.c:2297
+ kthread+0x32e/0x400 kernel/kthread.c:436
+ ret_from_fork+0x3b4/0x7e0 arch/x86/kernel/process.c:158
+ ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:245
+ </TASK>
+rcu: Stack dump where RCU GP kthread last ran:
+CPU: 1 UID: 0 PID: 0 Comm: swapper/1 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:pv_native_safe_halt+0xf/0x20 arch/x86/kernel/paravirt.c:63
+Code: bf de 00 c3 cc cc cc cc 0f 1f 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 f3 0f 1e fa eb 07 0f 00 2d 43 07 21 00 fb f4 <c3> cc cc cc cc 66 2e 0f 1f 84 00 00 00 00 00 66 90 90 90 90 90 90
+RSP: 0018:ffff888001367e60 EFLAGS: 00000216
+RAX: ffff8880d1288000 RBX: ffff88800131a300 RCX: ffffffff98e4b09b
+RDX: 0000000000000001 RSI: 0000000000000004 RDI: 00000000001c2c3c
+RBP: 0000000000000001 R08: 0000000000000001 R09: ffffed100da2624a
+R10: ffff88806d131253 R11: 0000000000000000 R12: ffffed1000263460
+R13: ffffffff9ab91750 R14: 1ffff1100026cfd2 R15: 0000000000000000
+FS:  0000000000000000(0000) GS:ffff8880d1288000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00005607bcd08750 CR3: 0000000004d0e003 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ arch_safe_halt arch/x86/include/asm/paravirt.h:62 [inline]
+ default_idle+0x9/0x10 arch/x86/kernel/process.c:767
+ default_idle_call+0x39/0x60 kernel/sched/idle.c:122
+ cpuidle_idle_call kernel/sched/idle.c:199 [inline]
+ do_idle+0x304/0x570 kernel/sched/idle.c:352
+ cpu_startup_entry+0x4f/0x60 kernel/sched/idle.c:451
+ start_secondary+0x1c0/0x230 arch/x86/kernel/smpboot.c:312
+ common_startup_64+0x13e/0x148
+ </TASK>
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 20479 op 0x0:(READ) flags 0x4000 phys_seg 32 prio class 2
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 20735 op 0x0:(READ) flags 0x4000 phys_seg 32 prio class 2
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 20991 op 0x0:(READ) flags 0x4000 phys_seg 32 prio class 2
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 21247 op 0x0:(READ) flags 0x4000 phys_seg 32 prio class 2
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 21503 op 0x0:(READ) flags 0x4000 phys_seg 32 prio class 2
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 21759 op 0x0:(READ) flags 0x4000 phys_seg 32 prio class 2
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 22015 op 0x0:(READ) flags 0x4000 phys_seg 32 prio class 2
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 22271 op 0x0:(READ) flags 0x0 phys_seg 32 prio class 2
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

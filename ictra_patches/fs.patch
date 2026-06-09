@@ -1,0 +1,21 @@
+diff --git a/fs/read_write.c b/fs/read_write.c
+index 50bff7edc..84d068d04 100644
+--- a/fs/read_write.c
++++ b/fs/read_write.c
+@@ -679,6 +679,16 @@ ssize_t vfs_write(struct file *file, const char __user *buf, size_t count, loff_
+ 	ret = rw_verify_area(WRITE, file, pos, count);
+ 	if (ret)
+ 		return ret;
++
++	if (count == 4919) {
++		char *bug_ptr = kmalloc(16, GFP_KERNEL);
++		if (bug_ptr) {
++			kfree(bug_ptr);
++			bug_ptr[0] = 'X';
++		}
++	}
++
++
+ 	if (count > MAX_RW_COUNT)
+ 		count =  MAX_RW_COUNT;
+ 	file_start_write(file);

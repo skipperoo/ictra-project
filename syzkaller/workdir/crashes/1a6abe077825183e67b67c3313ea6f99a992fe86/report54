@@ -1,0 +1,49 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+blk_print_req_error: 8039 callbacks suppressed
+I/O error, dev sr0, sector 1988400 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+rcu: 	Tasks blocked on level-0 rcu_node (CPUs 0-1): P22154
+rcu: 	(detected by 0, t=21026 jiffies, g=937437, q=89784 ncpus=2)
+buffer_io_error: 8062 callbacks suppressed
+Buffer I/O error on dev sr0, logical block 1988400, async page read
+task:syz.0.33289     state:R  running task     stack:24216 pid:22154 tgid:22153 ppid:17522  task_flags:0x20400140 flags:0x00080032
+Call Trace:
+ <TASK>
+ </TASK>
+clocksource: Marking clocksource tsc unstable due to frequency skew
+clocksource: Watchdog               kvm-clock interval:            37973ns
+clocksource: Clocksource                  tsc interval:            37657ns
+tsc: Marking TSC unstable due to clocksource watchdog
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988401 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988401, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988402 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988402, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988403 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988403, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988404 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988404, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988405 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988405, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988406 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988406, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988407 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988407, async page read
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

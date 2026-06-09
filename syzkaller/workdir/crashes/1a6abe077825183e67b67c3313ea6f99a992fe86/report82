@@ -1,0 +1,150 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+pci 0000:00:02.0: vgaarb: VGA decodes changed: olddecodes=io+mem,decodes=io+mem:owns=io+mem
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+rcu: 	0-...!: (1 GPs behind) idle=9cfc/1/0x4000000000000000 softirq=177052/177052 fqs=12
+rcu: 	(detected by 0, t=23212 jiffies, g=270001, q=135 ncpus=2)
+rcu: INFO: Stall ended during stack backtracing.
+rcu: rcu_preempt kthread starved for 2141 jiffies! g270001 f0x0 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=1
+rcu: 	Unless rcu_preempt kthread gets sufficient CPU time, OOM is now expected behavior.
+rcu: RCU grace-period kthread stack dump:
+task:rcu_preempt     state:R  running task     stack:29336 pid:15    tgid:15    ppid:2      task_flags:0x208040 flags:0x00080000
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5388 [inline]
+ __schedule+0xdfa/0x3d30 kernel/sched/core.c:7189
+ __schedule_loop kernel/sched/core.c:7268 [inline]
+ schedule+0x6f/0x2c0 kernel/sched/core.c:7283
+ schedule_timeout+0x11e/0x240 kernel/time/sleep_timeout.c:99
+ rcu_gp_fqs_loop+0x1d6/0xd80 kernel/rcu/tree.c:2095
+ rcu_gp_kthread+0x328/0x480 kernel/rcu/tree.c:2297
+ kthread+0x32e/0x400 kernel/kthread.c:436
+ ret_from_fork+0x3b4/0x7e0 arch/x86/kernel/process.c:158
+ ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:245
+ </TASK>
+rcu: Stack dump where RCU GP kthread last ran:
+Sending NMI from CPU 0 to CPUs 1:
+NMI backtrace for cpu 1
+CPU: 1 UID: 0 PID: 9342 Comm: syz-executor Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:check_kcov_mode kernel/kcov.c:183 [inline]
+RIP: 0010:write_comp_data+0x12/0xa0 kernel/kcov.c:246
+Code: 0f 1f 84 00 00 00 00 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 65 8b 05 d9 ae 22 06 65 4c 8b 0d b9 ae 22 06 49 89 d2 <a9> 00 01 ff 00 74 1c f6 c4 01 74 07 a9 00 00 ff 00 74 05 c3 cc cc
+RSP: 0000:ffff8880122a7600 EFLAGS: 00000202
+RAX: 0000000000000002 RBX: 0000000000000001 RCX: ffffffff9b5cb137
+RDX: 0000000000000001 RSI: 0000000000000000 RDI: 0000000000000005
+RBP: ffff88806643a380 R08: 0000000000000001 R09: ffff8880261ec600
+R10: 0000000000000001 R11: 0000000000000001 R12: 0000000000000003
+R13: ffffed100cc87471 R14: ffff888066536900 R15: ffff88806643a388
+FS:  0000000000000000(0000) GS:ffff8880c4c88000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fa526acf070 CR3: 0000000003db4006 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ csd_lock_wait kernel/smp.c:351 [inline]
+ smp_call_function_many_cond+0xa97/0x12e0 kernel/smp.c:892
+ on_each_cpu_cond_mask+0x3d/0x90 kernel/smp.c:1057
+ kvm_flush_tlb_multi+0x1f3/0x320 arch/x86/kernel/kvm.c:687
+ __flush_tlb_multi arch/x86/include/asm/paravirt.h:46 [inline]
+ flush_tlb_multi arch/x86/mm/tlb.c:1361 [inline]
+ flush_tlb_mm_range+0x50c/0x14d0 arch/x86/mm/tlb.c:1451
+ tlb_flush arch/x86/include/asm/tlb.h:23 [inline]
+ tlb_flush_mmu_tlbonly include/asm-generic/tlb.h:509 [inline]
+ tlb_flush_mmu_tlbonly include/asm-generic/tlb.h:499 [inline]
+ tlb_flush_mmu mm/mmu_gather.c:423 [inline]
+ tlb_finish_mmu+0x3c2/0x7d0 mm/mmu_gather.c:549
+ exit_mmap+0x36f/0x7f0 mm/mmap.c:1313
+ __mmput kernel/fork.c:1178 [inline]
+ mmput+0x71/0x320 kernel/fork.c:1201
+ exit_mm kernel/exit.c:582 [inline]
+ do_exit+0x879/0x26c0 kernel/exit.c:964
+ do_group_exit+0xc9/0x270 kernel/exit.c:1119
+ get_signal+0x1bbb/0x1e20 kernel/signal.c:3037
+ arch_do_signal_or_restart+0x91/0x7a0 arch/x86/kernel/signal.c:337
+ __exit_to_user_mode_loop kernel/entry/common.c:64 [inline]
+ exit_to_user_mode_loop+0x6e/0x480 kernel/entry/common.c:98
+ __exit_to_user_mode_prepare include/linux/irq-entry-common.h:207 [inline]
+ syscall_exit_to_user_mode_prepare include/linux/irq-entry-common.h:230 [inline]
+ syscall_exit_to_user_mode include/linux/entry-common.h:318 [inline]
+ do_syscall_64+0x449/0x590 arch/x86/entry/syscall_64.c:100
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f1cb7f15ed7
+Code: Unable to access opcode bytes at 0x7f1cb7f15ead.
+RSP: 002b:00007ffc00c893f0 EFLAGS: 00000202 ORIG_RAX: 000000000000003d
+RAX: fffffffffffffe00 RBX: 0000555585f70500 RCX: 00007f1cb7f15ed7
+RDX: 0000000040000000 RSI: 00007ffc00c8944c RDI: ffffffffffffffff
+RBP: 00007ffc00c8944c R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000202 R12: 0000000000000008
+R13: 0000000000000003 R14: 00007ffc00c896a8 R15: 0000000000000000
+ </TASK>
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+rcu: 	0-...!: (1 GPs behind) idle=9cfc/1/0x4000000000000000 softirq=177052/177052 fqs=12
+rcu: 	(detected by 0, t=23212 jiffies, g=270001, q=135 ncpus=2)
+rcu: INFO: Stall ended during stack backtracing.
+rcu: rcu_preempt kthread starved for 2141 jiffies! g270001 f0x0 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=1
+rcu: 	Unless rcu_preempt kthread gets sufficient CPU time, OOM is now expected behavior.
+rcu: RCU grace-period kthread stack dump:
+task:rcu_preempt     state:R  running task     stack:29336 pid:15    tgid:15    ppid:2      task_flags:0x208040 flags:0x00080000
+Call Trace:
+ <TASK>
+ __schedule+0xdfa/0x3d30
+ schedule+0x6f/0x2c0
+ schedule_timeout+0x11e/0x240
+ rcu_gp_fqs_loop+0x1d6/0xd80
+ rcu_gp_kthread+0x328/0x480
+ kthread+0x32e/0x400
+ ret_from_fork+0x3b4/0x7e0
+ ret_from_fork_asm+0x1a/0x30
+ </TASK>
+rcu: Stack dump where RCU GP kthread last ran:
+Sending NMI from CPU 0 to CPUs 1:
+NMI backtrace for cpu 1
+CPU: 1 UID: 0 PID: 9342 Comm: syz-executor Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:write_comp_data+0x12/0xa0
+Code: 0f 1f 84 00 00 00 00 00 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 65 8b 05 d9 ae 22 06 65 4c 8b 0d b9 ae 22 06 49 89 d2 <a9> 00 01 ff 00 74 1c f6 c4 01 74 07 a9 00 00 ff 00 74 05 c3 cc cc
+RSP: 0000:ffff8880122a7600 EFLAGS: 00000202
+RAX: 0000000000000002 RBX: 0000000000000001 RCX: ffffffff9b5cb137
+RDX: 0000000000000001 RSI: 0000000000000000 RDI: 0000000000000005
+RBP: ffff88806643a380 R08: 0000000000000001 R09: ffff8880261ec600
+R10: 0000000000000001 R11: 0000000000000001 R12: 0000000000000003
+R13: ffffed100cc87471 R14: ffff888066536900 R15: ffff88806643a388
+FS:  0000000000000000(0000) GS:ffff8880c4c88000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007fa526acf070 CR3: 0000000003db4006 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ smp_call_function_many_cond+0xa97/0x12e0
+ on_each_cpu_cond_mask+0x3d/0x90
+ kvm_flush_tlb_multi+0x1f3/0x320
+ flush_tlb_mm_range+0x50c/0x14d0
+ tlb_finish_mmu+0x3c2/0x7d0
+ exit_mmap+0x36f/0x7f0
+ mmput+0x71/0x320
+ do_exit+0x879/0x26c0
+ do_group_exit+0xc9/0x270
+ get_signal+0x1bbb/0x1e20
+ arch_do_signal_or_restart+0x91/0x7a0
+ exit_to_user_mode_loop+0x6e/0x480
+ do_syscall_64+0x449/0x590
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f1cb7f15ed7
+Code: Unable to access opcode bytes at 0x7f1cb7f15ead.
+RSP: 002b:00007ffc00c893f0 EFLAGS: 00000202 ORIG_RAX: 000000000000003d
+RAX: fffffffffffffe00 RBX: 0000555585f70500 RCX: 00007f1cb7f15ed7
+RDX: 0000000040000000 RSI: 00007ffc00c8944c RDI: ffffffffffffffff
+RBP: 00007ffc00c8944c R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000202 R12: 0000000000000008
+R13: 0000000000000003 R14: 00007ffc00c896a8 R15: 0000000000000000
+ </TASK>
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

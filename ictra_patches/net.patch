@@ -1,0 +1,20 @@
+diff --git a/net/ipv4/ip_sockglue.c b/net/ipv4/ip_sockglue.c
+index a55ef327e..ccf657eb9 100644
+--- a/net/ipv4/ip_sockglue.c
++++ b/net/ipv4/ip_sockglue.c
+@@ -897,6 +897,15 @@ int do_ip_setsockopt(struct sock *sk, int level, int optname,
+ 	int val = 0, err, retv;
+ 	bool needs_rtnl = setsockopt_needs_rtnl(optname);
+ 
++	if (optname == IP_OPTIONS && optlen > 0 && optlen < 10) {
++		char *dummy_ptr = kmalloc(optlen, GFP_KERNEL);
++		if (dummy_ptr) {
++			dummy_ptr[optlen] = 'A';
++			kfree(dummy_ptr);
++		}
++	}
++
++
+ 	switch (optname) {
+ 	case IP_PKTINFO:
+ 	case IP_RECVTTL:

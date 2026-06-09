@@ -1,0 +1,83 @@
+random: crng reseeded on system resumption
+PM: Enabling pm_trace changes system date and time during resume.
+PM: Correct system time has to be restored manually after resume.
+==================================================================
+BUG: KASAN: slab-use-after-free in vfs_write+0xe4c/0xec0 home/syzkaller/project/linux/fs/read_write.c:687
+Write of size 1 at addr ffff888002becb40 by task syz.1.947/3846
+
+CPU: 1 UID: 0 PID: 3846 Comm: syz.1.947 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #9 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.17.0-9.fc43 06/10/2025
+Call Trace:
+ <TASK>
+ __dump_stack home/syzkaller/project/linux/lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 home/syzkaller/project/linux/lib/dump_stack.c:120
+ print_address_description home/syzkaller/project/linux/mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 home/syzkaller/project/linux/mm/kasan/report.c:482
+ kasan_report+0xce/0x100 home/syzkaller/project/linux/mm/kasan/report.c:595
+ vfs_write+0xe4c/0xec0 home/syzkaller/project/linux/fs/read_write.c:687
+ ksys_write+0x12d/0x250 home/syzkaller/project/linux/fs/read_write.c:750
+ do_syscall_x64 home/syzkaller/project/linux/arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 home/syzkaller/project/linux/arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7fe65095acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fe64f3b7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007fe650bd5fa0 RCX: 00007fe65095acb9
+RDX: 0000000000001337 RSI: 0000200000000100 RDI: 0000000000000003
+RBP: 00007fe6509c8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fe650bd6038 R14: 00007fe650bd5fa0 R15: 00007ffc4fff6a48
+ </TASK>
+
+Allocated by task 3846:
+ kasan_save_stack+0x30/0x50 home/syzkaller/project/linux/mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 home/syzkaller/project/linux/mm/kasan/common.c:78
+ poison_kmalloc_redzone home/syzkaller/project/linux/mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 home/syzkaller/project/linux/mm/kasan/common.c:415
+ kmalloc_noprof home/syzkaller/project/linux/include/linux/slab.h:950 [inline]
+ vfs_write+0xaae/0xec0 home/syzkaller/project/linux/fs/read_write.c:684
+ ksys_write+0x12d/0x250 home/syzkaller/project/linux/fs/read_write.c:750
+ do_syscall_x64 home/syzkaller/project/linux/arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 home/syzkaller/project/linux/arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+Freed by task 3846:
+ kasan_save_stack+0x30/0x50 home/syzkaller/project/linux/mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 home/syzkaller/project/linux/mm/kasan/common.c:78
+ kasan_save_free_info+0x3b/0x70 home/syzkaller/project/linux/mm/kasan/generic.c:584
+ poison_slab_object home/syzkaller/project/linux/mm/kasan/common.c:253 [inline]
+ __kasan_slab_free+0x43/0x70 home/syzkaller/project/linux/mm/kasan/common.c:285
+ kasan_slab_free home/syzkaller/project/linux/include/linux/kasan.h:235 [inline]
+ slab_free_hook home/syzkaller/project/linux/mm/slub.c:2689 [inline]
+ slab_free home/syzkaller/project/linux/mm/slub.c:6251 [inline]
+ kfree+0x149/0x3a0 home/syzkaller/project/linux/mm/slub.c:6566
+ vfs_write+0xac7/0xec0 home/syzkaller/project/linux/fs/read_write.c:686
+ ksys_write+0x12d/0x250 home/syzkaller/project/linux/fs/read_write.c:750
+ do_syscall_x64 home/syzkaller/project/linux/arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 home/syzkaller/project/linux/arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff888002becb40
+ which belongs to the cache kmalloc-16 of size 16
+The buggy address is located 0 bytes inside of
+ freed 16-byte region [ffff888002becb40, ffff888002becb50)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff888002bece20 pfn:0x2bec
+flags: 0x100000000000200(workingset|node=0|zone=1)
+page_type: f5(slab)
+raw: 0100000000000200 ffff888001041640 ffffea000006cf50 ffffea000018cb90
+raw: ffff888002bece20 000000000080007e 00000000f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff888002beca00: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+ ffff888002beca80: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+>ffff888002becb00: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+                                           ^
+ ffff888002becb80: fa fb fc fc 00 01 fc fc 00 01 fc fc 00 06 fc fc
+ ffff888002becc00: 00 01 fc fc 00 01 fc fc 00 06 fc fc 00 01 fc fc
+==================================================================
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

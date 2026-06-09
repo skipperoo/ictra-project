@@ -1,0 +1,231 @@
+Extracting prog: 53.399499822s
+Minimizing prog: 188.85µs
+Simplifying prog options: 0s
+Extracting C: 28.093019404s
+Simplifying C: 1m54.817698301s
+
+
+extracting reproducer from 25 programs
+first checking the prog from the crash report
+single: executing 1 programs separately with timeout 30s
+testing program (duration=30s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_uaf
+detailed listing:
+executing program 0:
+ictra_uaf(0xcafecafe, 0xdeadbeef)
+
+program crashed: KASAN: slab-use-after-free Write in sys_ictra_uaf
+single: successfully extracted reproducer
+found reproducer with 1 syscalls
+minimizing guilty program
+extracting C reproducer
+testing compiled C program (duration=43.672829482s, {Threaded:true Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_uaf
+program crashed: KASAN: slab-use-after-free Write in sys_ictra_uaf
+simplifying C reproducer
+testing compiled C program (duration=43.672829482s, {Threaded:false Repeat:true RepeatTimes:0 Procs:4 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:true Cgroups:true BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_uaf
+program crashed: KASAN: slab-use-after-free Write in sys_ictra_uaf
+testing compiled C program (duration=43.672829482s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox:none SandboxArg:0 Leak:false NetInjection:false NetDevices:true NetReset:false Cgroups:false BinfmtMisc:true CloseFDs:true KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_uaf
+program crashed: KASAN: slab-use-after-free Write in sys_ictra_uaf
+testing compiled C program (duration=43.672829482s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:true HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_uaf
+program crashed: KASAN: slab-use-after-free Write in sys_ictra_uaf
+testing compiled C program (duration=43.672829482s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:true Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_uaf
+program crashed: KASAN: slab-use-after-free Write in sys_ictra_uaf
+testing compiled C program (duration=43.672829482s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:true Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_uaf
+program crashed: KASAN: slab-use-after-free Write in sys_ictra_uaf
+testing compiled C program (duration=43.672829482s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:false Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_uaf
+program crashed: KASAN: slab-use-after-free Write in sys_ictra_uaf
+testing program (duration=43.672829482s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:false Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_uaf
+detailed listing:
+executing program 0:
+ictra_uaf(0xcafecafe, 0xdeadbeef)
+
+program crashed: KASAN: slab-use-after-free Write in sys_ictra_uaf
+validation run: crashed=true
+testing program (duration=43.672829482s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:false Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_uaf
+detailed listing:
+executing program 0:
+ictra_uaf(0xcafecafe, 0xdeadbeef)
+
+program crashed: KASAN: slab-use-after-free Write in sys_ictra_uaf
+validation run: crashed=true
+testing program (duration=43.672829482s, {Threaded:false Repeat:false RepeatTimes:0 Procs:1 Slowdown:1 Sandbox: SandboxArg:0 Leak:false NetInjection:false NetDevices:false NetReset:false Cgroups:false BinfmtMisc:false CloseFDs:false KCSAN:false DevlinkPCI:false NicVF:false USB:false VhciInjection:false Wifi:false IEEE802154:false Sysctl:false Swap:false UseTmpDir:false HandleSegv:false Trace:false CallComments:true LegacyOptions:{Collide:false Fault:false FaultCall:0 FaultNth:0}}): ictra_uaf
+detailed listing:
+executing program 0:
+ictra_uaf(0xcafecafe, 0xdeadbeef)
+
+program crashed: KASAN: slab-use-after-free Write in sys_ictra_uaf
+validation run: crashed=true
+reproducing took 4m38.687623262s
+repro crashed as (corrupted=false):
+cgroup: Unknown subsys name 'cpuset'
+cgroup: Unknown subsys name 'rlimit'
+cgroup: Unknown subsys name 'memory'
+==================================================================
+BUG: KASAN: slab-use-after-free in __do_sys_ictra_uaf kernel/sys.c:3087 [inline]
+BUG: KASAN: slab-use-after-free in __se_sys_ictra_uaf kernel/sys.c:3076 [inline]
+BUG: KASAN: slab-use-after-free in __x64_sys_ictra_uaf+0x11e/0x150 kernel/sys.c:3076
+Write of size 1 at addr ffff8880029df360 by task syz.3.17/1161
+
+CPU: 1 UID: 0 PID: 1161 Comm: syz.3.17 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ __do_sys_ictra_uaf kernel/sys.c:3087 [inline]
+ __se_sys_ictra_uaf kernel/sys.c:3076 [inline]
+ __x64_sys_ictra_uaf+0x11e/0x150 kernel/sys.c:3076
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7fc95529acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007ffe1f719a58 EFLAGS: 00000246 ORIG_RAX: 00000000000001d8
+RAX: ffffffffffffffda RBX: 00007fc955515fa0 RCX: 00007fc95529acb9
+RDX: 0000000000000000 RSI: 00000000deadbeef RDI: 00000000cafecafe
+RBP: 00007fc955308bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fc955515fac R14: 00007fc955515fa0 R15: 00007fc955515fa0
+ </TASK>
+
+Allocated by task 1161:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kmalloc_noprof include/linux/slab.h:950 [inline]
+ __do_sys_ictra_uaf kernel/sys.c:3082 [inline]
+ __se_sys_ictra_uaf kernel/sys.c:3076 [inline]
+ __x64_sys_ictra_uaf+0xc7/0x150 kernel/sys.c:3076
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+Freed by task 1161:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ kasan_save_free_info+0x3b/0x70 mm/kasan/generic.c:584
+ poison_slab_object mm/kasan/common.c:253 [inline]
+ __kasan_slab_free+0x43/0x70 mm/kasan/common.c:285
+ kasan_slab_free include/linux/kasan.h:235 [inline]
+ slab_free_hook mm/slub.c:2689 [inline]
+ slab_free mm/slub.c:6251 [inline]
+ kfree+0x149/0x3a0 mm/slub.c:6566
+ __do_sys_ictra_uaf kernel/sys.c:3086 [inline]
+ __se_sys_ictra_uaf kernel/sys.c:3076 [inline]
+ __x64_sys_ictra_uaf+0xdc/0x150 kernel/sys.c:3076
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff8880029df360
+ which belongs to the cache kmalloc-16 of size 16
+The buggy address is located 0 bytes inside of
+ freed 16-byte region [ffff8880029df360, ffff8880029df370)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff8880029df9a0 pfn:0x29df
+flags: 0x100000000000200(workingset|node=0|zone=1)
+page_type: f5(slab)
+raw: 0100000000000200 ffff888001041640 ffffea00000b4010 ffffea000064fa90
+raw: ffff8880029df9a0 0000000000800071 00000000f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff8880029df200: fa fb fc fc 00 00 fc fc 00 04 fc fc fa fb fc fc
+ ffff8880029df280: fa fb fc fc fa fb fc fc 00 04 fc fc 00 04 fc fc
+>ffff8880029df300: 00 00 fc fc 00 04 fc fc fa fb fc fc fa fb fc fc
+                                                       ^
+ ffff8880029df380: fa fb fc fc fa fb fc fc 00 06 fc fc fa fb fc fc
+ ffff8880029df400: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+==================================================================
+
+final repro crashed as (corrupted=false):
+cgroup: Unknown subsys name 'cpuset'
+cgroup: Unknown subsys name 'rlimit'
+cgroup: Unknown subsys name 'memory'
+==================================================================
+BUG: KASAN: slab-use-after-free in __do_sys_ictra_uaf kernel/sys.c:3087 [inline]
+BUG: KASAN: slab-use-after-free in __se_sys_ictra_uaf kernel/sys.c:3076 [inline]
+BUG: KASAN: slab-use-after-free in __x64_sys_ictra_uaf+0x11e/0x150 kernel/sys.c:3076
+Write of size 1 at addr ffff8880029df360 by task syz.3.17/1161
+
+CPU: 1 UID: 0 PID: 1161 Comm: syz.3.17 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ __do_sys_ictra_uaf kernel/sys.c:3087 [inline]
+ __se_sys_ictra_uaf kernel/sys.c:3076 [inline]
+ __x64_sys_ictra_uaf+0x11e/0x150 kernel/sys.c:3076
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7fc95529acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007ffe1f719a58 EFLAGS: 00000246 ORIG_RAX: 00000000000001d8
+RAX: ffffffffffffffda RBX: 00007fc955515fa0 RCX: 00007fc95529acb9
+RDX: 0000000000000000 RSI: 00000000deadbeef RDI: 00000000cafecafe
+RBP: 00007fc955308bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fc955515fac R14: 00007fc955515fa0 R15: 00007fc955515fa0
+ </TASK>
+
+Allocated by task 1161:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kmalloc_noprof include/linux/slab.h:950 [inline]
+ __do_sys_ictra_uaf kernel/sys.c:3082 [inline]
+ __se_sys_ictra_uaf kernel/sys.c:3076 [inline]
+ __x64_sys_ictra_uaf+0xc7/0x150 kernel/sys.c:3076
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+Freed by task 1161:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ kasan_save_free_info+0x3b/0x70 mm/kasan/generic.c:584
+ poison_slab_object mm/kasan/common.c:253 [inline]
+ __kasan_slab_free+0x43/0x70 mm/kasan/common.c:285
+ kasan_slab_free include/linux/kasan.h:235 [inline]
+ slab_free_hook mm/slub.c:2689 [inline]
+ slab_free mm/slub.c:6251 [inline]
+ kfree+0x149/0x3a0 mm/slub.c:6566
+ __do_sys_ictra_uaf kernel/sys.c:3086 [inline]
+ __se_sys_ictra_uaf kernel/sys.c:3076 [inline]
+ __x64_sys_ictra_uaf+0xdc/0x150 kernel/sys.c:3076
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff8880029df360
+ which belongs to the cache kmalloc-16 of size 16
+The buggy address is located 0 bytes inside of
+ freed 16-byte region [ffff8880029df360, ffff8880029df370)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff8880029df9a0 pfn:0x29df
+flags: 0x100000000000200(workingset|node=0|zone=1)
+page_type: f5(slab)
+raw: 0100000000000200 ffff888001041640 ffffea00000b4010 ffffea000064fa90
+raw: ffff8880029df9a0 0000000000800071 00000000f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff8880029df200: fa fb fc fc 00 00 fc fc 00 04 fc fc fa fb fc fc
+ ffff8880029df280: fa fb fc fc fa fb fc fc 00 04 fc fc 00 04 fc fc
+>ffff8880029df300: 00 00 fc fc 00 04 fc fc fa fb fc fc fa fb fc fc
+                                                       ^
+ ffff8880029df380: fa fb fc fc fa fb fc fc 00 06 fc fc fa fb fc fc
+ ffff8880029df400: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+==================================================================
+

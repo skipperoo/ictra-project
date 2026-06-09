@@ -1,0 +1,88 @@
+md: async del_gendisk mode will be removed in future, please upgrade to mdadm-4.5+
+block device autoloading is deprecated and will be removed.
+clocksource: Watchdog remote CPU 1 read timed out
+==================================================================
+BUG: KASAN: slab-use-after-free in vfs_write+0xe4c/0xec0 fs/read_write.c:687
+Write of size 1 at addr ffff888001946100 by task syz.3.124/2417
+
+CPU: 1 UID: 0 PID: 2417 Comm: syz.3.124 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #8 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ vfs_write+0xe4c/0xec0 fs/read_write.c:687
+ ksys_write+0x12d/0x250 fs/read_write.c:750
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7feb8cb8acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007feb8b5e7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+RAX: ffffffffffffffda RBX: 00007feb8ce05fa0 RCX: 00007feb8cb8acb9
+RDX: 0000000000001337 RSI: 0000200000000100 RDI: 0000000000000004
+RBP: 00007feb8cbf8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007feb8ce06038 R14: 00007feb8ce05fa0 R15: 00007ffc09549f28
+ </TASK>
+
+Allocated by task 2417:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kmalloc_noprof include/linux/slab.h:950 [inline]
+ vfs_write+0xaae/0xec0 fs/read_write.c:684
+ ksys_write+0x12d/0x250 fs/read_write.c:750
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+Freed by task 2417:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ kasan_save_free_info+0x3b/0x70 mm/kasan/generic.c:584
+ poison_slab_object mm/kasan/common.c:253 [inline]
+ __kasan_slab_free+0x43/0x70 mm/kasan/common.c:285
+ kasan_slab_free include/linux/kasan.h:235 [inline]
+ slab_free_hook mm/slub.c:2689 [inline]
+ slab_free mm/slub.c:6251 [inline]
+ kfree+0x149/0x3a0 mm/slub.c:6566
+ vfs_write+0xac7/0xec0 fs/read_write.c:686
+ ksys_write+0x12d/0x250 fs/read_write.c:750
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff888001946100
+ which belongs to the cache kmalloc-16 of size 16
+The buggy address is located 0 bytes inside of
+ freed 16-byte region [ffff888001946100, ffff888001946110)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff888001946220 pfn:0x1946
+flags: 0x100000000000200(workingset|node=0|zone=1)
+page_type: f5(slab)
+raw: 0100000000000200 ffff888001041640 ffff888001040290 ffffea0000063ed0
+raw: ffff888001946220 0000000000800075 00000000f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff888001946000: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+ ffff888001946080: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+>ffff888001946100: fa fb fc fc 00 06 fc fc fa fb fc fc fa fb fc fc
+                   ^
+ ffff888001946180: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+ ffff888001946200: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+==================================================================
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

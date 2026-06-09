@@ -1,0 +1,98 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+rcu: INFO: rcu_preempt self-detected stall on CPU
+rcu: 	1-....: (4221 ticks this GP) idle=7e5c/1/0x4000000000000000 softirq=134833/134837 fqs=4083
+rcu: 	(t=21003 jiffies g=204597 q=86259 ncpus=2)
+CPU: 1 UID: 0 PID: 30336 Comm: syz.7.7189 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:console_flush_one_record+0x82c/0xa70 kernel/printk/printk.c:3270
+Code: 48 89 44 24 20 48 8d 68 01 4c 89 e8 48 c1 e8 03 42 80 3c 30 00 0f 85 1c 02 00 00 49 89 6f 58 eb 8f e8 a8 5a 1d 00 fb 4c 89 e8 <48> c1 e8 03 42 80 3c 30 00 0f 84 73 ff ff ff 4c 89 ef e8 5d 4a 55
+RSP: 0018:ffff88801309e748 EFLAGS: 00000246
+RAX: ffffffff93487038 RBX: 0000000000000001 RCX: ffffffff8ea97fa8
+RDX: 0000000000080000 RSI: ffffc90000881000 RDI: 0000000000000007
+RBP: 0000000000000200 R08: 0000000000000001 R09: ffff888012620000
+R10: 0000000000000200 R11: 303a303a31207273 R12: 0000000000006f89
+R13: ffffffff93487038 R14: dffffc0000000000 R15: ffffffff93486fe0
+FS:  00007f701ec376c0(0000) GS:ffff8880d8288000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f8096526ff8 CR3: 00000000085fb003 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ console_flush_all kernel/printk/printk.c:3343 [inline]
+ __console_flush_and_unlock kernel/printk/printk.c:3373 [inline]
+ console_unlock+0x123/0x2e0 kernel/printk/printk.c:3413
+ vprintk_emit+0x421/0x630 kernel/printk/printk.c:2479
+ dev_vprintk_emit+0x2fa/0x340 drivers/base/core.c:4930
+ dev_printk_emit+0xd2/0x10d drivers/base/core.c:4941
+ __dev_printk+0xcb/0x100 drivers/base/core.c:4953
+ _dev_printk+0xe8/0x130 drivers/base/core.c:4970
+ scmd_printk.cold+0x38/0x4f drivers/scsi/scsi_logging.c:103
+ sr_init_command+0xa63/0xbc0 drivers/scsi/sr.c:432
+ scsi_prepare_cmd drivers/scsi/scsi_lib.c:1730 [inline]
+ scsi_queue_rq+0x10b2/0x3510 drivers/scsi/scsi_lib.c:1878
+ blk_mq_dispatch_rq_list+0x3e3/0x1e30 block/blk-mq.c:2148
+ __blk_mq_do_dispatch_sched block/blk-mq-sched.c:168 [inline]
+ blk_mq_do_dispatch_sched block/blk-mq-sched.c:182 [inline]
+ __blk_mq_sched_dispatch_requests+0xcf1/0x1690 block/blk-mq-sched.c:307
+ blk_mq_sched_dispatch_requests+0xd7/0x1c0 block/blk-mq-sched.c:329
+ blk_mq_run_hw_queue+0x87b/0xb50 block/blk-mq.c:2386
+ blk_mq_dispatch_list+0x457/0x1170 block/blk-mq.c:2949
+ blk_mq_flush_plug_list+0x14c/0x640 block/blk-mq.c:2997
+ __blk_flush_plug+0x258/0x460 block/blk-core.c:1230
+ blk_finish_plug block/blk-core.c:1257 [inline]
+ __submit_bio+0x731/0xa60 block/blk-core.c:649
+ __submit_bio_noacct_mq block/blk-core.c:722 [inline]
+ submit_bio_noacct_nocheck+0x427/0xb80 block/blk-core.c:753
+ submit_bio_noacct+0x5ce/0x1060 block/blk-core.c:884
+ submit_bh fs/buffer.c:2742 [inline]
+ block_read_full_folio+0x1c8/0x760 fs/buffer.c:2344
+ filemap_read_folio+0x4a/0x1c0 mm/filemap.c:2502
+ filemap_fault+0x213a/0x2cb0 mm/filemap.c:3647
+ __do_fault+0x109/0x2d0 mm/memory.c:5474
+ do_read_fault mm/memory.c:5909 [inline]
+ do_fault mm/memory.c:6043 [inline]
+ do_pte_missing mm/memory.c:4566 [inline]
+ handle_pte_fault mm/memory.c:6427 [inline]
+ __handle_mm_fault+0x12de/0x2710 mm/memory.c:6565
+ handle_mm_fault+0x1d2/0x5c0 mm/memory.c:6734
+ faultin_page mm/gup.c:1126 [inline]
+ __get_user_pages+0x1000/0x26f0 mm/gup.c:1428
+ populate_vma_page_range+0x1aa/0x240 mm/gup.c:1860
+ __mm_populate+0x107/0x3a0 mm/gup.c:1963
+ mm_populate include/linux/mm.h:4137 [inline]
+ vm_mmap_pgoff+0x2de/0x380 mm/util.c:586
+ ksys_mmap_pgoff+0x445/0x570 mm/mmap.c:606
+ __do_sys_mmap arch/x86/kernel/sys_x86_64.c:89 [inline]
+ __se_sys_mmap arch/x86/kernel/sys_x86_64.c:82 [inline]
+ __x64_sys_mmap+0x125/0x190 arch/x86/kernel/sys_x86_64.c:82
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f70201dacb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f701ec37028 EFLAGS: 00000246 ORIG_RAX: 0000000000000009
+RAX: ffffffffffffffda RBX: 00007f7020455fa0 RCX: 00007f70201dacb9
+RDX: 0000000001000004 RSI: 0000000000002000 RDI: 0000200000ffb000
+RBP: 00007f7020248bf7 R08: 0000000000000009 R09: 000000003cae6000
+R10: 000000000000a012 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f7020456038 R14: 00007f7020455fa0 R15: 00007ffd44f79f98
+ </TASK>
+blk_print_req_error: 4602 callbacks suppressed
+I/O error, dev sr0, sector 1988405 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+buffer_io_error: 4611 callbacks suppressed
+Buffer I/O error on dev sr0, logical block 1988405, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988406 op 0x0:(READ) flags 0x0 phys_seg 2 prio class 2
+Buffer I/O error on dev sr0, logical block 1988406, async page read
+Buffer I/O error on dev sr0, logical block 1988407, async page read
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

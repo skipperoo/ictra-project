@@ -1,0 +1,33 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+blk_print_req_error: 3897 callbacks suppressed
+I/O error, dev sr0, sector 1988403 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+rcu: 	Tasks blocked on level-0 rcu_node (CPUs 0-1): P875
+rcu: 	(detected by 0, t=21002 jiffies, g=234269, q=76754 ncpus=2)
+task:syz.1.7902      state:R
+buffer_io_error: 3912 callbacks suppressed
+Buffer I/O error on dev sr0, logical block 1988403, async page read
+  running task     stack:24232 pid:875   tgid:874   ppid:29273  task_flags:0x20400140 flags:0x00080012
+Call Trace:
+ <TASK>
+ </TASK>
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988404 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988404, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988405 op 0x0:(READ) flags 0x0 phys_seg 3 prio class 2
+Buffer I/O error on dev sr0, logical block 1988405, async page read
+Buffer I/O error on dev sr0, logical block 1988406, async page read
+Buffer I/O error on dev sr0, logical block 1988407, async page read
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

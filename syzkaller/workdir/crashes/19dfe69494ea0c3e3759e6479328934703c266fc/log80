@@ -1,0 +1,530 @@
+last executing test programs:
+
+1.264439692s ago: executing program 1 (id=173):
+write$sndseq(0xffffffffffffffff, 0x0, 0x0)
+r0 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000100)='/proc/asound/seq/clients\x00', 0x0, 0x0)
+pread64(r0, &(0x7f0000001500)=""/35, 0x23, 0x7ff)
+r1 = openat$tcp_mem(0xffffffffffffff9c, &(0x7f0000002680)='/proc/sys/net/ipv4/tcp_wmem\x00', 0x1, 0x0)
+openat(r0, 0x0, 0x420200, 0x102)
+readv(0xffffffffffffffff, 0x0, 0x0)
+openat$apparmor_task_exec(0xffffffffffffff9c, 0x0, 0x2, 0x0)
+writev(0xffffffffffffffff, 0x0, 0x0)
+r2 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000680)='/sys/kernel/fscaps', 0x418300, 0x24)
+pread64(r2, &(0x7f00000001c0)=""/207, 0xcf, 0x7ff)
+writev(r1, &(0x7f0000005f00)=[{0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}], 0x9)
+r3 = openat$cgroup(r2, &(0x7f0000000000)='syz0\x00', 0x200002, 0x0)
+openat$cgroup_ro(r3, &(0x7f0000000040)='devices.list\x00', 0x0, 0x0)
+r4 = openat$zero(0xffffffffffffff9c, &(0x7f0000000000), 0x200, 0x0)
+read$snapshot(r4, &(0x7f00000003c0)=""/4096, 0x1000)
+openat$cgroup_int(0xffffffffffffffff, &(0x7f00000000c0)='memory.max\x00', 0x2, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f00000005c0)='./file0\x00', 0x40, 0x0)
+open$dir(&(0x7f0000000600)='./file0/file0\x00', 0x0, 0x129)
+openat$selinux_attr(0xffffffffffffff9c, &(0x7f0000000440)='/proc/thread-self/attr/current\x00', 0x2, 0x0)
+
+1.215105221s ago: executing program 1 (id=175):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+write(r0, &(0x7f0000000080)="01", 0xfffffe8d)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x40042, 0x0)
+write(r1, 0x0, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f00000014c0)='./file1\x00', 0x20301, 0x130)
+
+944.174556ms ago: executing program 1 (id=186):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+write(r0, &(0x7f0000000080)="01", 0xfffffe8d)
+r1 = openat(0xffffffffffffff9c, 0x0, 0x42, 0x1ff)
+openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x40042, 0x0)
+write(r1, &(0x7f0000000080)="01", 0xfffffe8d)
+openat$dir(0xffffffffffffff9c, &(0x7f00000014c0)='./file1\x00', 0x20301, 0x130)
+
+823.948719ms ago: executing program 3 (id=192):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+r1 = openat$vcs(0xffffffffffffff9c, &(0x7f0000000f80), 0x1, 0x0)
+write$cgroup_devices(r1, 0x0, 0x0)
+r2 = openat$zero(0xffffffffffffff9c, &(0x7f0000000000), 0x200, 0x0)
+r3 = openat$thread_pidfd(0xffffffffffffff9c, &(0x7f0000000000), 0x100, 0x0)
+r4 = openat(r3, &(0x7f0000000080)='./cgroup\x00', 0x88000, 0x10)
+read$snapshot(r2, &(0x7f00000003c0)=""/4096, 0xffffff59)
+readv(r2, &(0x7f0000000080)=[{&(0x7f0000000280)=""/188, 0xbc}, {&(0x7f0000000040)=""/41, 0xffffff79}], 0x2)
+write$sndseq(r0, &(0x7f0000000200)=[{0x3, 0xd, 0xe, 0xf7, @time={0x0, 0x74}, {0x6, 0x9f}, {0x6, 0x9}, @result={0x7, 0xbe3}}, {0x4, 0x2, 0x80, 0xe, @time={0x7, 0x8}, {0x36, 0x7}, {0x16, 0x3}, @result={0xd, 0x3ff}}, {0xf, 0x2, 0x5d, 0xd2, @tick=0x5, {0x9, 0x1}, {0x4, 0x58}, @note={0xf7, 0x2, 0x2, 0xfd, 0x4}}, {0x5, 0xd, 0x5, 0xfa, @tick=0xd50e, {0x3, 0x7f}, {0x40, 0x91}, @addr={0x23, 0x3}}, {0xff, 0x9, 0x4, 0x9, @tick=0x10001, {0x73, 0x10}, {0x80, 0xcc}, @queue={0x0, {0x9961, 0x76}}}, {0x9, 0xc4, 0xb5, 0x5, @time={0x5}, {0x7f, 0x11}, {0x9, 0x10}, @ext={0xf3, &(0x7f00000000c0)="926758ecb028e3dc1099d03ec09ee728b768fab82e663b552b8df181ce64b9f7e7d11757c29cd2ddaecb91a146c945adcab87a09110be7690c5f0110c1ce1b06ad0f6b366e8210457836dfe7ae5642e39ed540f2cd0cb5055ef4651b7d07928644afd613ef7a731e855831a04c6bf3fa86ff428b51fab90d121125149da46f63965014c3920c3f275c9860e688d01e1bf15b1dd8a196562d299d373a551607356f70a1fc6b96dbb6e4ce6453ad00f153763d899b020b041fd1bf33f4deb18bcb5090b45bf56e4f058786e344c27fb376b37f642de04c3d8afa52f193ef1ce3c911754e9c0fd98835aaa9dd5d0d5ac6cdf94d6d"}}, {0x3, 0x4, 0x9, 0x8, @time={0x1}, {0xb, 0x7}, {0x80, 0x2}, @result={0x0, 0x7}}, {0xfc, 0x81, 0x3, 0x10, @tick=0xbd6, {0xf0, 0x6e}, {0x4, 0xc}, @queue={0x7, {0x6}}}, {0x3, 0x2, 0x4, 0x2, @time={0x0, 0x4}, {0x81, 0x7}, {0xd4, 0x9}, @addr={0x1, 0x7}}, {0x2, 0x6, 0x9c, 0x9f, @time={0x2, 0x7}, {0xa1, 0x8}, {0xf, 0x8}, @quote={{0x8, 0x34}, 0x1, &(0x7f00000001c0)={0x3, 0x3, 0xbb, 0x1b, @tick=0x4, {0x7, 0x3}, {0x5, 0x6}, @time=@tick=0x1000}}}], 0x118)
+openat(0xffffffffffffff9c, &(0x7f0000000000)='./file1\x00', 0x242, 0x1ff)
+write(0xffffffffffffffff, &(0x7f0000000080)="01", 0xfffffe8d)
+r5 = open$dir(&(0x7f0000000340)='./file1\x00', 0x1c1000, 0x104)
+openat$incfs(r5, &(0x7f0000000380)='.log\x00', 0x418001, 0x100)
+r6 = openat$zero(0xffffffffffffff9c, &(0x7f0000003b40), 0x100, 0x0)
+readv(r6, &(0x7f0000004100)=[{&(0x7f0000003d40)=""/165, 0xa5}], 0x1)
+read(r4, &(0x7f00000015c0)=""/229, 0xe5)
+
+724.444624ms ago: executing program 3 (id=198):
+r0 = openat(0xffffffffffffff9c, 0x0, 0x42, 0x1ff)
+openat$procfs(0xffffffffffffff9c, &(0x7f00000013c0)='/proc/cpuinfo\x00', 0x0, 0x0)
+r1 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000000)='/proc/vmallocinfo\x00', 0x0, 0x0)
+writev(r1, 0x0, 0x0)
+readv(r1, &(0x7f0000000600), 0x0)
+pread64(r1, &(0x7f0000000040)=""/186, 0xba, 0x101)
+write(r0, &(0x7f0000000080)="01", 0xfffffe8d)
+openat$procfs(0xffffffffffffff9c, &(0x7f0000000040)='/proc/bus/input/handlers\x00', 0x0, 0x0)
+openat$nvram(0xffffffffffffff9c, &(0x7f0000000380), 0x400, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f00000014c0)='./file1\x00', 0x20301, 0x130)
+openat$zero(0xffffffffffffff9c, 0x0, 0x200, 0x0)
+openat$binfmt_format(0xffffffffffffff9c, &(0x7f0000001500)='/proc/sys/fs/binfmt_misc/syz3\x00', 0x2, 0x0)
+
+673.829073ms ago: executing program 3 (id=199):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+r1 = openat$vcs(0xffffffffffffff9c, &(0x7f0000000f80), 0x1, 0x0)
+write$cgroup_devices(r1, 0x0, 0x0)
+r2 = openat$zero(0xffffffffffffff9c, &(0x7f0000000000), 0x200, 0x0)
+openat$thread_pidfd(0xffffffffffffff9c, &(0x7f0000000000), 0x100, 0x0)
+read$snapshot(r2, &(0x7f00000003c0)=""/4096, 0xffffff59)
+readv(r2, &(0x7f0000000080)=[{&(0x7f0000000280)=""/188, 0xbc}, {&(0x7f0000000040)=""/41, 0xffffff79}], 0x2)
+write$sndseq(r0, &(0x7f0000000200)=[{0x3, 0xd, 0xe, 0xf7, @time={0x0, 0x74}, {0x6, 0x9f}, {0x6, 0x9}, @result={0x7, 0xbe3}}, {0x4, 0x2, 0x80, 0xe, @time={0x7, 0x8}, {0x36, 0x7}, {0x16, 0x3}, @result={0xd, 0x3ff}}, {0xf, 0x2, 0x5d, 0xd2, @tick=0x5, {0x9, 0x1}, {0x4, 0x58}, @note={0xf7, 0x2, 0x2, 0xfd, 0x4}}, {0x5, 0xd, 0x5, 0xfa, @tick=0xd50e, {0x3, 0x7f}, {0x40, 0x91}, @addr={0x23, 0x3}}, {0xff, 0x9, 0x4, 0x9, @tick=0x10001, {0x73, 0x10}, {0x80, 0xcc}, @queue={0x0, {0x9961, 0x76}}}, {0x9, 0xc4, 0xb5, 0x5, @time={0x5}, {0x7f, 0x11}, {0x9, 0x10}, @ext={0xf3, &(0x7f00000000c0)="926758ecb028e3dc1099d03ec09ee728b768fab82e663b552b8df181ce64b9f7e7d11757c29cd2ddaecb91a146c945adcab87a09110be7690c5f0110c1ce1b06ad0f6b366e8210457836dfe7ae5642e39ed540f2cd0cb5055ef4651b7d07928644afd613ef7a731e855831a04c6bf3fa86ff428b51fab90d121125149da46f63965014c3920c3f275c9860e688d01e1bf15b1dd8a196562d299d373a551607356f70a1fc6b96dbb6e4ce6453ad00f153763d899b020b041fd1bf33f4deb18bcb5090b45bf56e4f058786e344c27fb376b37f642de04c3d8afa52f193ef1ce3c911754e9c0fd98835aaa9dd5d0d5ac6cdf94d6d"}}, {0x3, 0x4, 0x9, 0x8, @time={0x1}, {0xb, 0x7}, {0x80, 0x2}, @result={0x0, 0x7}}, {0xfc, 0x81, 0x3, 0x10, @tick=0xbd6, {0xf0, 0x6e}, {0x4, 0xc}, @queue={0x7, {0x6}}}, {0x3, 0x2, 0x4, 0x2, @time={0x0, 0x4}, {0x81, 0x7}, {0xd4, 0x9}, @addr={0x1, 0x7}}, {0x2, 0x6, 0x9c, 0x9f, @time={0x2, 0x7}, {0xa1, 0x8}, {0xf, 0x8}, @quote={{0x8, 0x34}, 0x1, &(0x7f00000001c0)={0x3, 0x3, 0xbb, 0x1b, @tick=0x4, {0x7, 0x3}, {0x5, 0x6}, @time=@tick=0x1000}}}], 0x118)
+r3 = openat(0xffffffffffffff9c, &(0x7f0000000000)='./file1\x00', 0x242, 0x1ff)
+write(r3, &(0x7f0000000080)="01", 0xfffffe8d)
+r4 = open$dir(&(0x7f0000000340)='./file1\x00', 0x1c1000, 0x104)
+openat$incfs(r4, &(0x7f0000000380)='.log\x00', 0x418001, 0x100)
+r5 = openat$zero(0xffffffffffffff9c, &(0x7f0000003b40), 0x100, 0x0)
+readv(r5, &(0x7f0000004100)=[{&(0x7f0000003d40)=""/165, 0xa5}], 0x1)
+read(0xffffffffffffffff, &(0x7f00000015c0)=""/229, 0xe5)
+
+673.272407ms ago: executing program 2 (id=200):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+write(r0, &(0x7f0000000080)="01", 0xfffffe8d)
+writev(0xffffffffffffffff, 0x0, 0x0)
+pread64(0xffffffffffffffff, 0x0, 0x0, 0x101)
+openat$procfs(0xffffffffffffff9c, 0x0, 0x0, 0x0)
+pread64(0xffffffffffffffff, 0x0, 0x0, 0xcd)
+r1 = openat$zero(0xffffffffffffff9c, &(0x7f0000000000), 0x200, 0x0)
+read$snapshot(r1, &(0x7f00000003c0)=""/4096, 0xffffff59)
+write$cgroup_freezer_state(r0, &(0x7f00000002c0)='FREEZING\x00', 0x9)
+openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000280), 0x1, 0x0)
+
+672.42819ms ago: executing program 1 (id=201):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+openat$vcs(0xffffffffffffff9c, &(0x7f0000000f80), 0x1, 0x0)
+r1 = openat$zero(0xffffffffffffff9c, &(0x7f0000000000), 0x200, 0x0)
+r2 = openat$thread_pidfd(0xffffffffffffff9c, &(0x7f0000000000), 0x100, 0x0)
+openat(r2, &(0x7f0000000080)='./cgroup\x00', 0x88000, 0x10)
+read$snapshot(r1, &(0x7f00000003c0)=""/4096, 0xffffff59)
+readv(r1, &(0x7f0000000080)=[{&(0x7f0000000280)=""/188, 0xbc}, {&(0x7f0000000040)=""/41, 0xffffff79}], 0x2)
+write$sndseq(r0, &(0x7f0000000200)=[{0x3, 0xd, 0xe, 0xf7, @time={0x0, 0x74}, {0x6, 0x9f}, {0x6, 0x9}, @result={0x7, 0xbe3}}, {0x4, 0x2, 0x80, 0xe, @time={0x7, 0x8}, {0x36, 0x7}, {0x16, 0x3}, @result={0xd, 0x3ff}}, {0xf, 0x2, 0x5d, 0xd2, @tick=0x5, {0x9, 0x1}, {0x4, 0x58}, @note={0xf7, 0x2, 0x2, 0xfd, 0x4}}, {0x5, 0xd, 0x5, 0xfa, @tick=0xd50e, {0x3, 0x7f}, {0x40, 0x91}, @addr={0x23, 0x3}}, {0xff, 0x9, 0x4, 0x9, @tick=0x10001, {0x73, 0x10}, {0x80, 0xcc}, @queue={0x0, {0x9961, 0x76}}}, {0x9, 0xc4, 0xb5, 0x5, @time={0x5}, {0x7f, 0x11}, {0x9, 0x10}, @ext={0xf3, &(0x7f00000000c0)="926758ecb028e3dc1099d03ec09ee728b768fab82e663b552b8df181ce64b9f7e7d11757c29cd2ddaecb91a146c945adcab87a09110be7690c5f0110c1ce1b06ad0f6b366e8210457836dfe7ae5642e39ed540f2cd0cb5055ef4651b7d07928644afd613ef7a731e855831a04c6bf3fa86ff428b51fab90d121125149da46f63965014c3920c3f275c9860e688d01e1bf15b1dd8a196562d299d373a551607356f70a1fc6b96dbb6e4ce6453ad00f153763d899b020b041fd1bf33f4deb18bcb5090b45bf56e4f058786e344c27fb376b37f642de04c3d8afa52f193ef1ce3c911754e9c0fd98835aaa9dd5d0d5ac6cdf94d6d"}}, {0x3, 0x4, 0x9, 0x8, @time={0x1}, {0xb, 0x7}, {0x80, 0x2}, @result={0x0, 0x7}}, {0xfc, 0x81, 0x3, 0x10, @tick=0xbd6, {0xf0, 0x6e}, {0x4, 0xc}, @queue={0x7, {0x6}}}, {0x3, 0x2, 0x4, 0x2, @time={0x0, 0x4}, {0x81, 0x7}, {0xd4, 0x9}, @addr={0x1, 0x7}}, {0x2, 0x6, 0x9c, 0x9f, @time={0x2, 0x7}, {0xa1, 0x8}, {0xf, 0x8}, @quote={{0x8, 0x34}, 0x1, &(0x7f00000001c0)={0x3, 0x3, 0xbb, 0x1b, @tick=0x4, {0x7, 0x3}, {0x5, 0x6}, @time=@tick=0x1000}}}], 0x118)
+r3 = openat(0xffffffffffffff9c, &(0x7f0000000000)='./file1\x00', 0x242, 0x1ff)
+write(r3, &(0x7f0000000080)="01", 0xfffffe8d)
+write(0xffffffffffffffff, &(0x7f0000000080)="01", 0xfffffe8d)
+r4 = open$dir(&(0x7f0000000340)='./file1\x00', 0x1c1000, 0x104)
+openat$incfs(r4, &(0x7f0000000380)='.log\x00', 0x418001, 0x100)
+r5 = openat$zero(0xffffffffffffff9c, &(0x7f0000003b40), 0x100, 0x0)
+readv(r5, &(0x7f0000004100)=[{&(0x7f0000003d40)=""/165, 0xa5}], 0x1)
+
+597.886716ms ago: executing program 3 (id=204):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+r1 = openat$vcs(0xffffffffffffff9c, &(0x7f0000000f80), 0x1, 0x0)
+write$cgroup_devices(r1, 0x0, 0x0)
+r2 = openat$zero(0xffffffffffffff9c, &(0x7f0000000000), 0x200, 0x0)
+r3 = openat$thread_pidfd(0xffffffffffffff9c, &(0x7f0000000000), 0x100, 0x0)
+r4 = openat(r3, &(0x7f0000000080)='./cgroup\x00', 0x88000, 0x10)
+read$snapshot(r2, &(0x7f00000003c0)=""/4096, 0xffffff59)
+write$sndseq(r0, &(0x7f0000000200)=[{0x3, 0xd, 0xe, 0xf7, @time={0x0, 0x74}, {0x6, 0x9f}, {0x6, 0x9}, @result={0x7, 0xbe3}}, {0x4, 0x2, 0x80, 0xe, @time={0x7, 0x8}, {0x36, 0x7}, {0x16, 0x3}, @result={0xd, 0x3ff}}, {0xf, 0x2, 0x5d, 0xd2, @tick=0x5, {0x9, 0x1}, {0x4, 0x58}, @note={0xf7, 0x2, 0x2, 0xfd, 0x4}}, {0x5, 0xd, 0x5, 0xfa, @tick=0xd50e, {0x3, 0x7f}, {0x40, 0x91}, @addr={0x23, 0x3}}, {0xff, 0x9, 0x4, 0x9, @tick=0x10001, {0x73, 0x10}, {0x80, 0xcc}, @queue={0x0, {0x9961, 0x76}}}, {0x9, 0xc4, 0xb5, 0x5, @time={0x5}, {0x7f, 0x11}, {0x9, 0x10}, @ext={0xf3, &(0x7f00000000c0)="926758ecb028e3dc1099d03ec09ee728b768fab82e663b552b8df181ce64b9f7e7d11757c29cd2ddaecb91a146c945adcab87a09110be7690c5f0110c1ce1b06ad0f6b366e8210457836dfe7ae5642e39ed540f2cd0cb5055ef4651b7d07928644afd613ef7a731e855831a04c6bf3fa86ff428b51fab90d121125149da46f63965014c3920c3f275c9860e688d01e1bf15b1dd8a196562d299d373a551607356f70a1fc6b96dbb6e4ce6453ad00f153763d899b020b041fd1bf33f4deb18bcb5090b45bf56e4f058786e344c27fb376b37f642de04c3d8afa52f193ef1ce3c911754e9c0fd98835aaa9dd5d0d5ac6cdf94d6d"}}, {0x3, 0x4, 0x9, 0x8, @time={0x1}, {0xb, 0x7}, {0x80, 0x2}, @result={0x0, 0x7}}, {0xfc, 0x81, 0x3, 0x10, @tick=0xbd6, {0xf0, 0x6e}, {0x4, 0xc}, @queue={0x7, {0x6}}}, {0x3, 0x2, 0x4, 0x2, @time={0x0, 0x4}, {0x81, 0x7}, {0xd4, 0x9}, @addr={0x1, 0x7}}, {0x2, 0x6, 0x9c, 0x9f, @time={0x2, 0x7}, {0xa1, 0x8}, {0xf, 0x8}, @quote={{0x8, 0x34}, 0x1, &(0x7f00000001c0)={0x3, 0x3, 0xbb, 0x1b, @tick=0x4, {0x7, 0x3}, {0x5, 0x6}, @time=@tick=0x1000}}}], 0x118)
+r5 = openat(0xffffffffffffff9c, &(0x7f0000000000)='./file1\x00', 0x242, 0x1ff)
+write(r5, &(0x7f0000000080)="01", 0xfffffe8d)
+write(0xffffffffffffffff, &(0x7f0000000080)="01", 0xfffffe8d)
+r6 = open$dir(&(0x7f0000000340)='./file1\x00', 0x1c1000, 0x104)
+openat$incfs(r6, &(0x7f0000000380)='.log\x00', 0x418001, 0x100)
+r7 = openat$zero(0xffffffffffffff9c, &(0x7f0000003b40), 0x100, 0x0)
+readv(r7, &(0x7f0000004100)=[{&(0x7f0000003d40)=""/165, 0xa5}], 0x1)
+read(r4, &(0x7f00000015c0)=""/229, 0xe5)
+
+447.41801ms ago: executing program 3 (id=210):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+write(r0, &(0x7f0000000080)="01", 0xfffffe8d)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+openat(0xffffffffffffff9c, 0x0, 0x40042, 0x0)
+write(r1, &(0x7f0000000080)="01", 0xfffffe8d)
+openat$dir(0xffffffffffffff9c, &(0x7f00000014c0)='./file1\x00', 0x20301, 0x130)
+
+428.092152ms ago: executing program 1 (id=211):
+openat(0xffffffffffffffff, 0x0, 0x2000, 0x15d)
+ictra_uaf(0x0, 0x7fffffff)
+r0 = socket$inet_tcp(0x2, 0x1, 0x0)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000280)='./cgroup\x00', 0x0, 0x0)
+r2 = openat$cgroup_int(r1, &(0x7f0000000180)='cgroup.max.depth\x00', 0x2, 0x0)
+write$cgroup_int(r2, &(0x7f00000000c0)=0x1, 0x12)
+write$smack_current(r0, 0x0, 0x0)
+r3 = socket$inet_tcp(0x2, 0x1, 0x0)
+setsockopt$inet_tcp_int(r3, 0x6, 0x12, &(0x7f0000000000)=0xfffffff8, 0x4)
+setsockopt$inet_tcp_TCP_REPAIR(r3, 0x6, 0x13, &(0x7f0000000000)=0xffffffffffffffff, 0x4)
+r4 = openat$sysfs(0xffffffffffffff9c, 0x0, 0x109101, 0x176)
+write$sndseq(r4, &(0x7f0000000140)=[{0x7, 0xf9, 0x3, 0x0, @time={0x6785, 0x100}, {0x4, 0xb}, {0xfe, 0xd4}, @quote={{0x7, 0x9}, 0x6}}], 0x1c)
+r5 = socket$inet6_icmp(0xa, 0x2, 0x3a)
+openat$null(0xffffffffffffff9c, &(0x7f0000000040), 0x200401, 0x0)
+setsockopt$inet6_int(r5, 0x29, 0x42, &(0x7f0000000080)=0x1008, 0x4)
+
+346.551024ms ago: executing program 1 (id=212):
+openat$zero(0xffffffffffffff9c, &(0x7f0000003b40), 0x100, 0x0)
+r0 = openat$vcs(0xffffffffffffff9c, &(0x7f0000000080), 0x3d1100, 0x0)
+readv(r0, &(0x7f0000000040)=[{&(0x7f00000019c0)=""/81, 0xfffffe5c}, {0x0}], 0x2)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+write(r1, &(0x7f0000000080)="01", 0xfffffe8d)
+openat$hwrng(0xffffffffffffff9c, &(0x7f00000000c0), 0x610400, 0x0)
+r2 = openat$vcs(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+readv(r2, &(0x7f0000000040)=[{&(0x7f00000019c0)=""/81, 0xfffffe5c}, {0x0}], 0x2)
+openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+r3 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000040)='/sys/power/pm_test', 0x0, 0x45)
+r4 = openat$ptmx(0xffffffffffffff9c, &(0x7f0000006240), 0x28002, 0x0)
+readv(r4, 0x0, 0x0)
+readv(r3, &(0x7f00000015c0)=[{&(0x7f0000000100)=""/173, 0xad}], 0x1)
+openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000040), 0x1, 0x0)
+openat$selinux_attr(0xffffffffffffff9c, &(0x7f0000000000)='/proc/thread-self/attr/sockcreate\x00', 0x2, 0x0)
+r5 = openat$vga_arbiter(0xffffffffffffff9c, &(0x7f00000004c0), 0x40002, 0x0)
+write$vga_arbiter(r5, &(0x7f0000000280)=@other={'lock', ' ', 'io+mem'}, 0xc)
+
+346.158545ms ago: executing program 2 (id=213):
+r0 = openat$selinux_attr(0xffffffffffffff9c, &(0x7f0000000440)='/proc/thread-self/attr/current\x00', 0x2, 0x0)
+pread64(r0, &(0x7f00000004c0)=""/118, 0x76, 0x8)
+
+288.735928ms ago: executing program 2 (id=215):
+write$sndseq(0xffffffffffffffff, 0x0, 0x0)
+r0 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000100)='/proc/asound/seq/clients\x00', 0x0, 0x0)
+pread64(r0, &(0x7f0000000140)=""/35, 0x23, 0x7ff)
+r1 = openat$tcp_mem(0xffffffffffffff9c, &(0x7f0000002680)='/proc/sys/net/ipv4/tcp_wmem\x00', 0x1, 0x0)
+openat(r0, 0x0, 0x420200, 0x102)
+readv(0xffffffffffffffff, 0x0, 0x0)
+openat$apparmor_task_exec(0xffffffffffffff9c, 0x0, 0x2, 0x0)
+writev(0xffffffffffffffff, 0x0, 0x0)
+r2 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000680)='/sys/kernel/fscaps', 0x418300, 0x24)
+pread64(r2, &(0x7f00000001c0)=""/207, 0xcf, 0x7ff)
+writev(r1, &(0x7f0000005f00)=[{0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}], 0x9)
+r3 = openat$cgroup(r2, &(0x7f0000000000)='syz0\x00', 0x200002, 0x0)
+openat$cgroup_ro(r3, &(0x7f0000000040)='devices.list\x00', 0x0, 0x0)
+r4 = openat$sr(0xffffffffffffff9c, &(0x7f0000000080), 0x6040, 0x0)
+r5 = openat$zero(0xffffffffffffff9c, &(0x7f0000000000), 0x200, 0x0)
+read$snapshot(r5, &(0x7f00000003c0)=""/4096, 0x1000)
+openat$cgroup_int(r4, &(0x7f00000000c0)='memory.max\x00', 0x2, 0x0)
+open$dir(&(0x7f0000000600)='./file0/file0\x00', 0x0, 0x129)
+openat$selinux_attr(0xffffffffffffff9c, 0x0, 0x2, 0x0)
+openat$hpet(0xffffffffffffff9c, &(0x7f0000000040), 0x0, 0x0)
+openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000040), 0x1, 0x0)
+openat$zero(0xffffffffffffff9c, &(0x7f0000003b40), 0x100, 0x0)
+
+287.122042ms ago: executing program 0 (id=217):
+r0 = socket$inet6_tcp(0xa, 0x1, 0x0)
+setsockopt$inet6_tcp_TCP_QUEUE_SEQ(r0, 0x6, 0x15, 0x0, 0x0)
+r1 = socket$igmp(0x2, 0x3, 0x2)
+setsockopt$MRT_ASSERT(r1, 0x0, 0xcf, &(0x7f0000000100), 0x4)
+r2 = socket$igmp(0x2, 0x3, 0x2)
+r3 = socket$inet_tcp(0x2, 0x1, 0x0)
+setsockopt$inet_tcp_int(r3, 0x6, 0x1e, &(0x7f00000001c0)=0x8, 0x4)
+setsockopt$MRT_INIT(r2, 0x0, 0xc8, &(0x7f0000000200), 0x4)
+r4 = open(&(0x7f0000000240)='./file0\x00', 0x4c0000, 0x101)
+setsockopt$inet6_int(r4, 0x29, 0x3a, 0x0, 0x0)
+setsockopt$MRT_DONE(r1, 0x0, 0xc9, 0x0, 0x0)
+readv(0xffffffffffffffff, &(0x7f0000000540)=[{&(0x7f0000000380)=""/202, 0xca}, {&(0x7f0000000480)=""/146, 0x92}], 0x2)
+write$cgroup_int(r4, &(0x7f0000000580)=0x7fffffff, 0x12)
+openat$binfmt_register(0xffffffffffffff9c, &(0x7f00000005c0), 0x1, 0x0)
+setsockopt$inet6_group_source_req(r0, 0x29, 0x2e, &(0x7f0000000600)={0x1, {{0xa, 0x4e22, 0x7, @mcast2, 0x6}}, {{0xa, 0x4e21, 0x4, @private0={0xfc, 0x0, '\x00', 0x1}, 0x1}}}, 0x108)
+setsockopt$inet6_tcp_TCP_REPAIR(r4, 0x6, 0x13, &(0x7f0000000740), 0x4)
+r5 = socket$inet_icmp(0x2, 0x2, 0x1)
+setsockopt$inet_MCAST_MSFILTER(r5, 0x0, 0x30, &(0x7f0000000780)={0xfffffd41, {{0x2, 0x4e20, @broadcast}}, 0x1}, 0x90)
+setsockopt$MRT_TABLE(r2, 0x0, 0xcf, &(0x7f0000000d00)=0xff, 0x4)
+setsockopt$inet6_tcp_TCP_MD5SIG(r0, 0x6, 0xe, &(0x7f0000000d40)={@in6={{0xa, 0x4e23, 0xfff, @ipv4={'\x00', '\xff\xff', @rand_addr=0x64010102}, 0xffffffff}}, 0x0, 0x0, 0x50, 0x0, "04a303c357f8f7c635b852409ffd964662c6abbe139aa9451b338531265c69b22d4cb1819bb573fa8c9bfb986e529286ea4709a3bf84a0ceed81eac7933dac5fd076a3cc41d6a3ae843060f83f5524d4"}, 0xd8)
+setsockopt$MRT_ADD_MFC_PROXY(r4, 0x0, 0xd2, &(0x7f0000000e40)={@initdev={0xac, 0x1e, 0x0, 0x0}, @rand_addr=0x64010100, 0xffffffffffffffff, "b8714f4621c4607055338d1073e9b48df61c7e5a6f87cdd414745500f5b46271", 0x20000, 0x0, 0x6, 0x8}, 0x3c)
+
+195.999012ms ago: executing program 0 (id=218):
+r0 = openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000000), 0x1, 0x0)
+write$binfmt_register(r0, &(0x7f0000000100)={0x3a, 'syz0', 0x3a, 'E', 0x3a, 0x7, 0x3a, '^^{', 0x3a, '$\\\'^', 0x3a, './file1'}, 0x1337)
+
+195.396142ms ago: executing program 2 (id=219):
+openat$cgroup_ro(0xffffffffffffffff, &(0x7f0000000200)='cgroup.kill\x00', 0x0, 0x0)
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000280)='./cgroup\x00', 0x0, 0x0)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+write(r1, &(0x7f0000000080)="01", 0xfffffe8d)
+r2 = openat$cgroup_int(r0, &(0x7f0000000180)='cgroup.max.depth\x00', 0x2, 0x0)
+write$cgroup_int(r2, 0x0, 0x0)
+
+195.044685ms ago: executing program 0 (id=220):
+openat(0xffffffffffffffff, 0x0, 0x2000, 0x15d)
+ictra_uaf(0x0, 0x7fffffff)
+r0 = socket$inet_tcp(0x2, 0x1, 0x0)
+r1 = openat(0xffffffffffffff9c, 0x0, 0x0, 0x0)
+r2 = openat$cgroup_int(r1, &(0x7f0000000180)='cgroup.max.depth\x00', 0x2, 0x0)
+write$cgroup_int(r2, &(0x7f00000000c0)=0x1, 0x12)
+write$smack_current(r0, 0x0, 0x0)
+r3 = socket$inet_tcp(0x2, 0x1, 0x0)
+setsockopt$inet_tcp_int(r3, 0x6, 0x12, &(0x7f0000000000)=0xfffffff8, 0x4)
+setsockopt$inet_tcp_TCP_REPAIR(r3, 0x6, 0x13, &(0x7f0000000000)=0xffffffffffffffff, 0x4)
+r4 = openat$sysfs(0xffffffffffffff9c, &(0x7f00000000c0)='/sys/power/wakeup_count', 0x109101, 0x176)
+write$sndseq(r4, &(0x7f0000000140)=[{0x7, 0xf9, 0x3, 0x0, @time={0x6785, 0x100}, {0x4, 0xb}, {0xfe, 0xd4}, @quote={{0x7, 0x9}, 0x6}}], 0x1c)
+r5 = socket$inet6_icmp(0xa, 0x2, 0x3a)
+openat$null(0xffffffffffffff9c, &(0x7f0000000040), 0x200401, 0x0)
+setsockopt$inet6_int(r5, 0x29, 0x42, &(0x7f0000000080)=0x1008, 0x4)
+
+126.942509ms ago: executing program 0 (id=221):
+openat(0xffffffffffffffff, 0x0, 0x2000, 0x15d)
+ictra_uaf(0x0, 0x7fffffff)
+r0 = socket$inet_tcp(0x2, 0x1, 0x0)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000280)='./cgroup\x00', 0x0, 0x0)
+r2 = openat$cgroup_int(r1, &(0x7f0000000180)='cgroup.max.depth\x00', 0x2, 0x0)
+write$cgroup_int(r2, &(0x7f00000000c0)=0x1, 0x12)
+write$smack_current(r0, 0x0, 0x0)
+r3 = socket$inet_tcp(0x2, 0x1, 0x0)
+setsockopt$inet_tcp_int(r3, 0x6, 0x12, &(0x7f0000000000)=0xfffffff8, 0x4)
+setsockopt$inet_tcp_TCP_REPAIR(r3, 0x6, 0x13, &(0x7f0000000000)=0xffffffffffffffff, 0x4)
+r4 = openat$sysfs(0xffffffffffffff9c, &(0x7f00000000c0)='/sys/power/wakeup_count', 0x109101, 0x176)
+write$sndseq(r4, 0x0, 0x0)
+r5 = socket$inet6_icmp(0xa, 0x2, 0x3a)
+openat$null(0xffffffffffffff9c, &(0x7f0000000040), 0x200401, 0x0)
+setsockopt$inet6_int(r5, 0x29, 0x42, &(0x7f0000000080)=0x1008, 0x4)
+
+126.368725ms ago: executing program 0 (id=222):
+r0 = openat$sr(0xffffffffffffff9c, &(0x7f0000000040), 0x4ec00, 0x0)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+pwrite64(r1, &(0x7f00000023c0)="3bfbedb077cebc7002f3511fc0b0130d48da91d2b99bb8c21cde2e82c1d00d30978801841770ddf873a7183ea4dd26b3a4152d0942e256bd4fdd4ea0b44110ec1c31f906278eca5da1c1f0168f00a7dbd0decc0f97e1c0b4e00949d413176e9386b80ad1b686cbabe1f9ce2cafb5646c6e5b42f71fa33465b5d173bac37b7792c4897b1ba76daf652847be93d06a70c4ec5cc77347a1a33e2f56cd827bcde54c30b7c30dceb5299fc2d1affe9966b4d24cf4ba111ed5a0fa58f3296d70bfbe30c1793fff02ddb73535d6ad2b1655da156a384b1c4ec21cef6056f95a744f5bcb96a7a52d890eb737c168a884f7e8440aa18d744dab510366176b970f799413e185c49718ced533e88de75cd9cc15d60406a15a528ff05a13d4faab84132bc8051a6920fda74c25e07c3c4f9ce876f6ee11997cb0f006b4f24fbddf8c3706371620934e7aa222bb7687e173efd31c50e2ee939f3e59c6f2bd30e79711104120f0f06a31b6e6763e1bc79647e35976350bc00d631d062496ec4b0e673afa5ee09c6a0b1cffd841ea1c50239fbcb80f4e801b9a4ae7b4e41fbb1c419b6553cb863df61073fb125240121a476a5fd8b9359112133837b612d9423f59ccbe6329055dac6e0fe629a88c30544da0fd4fdab463d6fa21891a8fb72ead145154eea1e792019c10847004a71d880874d8b177a6f6a8ba11b777644a34b8de5c73a28a1717f28064d6c6c01de0020580478c25c700447dffa6949871f8c148db331ff111ed3639f3da3dee86f7812a4a92ad29efc30fa33227aec9da2733aff8bbe219e2dfa1ad82ab2b67fe2e2c7bcaef5ea8e530d2c946499ca63a6f7892ea603006f28cdddc44160d1536f5b1820657c1244e69cb813cea529f395af9f61908b366a6cc94c2917b8ee31c0a93644d0b18211185b298145ee12fff39fa9ec453fec9fb6ab214a171767f41c17c0c572a66fba7571cc31f0bddd306211b631c7e76474cbb491de4efbe81bdbb3b0d857c74c89573b9ef652e8a5e0d4102c8076379c66d79ec5216c9f7c9f5e0756ba721be5e66d4efc80f58251342d673558bf0a597c4d6ad6bc7e06da0040d0567ddf6da565d640cad9283ac67ba75d32c72f0064b568979837c02844bcea7ce6e74f188f9067b258256419c5adde64e7a85bee108f5866ab4d1bb3566019c8fdb33efa42623836c16fa2efd2fcd159ac38a438371896af56ae2141ed08fc757d46cb776070af82d382ed30667290bef5c061a83892a68d2ec7fe437787fb5964892027fa955b8661072828242d66bc773f18412503731180013b7819da6871b6d8d976f4fabeafe5153fa38683c72a8141d686b86eb97c24d7a06821beeceb7634675f4ab520dc9ac3aea13546e08caa2487fda5564007fd5ee3e70747b5e64a185bf73c74788143639caad1685112210d1faec459c5de463c422ab65255d1eddb463a9db29d6eae6a37ef247e24366d226411fdfb409d21b94bc2b38970fc2732ac2cbbbae2c839b0c97923c797bbb1fc36293708c07173606c646447766efc252363687fe9d407c6c48207f9bb97beb4fd67abb3e1604d1edc0ee1a0fd01b1a0b17694b71cde8f51076ad8fc9501032078ca887f4413220136bc18d5eaa3539eeb444724d390b04132eae129fb2648f04751b6188f765e9bc9de9807102e792634f2cf88009fb5f49af5ebb0d1e1a06cebe9e62db88c6426860106f5eedf5af6cdf8cb9efb619ff38cca5bb75e8c4d16bfadb9b78e6cf5b28c9ce2f5e026d17ae61a0ecda17999334d06d70ae75fc29f483886e32f99db5a8b049eed7021e793b37f5939db820046ea2f5b18641c03a5b2baaf69672f3ced56100af021e51eb4f9b09b5536df9384a1e1a38799ad8cad7a38939359a7e99640461871defe6624182c1f9447cd0278f2cda891aeabb7ab2f8cefa5dac09085cdae9258ca12059e1292cd71f4ac397549927a98fe2fc8e0b1262bfd4eb5064f795c27b3797bf84249086af031ac48862afc69f73ac25bbf8d0bd3af8b7edddbf4895afae2e8d987fa89b3fe5f50d5f17baccb7960bc571d6e7c1b6637673de746780ed8364f287bd44c5a95a08c1f5156fc73a7a4d4afbcaef68b622c2a299e36f4524710c3157d4eba33153def741ddaa0ca49b26765e9cc0b1d81ef317ac4bb56d13f7cae38ac164d23358304bf1b0e019866180173ce2a6bde12b5f069a0af1bee4803ea407b050d7fd03601f2eb9e8b66fb8ccc09a6b2af06eb5d243e876ba939696de3b5d8a4a6bd0c149d1b864111be6993fffb75d2ec85e5629df954a3a91ffe639c770de5cd3f7d14792ad874e21cb68f273479a0108e1e1f26658537fd1bfb852562650d7cd11eb58875dfb89d13cf6f2b783e7b70113b71a51cb4fa9f33d05626f78f12e57bbd838345a25dfc73068291adc6ff963da56eac6fa2006d4dc87b126d0893f3233834b6b845521f7493e9397fa1366ccbaeb8d29d460d7fc26e4b08739b00f61b5ef2dc6b6c79281e5d7d69b35ccf04d2c28b8c7b4dfc72a7da682b8daadc8b932e21953615ba9717a3112d0b1485fc6aebc1f73b452c04f7774562f831b6e60ad98455f3e67b0ac33cc441010018beb4fe3d2bb47f88818147225e36ffb0b16cb854e6577b8e42b410b930730e112b99dca5ffe7a68ae00f2e9b7b93bee53c26617762d4e373feb1741a774239c89526a69c516670e87fe23e9baddc2e3a3b65b4fda2ab1766eb84a59901d2ec9d91003ab6af2ec615c10ee2bdd55f905a9b0458f8742e0f729320e27c1dd2270bf28b568e24190340e0454d18982fc069bd183251a821b9348af64be844031e3ebfe071fd4af6319179c2ee1fe18bc8b9915cfd5b0168c8326766fd30a6b7f096d49596ddd0b86fe5c423014646e1ade682f32223518df6eac7ec1886cf48ec16f7f1ca856f8c7c8dc97f5df24998ef60e0921b67d1489231afbcac4be52fa728425826f3bde43aeacd51e40fd9be4fba5bd3e2edb1499f1042cb43ae884802face434be9dfbb12d25f7220bee1dc894b34612ce1650af5b8135627300f39be2ac35eec61d11383ff5246b56e6ae2473748655ca89f4cf50c5f7b7f0aa5448ecd3126c2e92c3a06c09044f2895eea77934aad24c7d2357fe7c43a92d2b95b327ce07076e6e1c8c1a88291848ee32bb7e44b6fafcfa8fc8df56da6d4644d11dfd0f7db3758b72d59b650868b615aa9008b1fcea60a632abecea5493219881ff738cadccea267b653577647cd243825dad61292292a1383066c68cab5a2e41dd144142851de82f38e642880673ae3d7dcdf4a2026813da4de9c025d588771fadf4c2c8f5aedf5175601f40e07a4cf80309d33915b035f1a6d53092acf4db3368d448d2e5f7f68ff3601c82d336f3c23149e9dec64e11fe575a9fa02935dc9f66285b62033142caa26faaf9a9b9a3830e0a4259cd33255c78e9ec29f0b066f6b0b05ec36a2886d0ec58", 0x9a3, 0x4d1)
+openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+write$cgroup_pressure(r1, &(0x7f0000000000)={'some', 0x20, 0x4da, 0x20, 0x1}, 0x2f)
+readv(r0, &(0x7f00000000c0)=[{&(0x7f0000003f00)=""/4096, 0x1000}, {&(0x7f0000000180)=""/4096, 0x1000}, {&(0x7f0000002f00)=""/4096, 0x1000}], 0x3)
+
+63.197264ms ago: executing program 3 (id=223):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+r1 = openat$vcs(0xffffffffffffff9c, &(0x7f0000000f80), 0x1, 0x0)
+write$cgroup_devices(r1, 0x0, 0x0)
+r2 = openat$zero(0xffffffffffffff9c, &(0x7f0000000000), 0x200, 0x0)
+r3 = openat$thread_pidfd(0xffffffffffffff9c, &(0x7f0000000000), 0x100, 0x0)
+r4 = openat(r3, &(0x7f0000000080)='./cgroup\x00', 0x88000, 0x10)
+readv(r2, &(0x7f0000000080)=[{&(0x7f0000000280)=""/188, 0xbc}, {&(0x7f0000000040)=""/41, 0xffffff79}], 0x2)
+write$sndseq(r0, &(0x7f0000000200)=[{0x3, 0xd, 0xe, 0xf7, @time={0x0, 0x74}, {0x6, 0x9f}, {0x6, 0x9}, @result={0x7, 0xbe3}}, {0x4, 0x2, 0x80, 0xe, @time={0x7, 0x8}, {0x36, 0x7}, {0x16, 0x3}, @result={0xd, 0x3ff}}, {0xf, 0x2, 0x5d, 0xd2, @tick=0x5, {0x9, 0x1}, {0x4, 0x58}, @note={0xf7, 0x2, 0x2, 0xfd, 0x4}}, {0x5, 0xd, 0x5, 0xfa, @tick=0xd50e, {0x3, 0x7f}, {0x40, 0x91}, @addr={0x23, 0x3}}, {0xff, 0x9, 0x4, 0x9, @tick=0x10001, {0x73, 0x10}, {0x80, 0xcc}, @queue={0x0, {0x9961, 0x76}}}, {0x9, 0xc4, 0xb5, 0x5, @time={0x5}, {0x7f, 0x11}, {0x9, 0x10}, @ext={0xf3, &(0x7f00000000c0)="926758ecb028e3dc1099d03ec09ee728b768fab82e663b552b8df181ce64b9f7e7d11757c29cd2ddaecb91a146c945adcab87a09110be7690c5f0110c1ce1b06ad0f6b366e8210457836dfe7ae5642e39ed540f2cd0cb5055ef4651b7d07928644afd613ef7a731e855831a04c6bf3fa86ff428b51fab90d121125149da46f63965014c3920c3f275c9860e688d01e1bf15b1dd8a196562d299d373a551607356f70a1fc6b96dbb6e4ce6453ad00f153763d899b020b041fd1bf33f4deb18bcb5090b45bf56e4f058786e344c27fb376b37f642de04c3d8afa52f193ef1ce3c911754e9c0fd98835aaa9dd5d0d5ac6cdf94d6d"}}, {0x3, 0x4, 0x9, 0x8, @time={0x1}, {0xb, 0x7}, {0x80, 0x2}, @result={0x0, 0x7}}, {0xfc, 0x81, 0x3, 0x10, @tick=0xbd6, {0xf0, 0x6e}, {0x4, 0xc}, @queue={0x7, {0x6}}}, {0x3, 0x2, 0x4, 0x2, @time={0x0, 0x4}, {0x81, 0x7}, {0xd4, 0x9}, @addr={0x1, 0x7}}, {0x2, 0x6, 0x9c, 0x9f, @time={0x2, 0x7}, {0xa1, 0x8}, {0xf, 0x8}, @quote={{0x8, 0x34}, 0x1, &(0x7f00000001c0)={0x3, 0x3, 0xbb, 0x1b, @tick=0x4, {0x7, 0x3}, {0x5, 0x6}, @time=@tick=0x1000}}}], 0x118)
+r5 = openat(0xffffffffffffff9c, &(0x7f0000000000)='./file1\x00', 0x242, 0x1ff)
+write(r5, &(0x7f0000000080)="01", 0xfffffe8d)
+write(0xffffffffffffffff, &(0x7f0000000080)="01", 0xfffffe8d)
+r6 = open$dir(&(0x7f0000000340)='./file1\x00', 0x1c1000, 0x104)
+openat$incfs(r6, &(0x7f0000000380)='.log\x00', 0x418001, 0x100)
+r7 = openat$zero(0xffffffffffffff9c, &(0x7f0000003b40), 0x100, 0x0)
+readv(r7, &(0x7f0000004100)=[{&(0x7f0000003d40)=""/165, 0xa5}], 0x1)
+read(r4, &(0x7f00000015c0)=""/229, 0xe5)
+
+57.147955ms ago: executing program 0 (id=224):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+openat$vcs(0xffffffffffffff9c, &(0x7f0000000f80), 0x1, 0x0)
+r1 = openat$zero(0xffffffffffffff9c, &(0x7f0000000000), 0x200, 0x0)
+r2 = openat$thread_pidfd(0xffffffffffffff9c, &(0x7f0000000000), 0x100, 0x0)
+openat(r2, &(0x7f0000000080)='./cgroup\x00', 0x88000, 0x10)
+read$snapshot(r1, &(0x7f00000003c0)=""/4096, 0xffffff59)
+readv(r1, &(0x7f0000000080)=[{&(0x7f0000000280)=""/188, 0xbc}, {&(0x7f0000000040)=""/41, 0xffffff79}], 0x2)
+write$sndseq(r0, &(0x7f0000000200)=[{0x3, 0xd, 0xe, 0xf7, @time={0x0, 0x74}, {0x6, 0x9f}, {0x6, 0x9}, @result={0x7, 0xbe3}}, {0x4, 0x2, 0x80, 0xe, @time={0x7, 0x8}, {0x36, 0x7}, {0x16, 0x3}, @result={0xd, 0x3ff}}, {0xf, 0x2, 0x5d, 0xd2, @tick=0x5, {0x9, 0x1}, {0x4, 0x58}, @note={0xf7, 0x2, 0x2, 0xfd, 0x4}}, {0x5, 0xd, 0x5, 0xfa, @tick=0xd50e, {0x3, 0x7f}, {0x40, 0x91}, @addr={0x23, 0x3}}, {0xff, 0x9, 0x4, 0x9, @tick=0x10001, {0x73, 0x10}, {0x80, 0xcc}, @queue={0x0, {0x9961, 0x76}}}, {0x9, 0xc4, 0xb5, 0x5, @time={0x5}, {0x7f, 0x11}, {0x9, 0x10}, @ext={0xf3, &(0x7f00000000c0)="926758ecb028e3dc1099d03ec09ee728b768fab82e663b552b8df181ce64b9f7e7d11757c29cd2ddaecb91a146c945adcab87a09110be7690c5f0110c1ce1b06ad0f6b366e8210457836dfe7ae5642e39ed540f2cd0cb5055ef4651b7d07928644afd613ef7a731e855831a04c6bf3fa86ff428b51fab90d121125149da46f63965014c3920c3f275c9860e688d01e1bf15b1dd8a196562d299d373a551607356f70a1fc6b96dbb6e4ce6453ad00f153763d899b020b041fd1bf33f4deb18bcb5090b45bf56e4f058786e344c27fb376b37f642de04c3d8afa52f193ef1ce3c911754e9c0fd98835aaa9dd5d0d5ac6cdf94d6d"}}, {0x3, 0x4, 0x9, 0x8, @time={0x1}, {0xb, 0x7}, {0x80, 0x2}, @result={0x0, 0x7}}, {0xfc, 0x81, 0x3, 0x10, @tick=0xbd6, {0xf0, 0x6e}, {0x4, 0xc}, @queue={0x7, {0x6}}}, {0x3, 0x2, 0x4, 0x2, @time={0x0, 0x4}, {0x81, 0x7}, {0xd4, 0x9}, @addr={0x1, 0x7}}, {0x2, 0x6, 0x9c, 0x9f, @time={0x2, 0x7}, {0xa1, 0x8}, {0xf, 0x8}, @quote={{0x8, 0x34}, 0x1, &(0x7f00000001c0)={0x3, 0x3, 0xbb, 0x1b, @tick=0x4, {0x7, 0x3}, {0x5, 0x6}, @time=@tick=0x1000}}}], 0x118)
+r3 = openat(0xffffffffffffff9c, &(0x7f0000000000)='./file1\x00', 0x242, 0x1ff)
+write(r3, &(0x7f0000000080)="01", 0xfffffe8d)
+write(0xffffffffffffffff, &(0x7f0000000080)="01", 0xfffffe8d)
+r4 = open$dir(&(0x7f0000000340)='./file1\x00', 0x1c1000, 0x104)
+openat$incfs(r4, &(0x7f0000000380)='.log\x00', 0x418001, 0x100)
+r5 = openat$zero(0xffffffffffffff9c, &(0x7f0000003b40), 0x100, 0x0)
+readv(r5, &(0x7f0000004100)=[{&(0x7f0000003d40)=""/165, 0xa5}], 0x1)
+
+1.833682ms ago: executing program 2 (id=225):
+r0 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000100)='/sys/power/reserved_size', 0x109101, 0x131)
+openat$urandom(0xffffffffffffff9c, &(0x7f0000000140), 0xe840, 0x0)
+openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/kernel/uevent_seqnum', 0x8000, 0x31)
+openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x20)
+ictra_uaf(0xcafecafe, 0x7fffffff)
+read(0xffffffffffffffff, &(0x7f0000000140)=""/48, 0x30)
+writev(r0, &(0x7f0000000340)=[{&(0x7f0000000140)="ab36b9fd72c7a773484402fc5aa6093b90d221e29093b657a94fefa2cf29ba738f77a374aa9663d49fb384951599c054bef6c74ebe3e11c177f0284941e768b7a98cea753d8ff45071174d72be98ba759e18016d48623380bb4e7bfb5a98542c733fbb40bafe5a6dff0d3f286d8e3811df835c841b335416893215285cdded7a3a8623e9e7c65efa5ae54e34d3243bfeb51ddd798ade", 0x96}, {&(0x7f0000000240)="004adf2a074b9dc9c523ce4a02342f15b78f895f2ebaaf55e28f9b75ab0ad39579ffe5519f2527d76e7a91da78a0dd683a485fa7bfa3607fe54f6a9630b442d3c559d53b87e20e505d90ba1d8806dacf67cbebbc1b2ad1620023a92b9f5e91f97f6281bae25894f5522e042e8eef55b7d94569db42053cf214f2574cc89c5819e18f7b09dc1b5bf96d83c608afe4d1aca579f05ddb365468cc60d7427f48afcba81fd5deea740cefca869aae8245361d737728adfa9c43565dcabf", 0xbb}, {&(0x7f0000000040)="19059e51aa8c652835f6a388f97e16aa828fdcad405896288f02c5aeca7d9623cef8b0ca71d9d06edb6a6b4bc57451c2fbbc00bb4586db9ffd84651ed8bcf07bb41a1facab689d70b04d4d7cd7422187818510c48f0bc9d87ce74f625a4e4996bce0568ac1192044e3a653a71b5f9c3ca298d077f0e0891802999953873a40ce8b5b70602c39cfe123ca667d92da3b204884089ad6d5178e6b460af403275a9050f83840bf601037476cfcc18492f4dfc13dadcbdc3f40ccc377f3", 0xbb}], 0x3)
+
+0s ago: executing program 2 (id=226):
+r0 = socket$inet6_tcp(0xa, 0x1, 0x0)
+setsockopt$inet6_tcp_TCP_QUEUE_SEQ(r0, 0x6, 0x15, 0x0, 0x0)
+r1 = socket$igmp(0x2, 0x3, 0x2)
+setsockopt$MRT_ASSERT(r1, 0x0, 0xcf, &(0x7f0000000100), 0x4)
+r2 = socket$igmp(0x2, 0x3, 0x2)
+r3 = socket$inet_tcp(0x2, 0x1, 0x0)
+setsockopt$inet_tcp_int(r3, 0x6, 0x1e, &(0x7f00000001c0)=0x8, 0x4)
+setsockopt$MRT_INIT(r2, 0x0, 0xc8, &(0x7f0000000200), 0x4)
+r4 = open(&(0x7f0000000240)='./file0\x00', 0x4c0000, 0x101)
+setsockopt$inet6_int(r4, 0x29, 0x3a, 0x0, 0x0)
+setsockopt$MRT_DONE(r1, 0x0, 0xc9, 0x0, 0x0)
+readv(0xffffffffffffffff, &(0x7f0000000540)=[{&(0x7f0000000380)=""/202, 0xca}, {&(0x7f0000000480)=""/146, 0x92}], 0x2)
+write$cgroup_int(r4, &(0x7f0000000580)=0x7fffffff, 0x12)
+openat$binfmt_register(0xffffffffffffff9c, &(0x7f00000005c0), 0x1, 0x0)
+setsockopt$inet6_group_source_req(r0, 0x29, 0x2e, &(0x7f0000000600)={0x1, {{0xa, 0x4e22, 0x7, @mcast2, 0x6}}, {{0xa, 0x4e21, 0x4, @private0={0xfc, 0x0, '\x00', 0x1}, 0x1}}}, 0x108)
+setsockopt$inet6_tcp_TCP_REPAIR(r4, 0x6, 0x13, &(0x7f0000000740), 0x4)
+r5 = socket$inet_icmp(0x2, 0x2, 0x1)
+setsockopt$inet_MCAST_MSFILTER(r5, 0x0, 0x30, &(0x7f0000000780)={0xfffffd41, {{0x2, 0x4e20, @broadcast}}, 0x1}, 0x90)
+setsockopt$MRT_TABLE(r2, 0x0, 0xcf, &(0x7f0000000d00)=0xff, 0x4)
+setsockopt$inet6_tcp_TCP_MD5SIG(r0, 0x6, 0xe, &(0x7f0000000d40)={@in6={{0xa, 0x4e23, 0xfff, @ipv4={'\x00', '\xff\xff', @rand_addr=0x64010102}, 0xffffffff}}, 0x0, 0x0, 0x50, 0x0, "04a303c357f8f7c635b852409ffd964662c6abbe139aa9451b338531265c69b22d4cb1819bb573fa8c9bfb986e529286ea4709a3bf84a0ceed81eac7933dac5fd076a3cc41d6a3ae843060f83f5524d4"}, 0xd8)
+setsockopt$MRT_ADD_MFC_PROXY(r4, 0x0, 0xd2, &(0x7f0000000e40)={@initdev={0xac, 0x1e, 0x0, 0x0}, @rand_addr=0x64010100, 0xffffffffffffffff, "b8714f4621c4607055338d1073e9b48df61c7e5a6f87cdd414745500f5b46271", 0x20000, 0x0, 0x6, 0x8}, 0x3c)
+
+kernel console output (not intermixed with test programs):
+
+Warning: Permanently added '[localhost]:42167' (ED25519) to the list of known hosts.
+buildroot login: [   15.607098] cgroup: Unknown subsys name 'net'
+[   15.638587] cgroup: Unknown subsys name 'cpuset'
+[   15.651577] cgroup: Unknown subsys name 'rlimit'
+[   15.659878] cgroup: Unknown subsys name 'memory'
+[   22.580388] random: crng reseeded on system resumption
+[   28.724226] random: crng reseeded on system resumption
+[   29.083022] ==================================================================
+[   29.083057] BUG: KASAN: slab-use-after-free in vfs_write+0xe4c/0xec0
+[   29.083089] Write of size 1 at addr ffff888001b91180 by task syz.0.218/2554
+[   29.083134] 
+[   29.083158] CPU: 0 UID: 0 PID: 2554 Comm: syz.0.218 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #9 PREEMPT(lazy) 
+[   29.083180] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+[   29.083197] Call Trace:
+[   29.083215]  <TASK>
+[   29.083224]  dump_stack_lvl+0x97/0xe0
+[   29.083249]  print_report+0x157/0x4c9
+[   29.083270]  ? __pfx__raw_spin_lock_irqsave+0x10/0x10
+[   29.083294]  ? vfs_write+0xe4c/0xec0
+[   29.083314]  kasan_report+0xce/0x100
+[   29.083328]  ? vfs_write+0xe4c/0xec0
+[   29.083347]  vfs_write+0xe4c/0xec0
+[   29.083366]  ? finish_task_switch.isra.0+0x1e3/0x940
+[   29.083386]  ? __switch_to+0x816/0x1140
+[   29.083407]  ? __pfx_vfs_write+0x10/0x10
+[   29.083427]  ? kvm_clock_get_cycles+0x40/0x70
+[   29.083443]  ? mutex_lock+0x81/0xe0
+[   29.083457]  ? __pfx_mutex_lock+0x10/0x10
+[   29.083472]  ? put_timespec64+0xce/0x130
+[   29.083491]  ? fdget_pos+0x209/0x5a0
+[   29.083511]  ? __x64_sys_futex+0x2b0/0x490
+[   29.083527]  ksys_write+0x12d/0x250
+[   29.083680]  ? __pfx_ksys_write+0x10/0x10
+[   29.083701]  ? __pfx___x64_sys_clock_gettime+0x10/0x10
+[   29.083701]  do_syscall_64+0xee/0x590
+[   29.083701]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   29.083701] RIP: 0033:0x7f00c594acb9
+[   29.083701] Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+[   29.083701] RSP: 002b:00007f00c43a7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+[   29.083701] RAX: ffffffffffffffda RBX: 00007f00c5bc5fa0 RCX: 00007f00c594acb9
+[   29.083701] RDX: 0000000000001337 RSI: 0000200000000100 RDI: 0000000000000003
+[   29.083701] RBP: 00007f00c59b8bf7 R08: 0000000000000000 R09: 0000000000000000
+[   29.083701] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[   29.083701] R13: 00007f00c5bc6038 R14: 00007f00c5bc5fa0 R15: 00007ffdaf93a698
+[   29.083701]  </TASK>
+[   29.083701] 
+[   29.083701] Allocated by task 2554:
+[   29.083701]  kasan_save_stack+0x30/0x50
+[   29.083701]  kasan_save_track+0x14/0x30
+[   29.083701]  __kasan_kmalloc+0x8f/0xa0
+[   29.083701]  vfs_write+0xaae/0xec0
+[   29.083701]  ksys_write+0x12d/0x250
+[   29.083701]  do_syscall_64+0xee/0x590
+[   29.083701]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   29.083701] 
+[   29.083701] Freed by task 2554:
+[   29.083701]  kasan_save_stack+0x30/0x50
+[   29.083701]  kasan_save_track+0x14/0x30
+[   29.083701]  kasan_save_free_info+0x3b/0x70
+[   29.083701]  __kasan_slab_free+0x43/0x70
+[   29.083701]  kfree+0x149/0x3a0
+[   29.083701]  vfs_write+0xac7/0xec0
+[   29.083701]  ksys_write+0x12d/0x250
+[   29.083701]  do_syscall_64+0xee/0x590
+[   29.083701]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   29.083701] 
+[   29.083701] The buggy address belongs to the object at ffff888001b91180
+[   29.083701]  which belongs to the cache kmalloc-16 of size 16
+[   29.083701] The buggy address is located 0 bytes inside of
+[   29.083701]  freed 16-byte region [ffff888001b91180, ffff888001b91190)
+[   29.083701] 
+[   29.083701] The buggy address belongs to the physical page:
+[   29.083701] page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff888001b91240 pfn:0x1b91
+[   29.083701] flags: 0x100000000000200(workingset|node=0|zone=1)
+[   29.083701] page_type: f5(slab)
+[   29.083701] raw: 0100000000000200 ffff888001041640 ffff888001040290 ffffea0000063ed0
+[   29.083701] raw: ffff888001b91240 000000000080007a 00000000f5000000 0000000000000000
+[   29.083701] page dumped because: kasan: bad access detected
+[   29.083701] 
+[   29.083701] Memory state around the buggy address:
+[   29.083701]  ffff888001b91080: fa fb fc fc fa fb fc fc fa fb fc fc 00 03 fc fc
+[   29.083701]  ffff888001b91100: 00 03 fc fc 00 03 fc fc 00 06 fc fc fa fb fc fc
+[   29.083701] >ffff888001b91180: fa fb fc fc 00 00 fc fc fa fb fc fc 00 00 fc fc
+[   29.083701]                    ^
+[   29.083701]  ffff888001b91200: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+[   29.083701]  ffff888001b91280: 00 06 fc fc 00 03 fc fc 00 03 fc fc 00 03 fc fc
+[   29.083701] ==================================================================
+[   29.088315] Disabling lock debugging due to kernel taint
+
+VM DIAGNOSIS:
+13:25:00  Registers:
+info registers vcpu 0
+
+CPU#0
+RAX=00000012fa778fad RBX=ffff888066423c40 RCX=00000000000006e0 RDX=0000000000000012
+RSI=ffff888066423c40 RDI=000000000003b6d3 RBP=000000000003b6d3 RSP=ffff888003bff700
+R8 =0000000000000000 R9 =ffff8880069e4600 R10=00000000000003e8 R11=0000000000000229
+R12=1ffff1100077feeb R13=00000000000003e8 R14=0000000000000001 R15=ffff888066423c80
+RIP=ffffffff86498abf RFL=00000007 [-----PC] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00100
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00100
+FS =0000 00007f5ce71f66c0 ffffffff 00c00100
+GS =0000 ffff8880d9988000 ffffffff 00c00100
+LDT=0000 0000000000000000 ffffffff 00c00000
+TR =0040 fffffe12d9ebb000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe12d9eb9000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=00007f5ce86906c0 CR3=0000000003d46001 CR4=00170ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000ffff0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+YMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000001
+YMM01=0000000000000000 0000000000000000 0000555578af7bc4 0000555578af7bc0
+YMM02=0000000000000000 0000000000000000 d8037162b4f50055 7414d4cd876f5a7e
+YMM03=0000000000000000 0000000000000000 0039e80300080039 e003108080080039
+YMM04=0000000000000000 0000000000000000 0000000000000000 00007fe0e97e4d20
+YMM05=0000000000000000 0000000000000000 0178100039800403 a408000008000100
+YMM06=0000000000000000 0000000000000000 000808060a016aea 10080039f0030c08
+YMM07=0000000000000000 0000000000000000 0000000000000000 0000555578b3e528
+YMM08=0000000000000000 0000000000000000 d8037162b4f50055 7414d4cd876f5a7e
+YMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+info registers vcpu 1
+
+CPU#1
+RAX=0000000000000031 RBX=00000000000003f8 RCX=0000000000000000 RDX=00000000000003f8
+RSI=ffffc90001c95000 RDI=ffffffff8cb67468 RBP=ffffffff8cb67460 RSP=ffff8880039977e8
+R8 =0000000000000000 R9 =ffff888002e6d780 R10=0000000000000031 R11=666f206574697257
+R12=0000000000000031 R13=0000000000000031 R14=0000000000000010 R15=ffffffff87a22d70
+RIP=ffffffff87a22ddd RFL=00000002 [-------] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 00007f1d777966c0 ffffffff 00c00000
+GS =0000 ffff8880d9a88000 ffffffff 00c00000
+LDT=0000 0000000000000000 00000000 00000000
+TR =0040 fffffe45a25b6000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe45a25b4000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=00002000003f7000 CR3=00000000047cd005 CR4=00170ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000ffff0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+YMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM01=0000000000000000 0000000000000000 0072657469627261 5f6167762f766564
+YMM02=0000000000000000 0000000000000000 006574616572636b 636f732f72747461
+YMM03=0000000000000000 0000000000000000 2f666c65732d6461 657268742f636f72
+YMM04=0000000000000000 0000000000000000 00007f1d79b0d020 00007f1d78fa4460
+YMM05=0000000000000000 0000000000000000 00007f1d78fa4470 00007f1d78fa44b0
+YMM06=0000000000000000 0000000000000000 00007f1d78fa4498 00007f1d78fa4468
+YMM07=0000000000000000 0000000000000000 00007f1d78fa44a0 00007f1d78fa4480
+YMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000

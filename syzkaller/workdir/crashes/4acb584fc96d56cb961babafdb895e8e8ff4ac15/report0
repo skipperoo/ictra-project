@@ -1,0 +1,200 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+blk_print_req_error: 5776 callbacks suppressed
+I/O error, dev sr0, sector 1988400 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+rcu: 	1-....: (4119 ticks this GP) idle=c97c/1/0x4000000000000000 softirq=29260/29263 fqs=3861
+rcu: 	Tasks blocked on level-0 rcu_node (CPUs 0-1): P6029
+rcu: 	(detected by 0, t=21012 jiffies, g=38033, q=75296 ncpus=2)
+Sending NMI from CPU 0 to CPUs 1:
+NMI backtrace for cpu 1
+CPU: 1 UID: 0 PID: 6029 Comm: syz.2.855 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:virt_spin_lock arch/x86/include/asm/paravirt-spinlock.h:139 [inline]
+RIP: 0010:queued_spin_lock_slowpath+0x41a/0xb60 kernel/locking/qspinlock.c:141
+Code: 00 8b 03 3d 00 01 00 00 74 df 41 89 c7 44 89 7c 24 50 41 81 ff ff 00 00 00 0f 87 5b fd ff ff e9 99 fe ff ff 89 44 24 40 f3 90 <e9> 89 fc ff ff 65 8b 2d 0e bf 02 03 be 08 00 00 00 48 89 e8 48 c1
+RSP: 0018:ffff88806d108c90 EFLAGS: 00000002
+RAX: 0000000000000001 RBX: ffffffff92887680 RCX: ffffffff9166bdb5
+RDX: 0000000000000001 RSI: 0000000000000004 RDI: ffffffff92887680
+RBP: 0000000000000003 R08: 0000000000000000 R09: fffffbfff2510ed0
+R10: ffffffff92887683 R11: 0000000000000000 R12: 1ffff1100da21194
+R13: fffffbfff2510ed0 R14: 0000000000000001 R15: ffff88806d108cd0
+FS:  00007f84b34266c0(0000) GS:ffff8880d8a88000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f4f38c38400 CR3: 000000000ba0f002 CR4: 0000000000170ef0
+Call Trace:
+ <IRQ>
+ queued_spin_lock include/asm-generic/qspinlock.h:114 [inline]
+ do_raw_spin_lock include/linux/spinlock.h:187 [inline]
+ __raw_spin_lock_irqsave include/linux/spinlock_api_smp.h:133 [inline]
+ _raw_spin_lock_irqsave+0xd4/0xe0 kernel/locking/spinlock.c:166
+ rcu_report_qs_rdp+0x77/0x330 kernel/rcu/tree.c:2451
+ rcu_check_quiescent_state kernel/rcu/tree.c:2521 [inline]
+ rcu_core+0x1a4/0x1800 kernel/rcu/tree.c:2854
+ handle_softirqs+0x195/0x600 kernel/softirq.c:622
+ __do_softirq kernel/softirq.c:656 [inline]
+ invoke_softirq kernel/softirq.c:496 [inline]
+ __irq_exit_rcu+0x5c/0x130 kernel/softirq.c:735
+ instr_sysvec_apic_timer_interrupt arch/x86/kernel/apic/apic.c:1061 [inline]
+ sysvec_apic_timer_interrupt+0x7a/0xa0 arch/x86/kernel/apic/apic.c:1061
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20 arch/x86/include/asm/idtentry.h:697
+RIP: 0010:__sanitizer_cov_trace_pc+0x0/0x70 kernel/kcov.c:210
+Code: 8b 11 49 8b 34 24 b9 05 00 00 00 eb 82 66 66 2e 0f 1f 84 00 00 00 00 00 66 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 <f3> 0f 1e fa 65 8b 05 d5 a5 22 06 48 8b 0c 24 65 48 8b 15 b1 a5 22
+RSP: 0018:ffff88800695ece8 EFLAGS: 00000246
+RAX: 0000000000080000 RBX: 0000000000000000 RCX: ffffffff8e29a260
+RDX: 0000000000080000 RSI: ffffc90000883000 RDI: 0000000000000007
+RBP: 0000000000000052 R08: 0000000000000001 R09: ffff888005944600
+R10: 0000000000000200 R11: 0000000000000001 R12: 0000000000000000
+R13: 1ffff11000d2bda2 R14: 0000000000000200 R15: ffff88800ff10000
+ console_trylock_spinning kernel/printk/printk.c:2045 [inline]
+ vprintk_emit+0x596/0x630 kernel/printk/printk.c:2478
+ _printk+0xcf/0x110 kernel/printk/printk.c:2504
+ blk_print_req_error block/blk-mq.c:869 [inline]
+ blk_update_request+0xd29/0xe20 block/blk-mq.c:979
+ blk_mq_end_request block/blk-mq.c:1178 [inline]
+ blk_mq_dispatch_rq_list+0x4aa/0x1e30 block/blk-mq.c:2160
+ __blk_mq_do_dispatch_sched block/blk-mq-sched.c:168 [inline]
+ blk_mq_do_dispatch_sched block/blk-mq-sched.c:182 [inline]
+ __blk_mq_sched_dispatch_requests+0xcf1/0x1690 block/blk-mq-sched.c:307
+ blk_mq_sched_dispatch_requests+0xd7/0x1c0 block/blk-mq-sched.c:329
+ blk_mq_run_hw_queue+0x87b/0xb50 block/blk-mq.c:2386
+ blk_mq_dispatch_list+0x457/0x1170 block/blk-mq.c:2949
+ blk_mq_flush_plug_list+0x14c/0x640 block/blk-mq.c:2997
+ __blk_flush_plug+0x258/0x460 block/blk-core.c:1230
+ blk_finish_plug block/blk-core.c:1257 [inline]
+ __submit_bio+0x731/0xa60 block/blk-core.c:649
+ __submit_bio_noacct_mq block/blk-core.c:722 [inline]
+ submit_bio_noacct_nocheck+0x427/0xb80 block/blk-core.c:753
+ submit_bio_noacct+0x5ce/0x1060 block/blk-core.c:884
+ submit_bh fs/buffer.c:2742 [inline]
+ block_read_full_folio+0x1c8/0x760 fs/buffer.c:2344
+ filemap_read_folio+0x4a/0x1c0 mm/filemap.c:2502
+ filemap_fault+0x213a/0x2cb0 mm/filemap.c:3647
+ __do_fault+0x109/0x2d0 mm/memory.c:5474
+ do_read_fault mm/memory.c:5909 [inline]
+ do_fault mm/memory.c:6043 [inline]
+ do_pte_missing mm/memory.c:4566 [inline]
+ handle_pte_fault mm/memory.c:6427 [inline]
+ __handle_mm_fault+0x12de/0x2710 mm/memory.c:6565
+ handle_mm_fault+0x1d2/0x5c0 mm/memory.c:6734
+ faultin_page mm/gup.c:1126 [inline]
+ __get_user_pages+0x1000/0x26f0 mm/gup.c:1428
+ populate_vma_page_range+0x1aa/0x240 mm/gup.c:1860
+ __mm_populate+0x107/0x3a0 mm/gup.c:1963
+ mm_populate include/linux/mm.h:4137 [inline]
+ vm_mmap_pgoff+0x2de/0x380 mm/util.c:586
+ ksys_mmap_pgoff+0x445/0x570 mm/mmap.c:606
+ __do_sys_mmap arch/x86/kernel/sys_x86_64.c:89 [inline]
+ __se_sys_mmap arch/x86/kernel/sys_x86_64.c:82 [inline]
+ __x64_sys_mmap+0x125/0x190 arch/x86/kernel/sys_x86_64.c:82
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f84b49eacb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f84b3426028 EFLAGS: 00000246 ORIG_RAX: 0000000000000009
+RAX: ffffffffffffffda RBX: 00007f84b4c66090 RCX: 00007f84b49eacb9
+RDX: 0000000001000004 RSI: 0000000000002000 RDI: 0000200000ffb000
+RBP: 00007f84b4a58bf7 R08: 0000000000000007 R09: 000000003cae6000
+R10: 000000000000a012 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f84b4c66128 R14: 00007f84b4c66090 R15: 00007ffe712c7a78
+ </TASK>
+task:syz.2.855       state:R  running task     stack:24232 pid:6029  tgid:6024  ppid:4057   task_flags:0x20400140 flags:0x00080012
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5388 [inline]
+ __schedule+0xdfa/0x3d30 kernel/sched/core.c:7189
+ preempt_schedule_common kernel/sched/core.c:7370 [inline]
+ preempt_schedule+0x4c/0x80 kernel/sched/core.c:7394
+ preempt_schedule_thunk+0x16/0x30 arch/x86/entry/thunk.S:12
+ vprintk_emit+0x44e/0x630 kernel/printk/printk.c:2480
+ _printk+0xcf/0x110 kernel/printk/printk.c:2504
+ blk_print_req_error block/blk-mq.c:869 [inline]
+ blk_update_request+0xd29/0xe20 block/blk-mq.c:979
+ blk_mq_end_request block/blk-mq.c:1178 [inline]
+ blk_mq_dispatch_rq_list+0x4aa/0x1e30 block/blk-mq.c:2160
+ __blk_mq_do_dispatch_sched block/blk-mq-sched.c:168 [inline]
+ blk_mq_do_dispatch_sched block/blk-mq-sched.c:182 [inline]
+ __blk_mq_sched_dispatch_requests+0xcf1/0x1690 block/blk-mq-sched.c:307
+ blk_mq_sched_dispatch_requests+0xd7/0x1c0 block/blk-mq-sched.c:329
+ blk_mq_run_hw_queue+0x87b/0xb50 block/blk-mq.c:2386
+ blk_mq_dispatch_list+0x457/0x1170 block/blk-mq.c:2949
+ blk_mq_flush_plug_list+0x14c/0x640 block/blk-mq.c:2997
+ __blk_flush_plug+0x258/0x460 block/blk-core.c:1230
+ blk_finish_plug block/blk-core.c:1257 [inline]
+ __submit_bio+0x731/0xa60 block/blk-core.c:649
+ __submit_bio_noacct_mq block/blk-core.c:722 [inline]
+ submit_bio_noacct_nocheck+0x427/0xb80 block/blk-core.c:753
+ submit_bio_noacct+0x5ce/0x1060 block/blk-core.c:884
+ submit_bh fs/buffer.c:2742 [inline]
+ block_read_full_folio+0x1c8/0x760 fs/buffer.c:2344
+ filemap_read_folio+0x4a/0x1c0 mm/filemap.c:2502
+ filemap_fault+0x213a/0x2cb0 mm/filemap.c:3647
+ __do_fault+0x109/0x2d0 mm/memory.c:5474
+ do_read_fault mm/memory.c:5909 [inline]
+ do_fault mm/memory.c:6043 [inline]
+ do_pte_missing mm/memory.c:4566 [inline]
+ handle_pte_fault mm/memory.c:6427 [inline]
+ __handle_mm_fault+0x12de/0x2710 mm/memory.c:6565
+ handle_mm_fault+0x1d2/0x5c0 mm/memory.c:6734
+ faultin_page mm/gup.c:1126 [inline]
+ __get_user_pages+0x1000/0x26f0 mm/gup.c:1428
+ populate_vma_page_range+0x1aa/0x240 mm/gup.c:1860
+ __mm_populate+0x107/0x3a0 mm/gup.c:1963
+ mm_populate include/linux/mm.h:4137 [inline]
+ vm_mmap_pgoff+0x2de/0x380 mm/util.c:586
+ ksys_mmap_pgoff+0x445/0x570 mm/mmap.c:606
+ __do_sys_mmap arch/x86/kernel/sys_x86_64.c:89 [inline]
+ __se_sys_mmap arch/x86/kernel/sys_x86_64.c:82 [inline]
+ __x64_sys_mmap+0x125/0x190 arch/x86/kernel/sys_x86_64.c:82
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f84b49eacb9
+RSP: 002b:00007f84b3426028 EFLAGS: 00000246 ORIG_RAX: 0000000000000009
+RAX: ffffffffffffffda RBX: 00007f84b4c66090 RCX: 00007f84b49eacb9
+RDX: 0000000001000004 RSI: 0000000000002000 RDI: 0000200000ffb000
+RBP: 00007f84b4a58bf7 R08: 0000000000000007 R09: 000000003cae6000
+R10: 000000000000a012 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f84b4c66128 R14: 00007f84b4c66090 R15: 00007ffe712c7a78
+ </TASK>
+buffer_io_error: 5758 callbacks suppressed
+Buffer I/O error on dev sr0, logical block 1988400, async page read
+clocksource: Marking clocksource tsc unstable due to frequency skew
+clocksource: Watchdog               kvm-clock interval:            43714ns
+clocksource: Clocksource                  tsc interval:            43414ns
+tsc: Marking TSC unstable due to clocksource watchdog
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988401 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988401, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988402 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988402, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988403 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988403, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988404 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988404, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988405 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988405, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988406 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988406, async page read
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+I/O error, dev sr0, sector 1988407 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+Buffer I/O error on dev sr0, logical block 1988407, async page read
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

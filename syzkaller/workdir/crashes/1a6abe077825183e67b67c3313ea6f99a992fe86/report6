@@ -1,0 +1,75 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+random: crng reseeded on system resumption
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+rcu: 	(detected by 1, t=24755 jiffies, g=198041, q=95462 ncpus=2)
+rcu: All QSes seen, last rcu_preempt kthread activity 3756 (4294992299-4294988543), jiffies_till_next_fqs=3, root ->qsmask 0x0
+rcu: rcu_preempt kthread starved for 3756 jiffies! g198041 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=1
+rcu: 	Unless rcu_preempt kthread gets sufficient CPU time, OOM is now expected behavior.
+rcu: RCU grace-period kthread stack dump:
+task:rcu_preempt     state:R  running task     stack:29352 pid:15    tgid:15    ppid:2      task_flags:0x208040 flags:0x00080000
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5388 [inline]
+ __schedule+0xdfa/0x3d30 kernel/sched/core.c:7189
+ __schedule_loop kernel/sched/core.c:7268 [inline]
+ schedule+0x6f/0x2c0 kernel/sched/core.c:7283
+ schedule_timeout+0x11e/0x240 kernel/time/sleep_timeout.c:99
+ rcu_gp_fqs_loop+0x1d6/0xd80 kernel/rcu/tree.c:2095
+ rcu_gp_kthread+0x328/0x480 kernel/rcu/tree.c:2297
+ kthread+0x32e/0x400 kernel/kthread.c:436
+ ret_from_fork+0x3b4/0x7e0 arch/x86/kernel/process.c:158
+ ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:245
+ </TASK>
+rcu: Stack dump where RCU GP kthread last ran:
+CPU: 1 UID: 0 PID: 32107 Comm: modprobe Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:constant_test_bit arch/x86/include/asm/bitops.h:202 [inline]
+RIP: 0010:arch_test_bit arch/x86/include/asm/bitops.h:232 [inline]
+RIP: 0010:_test_bit include/asm-generic/bitops/instrumented-non-atomic.h:142 [inline]
+RIP: 0010:folio_test_workingset include/linux/page-flags.h:557 [inline]
+RIP: 0010:filemap_map_order0_folio mm/filemap.c:3848 [inline]
+RIP: 0010:filemap_map_pages+0x4e6/0x1650 mm/filemap.c:3932
+Code: 00 00 00 48 89 44 24 18 e9 43 01 00 00 e8 92 1c e7 ff be 08 00 00 00 4c 89 ff e8 c5 11 1f 00 4c 89 f8 48 c1 e8 03 80 3c 28 00 <0f> 85 ce 0e 00 00 49 8b 1f 31 ff 48 c1 eb 09 83 e3 01 89 de e8 d1
+RSP: 0000:ffff88803e9afb78 EFLAGS: 00000246
+RAX: 1ffffd40000e1f00 RBX: 0000000000000000 RCX: ffffffffad5fbdcb
+RDX: 0000000000000001 RSI: 0000000000000008 RDI: ffffea000070f800
+RBP: dffffc0000000000 R08: 0000000000000000 R09: fffff940000e1f00
+R10: ffffea000070f807 R11: 0000000000000000 R12: ffff88803e9afdf8
+R13: ffff88803e9afd98 R14: ffffea000070f820 R15: ffffea000070f800
+FS:  00007f22848e2780(0000) GS:ffff8880b9a88000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00005628865f1640 CR3: 000000003e9e9001 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ do_fault_around mm/memory.c:5867 [inline]
+ do_read_fault mm/memory.c:5900 [inline]
+ do_fault mm/memory.c:6043 [inline]
+ do_pte_missing mm/memory.c:4566 [inline]
+ handle_pte_fault mm/memory.c:6427 [inline]
+ __handle_mm_fault+0x1cbe/0x2710 mm/memory.c:6565
+ handle_mm_fault+0x1d2/0x5c0 mm/memory.c:6734
+ do_user_addr_fault+0x4fa/0xe90 arch/x86/mm/fault.c:1334
+ handle_page_fault arch/x86/mm/fault.c:1474 [inline]
+ exc_page_fault+0x66/0xb0 arch/x86/mm/fault.c:1527
+ asm_exc_page_fault+0x26/0x30 arch/x86/include/asm/idtentry.h:618
+RIP: 0033:0x5628865f1640
+Code: 66 90 ff 25 82 d9 0a 00 66 90 ff 25 8a d9 0a 00 66 90 ff 25 9a d9 0a 00 66 90 ff 25 b2 d9 0a 00 66 90 00 00 00 00 00 00 00 00 <31> ed 49 89 d1 5e 48 89 e2 48 83 e4 f0 50 54 45 31 c0 31 c9 48 8d
+RSP: 002b:00007ffc5eb74240 EFLAGS: 00010202
+RAX: 0000000000000038 RBX: 0000000000000000 RCX: 00007ffc5eb74270
+RDX: 00007f2284af2ae0 RSI: 00007f2284b248c8 RDI: 00007f2284b242f0
+RBP: 0000000000000000 R08: 00007f2284b21ef0 R09: 0000000000000002
+R10: 00007ffc5eb73e90 R11: 0000000000000202 R12: 00005628865f1640
+R13: 00007ffc5eb74240 R14: 0000000000000000 R15: 0000000000000000
+ </TASK>
+syz-executor (31115) used greatest stack depth: 24184 bytes left
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

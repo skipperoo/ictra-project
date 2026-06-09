@@ -1,0 +1,20 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+random: crng reseeded on system resumption
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+rcu: 	(detected by 1, t=21002 jiffies, g=327385, q=78631 ncpus=2)
+rcu: All QSes seen, last rcu_preempt kthread activity 1 (4295221718-4295221717), jiffies_till_next_fqs=3, root ->qsmask 0x0
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 07 95 cc 00 00 02 00
+blk_print_req_error: 6851 callbacks suppressed
+I/O error, dev sr0, sector 1988400 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 2
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

@@ -1,0 +1,48 @@
+random: crng reseeded on system resumption
+binfmt_misc: register: failed to install interpreter file ./file0
+random: crng reseeded on system resumption
+binfmt_misc: register: failed to install interpreter file ./file0
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+rcu: 	(detected by 0, t=23948 jiffies, g=52541, q=93829 ncpus=2)
+rcu: All QSes seen, last rcu_preempt kthread activity 2949 (4294772871-4294769922), jiffies_till_next_fqs=3, root ->qsmask 0x0
+rcu: rcu_preempt kthread starved for 2949 jiffies! g52541 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=0
+rcu: 	Unless rcu_preempt kthread gets sufficient CPU time, OOM is now expected behavior.
+rcu: RCU grace-period kthread stack dump:
+task:rcu_preempt     state:R  running task     stack:29416 pid:15    tgid:15    ppid:2      task_flags:0x208040 flags:0x00080000
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5388 [inline]
+ __schedule+0xdfa/0x3d30 kernel/sched/core.c:7189
+ __schedule_loop kernel/sched/core.c:7268 [inline]
+ schedule+0x6f/0x2c0 kernel/sched/core.c:7283
+ schedule_timeout+0x11e/0x240 kernel/time/sleep_timeout.c:99
+ rcu_gp_fqs_loop+0x1d6/0xd80 kernel/rcu/tree.c:2095
+ rcu_gp_kthread+0x328/0x480 kernel/rcu/tree.c:2297
+ kthread+0x32e/0x400 kernel/kthread.c:436
+ ret_from_fork+0x3b4/0x7e0 arch/x86/kernel/process.c:158
+ ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:245
+ </TASK>
+rcu: Stack dump where RCU GP kthread last ran:
+CPU: 0 UID: 0 PID: 8957 Comm: modprobe Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0033:0x7f59f2d932dd
+Code: 56 41 55 41 54 49 89 fc 55 48 89 d5 53 4c 89 c3 48 81 ec a8 00 00 00 48 89 34 24 48 89 4c 24 18 44 89 4c 24 08 41 0f b6 04 24 <85> c0 0f 84 fb 02 00 00 4c 89 e1 41 bf 05 15 00 00 66 90 0f b6 51
+RSP: 002b:00007fffaebf1010 EFLAGS: 00000202
+RAX: 000000000000005f RBX: 00007f59f2d7f270 RCX: 00007f59f2d7e8d0
+RDX: 00007fffaebf1198 RSI: 00007f59f2d7e530 RDI: 00007f59f2ba323c
+RBP: 00007fffaebf1198 R08: 00007f59f2d7f270 R09: 0000000000000000
+R10: 00007f59f2d7f270 R11: 00007f59f2d7e530 R12: 00007f59f2ba323c
+R13: 0000000000000006 R14: 0000000400000006 R15: 00007f59f2d7e530
+FS:  00007f59f2b7d780 GS:  0000000000000000
+clocksource: Marking clocksource tsc unstable due to frequency skew
+clocksource: Watchdog               kvm-clock interval:             5352ns
+clocksource: Clocksource                  tsc interval:             5025ns
+tsc: Marking TSC unstable due to clocksource watchdog
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

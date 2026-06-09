@@ -1,0 +1,67 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+rcu: INFO: rcu_preempt self-detected stall on CPU
+rcu: 	1-....: (4228 ticks this GP) idle=b604/1/0x4000000000000000 softirq=209909/209909 fqs=4086
+rcu: 	(t=21000 jiffies g=313781 q=96157 ncpus=2)
+CPU: 1 UID: 0 PID: 52 Comm: scsi_eh_1 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:console_flush_one_record+0x82c/0xa70 kernel/printk/printk.c:3270
+Code: 48 89 44 24 20 48 8d 68 01 4c 89 e8 48 c1 e8 03 42 80 3c 30 00 0f 85 1c 02 00 00 49 89 6f 58 eb 8f e8 a8 5a 1d 00 fb 4c 89 e8 <48> c1 e8 03 42 80 3c 30 00 0f 84 73 ff ff ff 4c 89 ef e8 5d 4a 55
+RSP: 0000:ffff888002bb74e8 EFLAGS: 00000293
+RAX: ffffffff96487038 RBX: 0000000000000001 RCX: ffffffff91a97fa8
+RDX: ffff888002394600 RSI: 0000000000000000 RDI: 0000000000000007
+RBP: 0000000000000200 R08: 0000000000000001 R09: ffff888002394600
+R10: 0000000000000200 R11: 303a303a31207273 R12: 0000000000009bd1
+R13: ffffffff96487038 R14: dffffc0000000000 R15: ffffffff96486fe0
+FS:  0000000000000000(0000) GS:ffff8880ce688000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000558415686b3e CR3: 000000007068a006 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ console_flush_all kernel/printk/printk.c:3343 [inline]
+ __console_flush_and_unlock kernel/printk/printk.c:3373 [inline]
+ console_unlock+0x123/0x2e0 kernel/printk/printk.c:3413
+ vprintk_emit+0x421/0x630 kernel/printk/printk.c:2479
+ dev_vprintk_emit+0x2fa/0x340 drivers/base/core.c:4930
+ dev_printk_emit+0xd2/0x10d drivers/base/core.c:4941
+ __dev_printk+0xcb/0x100 drivers/base/core.c:4953
+ _dev_printk+0xe8/0x130 drivers/base/core.c:4970
+ scsi_print_result.cold+0x34/0x42 drivers/scsi/scsi_logging.c:435
+ scsi_io_completion_action drivers/scsi/scsi_lib.c:947 [inline]
+ scsi_io_completion+0xcc9/0x12d0 drivers/scsi/scsi_lib.c:1108
+ scsi_eh_flush_done_q+0x326/0x490 drivers/scsi/scsi_error.c:2283
+ ata_scsi_port_error_handler+0x1380/0x1a30 drivers/ata/libata-eh.c:811
+ ata_scsi_error+0x236/0x3a0 drivers/ata/libata-eh.c:579
+ scsi_error_handler+0x259/0xe70 drivers/scsi/scsi_error.c:2395
+ kthread+0x32e/0x400 kernel/kthread.c:436
+ ret_from_fork+0x3b4/0x7e0 arch/x86/kernel/process.c:158
+ ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:245
+ </TASK>
+rcu: INFO: rcu_preempt detected expedited stalls on CPUs/tasks: {
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+ } 21062 jiffies s: 31745 root: 0x0/.
+rcu: INFO: Expedited stall ended before state dump start
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 07 95 cc 00 00 04 00
+blk_print_req_error: 1510 callbacks suppressed
+I/O error, dev sr0, sector 1988400 op 0x0:(READ) flags 0x80700 phys_seg 2 prio class 2
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+ } 21062 jiffies s: 31745 root: 0x0/.
+rcu: INFO: Expedited stall ended before state dump start
+sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 07 95 cc 00 00 04 00
+blk_print_req_error: 1510 callbacks suppressed
+I/O error, dev sr0, sector 1988400 op 0x0:(READ) flags 0x80700 phys_seg 2 prio class 2
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

@@ -1,0 +1,85 @@
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+binfmt_misc: register: failed to install interpreter file ./file0
+rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+rcu: 	(detected by 1, t=24065 jiffies, g=506465, q=86425 ncpus=2)
+rcu: All QSes seen, last rcu_preempt kthread activity 3064 (4295423530-4295420466), jiffies_till_next_fqs=3, root ->qsmask 0x0
+rcu: rcu_preempt kthread starved for 3064 jiffies! g506465 f0x2 RCU_GP_WAIT_FQS(5) ->state=0x0 ->cpu=1
+rcu: 	Unless rcu_preempt kthread gets sufficient CPU time, OOM is now expected behavior.
+rcu: RCU grace-period kthread stack dump:
+task:rcu_preempt     state:R  running task     stack:29320 pid:15    tgid:15    ppid:2      task_flags:0x208040 flags:0x00080000
+Call Trace:
+ <TASK>
+ context_switch kernel/sched/core.c:5388 [inline]
+ __schedule+0xdfa/0x3d30 kernel/sched/core.c:7189
+ __schedule_loop kernel/sched/core.c:7268 [inline]
+ schedule+0x6f/0x2c0 kernel/sched/core.c:7283
+ schedule_timeout+0x11e/0x240 kernel/time/sleep_timeout.c:99
+ rcu_gp_fqs_loop+0x1d6/0xd80 kernel/rcu/tree.c:2095
+ rcu_gp_kthread+0x328/0x480 kernel/rcu/tree.c:2297
+ kthread+0x32e/0x400 kernel/kthread.c:436
+ ret_from_fork+0x3b4/0x7e0 arch/x86/kernel/process.c:158
+ ret_from_fork_asm+0x1a/0x30 arch/x86/entry/entry_64.S:245
+ </TASK>
+rcu: Stack dump where RCU GP kthread last ran:
+CPU: 1 UID: 0 PID: 17054 Comm: modprobe Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #7 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:__sanitizer_cov_trace_pc+0x0/0x70 kernel/kcov.c:210
+Code: 8b 11 49 8b 34 24 b9 05 00 00 00 eb 82 66 66 2e 0f 1f 84 00 00 00 00 00 66 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 90 <f3> 0f 1e fa 65 8b 05 d5 a5 22 06 48 8b 0c 24 65 48 8b 15 b1 a5 22
+RSP: 0018:ffff888034707790 EFLAGS: 00000292
+RAX: 0000000000000000 RBX: ffffea0000665fc0 RCX: ffff888034737a00
+RDX: 0000000000000001 RSI: ffffea0000665fc0 RDI: ffffea0000665fc0
+RBP: 0000000000000001 R08: 0000000000000000 R09: ffff88803af79180
+R10: 0000000000000000 R11: 0000000000000000 R12: ffffea0000665fc0
+R13: ffff888034707cd8 R14: ffff888034737a00 R15: dffffc0000000000
+FS:  0000000000000000(0000) GS:ffff8880d7888000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 000055dbd0189750 CR3: 000000000db7f003 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ const_folio_flags include/linux/page-flags.h:347 [inline]
+ folio_test_head include/linux/page-flags.h:843 [inline]
+ folio_test_large include/linux/page-flags.h:864 [inline]
+ __folio_remove_rmap mm/rmap.c:1788 [inline]
+ folio_remove_rmap_ptes+0x22/0x2e0 mm/rmap.c:1900
+ zap_present_folio_ptes mm/memory.c:1672 [inline]
+ zap_present_ptes mm/memory.c:1730 [inline]
+ do_zap_pte_range mm/memory.c:1832 [inline]
+ zap_pte_range mm/memory.c:1934 [inline]
+ zap_pmd_range mm/memory.c:2020 [inline]
+ zap_pud_range mm/memory.c:2048 [inline]
+ zap_p4d_range mm/memory.c:2069 [inline]
+ __zap_vma_range+0x1664/0x3d70 mm/memory.c:2109
+ unmap_vmas+0x24c/0x580 mm/memory.c:2178
+ exit_mmap+0x1f3/0x7f0 mm/mmap.c:1300
+ __mmput kernel/fork.c:1178 [inline]
+ mmput+0x71/0x320 kernel/fork.c:1201
+ exit_mm kernel/exit.c:582 [inline]
+ do_exit+0x879/0x26c0 kernel/exit.c:964
+ do_group_exit+0xc9/0x270 kernel/exit.c:1119
+ __do_sys_exit_group kernel/exit.c:1130 [inline]
+ __se_sys_exit_group kernel/exit.c:1128 [inline]
+ __x64_sys_exit_group+0x3e/0x50 kernel/exit.c:1128
+ x64_sys_call+0x1541/0x1550 arch/x86/include/generated/asm/syscalls_64.h:232
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f5bd3fd6b75
+Code: Unable to access opcode bytes at 0x7f5bd3fd6b4b.
+RSP: 002b:00007ffda3bbb988 EFLAGS: 00000206 ORIG_RAX: 00000000000000e7
+RAX: ffffffffffffffda RBX: 00007f5bd40dbfc8 RCX: 00007f5bd3fd6b75
+RDX: 00000000000000e7 RSI: ffffffffffffffa0 RDI: 0000000000000001
+RBP: 0000000000000001 R08: 0000000000000000 R09: 0000000000000000
+R10: 00007ffda3bbb810 R11: 0000000000000206 R12: 00007f5bd40da680
+R13: 00007f5bd410aae0 R14: 0000000000000001 R15: 00007f5bd40dbfe0
+ </TASK>
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
