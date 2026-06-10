@@ -6,10 +6,9 @@ The project consists in fuzzing a custom Linux kernel with intentionally vulnera
 
 | File                    | Notes                                                                                                                                               |
 | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `01_patch_kernel.sh`    | Adds 3 vulnerable syscalls (`ictra_uaf`, `ictra_heap_oob`, `ictra_static_oob`) to the kernel source                                                 |
-| `02_build_kernel.sh`    | Configures and compiles the kernel with KASAN, KCOV, and debug symbols                                                                              |
-| `03_build_syzkaller.sh` | Writes syzlang descriptions for the custom syscalls and builds Syzkaller                                                                            |
-| `04_start_fuzzing.sh`   | Generates `syzkaller/manager.cfg` and launches `syz-manager` against a QEMU VM                                                                      |
+| `01_build_kernel.sh`    | Configures and compiles the kernel with KASAN, KCOV, and debug symbols                                                                              |
+| `02_build_syzkaller.sh` | Writes syzlang descriptions for the custom syscalls and builds Syzkaller                                                                            |
+| `03_start_fuzzing.sh`   | Generates `syzkaller/manager.cfg` and launches `syz-manager` against a QEMU VM                                                                      |
 | `patch_buildroot.sh`    | Injects SSH keys, host keys, and inittab into a buildroot image                                                                                     |
 | `run_repro.sh`          | Lists and runs generated crash reproducers inside a VM                                                                                              |
 | `patches/fs.patch`      | Adds a UAF in `vfs_write` triggered by `count == 4919`                                                                                              |
