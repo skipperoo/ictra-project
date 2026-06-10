@@ -1,0 +1,66 @@
+# DEVICE PATH: /proc/dvkm  (proc_create())
+# IOCTL MACRO: #define IOCTL(NUM) _IOWR('D', NUM, struct dvkm_obj)
+#
+# ACTIVE IOCTLS (from switch in dvkm_ioctl):
+#   0x0 INTEGER_OVERFLOW      0xC0184400
+#   0x1 INTEGER_UNDERFLOW     0xC0184401
+#   0x2 STACK_BUFFER_OVERFLOW 0xC0184402
+#   0x3 HEAP_BUFFER_OVERFLOW  0xC0184403
+#   0x5 STACK_OOBR            0xC0184405
+#   0x6 STACK_OOBW            0xC0184406
+#   0x7 HEAP_OOBR             0xC0184407
+#   0x8 HEAP_OOBW             0xC0184408
+#   0xA USE_AFTER_FREE        0xC018440A
+#   0xB DOUBLE_FREE           0xC018440B
+#
+# Open /proc/dvkm - proc_create("dvkm", 0666, ...)
+resource fd_dvkm[fd]
+
+openat$dvkm(fd const[AT_FDCWD], file ptr[in, string["/proc/dvkm"]], flags const[O_RDWR], mode const[0]) fd_dvkm
+
+dvkm_obj {
+    width    int32
+    height   int32
+    datasize bytesize[data, int32]
+    pad      const[0, int32]
+    data     ptr[in, array[int8]]
+}
+
+dvkm_obj_intops {
+    width    int32[1:0x7fffffff]
+    height   int32[1:0x7fffffff]
+    datasize bytesize[data, int32]
+    pad      const[0, int32]
+    data     ptr[in, array[int8]]
+}
+
+
+# 0xC0184400 — INTEGER OVERFLOW
+ioctl$DVKM_INTEGER_OVERFLOW(fd fd_dvkm, cmd const[0xC0184400], arg ptr[in, dvkm_obj_intops])
+
+# 0xC0184401 — INTEGER UNDERFLOW
+ioctl$DVKM_INTEGER_UNDERFLOW(fd fd_dvkm, cmd const[0xC0184401], arg ptr[in, dvkm_obj_intops])
+
+# 0xC0184402 — STACK BUFFER OVERFLOW
+ioctl$DVKM_STACK_BUFFER_OVERFLOW(fd fd_dvkm, cmd const[0xC0184402], arg ptr[in, dvkm_obj])
+
+# 0xC0184403 — HEAP BUFFER OVERFLOW
+ioctl$DVKM_HEAP_BUFFER_OVERFLOW(fd fd_dvkm, cmd const[0xC0184403], arg ptr[in, dvkm_obj])
+
+# 0xC0184405 — STACK OUT-OF-BOUNDS READ
+ioctl$DVKM_STACK_OOBR(fd fd_dvkm, cmd const[0xC0184405], arg ptr[in, dvkm_obj])
+
+# 0xC0184406 — STACK OUT-OF-BOUNDS WRITE
+ioctl$DVKM_STACK_OOBW(fd fd_dvkm, cmd const[0xC0184406], arg ptr[in, dvkm_obj])
+
+# 0xC0184407 — HEAP OUT-OF-BOUNDS READ
+ioctl$DVKM_HEAP_OOBR(fd fd_dvkm, cmd const[0xC0184407], arg ptr[in, dvkm_obj])
+
+# 0xC0184408 — HEAP OUT-OF-BOUNDS WRITE
+ioctl$DVKM_HEAP_OOBW(fd fd_dvkm, cmd const[0xC0184408], arg ptr[in, dvkm_obj])
+
+# 0xC018440A — USE-AFTER-FREE
+ioctl$DVKM_USE_AFTER_FREE(fd fd_dvkm, cmd const[0xC018440A], arg ptr[in, dvkm_obj])
+
+# 0xC018440B — DOUBLE FREE
+ioctl$DVKM_DOUBLE_FREE(fd fd_dvkm, cmd const[0xC018440B], arg ptr[in, dvkm_obj])

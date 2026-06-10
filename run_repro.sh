@@ -16,8 +16,11 @@ for i in "${!REPROS[@]}"; do
   dir=$(dirname "${REPROS[$i]}")
   tag=$(basename "$dir")
   report="$dir/repro.report"
-  if [ -f "$report" ]; then
-    desc=$(grep -m1 'BUG: KASAN\|BUG: ' "$report" 2>/dev/null || head -1 "$report")
+  desc_file="$dir/description"
+  if [ -f "$desc_file" ]; then
+    desc=$(head -1 "$desc_file")
+  elif [ -f "$report" ]; then
+    desc=$(grep -m1 'BUG: KASAN\|BUG: ' "$report" 2>/dev/null || head -2 "$report")
   else
     desc="(no report)"
   fi
@@ -45,7 +48,7 @@ gcc -static -O0 -g -o "$OUT_BIN" "$TMP_C" -lpthread -ldl
 echo "Compiled: $OUT_BIN"
 
 echo "Copying reproducer into VM image..."
-IMAGE=${PROJECT_DIR}/image/buildroot/output/images/rootfs_repro.ext2
+IMAGE=${PROJECT_DIR}/image/buildroot/output/images/rootfs_repro.ext4
 if [[ -n "${USE_DEBIAN}" ]]; then
   IMAGE=${PROJECT_DIR}/image/trixie.img
 fi

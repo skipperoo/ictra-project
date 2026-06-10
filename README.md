@@ -4,17 +4,21 @@ The project consists in fuzzing a custom Linux kernel with intentionally vulnera
 
 ## Project Structure
 
-| File                    | Notes                                                                                               |
-| ----------------------- | --------------------------------------------------------------------------------------------------- |
-| `01_patch_kernel.sh`    | Adds 3 vulnerable syscalls (`ictra_uaf`, `ictra_heap_oob`, `ictra_static_oob`) to the kernel source |
-| `02_build_kernel.sh`    | Configures and compiles the kernel with KASAN, KCOV, and debug symbols                              |
-| `03_build_syzkaller.sh` | Writes syzlang descriptions for the custom syscalls and builds Syzkaller                            |
-| `04_start_fuzzing.sh`   | Generates `syzkaller/manager.cfg` and launches `syz-manager` against a QEMU VM                      |
-| `patch_buildroot.sh`    | Injects SSH keys, host keys, and inittab into a buildroot image                                     |
-| `run_repro.sh`          | Lists and runs generated crash reproducers inside a VM                                              |
-| `patches/fs.patch`      | Adds a UAF in `vfs_write` triggered by `count == 4919`                                              |
-| `patches/net.patch`     | Adds an OOB write in `do_ip_setsockopt` via `IP_OPTIONS`                                            |
-| `patches/project.patch` | The complete patch ready to be applied to the Linux kernel containing all the changes               |
+| File                    | Notes                                                                                                                                               |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `01_patch_kernel.sh`    | Adds 3 vulnerable syscalls (`ictra_uaf`, `ictra_heap_oob`, `ictra_static_oob`) to the kernel source                                                 |
+| `02_build_kernel.sh`    | Configures and compiles the kernel with KASAN, KCOV, and debug symbols                                                                              |
+| `03_build_syzkaller.sh` | Writes syzlang descriptions for the custom syscalls and builds Syzkaller                                                                            |
+| `04_start_fuzzing.sh`   | Generates `syzkaller/manager.cfg` and launches `syz-manager` against a QEMU VM                                                                      |
+| `patch_buildroot.sh`    | Injects SSH keys, host keys, and inittab into a buildroot image                                                                                     |
+| `run_repro.sh`          | Lists and runs generated crash reproducers inside a VM                                                                                              |
+| `patches/fs.patch`      | Adds a UAF in `vfs_write` triggered by `count == 4919`                                                                                              |
+| `patches/net.patch`     | Adds an OOB write in `do_ip_setsockopt` via `IP_OPTIONS`                                                                                            |
+| `patches/project.patch` | The complete patch ready to be applied to the Linux kernel containing all the changes included the update `lib/Makefile` to build the `dvkm` module |
+| `linux`                 | The files changed from the original source                                                                                                          |
+| `image/buildroot`       | The buildroot config                                                                                                                                |
+| `syzkaller/workdir`     | All the crashes and reproduction files to execute the `run_repro.sh` script                                                                         |
+| `dvkm.txt`              | Syzkaller description file to enable the fuzzing for the `dvkm` module                                                                              |
 
 ## Setup
 

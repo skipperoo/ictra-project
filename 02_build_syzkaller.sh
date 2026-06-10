@@ -28,6 +28,9 @@ cat >syzkaller/sys/linux/ictra_static_oob_amd64.const <<'CONST'
 __NR_ictra_static_oob = 474
 CONST
 
+cat dvkm.txt >syzkaller/sys/linux/dvkm.txt
+
 cd syzkaller
+CI=1 ./tools/syz-env make generate
 CI=1 ./tools/syz-env make -j$(nproc)
 cd ..

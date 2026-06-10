@@ -30,7 +30,18 @@ cat <<EOF >syzkaller/manager.cfg
         "pread64",
         "pwrite64",
         "socket",
-        "setsockopt"
+        "setsockopt",
+        "openat\$dvkm",
+        "ioctl\$DVKM_INTEGER_OVERFLOW",
+        "ioctl\$DVKM_INTEGER_UNDERFLOW",
+        "ioctl\$DVKM_STACK_BUFFER_OVERFLOW",
+        "ioctl\$DVKM_HEAP_BUFFER_OVERFLOW",
+        "ioctl\$DVKM_STACK_OOBR",
+        "ioctl\$DVKM_STACK_OOBW",
+        "ioctl\$DVKM_HEAP_OOBR",
+        "ioctl\$DVKM_HEAP_OOBW",
+        "ioctl\$DVKM_USE_AFTER_FREE",
+        "ioctl\$DVKM_DOUBLE_FREE"
     ],
     "vm": {
         "count": ${VM_COUNT:-8},

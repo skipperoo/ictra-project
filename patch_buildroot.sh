@@ -49,6 +49,7 @@ debugfs -w -R "rm /etc/inittab" "$IMAGE" 2>/dev/null || true
 debugfs -w -R "write $INITTAB /etc/inittab" "$IMAGE"
 rm -f "$INITTAB"
 
+# Inject SSH public key for root
 SSH_DIR=$(mktemp -d)
 mkdir -p "$SSH_DIR/.ssh"
 cp "$SSH_PUBKEY" "$SSH_DIR/.ssh/authorized_keys"
@@ -73,6 +74,7 @@ debugfs -R "cat /root/.ssh/authorized_keys" "$IMAGE" 2>/dev/null | grep -E "ssh-
   exit 1
 }
 
+# Generate SSH host keys and configure sshd
 HOST_KEY_DIR=$(mktemp -d)
 ssh-keygen -t rsa -f "${HOST_KEY_DIR}/ssh_host_rsa_key" -N "" -q
 ssh-keygen -t ecdsa -f "${HOST_KEY_DIR}/ssh_host_ecdsa_key" -N "" -q
@@ -89,6 +91,7 @@ debugfs -w -R "set_inode_field /etc/ssh/ssh_host_ecdsa_key mode 0100600" "$IMAGE
 debugfs -w -R "set_inode_field /etc/ssh/ssh_host_ed25519_key mode 0100600" "$IMAGE" 2>/dev/null || true
 rm -rf "$HOST_KEY_DIR"
 
+# Override sshd_config with syzkaller-compatible config
 SSHD_CONFIG=$(mktemp)
 cat >"$SSHD_CONFIG" <<'SSHD'
 PermitRootLogin yes

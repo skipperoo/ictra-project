@@ -99,6 +99,20 @@ index 62e842055..7432ae3ae 100644
 +	return 0;
 +}
 +
+diff --git a/lib/Makefile b/lib/Makefile
+index f33a24bf1..51d2c704f 100644
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -50,6 +50,9 @@ lib-$(CONFIG_MIN_HEAP) += min_heap.o
+ lib-y	+= kobject.o klist.o
+ obj-y	+= lockref.o
+ 
++# DVKM
++obj-y	+= dvkm.o
++
+ CONTEXT_ANALYSIS_rhashtable.o := y
+ 
+ obj-y += bcd.o sort.o parser.o debug_locks.o random32.o \
 diff --git a/net/ipv4/ip_sockglue.c b/net/ipv4/ip_sockglue.c
 index a55ef327e..ccf657eb9 100644
 --- a/net/ipv4/ip_sockglue.c
