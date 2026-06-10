@@ -22,6 +22,9 @@ The project consists in fuzzing a custom Linux kernel with intentionally vulnera
 
 ## Setup
 
+> [!NOTE]
+> You can clone the project, then move to a new directory and copy the overlay changes contained in `image`, `linux` and `syzkaller`, or you can simply apply the patches and execute the scripts.
+
 1. Clone repositories
 
 ```bash
@@ -42,6 +45,7 @@ cp -r /path/to/ictra_project/syzkaller/sys/linux/ictra_*.const syzkaller/sys/lin
 
 ```bash
 cd linux
+wget https://raw.githubusercontent.com/hardik05/Damn_Vulnerable_Kernel_Module/refs/heads/main/dvkm.c -O lib/dvkm.c
 git apply ../patches/project.patch
 cd ..
 ```
@@ -51,9 +55,9 @@ cd ..
 Run the 3 steps in order:
 
 ```bash
-./01_patch_kernel.sh    # inject vulnerable syscalls into kernel source
-./02_build_kernel.sh    # compile kernel with KASAN + KCOV
-./03_build_syzkaller.sh # build syzkaller with custom syscall descriptions
+./01_build_kernel.sh
+./02_build_syzkaller.sh
+./03_start_fuzzing.sh
 ```
 
 To use a Debian image:
@@ -79,7 +83,7 @@ make -j $(nproc)
 At this point you can start the fuzzer:
 
 ```bash
-./04_start_fuzzing.sh
+./03_start_fuzzing.sh
 ```
 
 Set `USE_DEBIAN=1` in the script to use the Debian image instead of buildroot.
