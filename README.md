@@ -38,8 +38,7 @@ cp -r /path/to/ictra_project/syzkaller/sys/linux/ictra_*.const syzkaller/sys/lin
 
 ```bash
 cd linux
-git apply ../patches/fs.patch
-git apply ../patches/net.patch
+git apply ../patches/project.patch
 cd ..
 ```
 
