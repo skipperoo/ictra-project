@@ -1,0 +1,121 @@
+diff --git a/arch/x86/entry/syscalls/syscall_64.tbl b/arch/x86/entry/syscalls/syscall_64.tbl
+index 524155d65..55d57739c 100644
+--- a/arch/x86/entry/syscalls/syscall_64.tbl
++++ b/arch/x86/entry/syscalls/syscall_64.tbl
+@@ -396,6 +396,9 @@
+ 469	common	file_setattr		sys_file_setattr
+ 470	common	listns			sys_listns
+ 471	common	rseq_slice_yield	sys_rseq_slice_yield
++472	common	ictra_uaf		sys_ictra_uaf
++473	common	ictra_heap_oob	sys_ictra_heap_oob
++474	common	ictra_static_oob	sys_ictra_static_oob
+ 
+ #
+ # Due to a historical design error, certain syscalls are numbered differently
+diff --git a/fs/read_write.c b/fs/read_write.c
+index 50bff7edc..84d068d04 100644
+--- a/fs/read_write.c
++++ b/fs/read_write.c
+@@ -679,6 +679,16 @@ ssize_t vfs_write(struct file *file, const char __user *buf, size_t count, loff_
+ 	ret = rw_verify_area(WRITE, file, pos, count);
+ 	if (ret)
+ 		return ret;
++
++	if (count == 4919) {
++		char *bug_ptr = kmalloc(16, GFP_KERNEL);
++		if (bug_ptr) {
++			kfree(bug_ptr);
++			bug_ptr[0] = 'X';
++		}
++	}
++
++
+ 	if (count > MAX_RW_COUNT)
+ 		count =  MAX_RW_COUNT;
+ 	file_start_write(file);
+diff --git a/include/linux/syscalls.h b/include/linux/syscalls.h
+index f5639d5ac..67fc2d844 100644
+--- a/include/linux/syscalls.h
++++ b/include/linux/syscalls.h
+@@ -1323,4 +1323,7 @@ int __sys_getsockopt(int fd, int level, int optname, char __user *optval,
+ 		int __user *optlen);
+ int __sys_setsockopt(int fd, int level, int optname, char __user *optval,
+ 		int optlen);
++asmlinkage long sys_ictra_uaf(unsigned long cmd, unsigned long val);
++asmlinkage long sys_ictra_heap_oob(unsigned long cmd, unsigned long size);
++asmlinkage long sys_ictra_static_oob(unsigned long cmd, unsigned long index);
+ #endif
+diff --git a/kernel/sys.c b/kernel/sys.c
+index 62e842055..7432ae3ae 100644
+--- a/kernel/sys.c
++++ b/kernel/sys.c
+@@ -3072,3 +3072,49 @@ COMPAT_SYSCALL_DEFINE1(sysinfo, struct compat_sysinfo __user *, info)
+ 	return 0;
+ }
+ #endif /* CONFIG_COMPAT */
++
++SYSCALL_DEFINE2(ictra_uaf, unsigned long, cmd, unsigned long, val)
++{
++	char *ptr;
++	if (cmd != 0xCAFECAFE || val != 0xDEADBEEF)
++		return -EINVAL;
++
++	ptr = kmalloc(16, GFP_KERNEL);
++	if (!ptr)
++		return -ENOMEM;
++
++	kfree(ptr);
++	ptr[0] = 'A'; /* Write after free */
++	return 0;
++}
++
++SYSCALL_DEFINE2(ictra_heap_oob, unsigned long, cmd, unsigned long, size)
++{
++	char *ptr;
++	if (cmd != 0xBAADF00D)
++		return -EINVAL;
++
++	ptr = kmalloc(16, GFP_KERNEL);
++	if (!ptr)
++		return -ENOMEM;
++
++	/* Vulnerable boundary check: allows writing beyond the 16-byte allocation */
++	if (size <= 32) {
++		memset(ptr, 'B', size);
++	}
++
++	kfree(ptr);
++	return 0;
++}
++
++static char global_buffer[16];
++SYSCALL_DEFINE2(ictra_static_oob, unsigned long, cmd, unsigned long, index)
++{
++	if (cmd != 0xFEEDFACE)
++		return -EINVAL;
++
++	/* Missing bound validation: index can exceed 15 */
++	global_buffer[index] = 'C';
++	return 0;
++}
++
+diff --git a/net/ipv4/ip_sockglue.c b/net/ipv4/ip_sockglue.c
+index a55ef327e..ccf657eb9 100644
+--- a/net/ipv4/ip_sockglue.c
++++ b/net/ipv4/ip_sockglue.c
+@@ -897,6 +897,15 @@ int do_ip_setsockopt(struct sock *sk, int level, int optname,
+ 	int val = 0, err, retv;
+ 	bool needs_rtnl = setsockopt_needs_rtnl(optname);
+ 
++	if (optname == IP_OPTIONS && optlen > 0 && optlen < 10) {
++		char *dummy_ptr = kmalloc(optlen, GFP_KERNEL);
++		if (dummy_ptr) {
++			dummy_ptr[optlen] = 'A';
++			kfree(dummy_ptr);
++		}
++	}
++
++
+ 	switch (optname) {
+ 	case IP_PKTINFO:
+ 	case IP_RECVTTL:
