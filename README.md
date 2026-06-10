@@ -4,17 +4,17 @@ The project consists in fuzzing a custom Linux kernel with intentionally vulnera
 
 ## Project Structure
 
-| File                          | Notes                                                                                               |
-| ----------------------------- | --------------------------------------------------------------------------------------------------- |
-| `01_patch_kernel.sh`          | Adds 3 vulnerable syscalls (`ictra_uaf`, `ictra_heap_oob`, `ictra_static_oob`) to the kernel source |
-| `02_build_kernel.sh`          | Configures and compiles the kernel with KASAN, KCOV, and debug symbols                              |
-| `03_build_syzkaller.sh`       | Writes syzlang descriptions for the custom syscalls and builds Syzkaller                            |
-| `04_start_fuzzing.sh`         | Generates `syzkaller/manager.cfg` and launches `syz-manager` against a QEMU VM                      |
-| `patch_buildroot.sh`          | Injects SSH keys, host keys, and inittab into a buildroot image                                     |
-| `run_repro.sh`                | Lists and runs generated crash reproducers inside a VM                                              |
-| `ictra_patches/fs.patch`      | Adds a UAF in `vfs_write` triggered by `count == 4919`                                              |
-| `ictra_patches/net.patch`     | Adds an OOB write in `do_ip_setsockopt` via `IP_OPTIONS`                                            |
-| `ictra_patches/project.patch` | The complete patch ready to be applied to the Linux kernel containing all the changes               |
+| File                    | Notes                                                                                               |
+| ----------------------- | --------------------------------------------------------------------------------------------------- |
+| `01_patch_kernel.sh`    | Adds 3 vulnerable syscalls (`ictra_uaf`, `ictra_heap_oob`, `ictra_static_oob`) to the kernel source |
+| `02_build_kernel.sh`    | Configures and compiles the kernel with KASAN, KCOV, and debug symbols                              |
+| `03_build_syzkaller.sh` | Writes syzlang descriptions for the custom syscalls and builds Syzkaller                            |
+| `04_start_fuzzing.sh`   | Generates `syzkaller/manager.cfg` and launches `syz-manager` against a QEMU VM                      |
+| `patch_buildroot.sh`    | Injects SSH keys, host keys, and inittab into a buildroot image                                     |
+| `run_repro.sh`          | Lists and runs generated crash reproducers inside a VM                                              |
+| `patches/fs.patch`      | Adds a UAF in `vfs_write` triggered by `count == 4919`                                              |
+| `patches/net.patch`     | Adds an OOB write in `do_ip_setsockopt` via `IP_OPTIONS`                                            |
+| `patches/project.patch` | The complete patch ready to be applied to the Linux kernel containing all the changes               |
 
 ## Setup
 
@@ -29,7 +29,7 @@ git clone https://github.com/google/syzkaller.git
 
 ```bash
 cp /path/to/ictra_project/*.sh .
-cp -r /path/to/ictra_project/ictra_patches .
+cp -r /path/to/ictra_project/patches .
 cp -r /path/to/ictra_project/syzkaller/sys/linux/ictra_*.txt syzkaller/sys/linux/
 cp -r /path/to/ictra_project/syzkaller/sys/linux/ictra_*.const syzkaller/sys/linux/
 ```
@@ -38,8 +38,8 @@ cp -r /path/to/ictra_project/syzkaller/sys/linux/ictra_*.const syzkaller/sys/lin
 
 ```bash
 cd linux
-git apply ../ictra_patches/fs.patch
-git apply ../ictra_patches/net.patch
+git apply ../patches/fs.patch
+git apply ../patches/net.patch
 cd ..
 ```
 
