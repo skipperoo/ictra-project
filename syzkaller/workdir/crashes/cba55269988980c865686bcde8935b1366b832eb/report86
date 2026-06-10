@@ -1,0 +1,96 @@
+****Triggering use after free****
+(efault): [+] datasize: 227
+(efault): [+] datasize: 203
+(efault): [+] datasize: 16
+==================================================================
+BUG: KASAN: slab-out-of-bounds in string_nocheck lib/vsprintf.c:655 [inline]
+BUG: KASAN: slab-out-of-bounds in string+0x471/0x4d0 lib/vsprintf.c:737
+Read of size 1 at addr ffff8880019996b0 by task syz.3.4/1937
+
+CPU: 1 UID: 0 PID: 1937 Comm: syz.3.4 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ string_nocheck lib/vsprintf.c:655 [inline]
+ string+0x471/0x4d0 lib/vsprintf.c:737
+ vsnprintf+0x425/0x1270 lib/vsprintf.c:2948
+ vprintk_store+0x3a6/0xa90 kernel/printk/printk.c:2307
+ vprintk_emit+0x178/0x630 kernel/printk/printk.c:2455
+ _printk+0xcf/0x110 kernel/printk/printk.c:2504
+ Use_after_free_IOCTL_Handler.cold+0x10f/0x11c lib/dvkm.c:89
+ dvkm_ioctl.cold+0x91/0x12c lib/dvkm.c:471
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f281094acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f280f3a7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f2810bc5fa0 RCX: 00007f281094acb9
+RDX: 0000200000000140 RSI: 00000000c018440a RDI: 0000000000000003
+RBP: 00007f28109b8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f2810bc6038 R14: 00007f2810bc5fa0 R15: 00007fff90b25a38
+ </TASK>
+
+(efault): [+] data: l7†>–nQ/ØêCútÙ“
+Allocated by task 1937:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+(efault): [+] data: l7†>–nQ/ØêCútÙ’
+ kasan_kmalloc include/linux/kasan.h:263 [inline]
+ __do_kmalloc_node mm/slub.c:5296 [inline]
+ __kmalloc_noprof+0x19d/0x500 mm/slub.c:5308
+ kmalloc_noprof include/linux/slab.h:954 [inline]
+ Use_after_free_IOCTL_Handler.cold+0x41/0x11c lib/dvkm.c:79
+ dvkm_ioctl.cold+0x91/0x12c lib/dvkm.c:471
+****Triggering Heap Buffer Overflow****
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+(efault): [+] datasize: 17
+
+The buggy address belongs to the object at ffff8880019996a0
+ which belongs to the cache kmalloc-16 of size 16
+The buggy address is located 0 bytes to the right of
+ allocated 16-byte region [ffff8880019996a0, ffff8880019996b0)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff888001999940 pfn:0x1999
+flags: 0x100000000000200(workingset|node=0|zone=1)
+(efault): [+] data: ¶fñM[‰¼¸ÈØÙã ¬€TÕ)€ˆÿÿ
+page_type: f5(slab)
+raw: 0100000000000200 ffff888001041640 ffffea0000067710 ffffea0000065c50
+raw: ffff888001999940 000000000080005a 00000000f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff888001999580: 00 03 fc fc 00 03 fc fc 00 00 fc fc 00 03 fc fc
+ ffff888001999600: 00 03 fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+>ffff888001999680: fa fb fc fc 00 00 fc fc fa fb fc fc fa fb fc fc
+                                     ^
+ ffff888001999700: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+ ffff888001999780: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+==================================================================
+(efault): [+] data: l7†>–nQ/ØêCútÙ‘
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

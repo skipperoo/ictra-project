@@ -1,0 +1,93 @@
+cgroup: Unknown subsys name 'memory'
+****Triggering Heap out of bound write****
+(efault): [+] datasize: 178
+(efault): [+] data: W:
+==================================================================
+BUG: KASAN: slab-out-of-bounds in Heap_OOBW_IOCTL_Handler.cold+0x158/0x15a lib/dvkm.c:219
+Write of size 1 at addr ffff8880076f60c6 by task syz.0.1/1956
+
+CPU: 1 UID: 0 PID: 1956 Comm: syz.0.1 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ Heap_OOBW_IOCTL_Handler.cold+0x158/0x15a lib/dvkm.c:219
+ dvkm_ioctl.cold+0x55/0x12c lib/dvkm.c:467
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f049478acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f04931e7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f0494a05fa0 RCX: 00007f049478acb9
+RDX: 0000200000000100 RSI: 00000000c0184408 RDI: 0000000000000003
+RBP: 00007f04947f8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f0494a06038 R14: 00007f0494a05fa0 R15: 00007ffca3dca8c8
+ </TASK>
+
+Allocated by task 1956:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kasan_kmalloc include/linux/kasan.h:263 [inline]
+ __do_kmalloc_node mm/slub.c:5296 [inline]
+ __kmalloc_noprof+0x19d/0x500 mm/slub.c:5308
+ kmalloc_noprof include/linux/slab.h:954 [inline]
+ Heap_OOBW_IOCTL_Handler.cold+0x41/0x15a lib/dvkm.c:207
+ dvkm_ioctl.cold+0x55/0x12c lib/dvkm.c:467
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff8880076f6000
+ which belongs to the cache kmalloc-192 of size 192
+The buggy address is located 20 bytes to the right of
+ allocated 178-byte region [ffff8880076f6000, ffff8880076f60b2)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x76f6
+flags: 0x100000000000000(node=0|zone=1)
+page_type: f5(slab)
+raw: 0100000000000000 ffff8880010413c0 dead000000000122 0000000000000000
+raw: 0000000000000000 0000000000100010 00000000f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff8880076f5f80: fb fb fb fb fb fb fb fb fc fc fc fc fc fc fc fc
+ ffff8880076f6000: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>ffff8880076f6080: 00 00 00 00 00 00 02 fc fc fc fc fc fc fc fc fc
+                                           ^
+ ffff8880076f6100: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ ffff8880076f6180: 00 00 00 00 fc fc fc fc fc fc fc fc fc fc fc fc
+==================================================================
+****Triggering Heap out of bound write****
+syz-executor (170) used greatest stack depth: 24720 bytes left
+(efault): [+] datasize: 215
+syz-executor (163) used greatest stack depth: 24680 bytes left
+(efault): [+] data: ˝±Ù†ÿù¯,ƒùÃπß9¬á‚#_˘~π^ï€Õ÷B∆‚s¥ãfÚ¿´ú$≈ dÉû¸Ãò?-úπ#ÃD⁄·ﬁçs&%Y&A-bcœtƒ<…ø6RéE≈<Ø‰G,‰ΩZaÂ‘¿Sıw,e!€™9aıö≠àÁt∂âI1ìY©õ"øÍ<’G’L•«X1HL§w´tø”{Ò`^Ó@•P5√⁄m¨ZÏç∏ë=,Øsˇ⁄r]Ω)ÀÁœéï¯ƒïæÓ§‚L∆:ÈñkÕÉ
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

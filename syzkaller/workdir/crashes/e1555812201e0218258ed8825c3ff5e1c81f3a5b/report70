@@ -1,0 +1,123 @@
+****Triggering double free****
+(efault): [+] datasize: 243
+(efault): [+] data: #}AË•9UnQ¥z¼†aá?‰~G¯¨Ö+èz5ÅMé‰ª ?—]ýtØ’Äç?·%
+==================================================================
+BUG: KASAN: double-free in Double_free_IOCTL_Handler.cold+0x11f/0x124 lib/dvkm.c:123
+Free of addr ffff888011537200 by task syz.0.1/1950
+
+CPU: 0 UID: 0 PID: 1950 Comm: syz.0.1 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report_invalid_free+0xa2/0xd0 mm/kasan/report.c:557
+ check_slab_allocation+0xd9/0x100 mm/kasan/common.c:235
+ kasan_slab_pre_free include/linux/kasan.h:199 [inline]
+ slab_free_hook mm/slub.c:2634 [inline]
+ slab_free mm/slub.c:6251 [inline]
+ kfree+0x128/0x3a0 mm/slub.c:6566
+ Double_free_IOCTL_Handler.cold+0x11f/0x124 lib/dvkm.c:123
+ dvkm_ioctl.cold+0x73/0x12c lib/dvkm.c:475
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f82d0d4acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f82cf7a7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f82d0fc5fa0 RCX: 00007f82d0d4acb9
+RDX: 0000200000000140 RSI: 00000000c018440b RDI: 0000000000000003
+RBP: 00007f82d0db8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f82d0fc6038 R14: 00007f82d0fc5fa0 R15: 00007ffdb6ba9648
+ </TASK>
+
+Allocated by task 1950:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kasan_kmalloc include/linux/kasan.h:263 [inline]
+ __do_kmalloc_node mm/slub.c:5296 [inline]
+ __kmalloc_noprof+0x19d/0x500 mm/slub.c:5308
+ kmalloc_noprof include/linux/slab.h:954 [inline]
+ Double_free_IOCTL_Handler.cold+0x41/0x124 lib/dvkm.c:110
+ dvkm_ioctl.cold+0x73/0x12c lib/dvkm.c:475
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+Freed by task 1950:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ kasan_save_free_info+0x3b/0x70 mm/kasan/generic.c:584
+ poison_slab_object mm/kasan/common.c:253 [inline]
+ __kasan_slab_free+0x43/0x70 mm/kasan/common.c:285
+ kasan_slab_free include/linux/kasan.h:235 [inline]
+ slab_free_hook mm/slub.c:2689 [inline]
+ slab_free mm/slub.c:6251 [inline]
+ kfree+0x149/0x3a0 mm/slub.c:6566
+ Double_free_IOCTL_Handler.cold+0x117/0x124 lib/dvkm.c:121
+ dvkm_ioctl.cold+0x73/0x12c lib/dvkm.c:475
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff888011537200
+ which belongs to the cache kmalloc-256 of size 256
+The buggy address is located 0 bytes inside of
+ 256-byte region [ffff888011537200, ffff888011537300)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff888011537600 pfn:0x11536
+head: order:1 mapcount:0 entire_mapcount:0 nr_pages_mapped:0 pincount:0
+flags: 0x100000000000240(workingset|head|node=0|zone=1)
+page_type: f5(slab)
+raw: 0100000000000240 ffff888001041b40 ffffea0000086490 ffffea0000454f90
+raw: ffff888011537600 000000000010000b 00000000f5000000 0000000000000000
+head: 0100000000000240 ffff888001041b40 ffffea0000086490 ffffea0000454f90
+head: ffff888011537600 000000000010000b 00000000f5000000 0000000000000000
+head: 0100000000000001 ffffffffffffff81 00000000ffffffff 00000000ffffffff
+head: 0000000000000000 0000000000000000 00000000ffffffff 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff888011537100: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffff888011537180: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+>ffff888011537200: fa fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+                   ^
+ ffff888011537280: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+ ffff888011537300: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+==================================================================
+****Triggering Heap out of bound write****
+(efault): [+] datasize: 18
+(efault): [+] data: "ŒŽØ$~ a‰Õ›È½å„3"€ˆÿÿ
+syz-executor (165) used greatest stack depth: 24736 bytes left
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

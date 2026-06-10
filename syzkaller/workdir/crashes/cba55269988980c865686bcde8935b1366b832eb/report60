@@ -1,0 +1,97 @@
+****Triggering use after free****
+****Triggering use after free****
+(efault): [+] datasize: 86
+(efault): [+] datasize: 85
+==================================================================
+BUG: KASAN: slab-out-of-bounds in string_nocheck lib/vsprintf.c:655 [inline]
+BUG: KASAN: slab-out-of-bounds in string+0x471/0x4d0 lib/vsprintf.c:737
+Read of size 1 at addr ffff88800773f855 by task syz.2.3/1927
+
+CPU: 0 UID: 0 PID: 1927 Comm: syz.2.3 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ string_nocheck lib/vsprintf.c:655 [inline]
+ string+0x471/0x4d0 lib/vsprintf.c:737
+ vsnprintf+0x425/0x1270 lib/vsprintf.c:2948
+ vprintk_store+0x3a6/0xa90 kernel/printk/printk.c:2307
+ vprintk_emit+0x178/0x630 kernel/printk/printk.c:2455
+ _printk+0xcf/0x110 kernel/printk/printk.c:2504
+ Use_after_free_IOCTL_Handler.cold+0x10f/0x11c lib/dvkm.c:89
+ dvkm_ioctl.cold+0x91/0x12c lib/dvkm.c:471
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f675a55acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f6758fb7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f675a7d5fa0 RCX: 00007f675a55acb9
+RDX: 00002000000001c0 RSI: 00000000c018440a RDI: 0000000000000003
+RBP: 00007f675a5c8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f675a7d6038 R14: 00007f675a7d5fa0 R15: 00007ffc762f5788
+ </TASK>
+
+(efault): [+] data: {«oŽÚÏpÃ™9KÎ¢y“fµ}ßR_ OÅd7r›Žü"‡CdÌÐÄm2k$*´T8MÂ>„&Ïå­x¢¬Â5›ô Âƒë³ì¨>*ÿÿÿ
+Allocated by task 1927:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kasan_kmalloc include/linux/kasan.h:263 [inline]
+ __do_kmalloc_node mm/slub.c:5296 [inline]
+ __kmalloc_noprof+0x19d/0x500 mm/slub.c:5308
+ kmalloc_noprof include/linux/slab.h:954 [inline]
+ Use_after_free_IOCTL_Handler.cold+0x41/0x11c lib/dvkm.c:79
+ dvkm_ioctl.cold+0x91/0x12c lib/dvkm.c:471
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff88800773f800
+ which belongs to the cache kmalloc-96 of size 96
+The buggy address is located 0 bytes to the right of
+ allocated 85-byte region [ffff88800773f800, ffff88800773f855)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff88800773fd80 pfn:0x773f
+flags: 0x100000000000200(workingset|node=0|zone=1)
+page_type: f5(slab)
+raw: 0100000000000200 ffff888001041280 ffffea0000148650 ffffea000043a390
+raw: ffff88800773fd80 000000000020001b 00000000f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff88800773f700: fa fb fb fb fb fb fb fb fb fb fb fb fc fc fc fc
+ ffff88800773f780: fa fb fb fb fb fb fb fb fb fb fb fb fc fc fc fc
+>ffff88800773f800: 00 00 00 00 00 00 00 00 00 00 05 fc fc fc fc fc
+                                                 ^
+ ffff88800773f880: 00 00 00 00 00 00 00 00 00 00 00 00 fc fc fc fc
+ ffff88800773f900: fa fb fb fb fb fb fb fb fb fb fb fb fc fc fc fc
+==================================================================
+(efault): [+] data: {«oŽÚÏpÃ™9KÎ¢y“fµ}ßR_ OÅd7r›Žü"‡CdÌÐÄm2k$*´T8MÂ>„&Ïå­x¢¬Â5›ô Âƒë³ì¨>*ÿÿÿ
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

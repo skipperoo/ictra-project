@@ -1,0 +1,281 @@
+****Triggering Heap out of bound read****
+(efault): [+] datasize: 237
+****Triggering Stack Buffer Overflow****
+****Triggering Heap Buffer Overflow****
+==================================================================
+BUG: KASAN: slab-out-of-bounds in string_nocheck lib/vsprintf.c:655 [inline]
+BUG: KASAN: slab-out-of-bounds in string+0x471/0x4d0 lib/vsprintf.c:737
+Read of size 1 at addr ffff88800239d6ed by task syz.1.2/1959
+
+(efault): [+] datasize: 82
+CPU: 0 UID: 0 PID: 1959 Comm: syz.1.2 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ string_nocheck lib/vsprintf.c:655 [inline]
+ string+0x471/0x4d0 lib/vsprintf.c:737
+ vsnprintf+0x425/0x1270 lib/vsprintf.c:2948
+ vprintk_store+0x3a6/0xa90 kernel/printk/printk.c:2307
+ vprintk_emit+0x178/0x630 kernel/printk/printk.c:2455
+ _printk+0xcf/0x110 kernel/printk/printk.c:2504
+ Double_free_IOCTL_Handler.cold+0x10f/0x124 lib/dvkm.c:120
+ dvkm_ioctl.cold+0x73/0x12c lib/dvkm.c:475
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f929986acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f92982c7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f9299ae5fa0 RCX: 00007f929986acb9
+RDX: 0000200000000140 RSI: 00000000c018440b RDI: 0000000000000003
+RBP: 00007f92998d8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f9299ae6038 R14: 00007f9299ae5fa0 R15: 00007fffcde1d288
+ </TASK>
+
+(efault): [+] datasize: 4096
+Allocated by task 1959:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+(efault): [+] datasize: 164
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kasan_kmalloc include/linux/kasan.h:263 [inline]
+ __do_kmalloc_node mm/slub.c:5296 [inline]
+ __kmalloc_noprof+0x19d/0x500 mm/slub.c:5308
+(efault): [+] data: /“+6RPëªàëõ¿ßOÖ@ƒHwS∞µøﬁszîo$MwÈ»“yD°ÒßßÚ»Ksá¥«ó∫àÄ/ôCØëå∆C√¡ƒy?t≤>ﬁ≠¬„j¥P„á2»"Ä#˙0"˚qzcùü&üj[V¥{€∂˛ª3ÍÉÁŒÇ›7ºÇ¢·ïÊÀ<3!^Ä.!GwßOq˘•+,Â˘Õª∆ ÄHù
+ kmalloc_noprof include/linux/slab.h:954 [inline]
+ Double_free_IOCTL_Handler.cold+0x41/0x124 lib/dvkm.c:110
+ dvkm_ioctl.cold+0x73/0x12c lib/dvkm.c:475
+Oops: general protection fault, probably for non-canonical address 0xe000000000000228: 0000 [#1] SMP KASAN NOPTI
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+KASAN: probably user-memory-access in range [0x0000200000001140-0x0000200000001147]
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+CPU: 1 UID: 0 PID: 1964 Comm: syz.3.4 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0010:string_nocheck lib/vsprintf.c:655 [inline]
+RIP: 0010:string+0x1b9/0x4d0 lib/vsprintf.c:737
+
+The buggy address belongs to the object at ffff88800239d600
+ which belongs to the cache kmalloc-256 of size 256
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+The buggy address is located 0 bytes to the right of
+ allocated 237-byte region [ffff88800239d600, ffff88800239d6ed)
+RSP: 0018:ffff8880031af978 EFLAGS: 00010046
+
+The buggy address belongs to the physical page:
+
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x239c
+RAX: 0000040000000228 RBX: ffff8880031afc7e RCX: dffffc0000000000
+head: order:1 mapcount:0 entire_mapcount:0 nr_pages_mapped:0 pincount:0
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000200000001140
+flags: 0x100000000000040(head|node=0|zone=1)
+RBP: 0000200000001141 R08: 0000000000000036 R09: ffff8880032fe900
+page_type: f5(slab)
+R10: 00000000ffffffff R11: 0000000000000000 R12: 0000200000000140
+raw: 0100000000000040 ffff888001041b40 dead000000000100 dead000000000122
+R13: ffff8880031afc70 R14: 0000200000001140 R15: 0000000000000000
+raw: 0000000000000000 0000000000100010 00000000f5000000 0000000000000000
+FS:  00007efdebf956c0(0000) GS:ffff8880c3086000(0000) knlGS:0000000000000000
+head: 0100000000000040 ffff888001041b40 dead000000000100 dead000000000122
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+head: 0000000000000000 0000000000100010 00000000f5000000 0000000000000000
+CR2: 00007efded5c8400 CR3: 0000000006488002 CR4: 0000000000170ef0
+head: 0100000000000001 ffffffffffffff81 00000000ffffffff 00000000ffffffff
+Call Trace:
+head: 0000000000000000 0000000000000000 00000000ffffffff 0000000000000000
+ <TASK>
+page dumped because: kasan: bad access detected
+
+ vsnprintf+0x425/0x1270 lib/vsprintf.c:2948
+Memory state around the buggy address:
+ ffff88800239d580: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ vprintk_store+0x3a6/0xa90 kernel/printk/printk.c:2307
+ ffff88800239d600: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>ffff88800239d680: 00 00 00 00 00 00 00 00 00 00 00 00 00 05 fc fc
+                                                          ^
+ ffff88800239d700: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffff88800239d780: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+==================================================================
+(efault): [+] data: †˙]†Mnˆ÷ı∏É$IN‰}»bFÊØ„ŸK|‚∞„=Ôvß˜aÁié1tcIÌU±Ö¯$]l>0jjH¶”
+	SN'^Ã-ÿãq‹∞èhZh;ÒI¶§œLkóBÕPÍñ¿∑üdPv`o‘∏ıwŒ—XNd_åçjæﬁ≥ƒ*´qV£jKeD‹?î1y-Î≤•lı¯o:§íz†y_Pô!Ül	®G™Ff˘Nªc¥≤˝¶"ÙáMãÛ`Âo8aããh	¶=4¬O¬cRõÔ‚]CVQ †ˆÇÆ˛€<¢Ò8⁄”û
+(efault): [+] data: /“+6RPëªàëõ¿ßOÖ@ƒHwS∞µøﬁszîo$MwÈ»“yD°ÒßßÚ»Ksá¥«ó∫àÄ/ôCØëå∆C√¡ƒy?t≤>ﬁ≠¬„j¥P„á2»"Ä#˙0"˚qzcùü&üj[V¥{€∂˛ª3ÍÉÁŒÇ›7ºÇ¢·ïÊÀ<3!^Ä.!GwßOq˘•+,Â˘Õª∆ ÄHù
+ vprintk_emit+0x178/0x630 kernel/printk/printk.c:2455
+ _printk+0xcf/0x110 kernel/printk/printk.c:2504
+ Stack_Buffer_Overflow_IOCTL_Handler.cold+0x113/0x120 lib/dvkm.c:249
+ dvkm_ioctl.cold+0x109/0x12c lib/dvkm.c:447
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7efded57acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007efdebf95028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007efded7f6180 RCX: 00007efded57acb9
+RDX: 0000200000001200 RSI: 00000000c0184402 RDI: 0000000000000003
+RBP: 00007efded5e8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007efded7f6218 R14: 00007efded7f6180 R15: 00007fff05e44a38
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:string_nocheck lib/vsprintf.c:655 [inline]
+RIP: 0010:string+0x1b9/0x4d0 lib/vsprintf.c:737
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+RSP: 0018:ffff8880031af978 EFLAGS: 00010046
+RAX: 0000040000000228 RBX: ffff8880031afc7e RCX: dffffc0000000000
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000200000001140
+RBP: 0000200000001141 R08: 0000000000000036 R09: ffff8880032fe900
+R10: 00000000ffffffff R11: 0000000000000000 R12: 0000200000000140
+R13: ffff8880031afc70 R14: 0000200000001140 R15: 0000000000000000
+FS:  00007efdebf956c0(0000) GS:ffff8880c3086000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007efded5c8400 CR3: 0000000006488002 CR4: 0000000000170ef0
+note: syz.3.4[1964] exited with irqs disabled
+syz-executor (160) used greatest stack depth: 24448 bytes left
+----------------
+Code disassembly (best guess):
+   0:	24 08                	and    $0x8,%al
+   2:	48 39 c5             	cmp    %rax,%rbp
+   5:	74 4b                	je     0x52
+   7:	e8 b5 15 e5 fc       	call   0xfce515c1
+   c:	48 89 ef             	mov    %rbp,%rdi
+   f:	48 83 c5 01          	add    $0x1,%rbp
+  13:	48 b9 00 00 00 00 00 	movabs $0xdffffc0000000000,%rcx
+  1a:	fc ff df
+  1d:	48 89 f8             	mov    %rdi,%rax
+  20:	48 89 fa             	mov    %rdi,%rdx
+  23:	48 c1 e8 03          	shr    $0x3,%rax
+  27:	83 e2 07             	and    $0x7,%edx
+* 2a:	0f b6 04 08          	movzbl (%rax,%rcx,1),%eax <-- trapping instruction
+  2e:	38 d0                	cmp    %dl,%al
+  30:	7f 08                	jg     0x3a
+  32:	84 c0                	test   %al,%al
+  34:	0f 85 a3 02 00 00    	jne    0x2dd
+  3a:	44 0f b6 65 ff       	movzbl -0x1(%rbp),%r12d
+  3f:	31                   	.byte 0x31
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+ __kasan_kmalloc+0x8f/0xa0
+ __kmalloc_noprof+0x19d/0x500
+(efault): [+] data: /“+6RPëªàëõ¿ßOÖ@ƒHwS∞µøﬁszîo$MwÈ»“yD°ÒßßÚ»Ksá¥«ó∫àÄ/ôCØëå∆C√¡ƒy?t≤>ﬁ≠¬„j¥P„á2»"Ä#˙0"˚qzcùü&üj[V¥{€∂˛ª3ÍÉÁŒÇ›7ºÇ¢·ïÊÀ<3!^Ä.!GwßOq˘•+,Â˘Õª∆ ÄHù
+ Double_free_IOCTL_Handler.cold+0x41/0x124
+ dvkm_ioctl.cold+0x73/0x12c
+Oops: general protection fault, probably for non-canonical address 0xe000000000000228: 0000 [#1] SMP KASAN NOPTI
+ proc_reg_unlocked_ioctl+0x229/0x320
+KASAN: probably user-memory-access in range [0x0000200000001140-0x0000200000001147]
+ __x64_sys_ioctl+0x18e/0x210
+CPU: 1 UID: 0 PID: 1964 Comm: syz.3.4 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+ do_syscall_64+0xee/0x590
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0010:string+0x1b9/0x4d0
+
+The buggy address belongs to the object at ffff88800239d600
+ which belongs to the cache kmalloc-256 of size 256
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+The buggy address is located 0 bytes to the right of
+ allocated 237-byte region [ffff88800239d600, ffff88800239d6ed)
+RSP: 0018:ffff8880031af978 EFLAGS: 00010046
+
+The buggy address belongs to the physical page:
+
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x239c
+RAX: 0000040000000228 RBX: ffff8880031afc7e RCX: dffffc0000000000
+head: order:1 mapcount:0 entire_mapcount:0 nr_pages_mapped:0 pincount:0
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000200000001140
+flags: 0x100000000000040(head|node=0|zone=1)
+RBP: 0000200000001141 R08: 0000000000000036 R09: ffff8880032fe900
+page_type: f5(slab)
+R10: 00000000ffffffff R11: 0000000000000000 R12: 0000200000000140
+raw: 0100000000000040 ffff888001041b40 dead000000000100 dead000000000122
+R13: ffff8880031afc70 R14: 0000200000001140 R15: 0000000000000000
+raw: 0000000000000000 0000000000100010 00000000f5000000 0000000000000000
+FS:  00007efdebf956c0(0000) GS:ffff8880c3086000(0000) knlGS:0000000000000000
+head: 0100000000000040 ffff888001041b40 dead000000000100 dead000000000122
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+head: 0000000000000000 0000000000100010 00000000f5000000 0000000000000000
+CR2: 00007efded5c8400 CR3: 0000000006488002 CR4: 0000000000170ef0
+head: 0100000000000001 ffffffffffffff81 00000000ffffffff 00000000ffffffff
+Call Trace:
+head: 0000000000000000 0000000000000000 00000000ffffffff 0000000000000000
+ <TASK>
+page dumped because: kasan: bad access detected
+
+ vsnprintf+0x425/0x1270
+Memory state around the buggy address:
+ ffff88800239d580: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ vprintk_store+0x3a6/0xa90
+ ffff88800239d600: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>ffff88800239d680: 00 00 00 00 00 00 00 00 00 00 00 00 00 05 fc fc
+                                                          ^
+ ffff88800239d700: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffff88800239d780: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+==================================================================
+(efault): [+] data: †˙]†Mnˆ÷ı∏É$IN‰}»bFÊØ„ŸK|‚∞„=Ôvß˜aÁié1tcIÌU±Ö¯$]l>0jjH¶”
+	SN'^Ã-ÿãq‹∞èhZh;ÒI¶§œLkóBÕPÍñ¿∑üdPv`o‘∏ıwŒ—XNd_åçjæﬁ≥ƒ*´qV£jKeD‹?î1y-Î≤•lı¯o:§íz†y_Pô!Ül	®G™Ff˘Nªc¥≤˝¶"ÙáMãÛ`Âo8aããh	¶=4¬O¬cRõÔ‚]CVQ †ˆÇÆ˛€<¢Ò8⁄”û
+(efault): [+] data: /“+6RPëªàëõ¿ßOÖ@ƒHwS∞µøﬁszîo$MwÈ»“yD°ÒßßÚ»Ksá¥«ó∫àÄ/ôCØëå∆C√¡ƒy?t≤>ﬁ≠¬„j¥P„á2»"Ä#˙0"˚qzcùü&üj[V¥{€∂˛ª3ÍÉÁŒÇ›7ºÇ¢·ïÊÀ<3!^Ä.!GwßOq˘•+,Â˘Õª∆ ÄHù
+ vprintk_emit+0x178/0x630
+ _printk+0xcf/0x110
+ Stack_Buffer_Overflow_IOCTL_Handler.cold+0x113/0x120
+ dvkm_ioctl.cold+0x109/0x12c
+ proc_reg_unlocked_ioctl+0x229/0x320
+ __x64_sys_ioctl+0x18e/0x210
+ do_syscall_64+0xee/0x590
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7efded57acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007efdebf95028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007efded7f6180 RCX: 00007efded57acb9
+RDX: 0000200000001200 RSI: 00000000c0184402 RDI: 0000000000000003
+RBP: 00007efded5e8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007efded7f6218 R14: 00007efded7f6180 R15: 00007fff05e44a38
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:string+0x1b9/0x4d0
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+RSP: 0018:ffff8880031af978 EFLAGS: 00010046
+RAX: 0000040000000228 RBX: ffff8880031afc7e RCX: dffffc0000000000
+RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000200000001140
+RBP: 0000200000001141 R08: 0000000000000036 R09: ffff8880032fe900
+R10: 00000000ffffffff R11: 0000000000000000 R12: 0000200000000140
+R13: ffff8880031afc70 R14: 0000200000001140 R15: 0000000000000000
+FS:  00007efdebf956c0(0000) GS:ffff8880c3086000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007efded5c8400 CR3: 0000000006488002 CR4: 0000000000170ef0
+note: syz.3.4[1964] exited with irqs disabled
+syz-executor (160) used greatest stack depth: 24448 bytes left
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

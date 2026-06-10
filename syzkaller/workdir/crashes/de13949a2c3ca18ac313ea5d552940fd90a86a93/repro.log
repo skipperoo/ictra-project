@@ -1,0 +1,102 @@
+Warning: Permanently added '[localhost]:32556' (ED25519) to the list of known hosts.
+2026/06/10 14:03:52 parsed 1 programs
+buildroot login: [   21.855818] cgroup: Unknown subsys name 'net'
+[   21.886631] cgroup: Unknown subsys name 'cpuset'
+[   21.894243] cgroup: Unknown subsys name 'rlimit'
+[   21.899950] cgroup: Unknown subsys name 'memory'
+mkswap: image is too small
+2026/06/10 14:03:59 executed programs: 0
+[   30.241186] ****Triggering Integer Underflow****
+[   30.246749] (efault): [+] datasize: 186
+[   30.251793] (efault): [+] width: 1806189164
+[   30.256722] (efault): [+] Height: 1486971876
+[   30.261872] (efault): [+] datasize: 186
+[   30.266534] (efault): [+] data: ý<Shw°u<Ÿ›mƒ†iâ
+[   30.272587] (efault): [+] calculated size: -1145677392
+[   30.278528] ------------[ cut here ]------------
+[   30.283792] WARNING: mm/page_alloc.c:5202 at __alloc_frozen_pages_noprof+0x518/0x28f0, CPU#1: syz.3.17/1161
+[   30.293878] Modules linked in:
+[   30.297473] CPU: 1 UID: 0 PID: 1161 Comm: syz.3.17 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+[   30.307903] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+[   30.318058] RIP: 0010:__alloc_frozen_pages_noprof+0x518/0x28f0
+[   30.325229] Code: ff ff 83 7c 24 04 0a 0f 86 f7 fb ff ff 0f b6 1d 4f 33 bf 04 80 fb 01 0f 87 73 1f 6c ff 83 e3 01 75 0b c6 05 3a 33 bf 04 01 90 <0f> 0b 90 45 31 ff e9 24 fe ff ff a9 00 00 08 00 0f 85 dd 08 00 00
+[   30.344278] RSP: 0018:ffff888011c87b20 EFLAGS: 00010246
+[   30.349998] RAX: 0000000000000000 RBX: 0000000000000000 RCX: 1ffff11002390f79
+[   30.357678] RDX: 0000000000000000 RSI: 0000000000000034 RDI: 0000000000040cc0
+[   30.365123] RBP: 0000000000040cc0 R08: 0000000000000000 R09: ffff888013571180
+[   30.372970] R10: 0000000000000001 R11: 0000000000000001 R12: 1ffff11002390fa6
+[   30.380432] R13: 0000000000000000 R14: ffffffff92f3ba24 R15: 0000000000000000
+[   30.388555] FS:  000055558c0ed500(0000) GS:ffff8880da286000(0000) knlGS:0000000000000000
+[   30.397536] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   30.404049] CR2: 0000001b30d63fff CR3: 0000000013e19006 CR4: 0000000000170ef0
+[   30.412028] Call Trace:
+[   30.415163]  <TASK>
+[   30.417819]  ? __pfx_console_flush_one_record+0x10/0x10
+[   30.423744]  ? prb_read_valid+0x78/0xa0
+[   30.428385]  ? __pfx_prb_read_valid+0x10/0x10
+[   30.433448]  ? is_printk_cpu_sync_owner+0x32/0x40
+[   30.438789]  ? __pfx___alloc_frozen_pages_noprof+0x10/0x10
+[   30.444632]  ? __irq_work_queue_local+0x1a1/0x3f0
+[   30.449688]  ? __pfx___irq_work_queue_local+0x10/0x10
+[   30.455100]  ? irq_work_queue+0xc4/0x100
+[   30.459469]  ? __sanitizer_cov_trace_switch+0x54/0x90
+[   30.465280]  ? policy_nodemask+0xed/0x4c0
+[   30.469758]  alloc_pages_mpol+0xe8/0x340
+[   30.474194]  ? __pfx_alloc_pages_mpol+0x10/0x10
+[   30.479111]  ___kmalloc_large_node+0xc5/0xe0
+[   30.483886]  __kmalloc_large_node_noprof+0x1a/0xb0
+[   30.489141]  ? Integer_Underflow_IOCTL_Handler.cold+0x1b4/0x1db
+[   30.495553]  __kmalloc_noprof+0x3f9/0x500
+[   30.499908]  Integer_Underflow_IOCTL_Handler.cold+0x1b4/0x1db
+[   30.505925]  ? __pfx_dvkm_ioctl+0x10/0x10
+[   30.510248]  dvkm_ioctl.cold+0x127/0x12c
+[   30.514547]  proc_reg_unlocked_ioctl+0x229/0x320
+[   30.519542]  ? __pfx_proc_reg_unlocked_ioctl+0x10/0x10
+[   30.525033]  __x64_sys_ioctl+0x18e/0x210
+[   30.529278]  do_syscall_64+0xee/0x590
+[   30.533402]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   30.538655] RIP: 0033:0x7f294f31acb9
+[   30.542624] Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+[   30.565175] RSP: 002b:00007ffe00a7f588 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   30.575480] RAX: ffffffffffffffda RBX: 00007f294f595fa0 RCX: 00007f294f31acb9
+[   30.585085] RDX: 0000200000000180 RSI: 00000000c0184401 RDI: 0000000000000003
+[   30.597508] RBP: 00007f294f388bf7 R08: 0000000000000000 R09: 0000000000000000
+[   30.608404] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[   30.618836] R13: 00007f294f595fac R14: 00007f294f595fa0 R15: 00007f294f595fa0
+[   30.628963]  </TASK>
+[   30.632203] ---[ end trace 0000000000000000 ]---
+[   30.637487] ==================================================================
+[   30.638420] BUG: KASAN: null-ptr-deref in Integer_Underflow_IOCTL_Handler.cold+0x1c6/0x1db
+[   30.638420] Write of size 186 at addr 0000000000000000 by task syz.3.17/1161
+[   30.638420] 
+[   30.638420] CPU: 1 UID: 0 PID: 1161 Comm: syz.3.17 Tainted: G        W           7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+[   30.638420] Tainted: [W]=WARN
+[   30.638420] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+[   30.638420] Call Trace:
+[   30.638420]  <TASK>
+[   30.638420]  dump_stack_lvl+0x97/0xe0
+[   30.638420]  ? Integer_Underflow_IOCTL_Handler.cold+0x1c6/0x1db
+[   30.638420]  kasan_report+0xce/0x100
+[   30.638420]  ? Integer_Underflow_IOCTL_Handler.cold+0x1c6/0x1db
+[   30.638420]  kasan_check_range+0x10f/0x1e0
+[   30.638420]  __asan_memcpy+0x3c/0x60
+[   30.638420]  Integer_Underflow_IOCTL_Handler.cold+0x1c6/0x1db
+[   30.638420]  ? __pfx_dvkm_ioctl+0x10/0x10
+[   30.638420]  dvkm_ioctl.cold+0x127/0x12c
+[   30.638420]  proc_reg_unlocked_ioctl+0x229/0x320
+[   30.638420]  ? __pfx_proc_reg_unlocked_ioctl+0x10/0x10
+[   30.638420]  __x64_sys_ioctl+0x18e/0x210
+[   30.638420]  do_syscall_64+0xee/0x590
+[   30.638420]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   30.638420] RIP: 0033:0x7f294f31acb9
+[   30.638420] Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+[   30.638420] RSP: 002b:00007ffe00a7f588 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   30.638420] RAX: ffffffffffffffda RBX: 00007f294f595fa0 RCX: 00007f294f31acb9
+[   30.638420] RDX: 0000200000000180 RSI: 00000000c0184401 RDI: 0000000000000003
+[   30.638420] RBP: 00007f294f388bf7 R08: 0000000000000000 R09: 0000000000000000
+[   30.638420] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[   30.638420] R13: 00007f294f595fac R14: 00007f294f595fa0 R15: 00007f294f595fa0
+[   30.638420]  </TASK>
+[   30.638420] ==================================================================
+[   30.853031] clocksource: Watchdog remote CPU 1 read timed out
+[   30.855797] Disabling lock debugging due to kernel taint

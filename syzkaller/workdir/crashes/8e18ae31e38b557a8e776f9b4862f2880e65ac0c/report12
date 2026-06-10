@@ -1,0 +1,278 @@
+cgroup: Unknown subsys name 'rlimit'
+cgroup: Unknown subsys name 'memory'
+****Triggering double free****
+(efault): [+] datasize: 51
+==================================================================
+BUG: KASAN: slab-out-of-bounds in string_nocheck lib/vsprintf.c:655 [inline]
+BUG: KASAN: slab-out-of-bounds in string+0x471/0x4d0 lib/vsprintf.c:737
+Read of size 1 at addr ffff888011950db3 by task syz.0.1/1949
+
+CPU: 1 UID: 0 PID: 1949 Comm: syz.0.1 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ string_nocheck lib/vsprintf.c:655 [inline]
+ string+0x471/0x4d0 lib/vsprintf.c:737
+ vsnprintf+0x425/0x1270 lib/vsprintf.c:2948
+ vprintk_store+0x3a6/0xa90 kernel/printk/printk.c:2307
+ vprintk_emit+0x178/0x630 kernel/printk/printk.c:2455
+ _printk+0xcf/0x110 kernel/printk/printk.c:2504
+ Double_free_IOCTL_Handler.cold+0x10f/0x124 lib/dvkm.c:120
+ dvkm_ioctl.cold+0x73/0x12c lib/dvkm.c:475
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f593a69acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f59390f7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f593a915fa0 RCX: 00007f593a69acb9
+RDX: 0000200000000180 RSI: 00000000c018440b RDI: 0000000000000003
+RBP: 00007f593a708bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f593a916038 R14: 00007f593a915fa0 R15: 00007ffe885846f8
+ </TASK>
+
+Allocated by task 1949:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kasan_kmalloc include/linux/kasan.h:263 [inline]
+ __do_kmalloc_node mm/slub.c:5296 [inline]
+ __kmalloc_noprof+0x19d/0x500 mm/slub.c:5308
+ kmalloc_noprof include/linux/slab.h:954 [inline]
+ Double_free_IOCTL_Handler.cold+0x41/0x124 lib/dvkm.c:110
+ dvkm_ioctl.cold+0x73/0x12c lib/dvkm.c:475
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff888011950d80
+ which belongs to the cache kmalloc-64 of size 64
+The buggy address is located 0 bytes to the right of
+ allocated 51-byte region [ffff888011950d80, ffff888011950db3)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x11950
+flags: 0x100000000000000(node=0|zone=1)
+page_type: f5(slab)
+raw: 0100000000000000 ffff8880010418c0 dead000000000100 dead000000000122
+raw: 0000000000000000 0000000000200020 00000000f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff888011950c80: fa fb fb fb fb fb fb fb fc fc fc fc fc fc fc fc
+ ffff888011950d00: fa fb fb fb fb fb fb fb fc fc fc fc fc fc fc fc
+>ffff888011950d80: 00 00 00 00 00 00 03 fc fc fc fc fc fc fc fc fc
+                                     ^
+ ffff888011950e00: fa fb fb fb fb fb fb fb fc fc fc fc fc fc fc fc
+ ffff888011950e80: 00 00 00 00 00 00 fc fc fc fc fc fc fc fc fc fc
+==================================================================
+(efault): [+] data: ôã¦Î{’fI§úä­±ð«ÍÝ… -¾áÍú>¼qÀ2]-¬êv/¹´o²ìz!”>|6p
+****Triggering Heap Buffer Overflow****
+(efault): [+] datasize: 171
+(efault): [+] data: ÿÆW´lŒê%·¦\E­!ÆjR!Pþ1F„
+ºD‡tzQiw5Ü%è\}G´NÇ&Œj8gæ‰’2…Þ1Q£AÍãhô=¿ŸØ0’v’`Uu›E•òEOé½¥Ðü–%ò€ÐÕÆ\ÂñKDš¬h=ññJBÙÖJ„®S] 9±Ç¼|Æ¨o->±®OI½õžD<œué9â4Ô!¬óÏm´r‹­[9
+------------[ cut here ]------------
+refcount_t: underflow; use-after-free.
+WARNING: lib/refcount.c:28 at refcount_warn_saturate+0xf4/0x130 lib/refcount.c:28, CPU#1: syz.0.1/1949
+Modules linked in:
+CPU: 1 UID: 0 PID: 1949 Comm: syz.0.1 Tainted: G    B               7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Tainted: [B]=BAD_PAGE
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:refcount_warn_saturate+0xf4/0x130 lib/refcount.c:28
+Code: cc e8 10 7e 25 ff 48 8d 3d 19 98 19 04 67 48 0f b9 3a e8 ff 7d 25 ff 5b 5d c3 cc cc cc cc e8 f3 7d 25 ff 48 8d 3d 0c 98 19 04 <67> 48 0f b9 3a e8 e2 7d 25 ff 5b 5d c3 cc cc cc cc e8 d6 7d 25 ff
+RSP: 0018:ffff88806d108dc8 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: ffff888002c5a4c0 RCX: ffffffffa8816c5d
+RDX: ffff888011a9d780 RSI: 0000000000000004 RDI: ffffffffac9b0470
+RBP: 0000000000000003 R08: 0000000000000001 R09: ffff888011a9d780
+R10: 0000000000000003 R11: 0000000000000001 R12: ffff888002c5a4c0
+R13: 000000009603fcd0 R14: ffff888003fcdea0 R15: 0000000000000009
+FS:  0000000000000000(0000) GS:ffff8880bf486000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f59390d5ff8 CR3: 0000000035a8a004 CR4: 0000000000170ef0
+Call Trace:
+ <IRQ>
+ __refcount_sub_and_test include/linux/refcount.h:400 [inline]
+ __refcount_dec_and_test include/linux/refcount.h:432 [inline]
+ refcount_dec_and_test include/linux/refcount.h:450 [inline]
+ put_cred_rcu+0x20f/0x300 kernel/cred.c:57
+ rcu_do_batch kernel/rcu/tree.c:2617 [inline]
+ rcu_core+0x515/0x1800 kernel/rcu/tree.c:2869
+ handle_softirqs+0x195/0x600 kernel/softirq.c:622
+ __do_softirq kernel/softirq.c:656 [inline]
+ invoke_softirq kernel/softirq.c:496 [inline]
+ __irq_exit_rcu+0x5c/0x130 kernel/softirq.c:735
+ instr_sysvec_apic_timer_interrupt arch/x86/kernel/apic/apic.c:1061 [inline]
+ sysvec_apic_timer_interrupt+0x7a/0xa0 arch/x86/kernel/apic/apic.c:1061
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20 arch/x86/include/asm/idtentry.h:697
+RIP: 0010:__raw_spin_unlock_irq include/linux/spinlock_api_smp.h:188 [inline]
+RIP: 0010:_raw_spin_unlock_irq+0x36/0x60 kernel/locking/spinlock.c:206
+Code: 00 00 00 fc ff df 48 89 fa 48 c1 ea 03 0f b6 04 02 48 89 fa 83 e2 07 38 d0 7f 04 84 c0 75 24 c6 07 00 fb 65 ff 0d 1a e5 02 03 <74> 09 48 83 c4 08 c3 cc cc cc cc e8 8a a0 90 fc 48 83 c4 08 c3 cc
+RSP: 0018:ffff888011c0f2f8 EFLAGS: 00000282
+RAX: 0000000000000000 RBX: ffff888011c0f5f0 RCX: 000000000000001f
+RDX: 0000000000000000 RSI: 000000000000001f RDI: ffff888001717900
+RBP: ffffea000016c980 R08: 0000000000000000 R09: ffff888011a9d780
+R10: 000000000000001f R11: 0000000000000001 R12: 000000000000001f
+R13: 000000000000001f R14: ffff888011c0f5f8 R15: ffff8880017178f8
+ spin_unlock_irq include/linux/spinlock.h:402 [inline]
+ delete_from_page_cache_batch+0x59b/0xaf0 mm/filemap.c:338
+ truncate_inode_pages_range+0x26b/0xa90 mm/truncate.c:405
+ ext4_evict_inode+0x34f/0x17f0 fs/ext4/inode.c:210
+ evict+0x30b/0x7c0 fs/inode.c:841
+ iput_final fs/inode.c:1960 [inline]
+ iput fs/inode.c:2009 [inline]
+ iput+0x57c/0x770 fs/inode.c:1972
+ dentry_unlink_inode+0x2cc/0x4c0 fs/dcache.c:476
+ __dentry_kill+0x1d3/0x680 fs/dcache.c:718
+ finish_dput+0x46/0x270 fs/dcache.c:927
+ dput.part.0+0x2d1/0x3f0 fs/dcache.c:976
+ dput+0x1f/0x30 fs/dcache.c:968
+ __fput+0x514/0xb70 fs/file_table.c:518
+ task_work_run+0x150/0x230 kernel/task_work.c:233
+ exit_task_work include/linux/task_work.h:40 [inline]
+ do_exit+0x918/0x26c0 kernel/exit.c:976
+ do_group_exit+0xc9/0x270 kernel/exit.c:1119
+ get_signal+0x1bbb/0x1e20 kernel/signal.c:3037
+ arch_do_signal_or_restart+0x91/0x7a0 arch/x86/kernel/signal.c:337
+ __exit_to_user_mode_loop kernel/entry/common.c:64 [inline]
+ exit_to_user_mode_loop+0x6e/0x480 kernel/entry/common.c:98
+ __exit_to_user_mode_prepare include/linux/irq-entry-common.h:207 [inline]
+ syscall_exit_to_user_mode_prepare include/linux/irq-entry-common.h:230 [inline]
+ syscall_exit_to_user_mode include/linux/entry-common.h:318 [inline]
+ do_syscall_64+0x449/0x590 arch/x86/entry/syscall_64.c:100
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f593a69acb9
+Code: Unable to access opcode bytes at 0x7f593a69ac8f.
+RSP: 002b:00007f59390f7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: 0000000000000000 RBX: 00007f593a915fa0 RCX: 00007f593a69acb9
+RDX: 0000200000000180 RSI: 00000000c018440b RDI: 0000000000000003
+RBP: 00007f593a708bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f593a916038 R14: 00007f593a915fa0 R15: 00007ffe885846f8
+ </TASK>
+---[ end trace 0000000000000000 ]---
+----------------
+Code disassembly (best guess):
+   0:	cc                   	int3
+   1:	e8 10 7e 25 ff       	call   0xff257e16
+   6:	48 8d 3d 19 98 19 04 	lea    0x4199819(%rip),%rdi        # 0x4199826
+   d:	67 48 0f b9 3a       	ud1    (%edx),%rdi
+  12:	e8 ff 7d 25 ff       	call   0xff257e16
+  17:	5b                   	pop    %rbx
+  18:	5d                   	pop    %rbp
+  19:	c3                   	ret
+  1a:	cc                   	int3
+  1b:	cc                   	int3
+  1c:	cc                   	int3
+  1d:	cc                   	int3
+  1e:	e8 f3 7d 25 ff       	call   0xff257e16
+  23:	48 8d 3d 0c 98 19 04 	lea    0x419980c(%rip),%rdi        # 0x4199836
+* 2a:	67 48 0f b9 3a       	ud1    (%edx),%rdi <-- trapping instruction
+  2f:	e8 e2 7d 25 ff       	call   0xff257e16
+  34:	5b                   	pop    %rbx
+  35:	5d                   	pop    %rbp
+  36:	c3                   	ret
+  37:	cc                   	int3
+  38:	cc                   	int3
+  39:	cc                   	int3
+  3a:	cc                   	int3
+  3b:	e8 d6 7d 25 ff       	call   0xff257e16
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+(efault): [+] datasize: 171
+(efault): [+] data: ÿÆW´lŒê%·¦\E­!ÆjR!Pþ1F„
+ºD‡tzQiw5Ü%è\}G´NÇ&Œj8gæ‰’2…Þ1Q£AÍãhô=¿ŸØ0’v’`Uu›E•òEOé½¥Ðü–%ò€ÐÕÆ\ÂñKDš¬h=ññJBÙÖJ„®S] 9±Ç¼|Æ¨o->±®OI½õžD<œué9â4Ô!¬óÏm´r‹­[9
+------------[ cut here ]------------
+refcount_t: underflow; use-after-free.
+WARNING: lib/refcount.c:28 at refcount_warn_saturate+0xf4/0x130, CPU#1: syz.0.1/1949
+Modules linked in:
+CPU: 1 UID: 0 PID: 1949 Comm: syz.0.1 Tainted: G    B               7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Tainted: [B]=BAD_PAGE
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:refcount_warn_saturate+0xf4/0x130
+Code: cc e8 10 7e 25 ff 48 8d 3d 19 98 19 04 67 48 0f b9 3a e8 ff 7d 25 ff 5b 5d c3 cc cc cc cc e8 f3 7d 25 ff 48 8d 3d 0c 98 19 04 <67> 48 0f b9 3a e8 e2 7d 25 ff 5b 5d c3 cc cc cc cc e8 d6 7d 25 ff
+RSP: 0018:ffff88806d108dc8 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: ffff888002c5a4c0 RCX: ffffffffa8816c5d
+RDX: ffff888011a9d780 RSI: 0000000000000004 RDI: ffffffffac9b0470
+RBP: 0000000000000003 R08: 0000000000000001 R09: ffff888011a9d780
+R10: 0000000000000003 R11: 0000000000000001 R12: ffff888002c5a4c0
+R13: 000000009603fcd0 R14: ffff888003fcdea0 R15: 0000000000000009
+FS:  0000000000000000(0000) GS:ffff8880bf486000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f59390d5ff8 CR3: 0000000035a8a004 CR4: 0000000000170ef0
+Call Trace:
+ <IRQ>
+ put_cred_rcu+0x20f/0x300
+ rcu_core+0x515/0x1800
+ handle_softirqs+0x195/0x600
+ __irq_exit_rcu+0x5c/0x130
+ sysvec_apic_timer_interrupt+0x7a/0xa0
+ </IRQ>
+ <TASK>
+ asm_sysvec_apic_timer_interrupt+0x1a/0x20
+RIP: 0010:_raw_spin_unlock_irq+0x36/0x60
+Code: 00 00 00 fc ff df 48 89 fa 48 c1 ea 03 0f b6 04 02 48 89 fa 83 e2 07 38 d0 7f 04 84 c0 75 24 c6 07 00 fb 65 ff 0d 1a e5 02 03 <74> 09 48 83 c4 08 c3 cc cc cc cc e8 8a a0 90 fc 48 83 c4 08 c3 cc
+RSP: 0018:ffff888011c0f2f8 EFLAGS: 00000282
+RAX: 0000000000000000 RBX: ffff888011c0f5f0 RCX: 000000000000001f
+RDX: 0000000000000000 RSI: 000000000000001f RDI: ffff888001717900
+RBP: ffffea000016c980 R08: 0000000000000000 R09: ffff888011a9d780
+R10: 000000000000001f R11: 0000000000000001 R12: 000000000000001f
+R13: 000000000000001f R14: ffff888011c0f5f8 R15: ffff8880017178f8
+ delete_from_page_cache_batch+0x59b/0xaf0
+ truncate_inode_pages_range+0x26b/0xa90
+ ext4_evict_inode+0x34f/0x17f0
+ evict+0x30b/0x7c0
+ iput+0x57c/0x770
+ dentry_unlink_inode+0x2cc/0x4c0
+ __dentry_kill+0x1d3/0x680
+ finish_dput+0x46/0x270
+ dput.part.0+0x2d1/0x3f0
+ dput+0x1f/0x30
+ __fput+0x514/0xb70
+ task_work_run+0x150/0x230
+ do_exit+0x918/0x26c0
+ do_group_exit+0xc9/0x270
+ get_signal+0x1bbb/0x1e20
+ arch_do_signal_or_restart+0x91/0x7a0
+ exit_to_user_mode_loop+0x6e/0x480
+ do_syscall_64+0x449/0x590
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f593a69acb9
+Code: Unable to access opcode bytes at 0x7f593a69ac8f.
+RSP: 002b:00007f59390f7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: 0000000000000000 RBX: 00007f593a915fa0 RCX: 00007f593a69acb9
+RDX: 0000200000000180 RSI: 00000000c018440b RDI: 0000000000000003
+RBP: 00007f593a708bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f593a916038 R14: 00007f593a915fa0 R15: 00007ffe885846f8
+ </TASK>
+---[ end trace 0000000000000000 ]---
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

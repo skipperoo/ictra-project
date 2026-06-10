@@ -1,0 +1,109 @@
+cgroup: Unknown subsys name 'rlimit'
+cgroup: Unknown subsys name 'memory'
+****Triggering double free****
+(efault): [+] datasize: 248
+==================================================================
+BUG: KASAN: slab-out-of-bounds in string_nocheck lib/vsprintf.c:655 [inline]
+BUG: KASAN: slab-out-of-bounds in string+0x471/0x4d0 lib/vsprintf.c:737
+Read of size 1 at addr ffff8880073deaf8 by task syz.0.1/1914
+
+CPU: 1 UID: 0 PID: 1914 Comm: syz.0.1 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ string_nocheck lib/vsprintf.c:655 [inline]
+ string+0x471/0x4d0 lib/vsprintf.c:737
+ vsnprintf+0x425/0x1270 lib/vsprintf.c:2948
+ vprintk_store+0x3a6/0xa90 kernel/printk/printk.c:2307
+ vprintk_emit+0x178/0x630 kernel/printk/printk.c:2455
+ _printk+0xcf/0x110 kernel/printk/printk.c:2504
+ Double_free_IOCTL_Handler.cold+0x10f/0x124 lib/dvkm.c:120
+ dvkm_ioctl.cold+0x73/0x12c lib/dvkm.c:475
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7fbc50d2acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fbc4f787028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007fbc50fa5fa0 RCX: 00007fbc50d2acb9
+RDX: 0000200000000140 RSI: 00000000c018440b RDI: 0000000000000003
+RBP: 00007fbc50d98bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fbc50fa6038 R14: 00007fbc50fa5fa0 R15: 00007ffd47f91328
+ </TASK>
+
+Allocated by task 1914:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kasan_kmalloc include/linux/kasan.h:263 [inline]
+ __do_kmalloc_node mm/slub.c:5296 [inline]
+ __kmalloc_noprof+0x19d/0x500 mm/slub.c:5308
+ kmalloc_noprof include/linux/slab.h:954 [inline]
+ Double_free_IOCTL_Handler.cold+0x41/0x124 lib/dvkm.c:110
+ dvkm_ioctl.cold+0x73/0x12c lib/dvkm.c:475
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff8880073dea00
+ which belongs to the cache kmalloc-256 of size 256
+The buggy address is located 0 bytes to the right of
+ allocated 248-byte region [ffff8880073dea00, ffff8880073deaf8)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff8880073dee00 pfn:0x73de
+head: order:1 mapcount:0 entire_mapcount:0 nr_pages_mapped:0 pincount:0
+flags: 0x100000000000240(workingset|head|node=0|zone=1)
+page_type: f5(slab)
+raw: 0100000000000240 ffff888001041b40 ffffea00001cf710 ffffea0000087e10
+raw: ffff8880073dee00 000000000010000a 00000000f5000000 0000000000000000
+head: 0100000000000240 ffff888001041b40 ffffea00001cf710 ffffea0000087e10
+head: ffff8880073dee00 000000000010000a 00000000f5000000 0000000000000000
+head: 0100000000000001 ffffffffffffff81 00000000ffffffff 00000000ffffffff
+head: 0000000000000000 0000000000000000 00000000ffffffff 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff8880073de980: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffff8880073dea00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>ffff8880073dea80: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 fc
+                                                                ^
+ ffff8880073deb00: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffff8880073deb80: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+==================================================================
+(efault): [+] data: y’°˛≥#€fu‚ÚØ´Ød°…'ÈßõÕÒËÄÙ”X/Øá˝πv◊,îp˘jÁïº∂è;}ã]\È«™nÆ∆)Ü”\<0õ{74Ù	4X±LÍp≈©˜úE∫Wõ˚VS>ÄÛêÊ(jÁ®Ú$é˝
+f—ÎíˆÏKÉÅ’∞—ÈH@≈ŸjR|—öÙêÈS≈g2\÷∆πH! Ùä˘.ZŸv@∆êoEôó¢J`S≠ Gádr∫´fœÁ≈˛‰Ù(h‰¡wËCΩ‰ÄˇSAÒÿÅ∏WD«@“ó™©?_,YÜ_'-ΩÊ≥_xaÁ?ú^Éﬂ;¿jºß~˜${_netns
+fz
+****Triggering double free****
+(efault): [+] datasize: 4096
+syz-executor (162) used greatest stack depth: 24464 bytes left
+(efault): [+] data: °≤ÀÄÜ¸hyQq!ÏqÓì˛høŒŸ$◊õÕ{∏RˆÜíëÊ-#˛•rk‡ıˆ˚ã˝Lxd%PFhxRïáÅm˝á>RàWïÀ˜ÙQΩr~Í
+]ªI
+∑{r/¸ˆÏKr Ö∂‡À‹Û†Æl~õÔﬂ2˜£ÚÏbÔ~‹j3≠Ãﬁ¡}≈sÌ˙ìéQ5\5ñó5U≤°)¶5ªyyÛä
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

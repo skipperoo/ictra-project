@@ -1,0 +1,82 @@
+Warning: Permanently added '[localhost]:19632' (ED25519) to the list of known hosts.
+2026/06/10 12:09:53 parsed 1 programs
+buildroot login: [   19.487800] cgroup: Unknown subsys name 'net'
+[   19.522768] cgroup: Unknown subsys name 'cpuset'
+[   19.529453] cgroup: Unknown subsys name 'rlimit'
+[   19.533995] cgroup: Unknown subsys name 'memory'
+mkswap: image is too small
+[   23.392544] syz-executor (189) used greatest stack depth: 24256 bytes left
+2026/06/10 12:09:59 executed programs: 0
+[   27.358269] ****Triggering Stack out of bound read****
+[   27.364259] (efault): [+] datasize: 91
+[   27.368831] Oops: general protection fault, probably for non-canonical address 0xe000000000000008: 0000 [#1] SMP KASAN NOPTI
+[   27.369810] KASAN: probably user-memory-access in range [0x0000200000000040-0x0000200000000047]
+[   27.369810] CPU: 1 UID: 0 PID: 1157 Comm: syz.3.17 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+[   27.369810] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+[   27.369810] RIP: 0010:string+0x1b9/0x4d0
+[   27.369810] Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+[   27.369810] RSP: 0018:ffff88801a5df978 EFLAGS: 00010046
+[   27.369810] RAX: 0000040000000008 RBX: ffff88801a5dfc86 RCX: dffffc0000000000
+[   27.369810] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000200000000040
+[   27.369810] RBP: 0000200000000041 R08: 0000000000000036 R09: ffff88800425e900
+[   27.369810] R10: 00000000ffffffff R11: ffffffff82c00130 R12: 00001ffffffff040
+[   27.369810] R13: ffff88801a5dfc78 R14: 0000200000000040 R15: 0000000000000000
+[   27.369810] FS:  00005555820bf500(0000) GS:ffff8880e3a86000(0000) knlGS:0000000000000000
+[   27.369810] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.369810] CR2: 0000001b30963fff CR3: 000000001a943001 CR4: 0000000000170ef0
+[   27.369810] Call Trace:
+[   27.369810]  <TASK>
+[   27.369810]  ? __pfx_string+0x10/0x10
+[   27.369810]  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   27.369810]  vsnprintf+0x425/0x1270
+[   27.369810]  ? __pfx_vsnprintf+0x10/0x10
+[   27.369810]  vprintk_store+0x3a6/0xa90
+[   27.369810]  ? stack_trace_save+0x8e/0xc0
+[   27.369810]  ? __pfx_vprintk_store+0x10/0x10
+[   27.369810]  ? kasan_save_stack+0x3f/0x50
+[   27.369810]  ? kasan_save_stack+0x30/0x50
+[   27.369810]  ? kasan_save_track+0x14/0x30
+[   27.369810]  ? proc_reg_unlocked_ioctl+0x229/0x320
+[   27.369810]  ? __x64_sys_ioctl+0x18e/0x210
+[   27.369810]  ? do_syscall_64+0xee/0x590
+[   27.369810]  ? entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   27.369810]  ? is_printk_cpu_sync_owner+0x32/0x40
+[   27.369810]  vprintk_emit+0x178/0x630
+[   27.369810]  ? __pfx_vprintk_emit+0x10/0x10
+[   27.369810]  _printk+0xcf/0x110
+[   27.369810]  ? __pfx__printk+0x10/0x10
+[   27.369810]  ? kasan_save_track+0x14/0x30
+[   27.369810]  ? __kasan_kmalloc+0x8f/0xa0
+[   27.369810]  ? Stack_OOBR_IOCTL_Handler.cold+0xcd/0x103
+[   27.369810]  ? __pfx_dvkm_ioctl+0x10/0x10
+[   27.369810]  Stack_OOBR_IOCTL_Handler.cold+0xe5/0x103
+[   27.634133] clocksource: Watchdog remote CPU 1 read timed out
+[   27.369810]  dvkm_ioctl.cold+0xeb/0x12c
+[   27.369810]  proc_reg_unlocked_ioctl+0x229/0x320
+[   27.369810]  ? __pfx_proc_reg_unlocked_ioctl+0x10/0x10
+[   27.369810]  __x64_sys_ioctl+0x18e/0x210
+[   27.369810]  do_syscall_64+0xee/0x590
+[   27.369810]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   27.369810] RIP: 0033:0x7f562b61acb9
+[   27.369810] Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+[   27.369810] RSP: 002b:00007fffabc6f228 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   27.369810] RAX: ffffffffffffffda RBX: 00007f562b895fa0 RCX: 00007f562b61acb9
+[   27.369810] RDX: 00002000000000c0 RSI: 00000000c0184405 RDI: 0000000000000003
+[   27.369810] RBP: 00007f562b688bf7 R08: 0000000000000000 R09: 0000000000000000
+[   27.369810] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[   27.369810] R13: 00007f562b895fac R14: 00007f562b895fa0 R15: 00007f562b895fa0
+[   27.369810]  </TASK>
+[   27.369810] Modules linked in:
+[   27.369810] ---[ end trace 0000000000000000 ]---
+[   27.369810] RIP: 0010:string+0x1b9/0x4d0
+[   27.369810] Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+[   27.369810] RSP: 0018:ffff88801a5df978 EFLAGS: 00010046
+[   27.369810] RAX: 0000040000000008 RBX: ffff88801a5dfc86 RCX: dffffc0000000000
+[   27.369810] RDX: 0000000000000000 RSI: 0000000000000000 RDI: 0000200000000040
+[   27.369810] RBP: 0000200000000041 R08: 0000000000000036 R09: ffff88800425e900
+[   27.369810] R10: 00000000ffffffff R11: ffffffff82c00130 R12: 00001ffffffff040
+[   27.369810] R13: ffff88801a5dfc78 R14: 0000200000000040 R15: 0000000000000000
+[   27.369810] FS:  00005555820bf500(0000) GS:ffff8880e3a86000(0000) knlGS:0000000000000000
+[   27.369810] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+[   27.369810] CR2: 0000001b30963fff CR3: 000000001a943001 CR4: 0000000000170ef0
+[   27.369810] note: syz.3.17[1157] exited with irqs disabled

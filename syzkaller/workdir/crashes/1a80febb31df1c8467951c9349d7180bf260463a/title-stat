@@ -1,0 +1,42 @@
+{
+	"Count": 0,
+	"Nodes": {
+		"KASAN: slab-use-after-free Write in Heap_OOBW_IOCTL_Handler": {
+			"Count": 3,
+			"Nodes": {
+				"SYZFAIL: failed to recv rpc": {
+					"Count": 1,
+					"Nodes": null
+				},
+				"general protection fault in Stack_OOBW_IOCTL_Handler": {
+					"Count": 2,
+					"Nodes": {
+						"SYZFAIL: failed to recv rpc": {
+							"Count": 2,
+							"Nodes": {
+								"WARNING in Integer_Underflow_IOCTL_Handler": {
+									"Count": 1,
+									"Nodes": {
+										"BUG: unable to handle kernel NULL pointer dereference in Integer_Underflow_IOCTL_Handler": {
+											"Count": 1,
+											"Nodes": null
+										}
+									}
+								},
+								"general protection fault in Stack_Buffer_Overflow_IOCTL_Handler": {
+									"Count": 1,
+									"Nodes": {
+										"BUG: unable to handle kernel NULL pointer dereference in Integer_Overflow_IOCTL_Handler": {
+											"Count": 1,
+											"Nodes": null
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

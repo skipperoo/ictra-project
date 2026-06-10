@@ -1,0 +1,95 @@
+cgroup: Unknown subsys name 'cpuset'
+cgroup: Unknown subsys name 'rlimit'
+cgroup: Unknown subsys name 'memory'
+****Triggering Stack out of bound read****
+(efault): [+] datasize: 67
+Oops: general protection fault, probably for non-canonical address 0xe000000000000030: 0000 [#1] SMP KASAN NOPTI
+KASAN: probably user-memory-access in range [0x0000200000000180-0x0000200000000187]
+CPU: 1 UID: 0 PID: 1959 Comm: syz.3.4 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:string_nocheck lib/vsprintf.c:655 [inline]
+RIP: 0010:string+0x1b9/0x4d0 lib/vsprintf.c:737
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+RSP: 0018:ffff888006627978 EFLAGS: 00010046
+RAX: 0000040000000030 RBX: ffff888006627c86 RCX: dffffc0000000000
+RDX: 0000000000000000 RSI: ffffc90001c95000 RDI: 0000200000000180
+RBP: 0000200000000181 R08: 0000000000000036 R09: ffff88800644c600
+R10: 00000000ffffffff R11: ffffffff9c3eae44 R12: 00001ffffffff180
+R13: ffff888006627c78 R14: 0000200000000180 R15: 0000000000000000
+FS:  00007fb4c7f476c0(0000) GS:ffff8880cae86000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000001b2ef22ff8 CR3: 00000000064ad002 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ vsnprintf+0x425/0x1270 lib/vsprintf.c:2948
+ vprintk_store+0x3a6/0xa90 kernel/printk/printk.c:2307
+ vprintk_emit+0x178/0x630 kernel/printk/printk.c:2455
+ _printk+0xcf/0x110 kernel/printk/printk.c:2504
+ Stack_OOBR_IOCTL_Handler.cold+0xe5/0x103 lib/dvkm.c:281
+ dvkm_ioctl.cold+0xeb/0x12c lib/dvkm.c:455
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7fb4c94eacb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fb4c7f47028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007fb4c9765fa0 RCX: 00007fb4c94eacb9
+RDX: 0000200000000200 RSI: 00000000c0184405 RDI: 0000000000000003
+RBP: 00007fb4c9558bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fb4c9766038 R14: 00007fb4c9765fa0 R15: 00007ffe0f7efd08
+ </TASK>
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:string_nocheck lib/vsprintf.c:655 [inline]
+RIP: 0010:string+0x1b9/0x4d0 lib/vsprintf.c:737
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+RSP: 0018:ffff888006627978 EFLAGS: 00010046
+RAX: 0000040000000030 RBX: ffff888006627c86 RCX: dffffc0000000000
+RDX: 0000000000000000 RSI: ffffc90001c95000 RDI: 0000200000000180
+RBP: 0000200000000181 R08: 0000000000000036 R09: ffff88800644c600
+R10: 00000000ffffffff R11: ffffffff9c3eae44 R12: 00001ffffffff180
+R13: ffff888006627c78 R14: 0000200000000180 R15: 0000000000000000
+FS:  00007fb4c7f476c0(0000) GS:ffff8880cae86000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000001b2ef22ff8 CR3: 00000000064ad002 CR4: 0000000000170ef0
+note: syz.3.4[1959] exited with irqs disabled
+****Triggering Heap out of bound read****
+(efault): [+] datasize: 4096
+(efault): [+] data: =€ÒœÛ>î‘ðxc¿ŠGªi¢ÒÇË*b?ðÅbÒÉbœl¡ó¢ùßº5@¶¤ÿ#M2·æ®ž’4Ð‘šÙHî¤øézbVáAcÄ
+UÜœß‘Ã9p/¥¥‡diW¼)ãØ¿†Ð…¹‚þÍ™ÐN3UÔíûª‘7(J1gáFùÛ5¨¿&˜z3ÍóZWÅþçOD‚$!çÊ^´ÃÝõ{ô|ºä«_ÈŠÔÓ=ÞÝ©‘tªÖ‹q²‚e3ÝÕ ð=kZl§µ>¯@vûØz¸j«s÷?µ+zîüj8Ÿæº‹^*1šË@ŸÛ•aý‰W®‚ø õk?ÉéöGEÔ\Wþ¡ú¤£¯#îi‰£øe²71!Ió›"aÑäÏÀ I=¤˜;cÌ0ËL.¤ÁcJD±Rè£Çc_š(²òÇmé„*Î`äy›§
+----------------
+Code disassembly (best guess):
+   0:	24 08                	and    $0x8,%al
+   2:	48 39 c5             	cmp    %rax,%rbp
+   5:	74 4b                	je     0x52
+   7:	e8 b5 15 e5 fc       	call   0xfce515c1
+   c:	48 89 ef             	mov    %rbp,%rdi
+   f:	48 83 c5 01          	add    $0x1,%rbp
+  13:	48 b9 00 00 00 00 00 	movabs $0xdffffc0000000000,%rcx
+  1a:	fc ff df
+  1d:	48 89 f8             	mov    %rdi,%rax
+  20:	48 89 fa             	mov    %rdi,%rdx
+  23:	48 c1 e8 03          	shr    $0x3,%rax
+  27:	83 e2 07             	and    $0x7,%edx
+* 2a:	0f b6 04 08          	movzbl (%rax,%rcx,1),%eax <-- trapping instruction
+  2e:	38 d0                	cmp    %dl,%al
+  30:	7f 08                	jg     0x3a
+  32:	84 c0                	test   %al,%al
+  34:	0f 85 a3 02 00 00    	jne    0x2dd
+  3a:	44 0f b6 65 ff       	movzbl -0x1(%rbp),%r12d
+  3f:	31                   	.byte 0x31
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

@@ -1,0 +1,1083 @@
+(efault): [+] width: 736495168
+****Triggering Heap out of bound write****
+(efault): [+] datasize: 98
+(efault): [+] Height: 968097831
+****Triggering Heap out of bound write****
+Oops: general protection fault, probably for non-canonical address 0xe000000000000008: 0000 [#1] SMP KASAN NOPTI
+(efault): [+] datasize: 47
+KASAN: probably user-memory-access in range [0x0000200000000040-0x0000200000000047]
+CPU: 0 UID: 0 PID: 1982 Comm: syz.0.1 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:string_nocheck lib/vsprintf.c:655 [inline]
+RIP: 0010:string+0x1b9/0x4d0 lib/vsprintf.c:737
+(efault): [+] datasize: 194
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+RSP: 0018:ffff88801316f978 EFLAGS: 00010046
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+(efault): [+] data: ’%Ã,Pç®õ¨–¨DCö˚Øái:/I8Èí∆ø5·á∂-ù≥ügπ;¢åÏôU$8
+FS:  00007f4291ef76c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f42934e8400 CR3: 0000000003990005 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+(efault): [+] data: –+W∞	·`YÆ!$vÁ´£•ºî¥„É.üNp¿xI1Û·2w9éQé¥h =Ÿ°ÊÚgŸLõ¿E∞÷ÆHby√∏@≠‡ÎJÆh››0ÚÔ»N ˜<JÔh≥ôÏWE'ÉﬁFê.æMRi…¯à≤9t«Ö@^~Î„Ò·,¸v±)ˆ°ÈƒƒÕ˚⁄2õ¶„¶±¸Üæ°°0 ?$&í8ö©P›Ωò[b&X∆©˙[!PôgµTı
+****Triggering Heap Buffer Overflow****
+ vsnprintf+0x425/0x1270 lib/vsprintf.c:2948
+==================================================================
+ vprintk_store+0x3a6/0xa90 kernel/printk/printk.c:2307
+BUG: KASAN: slab-out-of-bounds in Heap_OOBW_IOCTL_Handler.cold+0x158/0x15a lib/dvkm.c:219
+Write of size 1 at addr ffff8880018b2ad6 by task syz.2.3/1979
+
+CPU: 1 UID: 0 PID: 1979 Comm: syz.2.3 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ Heap_OOBW_IOCTL_Handler.cold+0x158/0x15a lib/dvkm.c:219
+ dvkm_ioctl.cold+0x55/0x12c lib/dvkm.c:467
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f6e6f33acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f6e6dd97028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f6e6f5b5fa0 RCX: 00007f6e6f33acb9
+RDX: 0000200000000140 RSI: 00000000c0184408 RDI: 0000000000000003
+RBP: 00007f6e6f3a8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f6e6f5b6038 R14: 00007f6e6f5b5fa0 R15: 00007ffc73ef8298
+ </TASK>
+
+Allocated by task 1979:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kasan_kmalloc include/linux/kasan.h:263 [inline]
+ __do_kmalloc_node mm/slub.c:5296 [inline]
+ __kmalloc_noprof+0x19d/0x500 mm/slub.c:5308
+ kmalloc_noprof include/linux/slab.h:954 [inline]
+ Heap_OOBW_IOCTL_Handler.cold+0x41/0x15a lib/dvkm.c:207
+ dvkm_ioctl.cold+0x55/0x12c lib/dvkm.c:467
+ vprintk_emit+0x178/0x630 kernel/printk/printk.c:2455
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ _printk+0xcf/0x110 kernel/printk/printk.c:2504
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff8880018b2a00
+ which belongs to the cache kmalloc-256 of size 256
+The buggy address is located 20 bytes to the right of
+ allocated 194-byte region [ffff8880018b2a00, ffff8880018b2ac2)
+ Stack_OOBR_IOCTL_Handler.cold+0xe5/0x103 lib/dvkm.c:281
+
+ dvkm_ioctl.cold+0xeb/0x12c lib/dvkm.c:455
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x18b2
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+head: order:1 mapcount:0 entire_mapcount:0 nr_pages_mapped:0 pincount:0
+flags: 0x100000000000040(head|node=0|zone=1)
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+page_type: f5(slab)
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+raw: 0100000000000040 ffff888001041b40 dead000000000100 dead000000000122
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+raw: 0000000000000000 0000000000100010 00000000f5000000 0000000000000000
+RIP: 0033:0x7f429349acb9
+head: 0100000000000040 ffff888001041b40 dead000000000100 dead000000000122
+head: 0000000000000000 0000000000100010 00000000f5000000 0000000000000000
+head: 0100000000000001 ffffffffffffff81 00000000ffffffff 00000000ffffffff
+head: 0000000000000000 0000000000000000 00000000ffffffff 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff8880018b2980: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffff8880018b2a00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>ffff8880018b2a80: 00 00 00 00 00 00 00 00 02 fc fc fc fc fc fc fc
+                                                 ^
+ ffff8880018b2b00: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffff8880018b2b80: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+==================================================================
+(efault): [+] datasize: 92
+(efault): [+] data: ºw∫ÚN<ÔÜãKØ-ß”¡ü·™0{TÃ—∂Ûjîb
+(efault): [+] datasize: 92
+(efault): [+] data: b	˚{˛©—aI'$πk5wpXL≠d\@Ñ¥W —cÃï´YÀ®˜¢ƒãˇ„X@!|En™ôÇ ∑Ê;\”îÖÅ_ã◊ß¥Œè¸Q†=¯B⁄ˆ√€-!1±ArF„9ç	d`ŒBOø
+(efault): [+] calculated size: 442890649
+------------[ cut here ]------------
+WARNING: mm/page_alloc.c:5202 at __alloc_frozen_pages_noprof+0x518/0x28f0 mm/page_alloc.c:5202, CPU#1: syz.1.2/1984
+Modules linked in:
+CPU: 1 UID: 0 PID: 1984 Comm: syz.1.2 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:__alloc_frozen_pages_noprof+0x518/0x28f0 mm/page_alloc.c:5202
+Code: ff ff 83 7c 24 04 0a 0f 86 f7 fb ff ff 0f b6 1d 4f 33 bf 04 80 fb 01 0f 87 73 1f 6c ff 83 e3 01 75 0b c6 05 3a 33 bf 04 01 90 <0f> 0b 90 45 31 ff e9 24 fe ff ff a9 00 00 08 00 0f 85 dd 08 00 00
+RSP: 0018:ffff8880121d7b20 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 1ffff1100243af79
+RDX: 0000000000000000 RSI: 0000000000000011 RDI: 0000000000040cc0
+RBP: 0000000000040cc0 R08: 0000000000000000 R09: ffff8880123b1180
+R10: 0000000000000001 R11: 0000000000000001 R12: 1ffff1100243afa6
+R13: 0000000000000000 R14: ffffffffbc93ba24 R15: 0000000000000000
+FS:  00007f37e94b76c0(0000) GS:ffff8880b0886000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f92d4bf5d58 CR3: 0000000011f8e005 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ alloc_pages_mpol+0xe8/0x340 mm/mempolicy.c:2490
+ ___kmalloc_large_node+0xc5/0xe0 mm/slub.c:5237
+ __kmalloc_large_node_noprof+0x1a/0xb0 mm/slub.c:5268
+ __do_kmalloc_node mm/slub.c:5284 [inline]
+ __kmalloc_noprof+0x3f9/0x500 mm/slub.c:5308
+ kmalloc_noprof include/linux/slab.h:954 [inline]
+ Integer_Underflow_IOCTL_Handler.cold+0x1b4/0x1db lib/dvkm.c:416
+ dvkm_ioctl.cold+0x127/0x12c lib/dvkm.c:443
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f4291ef7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f4293715fa0 RCX: 00007f429349acb9
+RDX: 00002000000000c0 RSI: 00000000c0184405 RDI: 0000000000000003
+RBP: 00007f4293508bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f4293716038 R14: 00007f4293715fa0 R15: 00007ffc3657e698
+ </TASK>
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:string_nocheck lib/vsprintf.c:655 [inline]
+RIP: 0010:string+0x1b9/0x4d0 lib/vsprintf.c:737
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+RSP: 0018:ffff88801316f978 EFLAGS: 00010046
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+FS:  00007f4291ef76c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f42934e8400 CR3: 0000000003990005 CR4: 0000000000170ef0
+RIP: 0033:0x7f37eaa5acb9
+note: syz.0.1[1982] exited with irqs disabled
+****Triggering Integer Overflow****
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+(efault): [+] datasize: 227
+RSP: 002b:00007f37e94b7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f37eacd5fa0 RCX: 00007f37eaa5acb9
+RDX: 0000200000000140 RSI: 00000000c0184401 RDI: 0000000000000003
+RBP: 00007f37eaac8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+(efault): [+] width: 987689673
+R13: 00007f37eacd6038 R14: 00007f37eacd5fa0 R15: 00007ffc2b251a88
+ </TASK>
+---[ end trace 0000000000000000 ]---
+****Triggering use after free****
+(efault): [+] Height: 1149776471
+****Triggering use after free****
+****Triggering Integer Overflow****
+BUG: kernel NULL pointer dereference, address: 0000000000000000
+(efault): [+] datasize: 149
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 7492067 P4D 7492067 PUD 0 
+Oops: Oops: 0002 [#2] SMP KASAN NOPTI
+CPU: 1 UID: 0 PID: 1984 Comm: syz.1.2 Tainted: G      D W           7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Tainted: [D]=DIE, [W]=WARN
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+****Triggering use after free****
+RIP: 0010:memcpy_orig+0x29/0x130 arch/x86/lib/memcpy_64.S:72
+Code: 90 48 89 f8 48 83 fa 20 72 7e 40 38 fe 7c 35 48 83 ea 20 48 83 ea 20 4c 8b 06 4c 8b 4e 08 4c 8b 56 10 4c 8b 5e 18 48 8d 76 20 <4c> 89 07 4c 89 4f 08 4c 89 57 10 4c 89 5f 18 48 8d 7f 20 73 d4 83
+RSP: 0018:ffff8880121d7e68 EFLAGS: 00010206
+RAX: 0000000000000000 RBX: ffff8880064f4200 RCX: 0000000000000000
+RDX: 00000000000000a3 RSI: ffff8880064f4220 RDI: 0000000000000000
+****Triggering Heap out of bound write****
+RBP: 000000001a65f999 R08: d1a9fe7bfb0b0962 R09: 77356bb924274961
+R10: 5c64ad084c581970 R11: 63d12057b4844019 R12: 0000000039b40027
+R13: 00000000c0184401 R14: 0000200000000140 R15: 0000000000000001
+FS:  00007f37e94b76c0(0000) GS:ffff8880b0886000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 0000000011f8e005 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ Integer_Underflow_IOCTL_Handler.cold+0x1c6/0x1db lib/dvkm.c:417
+ dvkm_ioctl.cold+0x127/0x12c lib/dvkm.c:443
+(efault): [+] datasize: 149
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+(efault): [+] datasize: 62
+RIP: 0033:0x7f37eaa5acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f37e94b7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f37eacd5fa0 RCX: 00007f37eaa5acb9
+RDX: 0000200000000140 RSI: 00000000c0184401 RDI: 0000000000000003
+RBP: 00007f37eaac8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+(efault): [+] datasize: 215
+R13: 00007f37eacd6038 R14: 00007f37eacd5fa0 R15: 00007ffc2b251a88
+ </TASK>
+Modules linked in:
+CR2: 0000000000000000
+---[ end trace 0000000000000000 ]---
+****Triggering Heap out of bound read****
+****Triggering double free****
+(efault): [+] width: 8
+(efault): [+] datasize: 108
+(efault): [+] data: ñÜZ]ëz§∂G)Éäd1ûeæ∂ˆ2%2∆Œˇ∆÷©:RÓÖ˜xæ≤||ˇÌÌ≤¯¯›∞Ÿ‡T]Y£7A’!AfØ>3ŒpiuoßÊ∆Â∞¸S¯‘;/Q¸øÒ˙Wπ0Bd≠ÚæP√§aCòœ≤Æ/·€Kb{≥SXW≈5DIÒt’’ˇLáı¢G#	‚ù1≤GõáT8_*z/åÆ∑I<pÂﬁêØ:2,	˜∏ñhÈ±%å\à›ó˛ÜØ{úGÙ&€Ø·¨Åû,ãöï„}Æ Îö!¡cSXOVÍR¡–"à
+(efault): [+] data: «ç]º]dË¥dÕÒP<“ÎÃµÊH„ëa{
+(efault): [+] data: @Ê+'
+(efault): [+] datasize: 102
+(efault): [+] datasize: 119
+(efault): [+] data: 
+(efault): [+] Height: 16
+RIP: 0010:string_nocheck lib/vsprintf.c:655 [inline]
+RIP: 0010:string+0x1b9/0x4d0 lib/vsprintf.c:737
+(efault): [+] datasize: 225
+****Triggering use after free****
+(efault): [+] datasize: 225
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+(efault): [+] data: 3:√qd^ß#»¨á1ì≤Ì±5]∏RPm¡¬~F3söŸf63@Hóòã“9Ÿ¢≈≤·aY1)¸≠yFlr04T°Ë0
+(efault): [+] calculated size: 2137466143
+(efault): [+] calculated size: 23
+RSP: 0018:ffff88801316f978 EFLAGS: 00010046
+(efault): [+] data: ‡ÌèË±Ãw&îzVI_$û∫∑O°-–K√FCfåõØﬂïó<≤+Ù)a(áåê—lƒq·gôú<L˘^ËoÛRÏÙI›©Õ:ëÇ≈y˝õ¿®€∞EÑ1¸‚á˚IL“5©Ç,4?jbyÚ'j%Û∑îˆÆΩ∑Fóz∏'º≈Öåuo*TãÅS¶§>É~d`÷rû˜àÛ˘v43ôH∑Ω∆!`Rïa\§ñùjRâbFÃFö>©%N®ŒàI”9Í oµÑqkÕcx6˝‡aˇr4›\¢ÔºÕºÃM@Ùw
+(efault): [+] datasize: 20
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇg
+
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇgê
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+BUG: kernel NULL pointer dereference, address: 0000000000000000
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 1cd9067 P4D 1cd9067 PUD 0 
+Oops: Oops: 0002 [#3] SMP KASAN NOPTI
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇ
+CPU: 0 UID: 0 PID: 1987 Comm: syz.2.3 Tainted: G    B D W           7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Tainted: [B]=BAD_PAGE, [D]=DIE, [W]=WARN
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:memcpy_orig+0x9d/0x130 arch/x86/lib/memcpy_64.S:124
+Code: e8 4c 89 5f e0 48 8d 7f e0 73 d2 83 c2 20 48 29 d6 48 29 d7 83 fa 10 72 34 4c 8b 06 4c 8b 4e 08 4c 8b 54 16 f0 4c 8b 5c 16 f8 <4c> 89 07 4c 89 4f 08 4c 89 54 17 f0 4c 89 5c 17 f8 c3 cc cc cc cc
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+RSP: 0018:ffff8880070dfe68 EFLAGS: 00010202
+RAX: 0000000000000000 RBX: ffff888001882c00 RCX: 0000000000000000
+RDX: 0000000000000014 RSI: ffff888001882c00 RDI: 0000000000000000
+RBP: 000000007f67251f R08: b6a47a915d5a8696 R09: 8a83170b29471311
+R10: 29471311b6a47a91 R11: 659e31648a83170b R12: 000000003adef2c9
+R13: 00000000c0184400 R14: 0000200000000280 R15: 0000000000000001
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+FS:  00007f6e6dd766c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+FS:  00007f37e94b76c0(0000) GS:ffff8880b0886000(0000) knlGS:0000000000000000
+CR2: 0000000000000000 CR3: 0000000007818003 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+ Integer_Overflow_IOCTL_Handler.cold+0x1bf/0x1d4 lib/dvkm.c:367
+CR2: 00007f37e9052d58 CR3: 0000000011f8e006 CR4: 0000000000170ef0
+ dvkm_ioctl.cold+0x37/0x12c lib/dvkm.c:439
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f6e6f33acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f6e6dd76028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f6e6f5b6090 RCX: 00007f6e6f33acb9
+RDX: 0000200000000280 RSI: 00000000c0184400 RDI: 0000000000000003
+RBP: 00007f6e6f3a8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f6e6f5b6128 R14: 00007f6e6f5b6090 R15: 00007ffc73ef8298
+ </TASK>
+Modules linked in:
+CR2: 0000000000000000
+clocksource: Marking clocksource tsc unstable due to frequency skew
+clocksource: Watchdog               kvm-clock interval:             9922ns
+clocksource: Clocksource                  tsc interval:             9646ns
+tsc: Marking TSC unstable due to clocksource watchdog
+---[ end trace 0000000000000000 ]---
+RIP: 0010:string_nocheck lib/vsprintf.c:655 [inline]
+RIP: 0010:string+0x1b9/0x4d0 lib/vsprintf.c:737
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+RSP: 0018:ffff88801316f978 EFLAGS: 00010046
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+FS:  00007f6e6dd766c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 0000000007818003 CR4: 0000000000170ef0
+----------------
+Code disassembly (best guess):
+   0:	24 08                	and    $0x8,%al
+   2:	48 39 c5             	cmp    %rax,%rbp
+   5:	74 4b                	je     0x52
+   7:	e8 b5 15 e5 fc       	call   0xfce515c1
+   c:	48 89 ef             	mov    %rbp,%rdi
+   f:	48 83 c5 01          	add    $0x1,%rbp
+  13:	48 b9 00 00 00 00 00 	movabs $0xdffffc0000000000,%rcx
+  1a:	fc ff df
+  1d:	48 89 f8             	mov    %rdi,%rax
+  20:	48 89 fa             	mov    %rdi,%rdx
+  23:	48 c1 e8 03          	shr    $0x3,%rax
+  27:	83 e2 07             	and    $0x7,%edx
+* 2a:	0f b6 04 08          	movzbl (%rax,%rcx,1),%eax <-- trapping instruction
+  2e:	38 d0                	cmp    %dl,%al
+  30:	7f 08                	jg     0x3a
+  32:	84 c0                	test   %al,%al
+  34:	0f 85 a3 02 00 00    	jne    0x2dd
+  3a:	44 0f b6 65 ff       	movzbl -0x1(%rbp),%r12d
+  3f:	31                   	.byte 0x31
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+(efault): [+] data: –+W∞	·`YÆ!$vÁ´£•ºî¥„É.üNp¿xI1Û·2w9éQé¥h =Ÿ°ÊÚgŸLõ¿E∞÷ÆHby√∏@≠‡ÎJÆh››0ÚÔ»N ˜<JÔh≥ôÏWE'ÉﬁFê.æMRi…¯à≤9t«Ö@^~Î„Ò·,¸v±)ˆ°ÈƒƒÕ˚⁄2õ¶„¶±¸Üæ°°0 ?$&í8ö©P›Ωò[b&X∆©˙[!PôgµTı
+****Triggering Heap Buffer Overflow****
+ vsnprintf+0x425/0x1270
+==================================================================
+ vprintk_store+0x3a6/0xa90
+BUG: KASAN: slab-out-of-bounds in Heap_OOBW_IOCTL_Handler.cold+0x158/0x15a
+Write of size 1 at addr ffff8880018b2ad6 by task syz.2.3/1979
+
+CPU: 1 UID: 0 PID: 1979 Comm: syz.2.3 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ dump_stack_lvl+0x97/0xe0
+ print_report+0x157/0x4c9
+ kasan_report+0xce/0x100
+ Heap_OOBW_IOCTL_Handler.cold+0x158/0x15a
+ dvkm_ioctl.cold+0x55/0x12c
+ proc_reg_unlocked_ioctl+0x229/0x320
+ __x64_sys_ioctl+0x18e/0x210
+ do_syscall_64+0xee/0x590
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f6e6f33acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f6e6dd97028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f6e6f5b5fa0 RCX: 00007f6e6f33acb9
+RDX: 0000200000000140 RSI: 00000000c0184408 RDI: 0000000000000003
+RBP: 00007f6e6f3a8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f6e6f5b6038 R14: 00007f6e6f5b5fa0 R15: 00007ffc73ef8298
+ </TASK>
+
+Allocated by task 1979:
+ kasan_save_stack+0x30/0x50
+ kasan_save_track+0x14/0x30
+ __kasan_kmalloc+0x8f/0xa0
+ __kmalloc_noprof+0x19d/0x500
+ Heap_OOBW_IOCTL_Handler.cold+0x41/0x15a
+ dvkm_ioctl.cold+0x55/0x12c
+ vprintk_emit+0x178/0x630
+ proc_reg_unlocked_ioctl+0x229/0x320
+ __x64_sys_ioctl+0x18e/0x210
+ _printk+0xcf/0x110
+ do_syscall_64+0xee/0x590
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff8880018b2a00
+ which belongs to the cache kmalloc-256 of size 256
+The buggy address is located 20 bytes to the right of
+ allocated 194-byte region [ffff8880018b2a00, ffff8880018b2ac2)
+ Stack_OOBR_IOCTL_Handler.cold+0xe5/0x103
+
+ dvkm_ioctl.cold+0xeb/0x12c
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x18b2
+ proc_reg_unlocked_ioctl+0x229/0x320
+head: order:1 mapcount:0 entire_mapcount:0 nr_pages_mapped:0 pincount:0
+flags: 0x100000000000040(head|node=0|zone=1)
+ __x64_sys_ioctl+0x18e/0x210
+page_type: f5(slab)
+ do_syscall_64+0xee/0x590
+raw: 0100000000000040 ffff888001041b40 dead000000000100 dead000000000122
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+raw: 0000000000000000 0000000000100010 00000000f5000000 0000000000000000
+RIP: 0033:0x7f429349acb9
+head: 0100000000000040 ffff888001041b40 dead000000000100 dead000000000122
+head: 0000000000000000 0000000000100010 00000000f5000000 0000000000000000
+head: 0100000000000001 ffffffffffffff81 00000000ffffffff 00000000ffffffff
+head: 0000000000000000 0000000000000000 00000000ffffffff 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff8880018b2980: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffff8880018b2a00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>ffff8880018b2a80: 00 00 00 00 00 00 00 00 02 fc fc fc fc fc fc fc
+                                                 ^
+ ffff8880018b2b00: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+ ffff8880018b2b80: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+==================================================================
+(efault): [+] datasize: 92
+(efault): [+] data: ºw∫ÚN<ÔÜãKØ-ß”¡ü·™0{TÃ—∂Ûjîb
+(efault): [+] datasize: 92
+(efault): [+] data: b	˚{˛©—aI'$πk5wpXL≠d\@Ñ¥W —cÃï´YÀ®˜¢ƒãˇ„X@!|En™ôÇ ∑Ê;\”îÖÅ_ã◊ß¥Œè¸Q†=¯B⁄ˆ√€-!1±ArF„9ç	d`ŒBOø
+(efault): [+] calculated size: 442890649
+------------[ cut here ]------------
+WARNING: mm/page_alloc.c:5202 at __alloc_frozen_pages_noprof+0x518/0x28f0, CPU#1: syz.1.2/1984
+Modules linked in:
+CPU: 1 UID: 0 PID: 1984 Comm: syz.1.2 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:__alloc_frozen_pages_noprof+0x518/0x28f0
+Code: ff ff 83 7c 24 04 0a 0f 86 f7 fb ff ff 0f b6 1d 4f 33 bf 04 80 fb 01 0f 87 73 1f 6c ff 83 e3 01 75 0b c6 05 3a 33 bf 04 01 90 <0f> 0b 90 45 31 ff e9 24 fe ff ff a9 00 00 08 00 0f 85 dd 08 00 00
+RSP: 0018:ffff8880121d7b20 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 1ffff1100243af79
+RDX: 0000000000000000 RSI: 0000000000000011 RDI: 0000000000040cc0
+RBP: 0000000000040cc0 R08: 0000000000000000 R09: ffff8880123b1180
+R10: 0000000000000001 R11: 0000000000000001 R12: 1ffff1100243afa6
+R13: 0000000000000000 R14: ffffffffbc93ba24 R15: 0000000000000000
+FS:  00007f37e94b76c0(0000) GS:ffff8880b0886000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f92d4bf5d58 CR3: 0000000011f8e005 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ alloc_pages_mpol+0xe8/0x340
+ ___kmalloc_large_node+0xc5/0xe0
+ __kmalloc_large_node_noprof+0x1a/0xb0
+ __kmalloc_noprof+0x3f9/0x500
+ Integer_Underflow_IOCTL_Handler.cold+0x1b4/0x1db
+ dvkm_ioctl.cold+0x127/0x12c
+ proc_reg_unlocked_ioctl+0x229/0x320
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f4291ef7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f4293715fa0 RCX: 00007f429349acb9
+RDX: 00002000000000c0 RSI: 00000000c0184405 RDI: 0000000000000003
+RBP: 00007f4293508bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f4293716038 R14: 00007f4293715fa0 R15: 00007ffc3657e698
+ </TASK>
+ __x64_sys_ioctl+0x18e/0x210
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:string+0x1b9/0x4d0
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+RSP: 0018:ffff88801316f978 EFLAGS: 00010046
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+ do_syscall_64+0xee/0x590
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+FS:  00007f4291ef76c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f42934e8400 CR3: 0000000003990005 CR4: 0000000000170ef0
+RIP: 0033:0x7f37eaa5acb9
+note: syz.0.1[1982] exited with irqs disabled
+****Triggering Integer Overflow****
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+(efault): [+] datasize: 227
+RSP: 002b:00007f37e94b7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f37eacd5fa0 RCX: 00007f37eaa5acb9
+RDX: 0000200000000140 RSI: 00000000c0184401 RDI: 0000000000000003
+RBP: 00007f37eaac8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+(efault): [+] width: 987689673
+R13: 00007f37eacd6038 R14: 00007f37eacd5fa0 R15: 00007ffc2b251a88
+ </TASK>
+---[ end trace 0000000000000000 ]---
+****Triggering use after free****
+(efault): [+] Height: 1149776471
+****Triggering use after free****
+****Triggering Integer Overflow****
+BUG: kernel NULL pointer dereference, address: 0000000000000000
+(efault): [+] datasize: 149
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 7492067 P4D 7492067 PUD 0 
+Oops: Oops: 0002 [#2] SMP KASAN NOPTI
+CPU: 1 UID: 0 PID: 1984 Comm: syz.1.2 Tainted: G      D W           7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Tainted: [D]=DIE, [W]=WARN
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+****Triggering use after free****
+RIP: 0010:memcpy_orig+0x29/0x130
+Code: 90 48 89 f8 48 83 fa 20 72 7e 40 38 fe 7c 35 48 83 ea 20 48 83 ea 20 4c 8b 06 4c 8b 4e 08 4c 8b 56 10 4c 8b 5e 18 48 8d 76 20 <4c> 89 07 4c 89 4f 08 4c 89 57 10 4c 89 5f 18 48 8d 7f 20 73 d4 83
+RSP: 0018:ffff8880121d7e68 EFLAGS: 00010206
+RAX: 0000000000000000 RBX: ffff8880064f4200 RCX: 0000000000000000
+RDX: 00000000000000a3 RSI: ffff8880064f4220 RDI: 0000000000000000
+****Triggering Heap out of bound write****
+RBP: 000000001a65f999 R08: d1a9fe7bfb0b0962 R09: 77356bb924274961
+R10: 5c64ad084c581970 R11: 63d12057b4844019 R12: 0000000039b40027
+R13: 00000000c0184401 R14: 0000200000000140 R15: 0000000000000001
+FS:  00007f37e94b76c0(0000) GS:ffff8880b0886000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 0000000011f8e005 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ Integer_Underflow_IOCTL_Handler.cold+0x1c6/0x1db
+ dvkm_ioctl.cold+0x127/0x12c
+(efault): [+] datasize: 149
+ proc_reg_unlocked_ioctl+0x229/0x320
+ __x64_sys_ioctl+0x18e/0x210
+ do_syscall_64+0xee/0x590
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+(efault): [+] datasize: 62
+RIP: 0033:0x7f37eaa5acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f37e94b7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f37eacd5fa0 RCX: 00007f37eaa5acb9
+RDX: 0000200000000140 RSI: 00000000c0184401 RDI: 0000000000000003
+RBP: 00007f37eaac8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+(efault): [+] datasize: 215
+R13: 00007f37eacd6038 R14: 00007f37eacd5fa0 R15: 00007ffc2b251a88
+ </TASK>
+Modules linked in:
+CR2: 0000000000000000
+---[ end trace 0000000000000000 ]---
+****Triggering Heap out of bound read****
+****Triggering double free****
+(efault): [+] width: 8
+(efault): [+] datasize: 108
+(efault): [+] data: ñÜZ]ëz§∂G)Éäd1ûeæ∂ˆ2%2∆Œˇ∆÷©:RÓÖ˜xæ≤||ˇÌÌ≤¯¯›∞Ÿ‡T]Y£7A’!AfØ>3ŒpiuoßÊ∆Â∞¸S¯‘;/Q¸øÒ˙Wπ0Bd≠ÚæP√§aCòœ≤Æ/·€Kb{≥SXW≈5DIÒt’’ˇLáı¢G#	‚ù1≤GõáT8_*z/åÆ∑I<pÂﬁêØ:2,	˜∏ñhÈ±%å\à›ó˛ÜØ{úGÙ&€Ø·¨Åû,ãöï„}Æ Îö!¡cSXOVÍR¡–"à
+(efault): [+] data: «ç]º]dË¥dÕÒP<“ÎÃµÊH„ëa{
+(efault): [+] data: @Ê+'
+(efault): [+] datasize: 102
+(efault): [+] datasize: 119
+(efault): [+] data: 
+(efault): [+] Height: 16
+RIP: 0010:string+0x1b9/0x4d0
+(efault): [+] datasize: 225
+****Triggering use after free****
+(efault): [+] datasize: 225
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+(efault): [+] data: 3:√qd^ß#»¨á1ì≤Ì±5]∏RPm¡¬~F3söŸf63@Hóòã“9Ÿ¢≈≤·aY1)¸≠yFlr04T°Ë0
+(efault): [+] calculated size: 2137466143
+(efault): [+] calculated size: 23
+RSP: 0018:ffff88801316f978 EFLAGS: 00010046
+(efault): [+] data: ‡ÌèË±Ãw&îzVI_$û∫∑O°-–K√FCfåõØﬂïó<≤+Ù)a(áåê—lƒq·gôú<L˘^ËoÛRÏÙI›©Õ:ëÇ≈y˝õ¿®€∞EÑ1¸‚á˚IL“5©Ç,4?jbyÚ'j%Û∑îˆÆΩ∑Fóz∏'º≈Öåuo*TãÅS¶§>É~d`÷rû˜àÛ˘v43ôH∑Ω∆!`Rïa\§ñùjRâbFÃFö>©%N®ŒàI”9Í oµÑqkÕcx6˝‡aˇr4›\¢ÔºÕºÃM@Ùw
+(efault): [+] datasize: 20
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇg
+
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇgê
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+BUG: kernel NULL pointer dereference, address: 0000000000000000
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 1cd9067 P4D 1cd9067 PUD 0 
+Oops: Oops: 0002 [#3] SMP KASAN NOPTI
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇ
+CPU: 0 UID: 0 PID: 1987 Comm: syz.2.3 Tainted: G    B D W           7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Tainted: [B]=BAD_PAGE, [D]=DIE, [W]=WARN
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:memcpy_orig+0x9d/0x130
+Code: e8 4c 89 5f e0 48 8d 7f e0 73 d2 83 c2 20 48 29 d6 48 29 d7 83 fa 10 72 34 4c 8b 06 4c 8b 4e 08 4c 8b 54 16 f0 4c 8b 5c 16 f8 <4c> 89 07 4c 89 4f 08 4c 89 54 17 f0 4c 89 5c 17 f8 c3 cc cc cc cc
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+RSP: 0018:ffff8880070dfe68 EFLAGS: 00010202
+RAX: 0000000000000000 RBX: ffff888001882c00 RCX: 0000000000000000
+RDX: 0000000000000014 RSI: ffff888001882c00 RDI: 0000000000000000
+RBP: 000000007f67251f R08: b6a47a915d5a8696 R09: 8a83170b29471311
+R10: 29471311b6a47a91 R11: 659e31648a83170b R12: 000000003adef2c9
+R13: 00000000c0184400 R14: 0000200000000280 R15: 0000000000000001
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+FS:  00007f6e6dd766c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+FS:  00007f37e94b76c0(0000) GS:ffff8880b0886000(0000) knlGS:0000000000000000
+CR2: 0000000000000000 CR3: 0000000007818003 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+ Integer_Overflow_IOCTL_Handler.cold+0x1bf/0x1d4
+CR2: 00007f37e9052d58 CR3: 0000000011f8e006 CR4: 0000000000170ef0
+ dvkm_ioctl.cold+0x37/0x12c
+ proc_reg_unlocked_ioctl+0x229/0x320
+ __x64_sys_ioctl+0x18e/0x210
+ do_syscall_64+0xee/0x590
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f6e6f33acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f6e6dd76028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f6e6f5b6090 RCX: 00007f6e6f33acb9
+RDX: 0000200000000280 RSI: 00000000c0184400 RDI: 0000000000000003
+RBP: 00007f6e6f3a8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f6e6f5b6128 R14: 00007f6e6f5b6090 R15: 00007ffc73ef8298
+ </TASK>
+Modules linked in:
+CR2: 0000000000000000
+clocksource: Marking clocksource tsc unstable due to frequency skew
+clocksource: Watchdog               kvm-clock interval:             9922ns
+clocksource: Clocksource                  tsc interval:             9646ns
+tsc: Marking TSC unstable due to clocksource watchdog
+---[ end trace 0000000000000000 ]---
+RIP: 0010:string+0x1b9/0x4d0
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+RSP: 0018:ffff88801316f978 EFLAGS: 00010046
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+FS:  00007f6e6dd766c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 0000000007818003 CR4: 0000000000170ef0
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+(efault): [+] data: ºw∫ÚN<ÔÜãKØ-ß”¡ü·™0{TÃ—∂Ûjîb
+(efault): [+] datasize: 92
+(efault): [+] data: b	˚{˛©—aI'$πk5wpXL≠d\@Ñ¥W —cÃï´YÀ®˜¢ƒãˇ„X@!|En™ôÇ ∑Ê;\”îÖÅ_ã◊ß¥Œè¸Q†=¯B⁄ˆ√€-!1±ArF„9ç	d`ŒBOø
+(efault): [+] calculated size: 442890649
+------------[ cut here ]------------
+WARNING: mm/page_alloc.c:5202 at __alloc_frozen_pages_noprof+0x518/0x28f0, CPU#1: syz.1.2/1984
+Modules linked in:
+CPU: 1 UID: 0 PID: 1984 Comm: syz.1.2 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:__alloc_frozen_pages_noprof+0x518/0x28f0
+Code: ff ff 83 7c 24 04 0a 0f 86 f7 fb ff ff 0f b6 1d 4f 33 bf 04 80 fb 01 0f 87 73 1f 6c ff 83 e3 01 75 0b c6 05 3a 33 bf 04 01 90 <0f> 0b 90 45 31 ff e9 24 fe ff ff a9 00 00 08 00 0f 85 dd 08 00 00
+RSP: 0018:ffff8880121d7b20 EFLAGS: 00010246
+RAX: 0000000000000000 RBX: 0000000000000000 RCX: 1ffff1100243af79
+RDX: 0000000000000000 RSI: 0000000000000011 RDI: 0000000000040cc0
+RBP: 0000000000040cc0 R08: 0000000000000000 R09: ffff8880123b1180
+R10: 0000000000000001 R11: 0000000000000001 R12: 1ffff1100243afa6
+R13: 0000000000000000 R14: ffffffffbc93ba24 R15: 0000000000000000
+FS:  00007f37e94b76c0(0000) GS:ffff8880b0886000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f92d4bf5d58 CR3: 0000000011f8e005 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ alloc_pages_mpol+0xe8/0x340
+ ___kmalloc_large_node+0xc5/0xe0
+ __kmalloc_large_node_noprof+0x1a/0xb0
+ __kmalloc_noprof+0x3f9/0x500
+ Integer_Underflow_IOCTL_Handler.cold+0x1b4/0x1db
+ dvkm_ioctl.cold+0x127/0x12c
+ proc_reg_unlocked_ioctl+0x229/0x320
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f4291ef7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f4293715fa0 RCX: 00007f429349acb9
+RDX: 00002000000000c0 RSI: 00000000c0184405 RDI: 0000000000000003
+RBP: 00007f4293508bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f4293716038 R14: 00007f4293715fa0 R15: 00007ffc3657e698
+ </TASK>
+ __x64_sys_ioctl+0x18e/0x210
+Modules linked in:
+---[ end trace 0000000000000000 ]---
+RIP: 0010:string+0x1b9/0x4d0
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+RSP: 0018:ffff88801316f978 EFLAGS: 00010046
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+ do_syscall_64+0xee/0x590
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+FS:  00007f4291ef76c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 00007f42934e8400 CR3: 0000000003990005 CR4: 0000000000170ef0
+RIP: 0033:0x7f37eaa5acb9
+note: syz.0.1[1982] exited with irqs disabled
+****Triggering Integer Overflow****
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+(efault): [+] datasize: 227
+RSP: 002b:00007f37e94b7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f37eacd5fa0 RCX: 00007f37eaa5acb9
+RDX: 0000200000000140 RSI: 00000000c0184401 RDI: 0000000000000003
+RBP: 00007f37eaac8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+(efault): [+] width: 987689673
+R13: 00007f37eacd6038 R14: 00007f37eacd5fa0 R15: 00007ffc2b251a88
+ </TASK>
+---[ end trace 0000000000000000 ]---
+****Triggering use after free****
+(efault): [+] Height: 1149776471
+****Triggering use after free****
+****Triggering Integer Overflow****
+BUG: kernel NULL pointer dereference, address: 0000000000000000
+(efault): [+] datasize: 149
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 7492067 P4D 7492067 PUD 0 
+Oops: Oops: 0002 [#2] SMP KASAN NOPTI
+CPU: 1 UID: 0 PID: 1984 Comm: syz.1.2 Tainted: G      D W           7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Tainted: [D]=DIE, [W]=WARN
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+****Triggering use after free****
+RIP: 0010:memcpy_orig+0x29/0x130
+Code: 90 48 89 f8 48 83 fa 20 72 7e 40 38 fe 7c 35 48 83 ea 20 48 83 ea 20 4c 8b 06 4c 8b 4e 08 4c 8b 56 10 4c 8b 5e 18 48 8d 76 20 <4c> 89 07 4c 89 4f 08 4c 89 57 10 4c 89 5f 18 48 8d 7f 20 73 d4 83
+RSP: 0018:ffff8880121d7e68 EFLAGS: 00010206
+RAX: 0000000000000000 RBX: ffff8880064f4200 RCX: 0000000000000000
+RDX: 00000000000000a3 RSI: ffff8880064f4220 RDI: 0000000000000000
+****Triggering Heap out of bound write****
+RBP: 000000001a65f999 R08: d1a9fe7bfb0b0962 R09: 77356bb924274961
+R10: 5c64ad084c581970 R11: 63d12057b4844019 R12: 0000000039b40027
+R13: 00000000c0184401 R14: 0000200000000140 R15: 0000000000000001
+FS:  00007f37e94b76c0(0000) GS:ffff8880b0886000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 0000000011f8e005 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ Integer_Underflow_IOCTL_Handler.cold+0x1c6/0x1db
+ dvkm_ioctl.cold+0x127/0x12c
+(efault): [+] datasize: 149
+ proc_reg_unlocked_ioctl+0x229/0x320
+ __x64_sys_ioctl+0x18e/0x210
+ do_syscall_64+0xee/0x590
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+(efault): [+] datasize: 62
+RIP: 0033:0x7f37eaa5acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f37e94b7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f37eacd5fa0 RCX: 00007f37eaa5acb9
+RDX: 0000200000000140 RSI: 00000000c0184401 RDI: 0000000000000003
+RBP: 00007f37eaac8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+(efault): [+] datasize: 215
+R13: 00007f37eacd6038 R14: 00007f37eacd5fa0 R15: 00007ffc2b251a88
+ </TASK>
+Modules linked in:
+CR2: 0000000000000000
+---[ end trace 0000000000000000 ]---
+****Triggering Heap out of bound read****
+****Triggering double free****
+(efault): [+] width: 8
+(efault): [+] datasize: 108
+(efault): [+] data: ñÜZ]ëz§∂G)Éäd1ûeæ∂ˆ2%2∆Œˇ∆÷©:RÓÖ˜xæ≤||ˇÌÌ≤¯¯›∞Ÿ‡T]Y£7A’!AfØ>3ŒpiuoßÊ∆Â∞¸S¯‘;/Q¸øÒ˙Wπ0Bd≠ÚæP√§aCòœ≤Æ/·€Kb{≥SXW≈5DIÒt’’ˇLáı¢G#	‚ù1≤GõáT8_*z/åÆ∑I<pÂﬁêØ:2,	˜∏ñhÈ±%å\à›ó˛ÜØ{úGÙ&€Ø·¨Åû,ãöï„}Æ Îö!¡cSXOVÍR¡–"à
+(efault): [+] data: «ç]º]dË¥dÕÒP<“ÎÃµÊH„ëa{
+(efault): [+] data: @Ê+'
+(efault): [+] datasize: 102
+(efault): [+] datasize: 119
+(efault): [+] data: 
+(efault): [+] Height: 16
+RIP: 0010:string+0x1b9/0x4d0
+(efault): [+] datasize: 225
+****Triggering use after free****
+(efault): [+] datasize: 225
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+(efault): [+] data: 3:√qd^ß#»¨á1ì≤Ì±5]∏RPm¡¬~F3söŸf63@Hóòã“9Ÿ¢≈≤·aY1)¸≠yFlr04T°Ë0
+(efault): [+] calculated size: 2137466143
+(efault): [+] calculated size: 23
+RSP: 0018:ffff88801316f978 EFLAGS: 00010046
+(efault): [+] data: ‡ÌèË±Ãw&îzVI_$û∫∑O°-–K√FCfåõØﬂïó<≤+Ù)a(áåê—lƒq·gôú<L˘^ËoÛRÏÙI›©Õ:ëÇ≈y˝õ¿®€∞EÑ1¸‚á˚IL“5©Ç,4?jbyÚ'j%Û∑îˆÆΩ∑Fóz∏'º≈Öåuo*TãÅS¶§>É~d`÷rû˜àÛ˘v43ôH∑Ω∆!`Rïa\§ñùjRâbFÃFö>©%N®ŒàI”9Í oµÑqkÕcx6˝‡aˇr4›\¢ÔºÕºÃM@Ùw
+(efault): [+] datasize: 20
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇg
+
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇgê
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+BUG: kernel NULL pointer dereference, address: 0000000000000000
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 1cd9067 P4D 1cd9067 PUD 0 
+Oops: Oops: 0002 [#3] SMP KASAN NOPTI
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇ
+CPU: 0 UID: 0 PID: 1987 Comm: syz.2.3 Tainted: G    B D W           7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Tainted: [B]=BAD_PAGE, [D]=DIE, [W]=WARN
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:memcpy_orig+0x9d/0x130
+Code: e8 4c 89 5f e0 48 8d 7f e0 73 d2 83 c2 20 48 29 d6 48 29 d7 83 fa 10 72 34 4c 8b 06 4c 8b 4e 08 4c 8b 54 16 f0 4c 8b 5c 16 f8 <4c> 89 07 4c 89 4f 08 4c 89 54 17 f0 4c 89 5c 17 f8 c3 cc cc cc cc
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+RSP: 0018:ffff8880070dfe68 EFLAGS: 00010202
+RAX: 0000000000000000 RBX: ffff888001882c00 RCX: 0000000000000000
+RDX: 0000000000000014 RSI: ffff888001882c00 RDI: 0000000000000000
+RBP: 000000007f67251f R08: b6a47a915d5a8696 R09: 8a83170b29471311
+R10: 29471311b6a47a91 R11: 659e31648a83170b R12: 000000003adef2c9
+R13: 00000000c0184400 R14: 0000200000000280 R15: 0000000000000001
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+FS:  00007f6e6dd766c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+FS:  00007f37e94b76c0(0000) GS:ffff8880b0886000(0000) knlGS:0000000000000000
+CR2: 0000000000000000 CR3: 0000000007818003 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+ Integer_Overflow_IOCTL_Handler.cold+0x1bf/0x1d4
+CR2: 00007f37e9052d58 CR3: 0000000011f8e006 CR4: 0000000000170ef0
+ dvkm_ioctl.cold+0x37/0x12c
+ proc_reg_unlocked_ioctl+0x229/0x320
+ __x64_sys_ioctl+0x18e/0x210
+ do_syscall_64+0xee/0x590
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f6e6f33acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f6e6dd76028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f6e6f5b6090 RCX: 00007f6e6f33acb9
+RDX: 0000200000000280 RSI: 00000000c0184400 RDI: 0000000000000003
+RBP: 00007f6e6f3a8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f6e6f5b6128 R14: 00007f6e6f5b6090 R15: 00007ffc73ef8298
+ </TASK>
+Modules linked in:
+CR2: 0000000000000000
+clocksource: Marking clocksource tsc unstable due to frequency skew
+clocksource: Watchdog               kvm-clock interval:             9922ns
+clocksource: Clocksource                  tsc interval:             9646ns
+tsc: Marking TSC unstable due to clocksource watchdog
+---[ end trace 0000000000000000 ]---
+RIP: 0010:string+0x1b9/0x4d0
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+RSP: 0018:ffff88801316f978 EFLAGS: 00010046
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+FS:  00007f6e6dd766c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 0000000007818003 CR4: 0000000000170ef0
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+---[ end trace 0000000000000000 ]---
+****Triggering use after free****
+(efault): [+] Height: 1149776471
+****Triggering use after free****
+****Triggering Integer Overflow****
+BUG: kernel NULL pointer dereference, address: 0000000000000000
+(efault): [+] datasize: 149
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 7492067 P4D 7492067 PUD 0 
+Oops: Oops: 0002 [#2] SMP KASAN NOPTI
+CPU: 1 UID: 0 PID: 1984 Comm: syz.1.2 Tainted: G      D W           7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Tainted: [D]=DIE, [W]=WARN
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+****Triggering use after free****
+RIP: 0010:memcpy_orig+0x29/0x130
+Code: 90 48 89 f8 48 83 fa 20 72 7e 40 38 fe 7c 35 48 83 ea 20 48 83 ea 20 4c 8b 06 4c 8b 4e 08 4c 8b 56 10 4c 8b 5e 18 48 8d 76 20 <4c> 89 07 4c 89 4f 08 4c 89 57 10 4c 89 5f 18 48 8d 7f 20 73 d4 83
+RSP: 0018:ffff8880121d7e68 EFLAGS: 00010206
+RAX: 0000000000000000 RBX: ffff8880064f4200 RCX: 0000000000000000
+RDX: 00000000000000a3 RSI: ffff8880064f4220 RDI: 0000000000000000
+****Triggering Heap out of bound write****
+RBP: 000000001a65f999 R08: d1a9fe7bfb0b0962 R09: 77356bb924274961
+R10: 5c64ad084c581970 R11: 63d12057b4844019 R12: 0000000039b40027
+R13: 00000000c0184401 R14: 0000200000000140 R15: 0000000000000001
+FS:  00007f37e94b76c0(0000) GS:ffff8880b0886000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 0000000011f8e005 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+ Integer_Underflow_IOCTL_Handler.cold+0x1c6/0x1db
+ dvkm_ioctl.cold+0x127/0x12c
+(efault): [+] datasize: 149
+ proc_reg_unlocked_ioctl+0x229/0x320
+ __x64_sys_ioctl+0x18e/0x210
+ do_syscall_64+0xee/0x590
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+(efault): [+] datasize: 62
+RIP: 0033:0x7f37eaa5acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f37e94b7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f37eacd5fa0 RCX: 00007f37eaa5acb9
+RDX: 0000200000000140 RSI: 00000000c0184401 RDI: 0000000000000003
+RBP: 00007f37eaac8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+(efault): [+] datasize: 215
+R13: 00007f37eacd6038 R14: 00007f37eacd5fa0 R15: 00007ffc2b251a88
+ </TASK>
+Modules linked in:
+CR2: 0000000000000000
+---[ end trace 0000000000000000 ]---
+****Triggering Heap out of bound read****
+****Triggering double free****
+(efault): [+] width: 8
+(efault): [+] datasize: 108
+(efault): [+] data: ñÜZ]ëz§∂G)Éäd1ûeæ∂ˆ2%2∆Œˇ∆÷©:RÓÖ˜xæ≤||ˇÌÌ≤¯¯›∞Ÿ‡T]Y£7A’!AfØ>3ŒpiuoßÊ∆Â∞¸S¯‘;/Q¸øÒ˙Wπ0Bd≠ÚæP√§aCòœ≤Æ/·€Kb{≥SXW≈5DIÒt’’ˇLáı¢G#	‚ù1≤GõáT8_*z/åÆ∑I<pÂﬁêØ:2,	˜∏ñhÈ±%å\à›ó˛ÜØ{úGÙ&€Ø·¨Åû,ãöï„}Æ Îö!¡cSXOVÍR¡–"à
+(efault): [+] data: «ç]º]dË¥dÕÒP<“ÎÃµÊH„ëa{
+(efault): [+] data: @Ê+'
+(efault): [+] datasize: 102
+(efault): [+] datasize: 119
+(efault): [+] data: 
+(efault): [+] Height: 16
+RIP: 0010:string+0x1b9/0x4d0
+(efault): [+] datasize: 225
+****Triggering use after free****
+(efault): [+] datasize: 225
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+(efault): [+] data: 3:√qd^ß#»¨á1ì≤Ì±5]∏RPm¡¬~F3söŸf63@Hóòã“9Ÿ¢≈≤·aY1)¸≠yFlr04T°Ë0
+(efault): [+] calculated size: 2137466143
+(efault): [+] calculated size: 23
+RSP: 0018:ffff88801316f978 EFLAGS: 00010046
+(efault): [+] data: ‡ÌèË±Ãw&îzVI_$û∫∑O°-–K√FCfåõØﬂïó<≤+Ù)a(áåê—lƒq·gôú<L˘^ËoÛRÏÙI›©Õ:ëÇ≈y˝õ¿®€∞EÑ1¸‚á˚IL“5©Ç,4?jbyÚ'j%Û∑îˆÆΩ∑Fóz∏'º≈Öåuo*TãÅS¶§>É~d`÷rû˜àÛ˘v43ôH∑Ω∆!`Rïa\§ñùjRâbFÃFö>©%N®ŒàI”9Í oµÑqkÕcx6˝‡aˇr4›\¢ÔºÕºÃM@Ùw
+(efault): [+] datasize: 20
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇg
+
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇgê
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+BUG: kernel NULL pointer dereference, address: 0000000000000000
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 1cd9067 P4D 1cd9067 PUD 0 
+Oops: Oops: 0002 [#3] SMP KASAN NOPTI
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇ
+CPU: 0 UID: 0 PID: 1987 Comm: syz.2.3 Tainted: G    B D W           7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Tainted: [B]=BAD_PAGE, [D]=DIE, [W]=WARN
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:memcpy_orig+0x9d/0x130
+Code: e8 4c 89 5f e0 48 8d 7f e0 73 d2 83 c2 20 48 29 d6 48 29 d7 83 fa 10 72 34 4c 8b 06 4c 8b 4e 08 4c 8b 54 16 f0 4c 8b 5c 16 f8 <4c> 89 07 4c 89 4f 08 4c 89 54 17 f0 4c 89 5c 17 f8 c3 cc cc cc cc
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+RSP: 0018:ffff8880070dfe68 EFLAGS: 00010202
+RAX: 0000000000000000 RBX: ffff888001882c00 RCX: 0000000000000000
+RDX: 0000000000000014 RSI: ffff888001882c00 RDI: 0000000000000000
+RBP: 000000007f67251f R08: b6a47a915d5a8696 R09: 8a83170b29471311
+R10: 29471311b6a47a91 R11: 659e31648a83170b R12: 000000003adef2c9
+R13: 00000000c0184400 R14: 0000200000000280 R15: 0000000000000001
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+FS:  00007f6e6dd766c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+FS:  00007f37e94b76c0(0000) GS:ffff8880b0886000(0000) knlGS:0000000000000000
+CR2: 0000000000000000 CR3: 0000000007818003 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+ Integer_Overflow_IOCTL_Handler.cold+0x1bf/0x1d4
+CR2: 00007f37e9052d58 CR3: 0000000011f8e006 CR4: 0000000000170ef0
+ dvkm_ioctl.cold+0x37/0x12c
+ proc_reg_unlocked_ioctl+0x229/0x320
+ __x64_sys_ioctl+0x18e/0x210
+ do_syscall_64+0xee/0x590
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f6e6f33acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f6e6dd76028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f6e6f5b6090 RCX: 00007f6e6f33acb9
+RDX: 0000200000000280 RSI: 00000000c0184400 RDI: 0000000000000003
+RBP: 00007f6e6f3a8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f6e6f5b6128 R14: 00007f6e6f5b6090 R15: 00007ffc73ef8298
+ </TASK>
+Modules linked in:
+CR2: 0000000000000000
+clocksource: Marking clocksource tsc unstable due to frequency skew
+clocksource: Watchdog               kvm-clock interval:             9922ns
+clocksource: Clocksource                  tsc interval:             9646ns
+tsc: Marking TSC unstable due to clocksource watchdog
+---[ end trace 0000000000000000 ]---
+RIP: 0010:string+0x1b9/0x4d0
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+RSP: 0018:ffff88801316f978 EFLAGS: 00010046
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+FS:  00007f6e6dd766c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 0000000007818003 CR4: 0000000000170ef0
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+(efault): [+] data: ‡ÌèË±Ãw&îzVI_$û∫∑O°-–K√FCfåõØﬂïó<≤+Ù)a(áåê—lƒq·gôú<L˘^ËoÛRÏÙI›©Õ:ëÇ≈y˝õ¿®€∞EÑ1¸‚á˚IL“5©Ç,4?jbyÚ'j%Û∑îˆÆΩ∑Fóz∏'º≈Öåuo*TãÅS¶§>É~d`÷rû˜àÛ˘v43ôH∑Ω∆!`Rïa\§ñùjRâbFÃFö>©%N®ŒàI”9Í oµÑqkÕcx6˝‡aˇr4›\¢ÔºÕºÃM@Ùw
+(efault): [+] datasize: 20
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇg
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇgê
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+BUG: kernel NULL pointer dereference, address: 0000000000000000
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+#PF: supervisor write access in kernel mode
+#PF: error_code(0x0002) - not-present page
+PGD 1cd9067 P4D 1cd9067 PUD 0 
+Oops: Oops: 0002 [#3] SMP KASAN NOPTI
+(efault): [+] data: <2ÂñkïΩ§òıÚxÅµîG&Äàˇˇ
+CPU: 0 UID: 0 PID: 1987 Comm: syz.2.3 Tainted: G    B D W           7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Tainted: [B]=BAD_PAGE, [D]=DIE, [W]=WARN
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+RIP: 0010:memcpy_orig+0x9d/0x130
+Code: e8 4c 89 5f e0 48 8d 7f e0 73 d2 83 c2 20 48 29 d6 48 29 d7 83 fa 10 72 34 4c 8b 06 4c 8b 4e 08 4c 8b 54 16 f0 4c 8b 5c 16 f8 <4c> 89 07 4c 89 4f 08 4c 89 54 17 f0 4c 89 5c 17 f8 c3 cc cc cc cc
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+RSP: 0018:ffff8880070dfe68 EFLAGS: 00010202
+RAX: 0000000000000000 RBX: ffff888001882c00 RCX: 0000000000000000
+RDX: 0000000000000014 RSI: ffff888001882c00 RDI: 0000000000000000
+RBP: 000000007f67251f R08: b6a47a915d5a8696 R09: 8a83170b29471311
+R10: 29471311b6a47a91 R11: 659e31648a83170b R12: 000000003adef2c9
+R13: 00000000c0184400 R14: 0000200000000280 R15: 0000000000000001
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+FS:  00007f6e6dd766c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+FS:  00007f37e94b76c0(0000) GS:ffff8880b0886000(0000) knlGS:0000000000000000
+CR2: 0000000000000000 CR3: 0000000007818003 CR4: 0000000000170ef0
+Call Trace:
+ <TASK>
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+ Integer_Overflow_IOCTL_Handler.cold+0x1bf/0x1d4
+CR2: 00007f37e9052d58 CR3: 0000000011f8e006 CR4: 0000000000170ef0
+ dvkm_ioctl.cold+0x37/0x12c
+ proc_reg_unlocked_ioctl+0x229/0x320
+ __x64_sys_ioctl+0x18e/0x210
+ do_syscall_64+0xee/0x590
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7f6e6f33acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007f6e6dd76028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007f6e6f5b6090 RCX: 00007f6e6f33acb9
+RDX: 0000200000000280 RSI: 00000000c0184400 RDI: 0000000000000003
+RBP: 00007f6e6f3a8bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007f6e6f5b6128 R14: 00007f6e6f5b6090 R15: 00007ffc73ef8298
+ </TASK>
+Modules linked in:
+CR2: 0000000000000000
+clocksource: Marking clocksource tsc unstable due to frequency skew
+clocksource: Watchdog               kvm-clock interval:             9922ns
+clocksource: Clocksource                  tsc interval:             9646ns
+tsc: Marking TSC unstable due to clocksource watchdog
+---[ end trace 0000000000000000 ]---
+RIP: 0010:string+0x1b9/0x4d0
+Code: 24 08 48 39 c5 74 4b e8 b5 15 e5 fc 48 89 ef 48 83 c5 01 48 b9 00 00 00 00 00 fc ff df 48 89 f8 48 89 fa 48 c1 e8 03 83 e2 07 <0f> b6 04 08 38 d0 7f 08 84 c0 0f 85 a3 02 00 00 44 0f b6 65 ff 31
+RSP: 0018:ffff88801316f978 EFLAGS: 00010046
+RAX: 0000040000000008 RBX: ffff88801316fc86 RCX: dffffc0000000000
+RDX: 0000000000000000 RSI: ffffc90000881000 RDI: 0000200000000040
+RBP: 0000200000000041 R08: 0000000000000036 R09: ffff888012064600
+R10: 00000000ffffffff R11: ffffffffb5e00130 R12: 00001ffffffff040
+R13: ffff88801316fc78 R14: 0000200000000040 R15: 0000000000000000
+FS:  00007f6e6dd766c0(0000) GS:ffff8880b0786000(0000) knlGS:0000000000000000
+CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+CR2: 0000000000000000 CR3: 0000000007818003 CR4: 0000000000170ef0
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+

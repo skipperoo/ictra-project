@@ -1,0 +1,2206 @@
+Warning: Permanently added '[localhost]:33629' (ED25519) to the list of known hosts.
+2026/06/10 12:41:41 parsed 1 programs
+buildroot login: [   15.561922] cgroup: Unknown subsys name 'net'
+[   15.593291] cgroup: Unknown subsys name 'cpuset'
+[   15.599489] cgroup: Unknown subsys name 'rlimit'
+[   15.604017] cgroup: Unknown subsys name 'memory'
+mkswap: image is too small
+2026/06/10 12:41:46 executed programs: 0
+[   19.587880] syz-executor (245) used greatest stack depth: 24560 bytes left
+[   24.419823] ****Triggering double free****
+[   24.419974] ****Triggering double free****
+[   24.423836] (efault): [+] datasize: 0
+[   24.432020] ****Triggering use after free****
+[   24.438763] (efault): [+] datasize: 0
+[   24.443863] (efault): [+] datasize: 4096
+[   24.449315] (efault): [+] data: 
+[   24.452461] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   24.452461] …æúﬁ#!Îä;∫œ
+[   24.455171] ==================================================================
+[   24.469680] BUG: KASAN: double-free in Double_free_IOCTL_Handler.cold+0x11f/0x124
+[   24.471725] ****Triggering double free****
+[   24.469680] Free of addr ffff888001f0c000 by task syz.4.17/2483
+[   24.469680] 
+[   24.469680] CPU: 1 UID: 0 PID: 2483 Comm: syz.4.17 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+[   24.469680] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+[   24.469680] Call Trace:
+[   24.469680]  <TASK>
+[   24.469680]  dump_stack_lvl+0x97/0xe0
+[   24.469680]  ? Double_free_IOCTL_Handler.cold+0x11f/0x124
+[   24.469680]  ? Double_free_IOCTL_Handler.cold+0x11f/0x124
+[   24.469680]  print_report+0x157/0x4c9
+[   24.469680]  ? __pfx__raw_spin_lock_irqsave+0x10/0x10
+[   24.469680]  ? Double_free_IOCTL_Handler.cold+0x11f/0x124
+[   24.469680]  ? Double_free_IOCTL_Handler.cold+0x11f/0x124
+[   24.469680]  kasan_report_invalid_free+0xa2/0xd0
+[   24.469680]  ? Double_free_IOCTL_Handler.cold+0x11f/0x124
+[   24.469680]  ? Double_free_IOCTL_Handler.cold+0x11f/0x124
+[   24.469680]  check_slab_allocation+0xd9/0x100
+[   24.469680]  kfree+0x128/0x3a0
+[   24.469680]  ? Double_free_IOCTL_Handler.cold+0xfb/0x124
+[   24.469680]  ? __pfx_dvkm_ioctl+0x10/0x10
+[   24.469680]  Double_free_IOCTL_Handler.cold+0x11f/0x124
+[   24.469680]  dvkm_ioctl.cold+0x73/0x12c
+[   24.469680]  proc_reg_unlocked_ioctl+0x229/0x320
+[   24.469680]  ? __pfx_proc_reg_unlocked_ioctl+0x10/0x10
+[   24.469680]  __x64_sys_ioctl+0x18e/0x210
+[   24.469680]  do_syscall_64+0xee/0x590
+[   24.469680]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   24.469680] RIP: 0033:0x7f0b3801acb9
+[   24.469680] Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+[   24.469680] RSP: 002b:00007ffeb094f788 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+[   24.469680] RAX: ffffffffffffffda RBX: 00007f0b38295fa0 RCX: 00007f0b3801acb9
+[   24.469680] RDX: 0000200000000080 RSI: 00000000c018440b RDI: 0000000000000003
+[   24.469680] RBP: 00007f0b38088bf7 R08: 0000000000000000 R09: 0000000000000000
+[   24.469680] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[   24.469680] R13: 00007f0b38295fac R14: 00007f0b38295fa0 R15: 00007f0b38295fa0
+[   24.469680]  </TASK>
+[   24.469680] 
+[   24.482754] (efault): [+] datasize: 0
+[   24.469680] Allocated by task 2483:
+[   24.469680]  kasan_save_stack+0x30/0x50
+[   24.469680]  kasan_save_track+0x14/0x30
+[   24.469680]  __kasan_kmalloc+0x8f/0xa0
+[   24.490581] ****Triggering use after free****
+[   24.469680]  __kmalloc_noprof+0x19d/0x500
+[   24.469680]  Double_free_IOCTL_Handler.cold+0x41/0x124
+[   24.469680]  dvkm_ioctl.cold+0x73/0x12c
+[   24.509398] (efault): [+] datasize: 4096
+[   24.509225]  proc_reg_unlocked_ioctl+0x229/0x320
+[   24.509225]  __x64_sys_ioctl+0x18e/0x210
+[   24.509225]  do_syscall_64+0xee/0x590
+[   24.515346]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   24.515346] 
+[   24.515346] Freed by task 2483:
+[   24.515346]  kasan_save_stack+0x30/0x50
+[   24.515346]  kasan_save_track+0x14/0x30
+[   24.515346]  kasan_save_free_info+0x3b/0x70
+[   24.515346]  __kasan_slab_free+0x43/0x70
+[   24.515346]  kfree+0x149/0x3a0
+[   24.515346]  Double_free_IOCTL_Handler.cold+0x117/0x124
+[   24.515346]  dvkm_ioctl.cold+0x73/0x12c
+[   24.515346]  proc_reg_unlocked_ioctl+0x229/0x320
+[   24.515346]  __x64_sys_ioctl+0x18e/0x210
+[   24.515346]  do_syscall_64+0xee/0x590
+[   24.515346]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   24.515346] 
+[   24.515346] The buggy address belongs to the object at ffff888001f0c000
+[   24.515346]  which belongs to the cache kmalloc-4k of size 4096
+[   24.515346] The buggy address is located 0 bytes inside of
+[   24.515346]  4096-byte region [ffff888001f0c000, ffff888001f0d000)
+[   24.515346] 
+[   24.515346] The buggy address belongs to the physical page:
+[   24.515346] page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff888001f0e000 pfn:0x1f08
+[   24.515346] head: order:3 mapcount:0 entire_mapcount:0 nr_pages_mapped:0 pincount:0
+[   24.515346] flags: 0x100000000000240(workingset|head|node=0|zone=1)
+[   24.515346] page_type: f5(slab)
+[   24.515346] raw: 0100000000000240 ffff888001042140 ffff888001040690 ffffea0000074010
+[   24.515346] raw: ffff888001f0e000 0000000000040003 00000000f5000000 0000000000000000
+[   24.515346] head: 0100000000000240 ffff888001042140 ffff888001040690 ffffea0000074010
+[   24.515346] head: ffff888001f0e000 0000000000040003 00000000f5000000 0000000000000000
+[   24.515346] head: 0100000000000003 fffffffffffffe01 00000000ffffffff 00000000ffffffff
+[   24.515346] head: 0000000000000000 0000000000000000 00000000ffffffff 0000000000000000
+[   24.515346] page dumped because: kasan: bad access detected
+[   24.515346] 
+[   24.515346] Memory state around the buggy address:
+[   24.515346]  ffff888001f0bf00: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+[   24.515346]  ffff888001f0bf80: fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc fc
+[   24.515346] >ffff888001f0c000: fa fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+[   24.515346]                    ^
+[   24.515346]  ffff888001f0c080: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+[   24.515346]  ffff888001f0c100: fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
+[   24.515346] ==================================================================
+[   24.948304] Disabling lock debugging due to kernel taint
+[   24.950983] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   24.950983] …æúﬁ#!Îä;∫œ
+[   24.964239] ****Triggering use after free****
+2026/06/10 12:41:52 executed programs: 11
+[   24.976269] (efault): [+] datasize: 4096
+[   24.980811] ****Triggering double free****
+[   24.984160] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   24.984160] …æúﬁ#!Îä;∫œ
+[   24.986065] (efault): [+] datasize: 0
+[   25.000351] ****Triggering use after free****
+[   25.004679] (efault): [+] datasize: 4096
+[   25.008893] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.008893] …æúﬁ#!Îä;∫œ
+[   25.027467] ****Triggering double free****
+[   25.033380] (efault): [+] datasize: 0
+[   25.039805] ****Triggering use after free****
+[   25.042474] ****Triggering double free****
+[   25.044216] (efault): [+] datasize: 4096
+[   25.052212] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.052212] …æúﬁ#!Îä;∫œ
+[   25.058177] (efault): [+] datasize: 0
+[   25.074266] ****Triggering use after free****
+[   25.082861] ****Triggering double free****
+[   25.083599] (efault): [+] datasize: 4096
+[   25.090905] (efault): [+] datasize: 0
+[   25.100202] ****Triggering use after free****
+[   25.105229] ****Triggering double free****
+[   25.110235] (efault): [+] datasize: 4096
+[   25.114824] (efault): [+] datasize: 0
+[   25.122292] ****Triggering use after free****
+[   25.126748] ****Triggering double free****
+[   25.130898] (efault): [+] datasize: 4096
+[   25.133379] (efault): [+] datasize: 0
+[   25.141285] ****Triggering use after free****
+[   25.147241] ****Triggering double free****
+[   25.151439] (efault): [+] datasize: 4096
+[   25.155144] (efault): [+] datasize: 0
+[   25.162700] ****Triggering use after free****
+[   25.167560] ****Triggering double free****
+[   25.172322] ****Triggering double free****
+[   25.172797] (efault): [+] datasize: 4096
+[   25.176506] (efault): [+] datasize: 0
+[   25.184316] (efault): [+] datasize: 0
+[   25.188272] ****Triggering use after free****
+[   25.192641] ****Triggering use after free****
+[   25.193837] ****Triggering double free****
+[   25.196964] (efault): [+] datasize: 4096
+[   25.204562] (efault): [+] datasize: 4096
+[   25.205176] (efault): [+] datasize: 0
+[   25.215369] ****Triggering double free****
+[   25.218323] ****Triggering use after free****
+[   25.219680] ****Triggering double free****
+[   25.229175] (efault): [+] datasize: 0
+[   25.231241] (efault): [+] datasize: 4096
+[   25.232805] (efault): [+] data: 
+[   25.237392] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.237392] …æúﬁ#!Îä;∫œ
+[   25.239896] (efault): [+] datasize: 0
+[   25.255447] ****Triggering use after free****
+[   25.259878] (efault): [+] datasize: 4096
+[   25.263916] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.263916] …æúﬁ#!Îä;∫œ
+[   25.264521] ****Triggering double free****
+[   25.276245] (efault): [+] data: 
+[   25.281264] (efault): [+] datasize: 0
+[   25.283582] ****Triggering use after free****
+[   25.291304] ****Triggering use after free****
+[   25.292042] (efault): [+] datasize: 4096
+[   25.299492] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.299492] …æúﬁ#!Îä;∫œ
+[   25.301235] ****Triggering double free****
+[   25.312221] ****Triggering double free****
+[   25.315332] (efault): [+] datasize: 4096
+[   25.319974] (efault): [+] datasize: 0
+[   25.329626] ****Triggering double free****
+[   25.329897] (efault): [+] datasize: 0
+[   25.337728] ****Triggering use after free****
+[   25.338440] (efault): [+] datasize: 0
+[   25.341868] (efault): [+] datasize: 4096
+[   25.345435] ****Triggering double free****
+[   25.349214] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.349214] …æúﬁ#!Îä;∫œ
+[   25.353208] (efault): [+] data: 
+[   25.367637] ****Triggering double free****
+[   25.367646] (efault): [+] datasize: 0
+[   25.367695] ****Triggering use after free****
+[   25.367701] (efault): [+] datasize: 4096
+[   25.371880] (efault): [+] data: 
+[   25.375515] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.375515] …æúﬁ#!Îä;∫œ
+[   25.380401] (efault): [+] datasize: 0
+[   25.388427] ****Triggering double free****
+[   25.399029] ****Triggering use after free****
+[   25.402678] (efault): [+] datasize: 0
+[   25.406497] ****Triggering use after free****
+[   25.410816] ****Triggering use after free****
+[   25.414409] (efault): [+] datasize: 4096
+[   25.414428] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.414428] …æúﬁ#!Îä;∫œ
+[   25.419359] (efault): [+] data: 
+[   25.423071] (efault): [+] datasize: 4096
+[   25.427851] (efault): [+] datasize: 4096
+[   25.442964] ****Triggering double free****
+[   25.446022] ****Triggering use after free****
+[   25.449762] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.449762] …æúﬁ#!Îä;∫œ
+[   25.453628] (efault): [+] datasize: 4096
+[   25.457842] (efault): [+] datasize: 0
+[   25.478599] ****Triggering use after free****
+[   25.480378] ****Triggering double free****
+[   25.484354] ****Triggering double free****
+[   25.488556] ****Triggering double free****
+[   25.492264] (efault): [+] datasize: 0
+[   25.494995] (efault): [+] datasize: 0
+[   25.498565] (efault): [+] datasize: 4096
+[   25.502521] (efault): [+] datasize: 0
+[   25.506296] ****Triggering use after free****
+[   25.510337] ****Triggering use after free****
+[   25.518378] ****Triggering double free****
+[   25.519034] ****Triggering use after free****
+[   25.522809] (efault): [+] datasize: 4096
+[   25.527223] (efault): [+] datasize: 4096
+[   25.530930] (efault): [+] datasize: 0
+[   25.534910] (efault): [+] datasize: 4096
+[   25.538805] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.538805] …æúﬁ#!Îä;∫œ
+[   25.542476] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.542476] …æúﬁ#!Îä;∫œ
+[   25.553993] (efault): [+] data: 
+[   25.565742] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.565742] …æúﬁ#!Îä;∫œ
+[   25.572583] ****Triggering use after free****
+[   25.586693] ****Triggering double free****
+[   25.590825] (efault): [+] datasize: 0
+[   25.594528] ****Triggering use after free****
+[   25.595040] ****Triggering double free****
+[   25.599410] (efault): [+] datasize: 4096
+[   25.603428] (efault): [+] datasize: 4096
+[   25.607439] ****Triggering double free****
+[   25.610616] (efault): [+] datasize: 0
+[   25.617541] ****Triggering double free****
+[   25.620194] ****Triggering use after free****
+[   25.622459] (efault): [+] datasize: 0
+[   25.628631] ****Triggering double free****
+[   25.629995] (efault): [+] datasize: 0
+[   25.634181] (efault): [+] datasize: 4096
+[   25.638976] (efault): [+] data: 
+[   25.642266] (efault): [+] datasize: 0
+[   25.645296] ****Triggering use after free****
+[   25.649027] ****Triggering use after free****
+[   25.653322] ****Triggering use after free****
+[   25.661059] ****Triggering double free****
+[   25.661972] (efault): [+] datasize: 4096
+[   25.666030] (efault): [+] datasize: 4096
+[   25.670166] (efault): [+] datasize: 4096
+[   25.675219] (efault): [+] datasize: 0
+[   25.682788] ****Triggering double free****
+[   25.684837] ****Triggering double free****
+[   25.687352] (efault): [+] datasize: 0
+[   25.690947] ****Triggering use after free****
+[   25.696564] ****Triggering use after free****
+[   25.704058] ****Triggering double free****
+[   25.704944] (efault): [+] datasize: 4096
+[   25.709044] (efault): [+] datasize: 0
+[   25.715994] ****Triggering double free****
+[   25.716353] (efault): [+] datasize: 0
+[   25.721785] (efault): [+] datasize: 0
+[   25.724264] (efault): [+] datasize: 4096
+[   25.728046] (efault): [+] data: 
+[   25.732072] (efault): [+] data: 
+[   25.735663] ****Triggering use after free****
+[   25.738384] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.738384] …æúﬁ#!Îä;∫œ
+[   25.742835] (efault): [+] datasize: 4096
+[   25.754182] (efault): [+] data: 
+[   25.758233] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.758233] …æúﬁ#!Îä;∫œ
+[   25.761294] ****Triggering use after free****
+[   25.776701] ****Triggering double free****
+[   25.776997] ****Triggering use after free****
+[   25.780804] (efault): [+] datasize: 0
+[   25.781031] ****Triggering use after free****
+[   25.786648] (efault): [+] datasize: 4096
+[   25.788744] (efault): [+] datasize: 4096
+[   25.793493] (efault): [+] datasize: 4096
+[   25.797981] ****Triggering double free****
+[   25.800704] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.800704] …æúﬁ#!Îä;∫œ
+[   25.805002] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.805002] …æúﬁ#!Îä;∫œ
+[   25.808975] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.808975] …æúﬁ#!Îä;∫œ
+[   25.821295] (efault): [+] datasize: 0
+[   25.845792] ****Triggering double free****
+[   25.848344] ****Triggering double free****
+[   25.855300] (efault): [+] datasize: 0
+[   25.855314] (efault): [+] datasize: 0
+[   25.860038] ****Triggering use after free****
+[   25.862689] ****Triggering use after free****
+[   25.868438] ****Triggering double free****
+[   25.871185] (efault): [+] datasize: 4096
+[   25.875187] (efault): [+] datasize: 4096
+[   25.879053] (efault): [+] data: 
+[   25.882769] (efault): [+] datasize: 0
+[   25.886300] ****Triggering use after free****
+[   25.894498] ****Triggering double free****
+[   25.895320] (efault): [+] datasize: 4096
+[   25.900873] ****Triggering double free****
+[   25.902928] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.902928] …æúﬁ#!Îä;∫œ
+[   25.906971] (efault): [+] data: 
+[   25.922070] (efault): [+] datasize: 0
+[   25.926161] (efault): [+] datasize: 0
+[   25.926962] ****Triggering double free****
+[   25.929920] ****Triggering use after free****
+[   25.934216] (efault): [+] datasize: 0
+[   25.940209] ****Triggering use after free****
+[   25.942689] ****Triggering use after free****
+[   25.946725] ****Triggering use after free****
+[   25.951303] (efault): [+] datasize: 4096
+[   25.955323] (efault): [+] datasize: 4096
+[   25.959390] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.959390] …æúﬁ#!Îä;∫œ
+[   25.963072] (efault): [+] datasize: 4096
+[   25.977754] (efault): [+] datasize: 4096
+[   25.980286] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.980286] …æúﬁ#!Îä;∫œ
+[   25.984391] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   25.984391] …æúﬁ#!Îä;∫œ
+[   25.996223] ****Triggering double free****
+[   26.011622] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.011622] …æúﬁ#!Îä;∫œ
+[   26.024594] ****Triggering double free****
+[   26.025542] (efault): [+] datasize: 0
+[   26.033549] ****Triggering double free****
+[   26.034413] ****Triggering use after free****
+[   26.038370] (efault): [+] datasize: 0
+[   26.045890] (efault): [+] datasize: 0
+[   26.046780] ****Triggering double free****
+[   26.049770] ****Triggering use after free****
+[   26.053684] (efault): [+] datasize: 4096
+[   26.053704] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.053704] …æúﬁ#!Îä;∫œ
+[   26.058330] (efault): [+] data: 
+[   26.061916] (efault): [+] datasize: 0
+[   26.074644] (efault): [+] datasize: 4096
+[   26.078901] (efault): [+] data: 
+[   26.080863] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.080863] …æúﬁ#!Îä;∫œ
+[   26.089816] ****Triggering double free****
+[   26.100236] ****Triggering use after free****
+[   26.105286] ****Triggering use after free****
+[   26.110192] (efault): [+] datasize: 4096
+[   26.116864] (efault): [+] datasize: 4096
+[   26.118678] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.118678] …æúﬁ#!Îä;∫œ
+[   26.135198] (efault): [+] datasize: 0
+[   26.140705] ****Triggering double free****
+[   26.144826] (efault): [+] datasize: 0
+[   26.145617] ****Triggering use after free****
+[   26.149013] ****Triggering use after free****
+[   26.157509] ****Triggering double free****
+[   26.160769] ****Triggering double free****
+[   26.164315] (efault): [+] datasize: 0
+[   26.168870] (efault): [+] datasize: 4096
+[   26.172768] (efault): [+] datasize: 4096
+[   26.176908] (efault): [+] datasize: 0
+[   26.180698] ****Triggering use after free****
+[   26.190031] ****Triggering double free****
+[   26.191017] (efault): [+] datasize: 4096
+[   26.195007] (efault): [+] datasize: 0
+[   26.199968] ****Triggering double free****
+[   26.203470] ****Triggering use after free****
+[   26.206471] (efault): [+] datasize: 0
+[   26.210524] ****Triggering use after free****
+[   26.216440] ****Triggering use after free****
+[   26.218813] (efault): [+] datasize: 4096
+[   26.224064] ****Triggering double free****
+[   26.228268] (efault): [+] datasize: 4096
+[   26.230569] (efault): [+] datasize: 0
+[   26.240280] ****Triggering double free****
+[   26.240571] (efault): [+] datasize: 4096
+[   26.245855] ****Triggering double free****
+[   26.248369] (efault): [+] data: 
+[   26.248441] ****Triggering use after free****
+[   26.252989] (efault): [+] datasize: 0
+[   26.257945] (efault): [+] datasize: 4096
+[   26.260807] (efault): [+] datasize: 0
+[   26.265572] ****Triggering double free****
+[   26.268450] ****Triggering use after free****
+[   26.273592] (efault): [+] datasize: 0
+[   26.277759] ****Triggering use after free****
+[   26.282436] ****Triggering double free****
+[   26.284900] (efault): [+] datasize: 4096
+[   26.289149] (efault): [+] data: 
+[   26.293219] (efault): [+] datasize: 4096
+[   26.297230] (efault): [+] datasize: 0
+[   26.302518] ****Triggering use after free****
+[   26.306384] ****Triggering use after free****
+[   26.308265] (efault): [+] datasize: 4096
+[   26.317717] ****Triggering double free****
+[   26.321405] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.321405] …æúﬁ#!Îä;∫œ
+[   26.324786] (efault): [+] datasize: 0
+[   26.337692] ****Triggering double free****
+[   26.340273] (efault): [+] datasize: 4096
+[   26.347655] (efault): [+] datasize: 0
+[   26.347720] ****Triggering use after free****
+[   26.351448] ****Triggering use after free****
+[   26.356198] (efault): [+] datasize: 4096
+[   26.360457] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.360457] …æúﬁ#!Îä;∫œ
+[   26.363951] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.363951] …æúﬁ#!Îä;∫œ
+[   26.375918] ****Triggering double free****
+[   26.390599] (efault): [+] datasize: 4096
+[   26.391443] ****Triggering double free****
+[   26.394885] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.394885] …æúﬁ#!Îä;∫œ
+[   26.399047] (efault): [+] datasize: 0
+[   26.412385] (efault): [+] datasize: 0
+[   26.418570] ****Triggering use after free****
+[   26.419284] ****Triggering double free****
+[   26.422636] (efault): [+] datasize: 4096
+[   26.427453] (efault): [+] data: 
+[   26.432931] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.432931] …æúﬁ#!Îä;∫œ
+[   26.434817] (efault): [+] datasize: 0
+[   26.447326] ****Triggering double free****
+[   26.449977] ****Triggering use after free****
+[   26.453650] (efault): [+] datasize: 0
+[   26.458940] ****Triggering use after free****
+[   26.461673] ****Triggering use after free****
+[   26.465813] (efault): [+] datasize: 4096
+[   26.473495] ****Triggering double free****
+[   26.474203] (efault): [+] datasize: 4096
+[   26.477902] (efault): [+] datasize: 0
+[   26.484302] (efault): [+] datasize: 4096
+[   26.489189] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.489189] …æúﬁ#!Îä;∫œ
+[   26.501559] ****Triggering double free****
+[   26.505783] (efault): [+] data: 
+[   26.509173] (efault): [+] datasize: 0
+[   26.509907] ****Triggering double free****
+[   26.514047] ****Triggering use after free****
+[   26.517472] (efault): [+] datasize: 0
+[   26.521335] ****Triggering use after free****
+[   26.525877] ****Triggering double free****
+[   26.529156] (efault): [+] datasize: 4096
+[   26.533491] (efault): [+] data: 
+[   26.537210] (efault): [+] datasize: 4096
+[   26.537228] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.537228] …æúﬁ#!Îä;∫œ
+[   26.540992] ****Triggering use after free****
+[   26.544527] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.544527] …æúﬁ#!Îä;∫œ
+[   26.556327] (efault): [+] datasize: 0
+[   26.578034] ****Triggering double free****
+[   26.579513] (efault): [+] datasize: 4096
+[   26.582676] (efault): [+] datasize: 0
+[   26.587042] ****Triggering use after free****
+[   26.591024] ****Triggering use after free****
+[   26.594978] ****Triggering double free****
+[   26.598681] (efault): [+] datasize: 4096
+[   26.602810] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.602810] …æúﬁ#!Îä;∫œ
+[   26.607648] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.607648] …æúﬁ#!Îä;∫œ
+[   26.617933] (efault): [+] datasize: 4096
+[   26.632902] ****Triggering double free****
+[   26.633367] (efault): [+] datasize: 0
+[   26.637175] (efault): [+] datasize: 0
+[   26.637250] ****Triggering use after free****
+[   26.647460] ****Triggering use after free****
+[   26.658596] (efault): [+] datasize: 4096
+[   26.659673] ****Triggering double free****
+[   26.665674] ****Triggering double free****
+[   26.668362] (efault): [+] datasize: 4096
+[   26.672690] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.672690] …æúﬁ#!Îä;∫œ
+[   26.678555] (efault): [+] datasize: 0
+[   26.690207] (efault): [+] datasize: 0
+[   26.696764] ****Triggering use after free****
+[   26.701270] ****Triggering use after free****
+[   26.701315] ****Triggering double free****
+[   26.706791] ****Triggering double free****
+[   26.709871] (efault): [+] datasize: 4096
+[   26.714247] (efault): [+] datasize: 4096
+[   26.718060] (efault): [+] datasize: 0
+[   26.722264] (efault): [+] datasize: 0
+[   26.725560] ****Triggering use after free****
+[   26.734233] ****Triggering double free****
+[   26.738794] ****Triggering use after free****
+[   26.739830] (efault): [+] datasize: 4096
+[   26.743848] (efault): [+] datasize: 0
+[   26.748039] ****Triggering double free****
+[   26.750816] (efault): [+] datasize: 4096
+[   26.755040] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.755040] …æúﬁ#!Îä;∫œ
+[   26.759685] (efault): [+] data: 
+[   26.770290] (efault): [+] datasize: 0
+[   26.777372] ****Triggering use after free****
+[   26.777882] ****Triggering double free****
+[   26.781498] (efault): [+] datasize: 4096
+[   26.785550] ****Triggering use after free****
+[   26.791824] ****Triggering double free****
+[   26.793254] (efault): [+] datasize: 0
+[   26.799805] ****Triggering double free****
+[   26.801151] (efault): [+] datasize: 4096
+[   26.804392] (efault): [+] datasize: 0
+[   26.808417] ****Triggering use after free****
+[   26.813228] (efault): [+] datasize: 0
+[   26.822463] (efault): [+] datasize: 4096
+[   26.824381] (efault): [+] data: 
+[   26.828840] ****Triggering double free****
+[   26.833473] (efault): [+] data: 
+[   26.839281] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.839281] …æúﬁ#!Îä;∫œ
+[   26.843838] ****Triggering use after free****
+[   26.858202] (efault): [+] datasize: 0
+[   26.862250] ****Triggering use after free****
+[   26.862258] (efault): [+] datasize: 4096
+[   26.862281] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.862281] …æúﬁ#!Îä;∫œ
+[   26.865708] ****Triggering double free****
+[   26.867900] (efault): [+] data: 
+[   26.872980] (efault): [+] datasize: 4096
+[   26.882918] ****Triggering double free****
+[   26.893667] (efault): [+] datasize: 0
+[   26.899194] ****Triggering use after free****
+[   26.903286] ****Triggering use after free****
+[   26.907389] (efault): [+] datasize: 4096
+[   26.911689] (efault): [+] datasize: 4096
+[   26.916999] (efault): [+] datasize: 0
+[   26.924368] ****Triggering double free****
+[   26.932384] ****Triggering double free****
+[   26.940326] ****Triggering double free****
+[   26.942222] ****Triggering use after free****
+[   26.945722] (efault): [+] datasize: 0
+[   26.950016] (efault): [+] datasize: 0
+[   26.954225] (efault): [+] datasize: 0
+[   26.959012] (efault): [+] datasize: 4096
+[   26.962468] (efault): [+] data: 
+[   26.966283] (efault): [+] data: 
+[   26.969812] (efault): [+] data: 
+[   26.969927] ****Triggering use after free****
+[   26.975706] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   26.975706] …æúﬁ#!Îä;∫œ
+[   26.977808] ****Triggering use after free****
+[   26.983011] ****Triggering use after free****
+[   26.984323] (efault): [+] datasize: 4096
+[   26.991976] ****Triggering double free****
+[   27.001733] (efault): [+] datasize: 4096
+[   27.006014] (efault): [+] datasize: 4096
+[   27.010168] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.010168] …æúﬁ#!Îä;∫œ
+[   27.013441] ****Triggering double free****
+[   27.014854] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.014854] …æúﬁ#!Îä;∫œ
+[   27.018265] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.018265] …æúﬁ#!Îä;∫œ
+[   27.023918] (efault): [+] datasize: 0
+[   27.026216] (efault): [+] datasize: 0
+[   27.043919] ****Triggering double free****
+[   27.046245] ****Triggering use after free****
+[   27.056523] ****Triggering use after free****
+[   27.069839] ****Triggering double free****
+[   27.072270] (efault): [+] datasize: 0
+[   27.075611] (efault): [+] datasize: 0
+[   27.080061] ****Triggering use after free****
+[   27.085451] ****Triggering use after free****
+[   27.092313] (efault): [+] datasize: 4096
+[   27.095001] (efault): [+] datasize: 4096
+[   27.098587] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.098587] …æúﬁ#!Îä;∫œ
+[   27.102166] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.102166] …æúﬁ#!Îä;∫œ
+[   27.108388] (efault): [+] datasize: 4096
+[   27.114005] (efault): [+] datasize: 4096
+[   27.124724] ****Triggering double free****
+[   27.143626] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.143626] …æúﬁ#!Îä;∫œ
+[   27.151882] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.151882] …æúﬁ#!Îä;∫œ
+[   27.159579] ****Triggering double free****
+[   27.164416] (efault): [+] datasize: 0
+[   27.169016] (efault): [+] datasize: 0
+[   27.181230] ****Triggering double free****
+[   27.192996] ****Triggering double free****
+[   27.194276] (efault): [+] datasize: 0
+[   27.198200] (efault): [+] datasize: 0
+[   27.202900] ****Triggering use after free****
+[   27.206555] ****Triggering use after free****
+[   27.210671] ****Triggering use after free****
+[   27.215540] ****Triggering use after free****
+[   27.224000] (efault): [+] datasize: 4096
+[   27.229008] (efault): [+] datasize: 4096
+[   27.232920] (efault): [+] datasize: 4096
+[   27.238239] (efault): [+] datasize: 4096
+[   27.243597] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.243597] …æúﬁ#!Îä;∫œ
+[   27.252755] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.252755] …æúﬁ#!Îä;∫œ
+[   27.259668] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.259668] …æúﬁ#!Îä;∫œ
+[   27.265535] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.265535] …æúﬁ#!Îä;∫œ
+[   27.283026] ****Triggering double free****
+[   27.320342] ****Triggering double free****
+[   27.352567] ****Triggering double free****
+[   27.367931] ****Triggering double free****
+[   27.373051] (efault): [+] datasize: 0
+[   27.374317] (efault): [+] datasize: 0
+[   27.379254] (efault): [+] datasize: 0
+[   27.387855] (efault): [+] datasize: 0
+[   27.392698] ****Triggering use after free****
+[   27.399520] ****Triggering use after free****
+[   27.403893] (efault): [+] datasize: 4096
+[   27.411659] (efault): [+] data: 
+[   27.416838] (efault): [+] data: 
+[   27.421788] (efault): [+] datasize: 4096
+[   27.425576] ****Triggering use after free****
+[   27.431941] ****Triggering use after free****
+[   27.436803] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.436803] …æúﬁ#!Îä;∫œ
+[   27.444301] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.444301] …æúﬁ#!Îä;∫œ
+[   27.460333] (efault): [+] datasize: 4096
+[   27.481049] (efault): [+] datasize: 4096
+[   27.488053] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.488053] …æúﬁ#!Îä;∫œ
+[   27.496193] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.496193] …æúﬁ#!Îä;∫œ
+[   27.530256] ****Triggering double free****
+[   27.530347] ****Triggering double free****
+[   27.535669] (efault): [+] datasize: 0
+[   27.541725] ****Triggering use after free****
+[   27.541735] (efault): [+] datasize: 4096
+[   27.541755] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.541755] …æúﬁ#!Îä;∫œ
+[   27.544028] ****Triggering double free****
+[   27.547868] (efault): [+] datasize: 0
+[   27.559291] (efault): [+] datasize: 0
+[   27.559397] ****Triggering use after free****
+[   27.587942] ****Triggering double free****
+[   27.591536] (efault): [+] datasize: 4096
+[   27.602367] ****Triggering double free****
+[   27.607909] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.607909] …æúﬁ#!Îä;∫œ
+[   27.613988] (efault): [+] datasize: 0
+[   27.620723] ****Triggering use after free****
+[   27.637530] (efault): [+] datasize: 0
+[   27.644722] ****Triggering double free****
+[   27.646497] ****Triggering use after free****
+[   27.651313] (efault): [+] datasize: 0
+[   27.656179] ****Triggering use after free****
+[   27.661829] (efault): [+] datasize: 4096
+[   27.665440] (efault): [+] datasize: 4096
+[   27.665468] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.665468] …æúﬁ#!Îä;∫œ
+[   27.668371] (efault): [+] datasize: 4096
+[   27.671275] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.671275] …æúﬁ#!Îä;∫œ
+[   27.677702] ****Triggering double free****
+[   27.682649] (efault): [+] data: 
+[   27.696346] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.696346] …æúﬁ#!Îä;∫œ
+[   27.713969] ****Triggering use after free****
+[   27.719505] (efault): [+] datasize: 0
+[   27.724176] ****Triggering double free****
+[   27.736720] ****Triggering double free****
+[   27.737634] (efault): [+] datasize: 4096
+[   27.741252] (efault): [+] data: 
+[   27.746746] (efault): [+] datasize: 0
+[   27.749968] (efault): [+] datasize: 0
+[   27.757614] ****Triggering double free****
+[   27.760936] ****Triggering use after free****
+[   27.764461] ****Triggering use after free****
+[   27.768571] ****Triggering use after free****
+[   27.773548] (efault): [+] datasize: 0
+[   27.778189] (efault): [+] datasize: 4096
+[   27.781375] (efault): [+] datasize: 4096
+[   27.784573] (efault): [+] datasize: 4096
+[   27.789841] (efault): [+] data: 
+[   27.794744] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.794744] …æúﬁ#!Îä;∫œ
+[   27.799470] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.799470] …æúﬁ#!Îä;∫œ
+[   27.804066] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.804066] …æúﬁ#!Îä;∫œ
+[   27.816555] ****Triggering use after free****
+[   27.831355] ****Triggering double free****
+[   27.841489] (efault): [+] datasize: 4096
+[   27.847612] (efault): [+] datasize: 0
+[   27.849832] ****Triggering double free****
+[   27.853428] ****Triggering double free****
+[   27.856672] (efault): [+] datasize: 0
+[   27.860738] ****Triggering use after free****
+[   27.867280] ****Triggering use after free****
+[   27.868953] (efault): [+] datasize: 0
+[   27.875689] ****Triggering double free****
+[   27.881370] (efault): [+] datasize: 4096
+[   27.883811] (efault): [+] datasize: 4096
+[   27.888057] (efault): [+] data: 
+[   27.892779] (efault): [+] datasize: 0
+[   27.900874] ****Triggering double free****
+[   27.905518] ****Triggering use after free****
+[   27.907770] ****Triggering use after free****
+[   27.912779] ****Triggering double free****
+[   27.916546] (efault): [+] datasize: 0
+[   27.920828] (efault): [+] datasize: 0
+[   27.924622] (efault): [+] datasize: 4096
+[   27.929180] (efault): [+] datasize: 4096
+[   27.932496] (efault): [+] data: 
+[   27.936398] (efault): [+] data: 
+[   27.940561] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.940561] …æúﬁ#!Îä;∫œ
+[   27.943689] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.943689] …æúﬁ#!Îä;∫œ
+[   27.957219] ****Triggering use after free****
+[   27.971006] ****Triggering use after free****
+[   27.979717] (efault): [+] datasize: 4096
+[   27.982862] (efault): [+] datasize: 4096
+[   27.986446] ****Triggering double free****
+[   27.993831] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.993831] …æúﬁ#!Îä;∫œ
+[   27.996550] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   27.996550] …æúﬁ#!Îä;∫œ
+[   28.012284] (efault): [+] datasize: 0
+[   28.025775] ****Triggering double free****
+[   28.025895] ****Triggering double free****
+[   28.029617] (efault): [+] datasize: 0
+[   28.036830] ****Triggering double free****
+[   28.038291] ****Triggering use after free****
+[   28.043549] (efault): [+] datasize: 0
+[   28.048867] (efault): [+] datasize: 4096
+[   28.053523] (efault): [+] datasize: 0
+[   28.057353] ****Triggering use after free****
+[   28.063538] ****Triggering use after free****
+[   28.074033] ****Triggering use after free****
+[   28.075502] (efault): [+] datasize: 4096
+[   28.080766] (efault): [+] datasize: 4096
+[   28.085227] ****Triggering double free****
+[   28.088668] (efault): [+] datasize: 4096
+[   28.092338] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.092338] …æúﬁ#!Îä;∫œ
+[   28.096204] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.096204] …æúﬁ#!Îä;∫œ
+[   28.107645] (efault): [+] datasize: 0
+[   28.122890] ****Triggering use after free****
+[   28.123912] ****Triggering double free****
+[   28.130041] ****Triggering double free****
+[   28.133413] ****Triggering double free****
+[   28.135302] (efault): [+] datasize: 4096
+[   28.139518] (efault): [+] datasize: 0
+[   28.142957] (efault): [+] datasize: 0
+[   28.146478] (efault): [+] datasize: 0
+[   28.153319] ****Triggering double free****
+[   28.153864] ****Triggering use after free****
+[   28.157443] ****Triggering use after free****
+[   28.162326] ****Triggering use after free****
+[   28.168308] (efault): [+] datasize: 0
+[   28.170630] (efault): [+] datasize: 4096
+[   28.174172] (efault): [+] datasize: 4096
+[   28.178303] (efault): [+] datasize: 4096
+[   28.182291] (efault): [+] data: 
+[   28.185996] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.185996] …æúﬁ#!Îä;∫œ
+[   28.189208] ****Triggering use after free****
+[   28.200507] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.200507] …æúﬁ#!Îä;∫œ
+[   28.204667] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.204667] …æúﬁ#!Îä;∫œ
+[   28.222233] (efault): [+] datasize: 4096
+[   28.232705] ****Triggering double free****
+[   28.233929] ****Triggering double free****
+[   28.236802] (efault): [+] datasize: 0
+[   28.244250] (efault): [+] datasize: 0
+[   28.244337] ****Triggering use after free****
+[   28.244343] (efault): [+] datasize: 4096
+[   28.244363] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.244363] …æúﬁ#!Îä;∫œ
+[   28.248969] ****Triggering double free****
+[   28.255977] (efault): [+] data: 
+[   28.256051] ****Triggering use after free****
+[   28.256057] (efault): [+] datasize: 4096
+[   28.256070] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.256070] …æúﬁ#!Îä;∫œ
+[   28.267679] (efault): [+] datasize: 0
+[   28.276144] ****Triggering double free****
+[   28.280422] ****Triggering use after free****
+[   28.294419] (efault): [+] datasize: 0
+[   28.294502] ****Triggering use after free****
+[   28.298988] ****Triggering double free****
+[   28.302908] (efault): [+] datasize: 4096
+[   28.306712] (efault): [+] datasize: 4096
+[   28.310745] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.310745] …æúﬁ#!Îä;∫œ
+[   28.317326] ****Triggering double free****
+[   28.320600] (efault): [+] datasize: 0
+[   28.323389] (efault): [+] datasize: 0
+[   28.328839] ****Triggering double free****
+[   28.338690] ****Triggering use after free****
+[   28.343012] ****Triggering use after free****
+[   28.346981] ****Triggering double free****
+[   28.349757] (efault): [+] datasize: 0
+[   28.354191] (efault): [+] datasize: 4096
+[   28.358491] (efault): [+] datasize: 4096
+[   28.363726] (efault): [+] datasize: 0
+[   28.367248] ****Triggering use after free****
+[   28.370506] ****Triggering use after free****
+[   28.377933] (efault): [+] datasize: 4096
+[   28.381435] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.381435] …æúﬁ#!Îä;∫œ
+[   28.388705] ****Triggering double free****
+[   28.390797] (efault): [+] datasize: 4096
+[   28.406968] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.406968] …æúﬁ#!Îä;∫œ
+[   28.411375] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.411375] …æúﬁ#!Îä;∫œ
+[   28.415360] (efault): [+] datasize: 0
+[   28.429848] ****Triggering double free****
+[   28.442921] ****Triggering double free****
+[   28.447277] (efault): [+] datasize: 0
+[   28.451871] ****Triggering double free****
+[   28.453750] ****Triggering use after free****
+[   28.457639] ****Triggering use after free****
+[   28.462414] (efault): [+] datasize: 4096
+[   28.466769] (efault): [+] datasize: 0
+[   28.472520] (efault): [+] datasize: 0
+[   28.474171] (efault): [+] datasize: 4096
+[   28.481884] (efault): [+] data: 
+[   28.481996] (efault): [+] data: 
+[   28.485706] ****Triggering use after free****
+[   28.489640] ****Triggering double free****
+[   28.493490] (efault): [+] datasize: 4096
+[   28.497246] ****Triggering use after free****
+[   28.502330] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.502330] …æúﬁ#!Îä;∫œ
+[   28.506297] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.506297] …æúﬁ#!Îä;∫œ
+[   28.535371] (efault): [+] datasize: 0
+[   28.537433] (efault): [+] datasize: 4096
+[   28.545471] (efault): [+] data: 
+[   28.545625] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.545625] …æúﬁ#!Îä;∫œ
+[   28.550596] ****Triggering use after free****
+[   28.572556] ****Triggering double free****
+[   28.573704] (efault): [+] datasize: 4096
+[   28.582884] (efault): [+] datasize: 0
+[   28.583027] ****Triggering use after free****
+[   28.591963] ****Triggering double free****
+[   28.592448] ****Triggering double free****
+[   28.596004] (efault): [+] datasize: 0
+[   28.600507] (efault): [+] datasize: 4096
+[   28.605669] (efault): [+] data: 
+[   28.611046] (efault): [+] datasize: 0
+[   28.614533] ****Triggering use after free****
+[   28.622679] ****Triggering use after free****
+[   28.623035] (efault): [+] datasize: 4096
+[   28.628286] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.628286] …æúﬁ#!Îä;∫œ
+[   28.636579] ****Triggering double free****
+[   28.646761] (efault): [+] datasize: 4096
+[   28.650775] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.650775] …æúﬁ#!Îä;∫œ
+[   28.657676] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.657676] …æúﬁ#!Îä;∫œ
+[   28.667652] (efault): [+] datasize: 0
+[   28.688237] ****Triggering double free****
+[   28.691519] ****Triggering double free****
+[   28.693593] (efault): [+] datasize: 0
+[   28.698104] (efault): [+] datasize: 0
+[   28.708883] ****Triggering use after free****
+[   28.711913] ****Triggering use after free****
+[   28.717992] ****Triggering double free****
+[   28.721721] (efault): [+] datasize: 4096
+[   28.728024] (efault): [+] datasize: 4096
+[   28.731930] (efault): [+] data: 
+[   28.732051] ****Triggering use after free****
+[   28.738192] (efault): [+] datasize: 0
+[   28.743299] (efault): [+] datasize: 4096
+[   28.746258] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.746258] …æúﬁ#!Îä;∫œ
+[   28.752235] ****Triggering double free****
+[   28.756457] (efault): [+] data: 
+[   28.767714] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.767714] …æúﬁ#!Îä;∫œ
+[   28.777391] ****Triggering use after free****
+[   28.794019] (efault): [+] datasize: 0
+[   28.801463] ****Triggering double free****
+[   28.803806] ****Triggering use after free****
+[   28.808522] (efault): [+] datasize: 0
+[   28.814293] (efault): [+] datasize: 4096
+[   28.819684] (efault): [+] datasize: 4096
+[   28.823429] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.823429] …æúﬁ#!Îä;∫œ
+[   28.827568] (efault): [+] data: 
+[   28.844286] ****Triggering double free****
+[   28.845494] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.845494] …æúﬁ#!Îä;∫œ
+[   28.849237] (efault): [+] datasize: 0
+[   28.849594] ****Triggering use after free****
+[   28.869182] ****Triggering use after free****
+[   28.882245] ****Triggering double free****
+[   28.891529] (efault): [+] datasize: 4096
+[   28.893676] (efault): [+] datasize: 4096
+[   28.900622] ****Triggering double free****
+[   28.903612] (efault): [+] datasize: 0
+[   28.911434] (efault): [+] datasize: 0
+[   28.914789] ****Triggering use after free****
+[   28.920228] ****Triggering use after free****
+[   28.922304] (efault): [+] datasize: 4096
+[   28.930514] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   28.930514] …æúﬁ#!Îä;∫œ
+[   28.933224] (efault): [+] datasize: 4096
+[   28.945754] ****Triggering double free****
+[   28.949792] ****Triggering double free****
+[   28.953964] (efault): [+] datasize: 0
+[   28.958016] (efault): [+] datasize: 0
+[   28.966015] ****Triggering double free****
+[   28.968736] ****Triggering use after free****
+[   28.970428] ****Triggering use after free****
+[   28.975971] ****Triggering double free****
+[   28.978873] (efault): [+] datasize: 0
+[   28.982938] (efault): [+] datasize: 4096
+[   28.987731] (efault): [+] datasize: 4096
+[   28.991441] (efault): [+] datasize: 0
+[   28.994891] ****Triggering use after free****
+[   29.002408] ****Triggering use after free****
+[   29.006911] (efault): [+] datasize: 4096
+[   29.011742] ****Triggering double free****
+[   29.013561] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.013561] …æúﬁ#!Îä;∫œ
+[   29.019026] ****Triggering double free****
+[   29.032829] ****Triggering double free****
+[   29.033492] (efault): [+] datasize: 0
+[   29.037636] (efault): [+] datasize: 0
+[   29.041188] (efault): [+] datasize: 4096
+[   29.044524] (efault): [+] data: 
+[   29.048456] (efault): [+] datasize: 0
+[   29.052462] ****Triggering use after free****
+[   29.055785] ****Triggering use after free****
+[   29.061269] (efault): [+] datasize: 4096
+[   29.064045] (efault): [+] data: 
+[   29.068000] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.068000] …æúﬁ#!Îä;∫œ
+[   29.070894] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.070894] …æúﬁ#!Îä;∫œ
+[   29.086531] ****Triggering double free****
+[   29.094217] (efault): [+] datasize: 4096
+[   29.098714] (efault): [+] datasize: 0
+[   29.102415] ****Triggering use after free****
+[   29.106624] ****Triggering use after free****
+[   29.113547] (efault): [+] datasize: 4096
+[   29.119896] ****Triggering double free****
+[   29.120564] ****Triggering double free****
+[   29.125852] (efault): [+] datasize: 4096
+[   29.127947] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.127947] …æúﬁ#!Îä;∫œ
+[   29.133846] (efault): [+] datasize: 0
+[   29.145780] (efault): [+] datasize: 0
+[   29.153856] ****Triggering double free****
+[   29.154167] ****Triggering use after free****
+[   29.162198] (efault): [+] datasize: 0
+[   29.162315] ****Triggering use after free****
+[   29.166244] (efault): [+] datasize: 4096
+[   29.173265] (efault): [+] datasize: 4096
+[   29.178612] (efault): [+] data: 
+[   29.184491] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.184491] …æúﬁ#!Îä;∫œ
+[   29.191246] ****Triggering double free****
+[   29.212185] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.212185] …æúﬁ#!Îä;∫œ
+[   29.214836] ****Triggering double free****
+[   29.228621] ****Triggering use after free****
+[   29.233423] (efault): [+] datasize: 0
+[   29.237043] (efault): [+] datasize: 0
+[   29.240695] ****Triggering use after free****
+[   29.244128] (efault): [+] datasize: 4096
+[   29.249667] (efault): [+] datasize: 4096
+[   29.253747] (efault): [+] data: 
+[   29.259896] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.259896] …æúﬁ#!Îä;∫œ
+[   29.260782] ****Triggering double free****
+[   29.272415] ****Triggering use after free****
+[   29.276243] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.276243] …æúﬁ#!Îä;∫œ
+[   29.292173] (efault): [+] datasize: 4096
+[   29.292196] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.292196] …æúﬁ#!Îä;∫œ
+[   29.293340] (efault): [+] datasize: 0
+[   29.300892] ****Triggering double free****
+[   29.310974] ****Triggering double free****
+[   29.314972] (efault): [+] datasize: 0
+[   29.322706] ****Triggering double free****
+[   29.326358] ****Triggering use after free****
+[   29.329926] (efault): [+] datasize: 0
+[   29.334068] (efault): [+] datasize: 4096
+[   29.337985] (efault): [+] data: 
+[   29.341890] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.341890] …æúﬁ#!Îä;∫œ
+[   29.345376] (efault): [+] datasize: 0
+[   29.359566] ****Triggering use after free****
+[   29.361877] ****Triggering use after free****
+[   29.365871] (efault): [+] datasize: 4096
+[   29.374171] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.374171] …æúﬁ#!Îä;∫œ
+[   29.374745] (efault): [+] data: 
+[   29.391073] ****Triggering double free****
+[   29.391196] (efault): [+] datasize: 4096
+[   29.395485] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.395485] …æúﬁ#!Îä;∫œ
+[   29.400330] (efault): [+] datasize: 0
+[   29.417357] ****Triggering double free****
+[   29.421530] (efault): [+] datasize: 0
+[   29.421758] ****Triggering use after free****
+[   29.425932] ****Triggering use after free****
+[   29.430002] (efault): [+] datasize: 4096
+[   29.433746] (efault): [+] data: 
+[   29.438303] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.438303] …æúﬁ#!Îä;∫œ
+[   29.454056] ****Triggering use after free****
+[   29.458329] (efault): [+] datasize: 4096
+[   29.458349] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.458349] …æúﬁ#!Îä;∫œ
+[   29.463246] ****Triggering double free****
+[   29.478554] (efault): [+] datasize: 4096
+[   29.482727] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.482727] …æúﬁ#!Îä;∫œ
+[   29.484517] ****Triggering double free****
+[   29.495993] ****Triggering double free****
+[   29.499484] (efault): [+] datasize: 0
+[   29.506994] (efault): [+] datasize: 0
+[   29.507057] ****Triggering use after free****
+[   29.507064] (efault): [+] datasize: 4096
+[   29.507197] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.507197] …æúﬁ#!Îä;∫œ
+[   29.508442] (efault): [+] datasize: 0
+[   29.512609] ****Triggering use after free****
+[   29.515500] ****Triggering use after free****
+[   29.520917] ****Triggering double free****
+[   29.533956] ****Triggering double free****
+[   29.534973] (efault): [+] datasize: 4096
+[   29.539353] (efault): [+] datasize: 0
+[   29.543800] (efault): [+] datasize: 0
+[   29.547844] ****Triggering use after free****
+[   29.553570] ****Triggering use after free****
+[   29.556060] (efault): [+] datasize: 4096
+[   29.560560] ****Triggering double free****
+[   29.562932] (efault): [+] datasize: 4096
+[   29.567391] (efault): [+] datasize: 4096
+[   29.572007] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.572007] …æúﬁ#!Îä;∫œ
+[   29.575758] (efault): [+] datasize: 0
+[   29.600898] ****Triggering double free****
+[   29.604347] ****Triggering use after free****
+[   29.606917] (efault): [+] datasize: 0
+[   29.611834] ****Triggering double free****
+[   29.614555] ****Triggering use after free****
+[   29.619513] ****Triggering double free****
+[   29.623284] (efault): [+] datasize: 4096
+[   29.626614] (efault): [+] datasize: 0
+[   29.633353] ****Triggering double free****
+[   29.633727] (efault): [+] datasize: 0
+[   29.637446] (efault): [+] datasize: 0
+[   29.637683] ****Triggering use after free****
+[   29.641232] ****Triggering use after free****
+[   29.644772] (efault): [+] datasize: 4096
+[   29.649008] (efault): [+] datasize: 4096
+[   29.649033] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.649033] …æúﬁ#!Îä;∫œ
+[   29.650032] (efault): [+] data: 
+[   29.661806] ****Triggering double free****
+[   29.672285] (efault): [+] datasize: 4096
+[   29.675520] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.675520] …æúﬁ#!Îä;∫œ
+[   29.679502] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.679502] …æúﬁ#!Îä;∫œ
+[   29.687695] ****Triggering double free****
+[   29.695647] ****Triggering use after free****
+[   29.709403] (efault): [+] datasize: 0
+[   29.715555] (efault): [+] datasize: 4096
+[   29.718441] (efault): [+] data: 
+[   29.722981] ****Triggering double free****
+[   29.727019] (efault): [+] datasize: 0
+[   29.729201] (efault): [+] datasize: 0
+[   29.734914] ****Triggering use after free****
+[   29.740489] ****Triggering use after free****
+[   29.743968] ****Triggering use after free****
+[   29.748918] ****Triggering double free****
+[   29.752825] (efault): [+] datasize: 4096
+[   29.757344] (efault): [+] datasize: 0
+[   29.762171] (efault): [+] datasize: 4096
+[   29.766458] (efault): [+] datasize: 4096
+[   29.770422] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.770422] …æúﬁ#!Îä;∫œ
+[   29.774900] (efault): [+] data: 
+[   29.779260] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.779260] …æúﬁ#!Îä;∫œ
+[   29.790821] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.790821] …æúﬁ#!Îä;∫œ
+[   29.800377] ****Triggering double free****
+[   29.807365] ****Triggering use after free****
+[   29.821960] (efault): [+] datasize: 0
+[   29.829292] (efault): [+] datasize: 4096
+[   29.830228] (efault): [+] data: 
+[   29.835867] ****Triggering double free****
+[   29.841061] ****Triggering use after free****
+[   29.848545] (efault): [+] datasize: 0
+[   29.853308] (efault): [+] datasize: 4096
+[   29.859379] ****Triggering double free****
+[   29.862446] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.862446] …æúﬁ#!Îä;∫œ
+[   29.867249] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.867249] …æúﬁ#!Îä;∫œ
+[   29.882549] ****Triggering double free****
+[   29.893439] (efault): [+] data: 
+[   29.897269] (efault): [+] datasize: 0
+[   29.901799] ****Triggering use after free****
+[   29.905012] ****Triggering use after free****
+[   29.912941] (efault): [+] datasize: 4096
+[   29.915658] (efault): [+] datasize: 0
+[   29.922410] ****Triggering double free****
+[   29.926856] (efault): [+] datasize: 4096
+[   29.929676] (efault): [+] datasize: 0
+[   29.934726] ****Triggering use after free****
+[   29.940372] ****Triggering use after free****
+[   29.950993] (efault): [+] datasize: 4096
+[   29.951256] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.951256] …æúﬁ#!Îä;∫œ
+[   29.956730] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.956730] …æúﬁ#!Îä;∫œ
+2026/06/10 12:41:57 executed programs: 196
+[   29.985282] (efault): [+] datasize: 4096
+[   29.991576] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   29.991576] …æúﬁ#!Îä;∫œ
+[   30.003637] ****Triggering double free****
+[   30.004703] ****Triggering double free****
+[   30.007618] (efault): [+] datasize: 0
+[   30.007684] ****Triggering use after free****
+[   30.007691] (efault): [+] datasize: 4096
+[   30.007720] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.007720] …æúﬁ#!Îä;∫œ
+[   30.013690] ****Triggering double free****
+[   30.022617] (efault): [+] datasize: 0
+[   30.028573] ****Triggering double free****
+[   30.042772] ****Triggering use after free****
+[   30.045313] ****Triggering double free****
+[   30.048789] (efault): [+] datasize: 4096
+[   30.053180] (efault): [+] datasize: 0
+[   30.062823] ****Triggering double free****
+[   30.065718] (efault): [+] datasize: 0
+[   30.071055] (efault): [+] datasize: 0
+[   30.074715] (efault): [+] datasize: 0
+[   30.080542] ****Triggering use after free****
+[   30.084058] ****Triggering use after free****
+[   30.089946] (efault): [+] datasize: 4096
+[   30.093525] (efault): [+] data: 
+[   30.099863] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.099863] …æúﬁ#!Îä;∫œ
+[   30.103814] (efault): [+] data: 
+[   30.116349] ****Triggering double free****
+[   30.120243] (efault): [+] datasize: 4096
+[   30.125340] (efault): [+] datasize: 0
+[   30.128984] ****Triggering use after free****
+[   30.133889] ****Triggering use after free****
+[   30.138261] ****Triggering use after free****
+[   30.149484] ****Triggering double free****
+[   30.152302] (efault): [+] datasize: 4096
+[   30.159953] (efault): [+] datasize: 4096
+[   30.162056] (efault): [+] datasize: 4096
+[   30.167763] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.167763] …æúﬁ#!Îä;∫œ
+[   30.171347] (efault): [+] datasize: 0
+[   30.171465] ****Triggering use after free****
+[   30.195631] ****Triggering double free****
+[   30.198311] (efault): [+] datasize: 4096
+[   30.206217] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.206217] …æúﬁ#!Îä;∫œ
+[   30.208691] ****Triggering double free****
+[   30.220261] ****Triggering double free****
+[   30.224662] (efault): [+] datasize: 0
+[   30.228575] (efault): [+] datasize: 0
+[   30.235311] (efault): [+] datasize: 0
+[   30.238670] ****Triggering use after free****
+[   30.243518] ****Triggering use after free****
+[   30.254536] (efault): [+] datasize: 4096
+[   30.254625] ****Triggering use after free****
+[   30.258889] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.258889] …æúﬁ#!Îä;∫œ
+[   30.268356] (efault): [+] datasize: 4096
+[   30.280332] ****Triggering double free****
+[   30.285225] (efault): [+] datasize: 4096
+[   30.292817] (efault): [+] datasize: 0
+[   30.301501] ****Triggering double free****
+[   30.304694] ****Triggering double free****
+[   30.305574] (efault): [+] datasize: 0
+[   30.305669] ****Triggering use after free****
+[   30.316228] (efault): [+] datasize: 0
+[   30.320169] ****Triggering use after free****
+[   30.327743] ****Triggering use after free****
+[   30.336415] (efault): [+] datasize: 4096
+[   30.336442] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.336442] …æúﬁ#!Îä;∫œ
+[   30.337277] (efault): [+] datasize: 4096
+[   30.342781] (efault): [+] datasize: 4096
+[   30.348258] ****Triggering double free****
+[   30.364750] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.364750] …æúﬁ#!Îä;∫œ
+[   30.366235] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.366235] …æúﬁ#!Îä;∫œ
+[   30.371360] clocksource: Watchdog remote CPU 1 read timed out
+[   30.376271] ****Triggering double free****
+[   30.398961] ****Triggering double free****
+[   30.403980] (efault): [+] datasize: 0
+[   30.415569] ****Triggering double free****
+[   30.418816] (efault): [+] datasize: 0
+[   30.423751] (efault): [+] datasize: 0
+[   30.427957] ****Triggering use after free****
+[   30.427965] (efault): [+] datasize: 4096
+[   30.427980] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.427980] …æúﬁ#!Îä;∫œ
+[   30.435759] (efault): [+] datasize: 0
+[   30.437847] ****Triggering use after free****
+[   30.444886] ****Triggering use after free****
+[   30.449023] (efault): [+] datasize: 4096
+[   30.467538] (efault): [+] datasize: 4096
+[   30.470859] (efault): [+] data: 
+[   30.474936] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.474936] …æúﬁ#!Îä;∫œ
+[   30.480283] ****Triggering use after free****
+[   30.486786] ****Triggering double free****
+[   30.501259] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.501259] …æúﬁ#!Îä;∫œ
+[   30.505672] (efault): [+] datasize: 0
+[   30.510667] (efault): [+] datasize: 4096
+[   30.521559] (efault): [+] data: 
+[   30.525392] ****Triggering double free****
+[   30.530630] ****Triggering use after free****
+[   30.533418] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.533418] …æúﬁ#!Îä;∫œ
+[   30.541422] ****Triggering double free****
+[   30.551780] (efault): [+] datasize: 0
+[   30.556413] (efault): [+] datasize: 4096
+[   30.560208] (efault): [+] data: 
+[   30.565300] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.565300] …æúﬁ#!Îä;∫œ
+[   30.568703] ****Triggering use after free****
+[   30.584263] (efault): [+] datasize: 0
+[   30.591783] ****Triggering use after free****
+[   30.592832] (efault): [+] datasize: 4096
+[   30.600647] ****Triggering double free****
+[   30.605495] (efault): [+] datasize: 4096
+[   30.606582] ****Triggering double free****
+[   30.609722] (efault): [+] datasize: 0
+[   30.615638] (efault): [+] datasize: 0
+[   30.621987] ****Triggering double free****
+[   30.623413] ****Triggering double free****
+[   30.627585] ****Triggering use after free****
+[   30.632192] ****Triggering use after free****
+[   30.636922] (efault): [+] datasize: 0
+[   30.641420] (efault): [+] datasize: 0
+[   30.646981] (efault): [+] datasize: 4096
+[   30.648877] (efault): [+] datasize: 4096
+[   30.653191] (efault): [+] data: 
+[   30.656963] (efault): [+] data: 
+[   30.660473] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.660473] …æúﬁ#!Îä;∫œ
+[   30.663620] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.663620] …æúﬁ#!Îä;∫œ
+[   30.676777] ****Triggering use after free****
+[   30.688955] ****Triggering use after free****
+[   30.697924] (efault): [+] datasize: 4096
+[   30.698694] (efault): [+] datasize: 4096
+[   30.704424] ****Triggering double free****
+[   30.707525] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.707525] …æúﬁ#!Îä;∫œ
+[   30.712308] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.712308] …æúﬁ#!Îä;∫œ
+[   30.727991] (efault): [+] datasize: 0
+[   30.740684] ****Triggering double free****
+[   30.740780] ****Triggering double free****
+[   30.744634] (efault): [+] datasize: 0
+[   30.744695] ****Triggering use after free****
+[   30.749938] ****Triggering double free****
+[   30.752659] (efault): [+] datasize: 4096
+[   30.757962] (efault): [+] datasize: 0
+[   30.764692] ****Triggering double free****
+[   30.765959] (efault): [+] datasize: 0
+[   30.769666] (efault): [+] datasize: 0
+[   30.774355] ****Triggering use after free****
+[   30.779796] ****Triggering use after free****
+[   30.782446] ****Triggering use after free****
+[   30.786488] (efault): [+] datasize: 4096
+[   30.791301] (efault): [+] data: 
+[   30.795590] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.795590] …æúﬁ#!Îä;∫œ
+[   30.800270] (efault): [+] datasize: 4096
+[   30.807431] ****Triggering double free****
+[   30.819261] (efault): [+] datasize: 4096
+[   30.823061] (efault): [+] datasize: 0
+[   30.827895] ****Triggering use after free****
+[   30.831779] ****Triggering use after free****
+[   30.841687] ****Triggering double free****
+[   30.844275] (efault): [+] datasize: 4096
+[   30.847585] (efault): [+] datasize: 4096
+[   30.847609] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.847609] …æúﬁ#!Îä;∫œ
+[   30.848730] (efault): [+] datasize: 0
+[   30.868522] ****Triggering double free****
+[   30.871361] ****Triggering double free****
+[   30.873911] (efault): [+] datasize: 0
+[   30.878497] ****Triggering double free****
+[   30.881895] ****Triggering use after free****
+[   30.885452] ****Triggering use after free****
+[   30.889955] (efault): [+] datasize: 4096
+[   30.893599] (efault): [+] datasize: 0
+[   30.893714] ****Triggering use after free****
+[   30.902149] ****Triggering double free****
+[   30.905014] (efault): [+] datasize: 0
+[   30.909215] (efault): [+] datasize: 0
+[   30.912455] ****Triggering use after free****
+[   30.916471] ****Triggering use after free****
+[   30.920155] (efault): [+] datasize: 4096
+[   30.920175] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.920175] …æúﬁ#!Îä;∫œ
+[   30.924633] (efault): [+] datasize: 4096
+[   30.928064] (efault): [+] datasize: 4096
+[   30.928147] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.928147] …æúﬁ#!Îä;∫œ
+[   30.928967] (efault): [+] datasize: 4096
+[   30.942940] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   30.942940] …æúﬁ#!Îä;∫œ
+[   30.946372] ****Triggering double free****
+[   30.950918] ****Triggering double free****
+[   30.963615] ****Triggering double free****
+[   30.974382] (efault): [+] datasize: 0
+[   30.979008] (efault): [+] datasize: 0
+[   30.986323] ****Triggering double free****
+[   30.989968] (efault): [+] datasize: 0
+[   30.993524] ****Triggering use after free****
+[   30.997375] ****Triggering use after free****
+[   31.001421] (efault): [+] datasize: 0
+[   31.005261] ****Triggering use after free****
+[   31.009536] (efault): [+] datasize: 4096
+[   31.012863] (efault): [+] datasize: 4096
+[   31.017579] (efault): [+] data: 
+[   31.021168] (efault): [+] datasize: 4096
+[   31.025259] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.025259] …æúﬁ#!Îä;∫œ
+[   31.028425] ****Triggering use after free****
+[   31.035869] ****Triggering double free****
+[   31.043687] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.043687] …æúﬁ#!Îä;∫œ
+[   31.048363] (efault): [+] datasize: 0
+[   31.052628] (efault): [+] datasize: 4096
+[   31.065638] (efault): [+] data: 
+[   31.071536] ****Triggering double free****
+[   31.073784] ****Triggering use after free****
+[   31.080303] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.080303] …æúﬁ#!Îä;∫œ
+[   31.081955] ****Triggering double free****
+[   31.087632] (efault): [+] datasize: 0
+[   31.099740] (efault): [+] datasize: 4096
+[   31.112635] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.112635] …æúﬁ#!Îä;∫œ
+[   31.113999] ****Triggering double free****
+[   31.126003] (efault): [+] datasize: 0
+[   31.128591] ****Triggering use after free****
+[   31.134414] ****Triggering double free****
+[   31.137269] (efault): [+] datasize: 4096
+[   31.140667] (efault): [+] data: 
+[   31.145463] (efault): [+] datasize: 0
+[   31.149054] (efault): [+] datasize: 0
+[   31.155485] ****Triggering use after free****
+[   31.157518] ****Triggering use after free****
+[   31.164038] (efault): [+] datasize: 4096
+[   31.170337] ****Triggering double free****
+[   31.173601] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.173601] …æúﬁ#!Îä;∫œ
+[   31.177449] (efault): [+] data: 
+[   31.194222] (efault): [+] datasize: 4096
+[   31.195018] (efault): [+] datasize: 0
+[   31.202857] ****Triggering double free****
+[   31.203500] ****Triggering use after free****
+[   31.213741] (efault): [+] datasize: 0
+[   31.213920] ****Triggering use after free****
+[   31.213930] (efault): [+] datasize: 4096
+[   31.213950] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.213950] …æúﬁ#!Îä;∫œ
+[   31.228413] (efault): [+] data: 
+[   31.239261] (efault): [+] datasize: 4096
+[   31.248018] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.248018] …æúﬁ#!Îä;∫œ
+[   31.249407] ****Triggering use after free****
+[   31.260843] ****Triggering double free****
+[   31.267459] (efault): [+] datasize: 4096
+[   31.270816] ****Triggering double free****
+[   31.274739] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.274739] …æúﬁ#!Îä;∫œ
+[   31.278896] (efault): [+] datasize: 0
+[   31.296923] (efault): [+] datasize: 0
+[   31.300892] ****Triggering use after free****
+[   31.305322] ****Triggering use after free****
+[   31.306180] ****Triggering double free****
+[   31.309743] (efault): [+] datasize: 4096
+[   31.314925] ****Triggering double free****
+[   31.317739] (efault): [+] datasize: 4096
+[   31.321770] (efault): [+] datasize: 0
+[   31.326918] (efault): [+] datasize: 0
+[   31.330469] ****Triggering use after free****
+[   31.333193] ****Triggering double free****
+[   31.336689] (efault): [+] datasize: 4096
+[   31.342578] (efault): [+] data: 
+[   31.346999] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.346999] …æúﬁ#!Îä;∫œ
+[   31.358822] (efault): [+] datasize: 0
+[   31.359012] ****Triggering use after free****
+[   31.366022] ****Triggering double free****
+[   31.369515] ****Triggering use after free****
+[   31.373287] (efault): [+] datasize: 0
+[   31.377948] (efault): [+] datasize: 4096
+[   31.381972] ****Triggering double free****
+[   31.384967] (efault): [+] datasize: 4096
+[   31.389751] (efault): [+] data: 
+[   31.393528] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.393528] …æúﬁ#!Îä;∫œ
+[   31.396897] (efault): [+] datasize: 0
+[   31.413958] ****Triggering use after free****
+[   31.414807] ****Triggering use after free****
+[   31.419325] ****Triggering double free****
+[   31.422583] (efault): [+] datasize: 4096
+[   31.426562] (efault): [+] datasize: 4096
+[   31.434454] (efault): [+] datasize: 0
+[   31.435032] ****Triggering double free****
+[   31.438954] ****Triggering use after free****
+[   31.442997] (efault): [+] datasize: 0
+[   31.449782] (efault): [+] datasize: 4096
+[   31.449812] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.449812] …æúﬁ#!Îä;∫œ
+[   31.459262] ****Triggering double free****
+[   31.467253] ****Triggering double free****
+[   31.470548] (efault): [+] datasize: 0
+[   31.475610] ****Triggering double free****
+[   31.477918] ****Triggering use after free****
+[   31.480976] (efault): [+] datasize: 0
+[   31.485289] (efault): [+] datasize: 4096
+[   31.488452] (efault): [+] datasize: 0
+[   31.495918] ****Triggering double free****
+[   31.496034] ****Triggering use after free****
+[   31.500343] (efault): [+] datasize: 0
+[   31.504538] ****Triggering use after free****
+[   31.508437] ****Triggering use after free****
+[   31.512259] ****Triggering use after free****
+[   31.512266] (efault): [+] datasize: 4096
+[   31.512288] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.512288] …æúﬁ#!Îä;∫œ
+[   31.517192] (efault): [+] datasize: 4096
+[   31.520625] (efault): [+] datasize: 4096
+[   31.524604] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.524604] …æúﬁ#!Îä;∫œ
+[   31.535711] (efault): [+] datasize: 4096
+[   31.535745] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.535745] …æúﬁ#!Îä;∫œ
+[   31.539185] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.539185] …æúﬁ#!Îä;∫œ
+[   31.546454] ****Triggering double free****
+[   31.562011] ****Triggering double free****
+[   31.573585] (efault): [+] datasize: 0
+[   31.588877] (efault): [+] datasize: 0
+[   31.591771] ****Triggering double free****
+[   31.595418] ****Triggering double free****
+[   31.597795] (efault): [+] datasize: 0
+[   31.601317] (efault): [+] datasize: 0
+[   31.601378] ****Triggering use after free****
+[   31.601384] (efault): [+] datasize: 4096
+[   31.606319] (efault): [+] data: 
+[   31.609637] (efault): [+] data: 
+[   31.613584] (efault): [+] data: 
+[   31.617395] ****Triggering use after free****
+[   31.621428] ****Triggering use after free****
+[   31.624900] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.624900] …æúﬁ#!Îä;∫œ
+[   31.628412] ****Triggering use after free****
+[   31.632706] (efault): [+] datasize: 4096
+[   31.636432] (efault): [+] datasize: 4096
+[   31.647789] ****Triggering double free****
+[   31.658328] (efault): [+] datasize: 4096
+[   31.662341] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.662341] …æúﬁ#!Îä;∫œ
+[   31.666512] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.666512] …æúﬁ#!Îä;∫œ
+[   31.673140] (efault): [+] datasize: 0
+[   31.677150] ****Triggering double free****
+[   31.679884] ****Triggering double free****
+[   31.689957] (efault): [+] datasize: 0
+[   31.701408] ****Triggering use after free****
+[   31.706790] ****Triggering use after free****
+[   31.710000] ****Triggering double free****
+[   31.713427] (efault): [+] datasize: 4096
+[   31.716736] (efault): [+] datasize: 4096
+[   31.720956] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.720956] …æúﬁ#!Îä;∫œ
+[   31.724933] (efault): [+] datasize: 0
+[   31.725013] ****Triggering use after free****
+[   31.737414] ****Triggering double free****
+[   31.747891] (efault): [+] datasize: 0
+[   31.751923] (efault): [+] datasize: 0
+[   31.757822] ****Triggering use after free****
+[   31.760475] ****Triggering use after free****
+[   31.765445] ****Triggering double free****
+[   31.768459] (efault): [+] datasize: 4096
+[   31.772260] (efault): [+] datasize: 4096
+[   31.777564] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.777564] …æúﬁ#!Îä;∫œ
+[   31.780805] (efault): [+] datasize: 0
+[   31.787872] ****Triggering double free****
+[   31.798819] (efault): [+] datasize: 4096
+[   31.798840] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.798840] …æúﬁ#!Îä;∫œ
+[   31.802953] (efault): [+] datasize: 0
+[   31.808203] ****Triggering use after free****
+[   31.822497] ****Triggering use after free****
+[   31.826225] ****Triggering double free****
+[   31.831410] (efault): [+] datasize: 4096
+[   31.834560] ****Triggering double free****
+[   31.837823] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.837823] …æúﬁ#!Îä;∫œ
+[   31.841576] (efault): [+] datasize: 4096
+[   31.849062] ****Triggering double free****
+[   31.856554] (efault): [+] datasize: 0
+[   31.860777] (efault): [+] datasize: 0
+[   31.864805] (efault): [+] datasize: 0
+[   31.868589] ****Triggering use after free****
+[   31.872208] ****Triggering use after free****
+[   31.876458] (efault): [+] datasize: 4096
+[   31.880065] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.880065] …æúﬁ#!Îä;∫œ
+[   31.884406] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.884406] …æúﬁ#!Îä;∫œ
+[   31.887943] (efault): [+] data: 
+[   31.888021] ****Triggering use after free****
+[   31.903857] ****Triggering double free****
+[   31.915340] (efault): [+] datasize: 4096
+[   31.916575] (efault): [+] datasize: 0
+[   31.926495] ****Triggering double free****
+[   31.931678] ****Triggering double free****
+[   31.932000] (efault): [+] datasize: 4096
+[   31.935833] (efault): [+] datasize: 0
+[   31.936064] ****Triggering use after free****
+[   31.940260] (efault): [+] datasize: 0
+[   31.945315] ****Triggering use after free****
+[   31.949871] ****Triggering use after free****
+[   31.952297] (efault): [+] datasize: 4096
+[   31.959520] (efault): [+] datasize: 4096
+[   31.964333] (efault): [+] datasize: 4096
+[   31.969185] ****Triggering double free****
+[   31.972349] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.972349] …æúﬁ#!Îä;∫œ
+[   31.976683] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.976683] …æúﬁ#!Îä;∫œ
+[   31.980685] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   31.980685] …æúﬁ#!Îä;∫œ
+[   31.994245] (efault): [+] datasize: 0
+[   32.009738] ****Triggering double free****
+[   32.021569] ****Triggering use after free****
+[   32.028014] ****Triggering double free****
+[   32.031866] (efault): [+] datasize: 4096
+[   32.038388] ****Triggering double free****
+[   32.041379] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.041379] …æúﬁ#!Îä;∫œ
+[   32.045548] (efault): [+] datasize: 0
+[   32.059954] ****Triggering double free****
+[   32.062254] (efault): [+] datasize: 0
+[   32.064897] (efault): [+] datasize: 0
+[   32.068544] ****Triggering use after free****
+[   32.072070] ****Triggering use after free****
+[   32.076845] (efault): [+] datasize: 0
+[   32.080338] (efault): [+] datasize: 4096
+[   32.084295] (efault): [+] data: 
+[   32.087861] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.087861] …æúﬁ#!Îä;∫œ
+[   32.091340] (efault): [+] data: 
+[   32.105961] ****Triggering double free****
+[   32.105970] (efault): [+] datasize: 0
+[   32.106181] ****Triggering use after free****
+[   32.110265] (efault): [+] datasize: 4096
+[   32.113590] (efault): [+] datasize: 4096
+[   32.118164] ****Triggering use after free****
+[   32.121792] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.121792] …æúﬁ#!Îä;∫œ
+[   32.125837] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.125837] …æúﬁ#!Îä;∫œ
+[   32.133177] ****Triggering double free****
+[   32.142313] (efault): [+] datasize: 4096
+[   32.155252] (efault): [+] datasize: 0
+[   32.158424] ****Triggering use after free****
+[   32.161912] ****Triggering use after free****
+[   32.166655] (efault): [+] datasize: 4096
+[   32.178303] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.178303] …æúﬁ#!Îä;∫œ
+[   32.190027] (efault): [+] datasize: 4096
+[   32.191141] ****Triggering double free****
+[   32.193863] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.193863] …æúﬁ#!Îä;∫œ
+[   32.200246] (efault): [+] datasize: 0
+[   32.216790] ****Triggering double free****
+[   32.219412] ****Triggering double free****
+[   32.221147] (efault): [+] datasize: 0
+[   32.226007] (efault): [+] datasize: 0
+[   32.234589] ****Triggering use after free****
+[   32.234626] ****Triggering use after free****
+[   32.239240] (efault): [+] datasize: 4096
+[   32.244246] ****Triggering double free****
+[   32.247338] (efault): [+] data: 
+[   32.251467] (efault): [+] datasize: 4096
+[   32.254840] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.254840] …æúﬁ#!Îä;∫œ
+[   32.258495] (efault): [+] datasize: 0
+[   32.270495] ****Triggering use after free****
+[   32.278738] ****Triggering use after free****
+[   32.279749] (efault): [+] datasize: 4096
+[   32.288644] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.288644] …æúﬁ#!Îä;∫œ
+[   32.288916] ****Triggering double free****
+[   32.301312] (efault): [+] datasize: 4096
+[   32.306688] ****Triggering double free****
+[   32.310004] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.310004] …æúﬁ#!Îä;∫œ
+[   32.316561] (efault): [+] datasize: 0
+[   32.328447] ****Triggering double free****
+[   32.331889] (efault): [+] datasize: 0
+[   32.334886] (efault): [+] datasize: 0
+[   32.338369] ****Triggering use after free****
+[   32.346346] ****Triggering use after free****
+[   32.347551] ****Triggering use after free****
+[   32.351415] (efault): [+] datasize: 4096
+[   32.356563] ****Triggering double free****
+[   32.358767] (efault): [+] datasize: 4096
+[   32.363226] (efault): [+] datasize: 0
+[   32.370879] ****Triggering double free****
+[   32.374879] (efault): [+] datasize: 0
+[   32.374977] (efault): [+] datasize: 4096
+[   32.378575] (efault): [+] data: 
+[   32.378638] ****Triggering use after free****
+[   32.382834] (efault): [+] data: 
+[   32.386351] (efault): [+] datasize: 4096
+[   32.390911] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.390911] …æúﬁ#!Îä;∫œ
+[   32.398671] ****Triggering double free****
+[   32.399471] ****Triggering use after free****
+[   32.410509] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.410509] …æúﬁ#!Îä;∫œ
+[   32.416931] (efault): [+] datasize: 4096
+[   32.421578] ****Triggering double free****
+[   32.433481] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.433481] …æúﬁ#!Îä;∫œ
+[   32.441360] (efault): [+] datasize: 0
+[   32.454818] (efault): [+] datasize: 0
+[   32.456266] ****Triggering double free****
+[   32.460328] ****Triggering use after free****
+[   32.465102] ****Triggering use after free****
+[   32.470150] ****Triggering double free****
+[   32.472209] (efault): [+] datasize: 0
+[   32.476314] (efault): [+] datasize: 4096
+[   32.479838] (efault): [+] datasize: 4096
+[   32.483431] (efault): [+] datasize: 0
+[   32.487214] ****Triggering use after free****
+[   32.496261] (efault): [+] datasize: 4096
+[   32.496487] (efault): [+] data: 
+[   32.503478] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.503478] …æúﬁ#!Îä;∫œ
+[   32.503537] ****Triggering use after free****
+[   32.515774] ****Triggering double free****
+[   32.519026] (efault): [+] datasize: 4096
+[   32.522668] ****Triggering double free****
+[   32.526185] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.526185] …æúﬁ#!Îä;∫œ
+[   32.531405] (efault): [+] datasize: 0
+[   32.545609] (efault): [+] datasize: 0
+[   32.551528] ****Triggering use after free****
+[   32.552751] ****Triggering double free****
+[   32.558230] ****Triggering double free****
+[   32.560808] ****Triggering use after free****
+[   32.565965] (efault): [+] datasize: 4096
+[   32.565984] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.565984] …æúﬁ#!Îä;∫œ
+[   32.571013] (efault): [+] datasize: 0
+[   32.575008] (efault): [+] datasize: 0
+[   32.586622] (efault): [+] datasize: 4096
+[   32.597868] ****Triggering double free****
+[   32.599259] (efault): [+] data: 
+[   32.603902] (efault): [+] datasize: 0
+[   32.610571] ****Triggering use after free****
+[   32.611815] ****Triggering use after free****
+[   32.615300] (efault): [+] datasize: 4096
+[   32.620461] ****Triggering double free****
+[   32.623154] (efault): [+] data: 
+[   32.627519] (efault): [+] datasize: 4096
+[   32.630217] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.630217] …æúﬁ#!Îä;∫œ
+[   32.634007] (efault): [+] datasize: 0
+[   32.646530] ****Triggering use after free****
+[   32.651015] ****Triggering use after free****
+[   32.658497] (efault): [+] datasize: 4096
+[   32.659335] ****Triggering double free****
+[   32.662536] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.662536] …æúﬁ#!Îä;∫œ
+[   32.666333] (efault): [+] datasize: 4096
+[   32.681780] (efault): [+] datasize: 0
+[   32.685532] ****Triggering use after free****
+[   32.686761] ****Triggering double free****
+[   32.690643] ****Triggering double free****
+[   32.693938] (efault): [+] datasize: 0
+[   32.699907] ****Triggering double free****
+[   32.701848] ****Triggering use after free****
+[   32.705183] (efault): [+] datasize: 4096
+[   32.705206] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.705206] …æúﬁ#!Îä;∫œ
+[   32.707921] ****Triggering double free****
+[   32.709748] (efault): [+] datasize: 4096
+[   32.713299] (efault): [+] datasize: 0
+[   32.726422] (efault): [+] datasize: 0
+[   32.730279] (efault): [+] datasize: 0
+[   32.733436] ****Triggering double free****
+[   32.736558] ****Triggering use after free****
+[   32.739523] (efault): [+] datasize: 0
+[   32.743172] ****Triggering use after free****
+[   32.747587] ****Triggering use after free****
+[   32.751459] (efault): [+] datasize: 4096
+[   32.755236] (efault): [+] data: 
+[   32.759337] (efault): [+] datasize: 4096
+[   32.763440] (efault): [+] datasize: 4096
+[   32.767203] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.767203] …æúﬁ#!Îä;∫œ
+[   32.770424] ****Triggering use after free****
+[   32.774869] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.774869] …æúﬁ#!Îä;∫œ
+[   32.777961] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.777961] …æúﬁ#!Îä;∫œ
+[   32.794710] ****Triggering double free****
+[   32.804978] (efault): [+] datasize: 4096
+[   32.819301] ****Triggering double free****
+[   32.820364] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.820364] …æúﬁ#!Îä;∫œ
+[   32.824451] (efault): [+] datasize: 0
+[   32.840349] (efault): [+] datasize: 0
+[   32.846792] ****Triggering use after free****
+[   32.848617] ****Triggering use after free****
+[   32.851781] ****Triggering double free****
+[   32.855271] (efault): [+] datasize: 4096
+[   32.859940] ****Triggering double free****
+[   32.863226] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.863226] …æúﬁ#!Îä;∫œ
+[   32.866599] ****Triggering double free****
+[   32.867513] (efault): [+] datasize: 0
+[   32.879205] (efault): [+] datasize: 0
+[   32.882838] (efault): [+] datasize: 4096
+[   32.886563] (efault): [+] datasize: 0
+[   32.886641] ****Triggering use after free****
+[   32.890372] ****Triggering use after free****
+[   32.894503] ****Triggering use after free****
+[   32.901662] (efault): [+] datasize: 4096
+[   32.901679] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.901679] …æúﬁ#!Îä;∫œ
+[   32.902933] (efault): [+] datasize: 4096
+[   32.910231] ****Triggering double free****
+[   32.914649] ****Triggering double free****
+[   32.925569] (efault): [+] datasize: 4096
+[   32.929491] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.929491] …æúﬁ#!Îä;∫œ
+[   32.933609] (efault): [+] datasize: 0
+[   32.933681] ****Triggering use after free****
+[   32.937779] (efault): [+] datasize: 0
+[   32.944719] ****Triggering double free****
+[   32.956259] ****Triggering use after free****
+[   32.956267] (efault): [+] datasize: 4096
+[   32.956280] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.956280] …æúﬁ#!Îä;∫œ
+[   32.957528] (efault): [+] datasize: 4096
+[   32.962675] ****Triggering double free****
+[   32.968710] ****Triggering double free****
+[   32.972282] (efault): [+] datasize: 0
+[   32.987624] (efault): [+] datasize: 0
+[   32.987697] ****Triggering use after free****
+[   32.987703] (efault): [+] datasize: 4096
+[   32.987715] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   32.987715] …æúﬁ#!Îä;∫œ
+[   32.990837] ****Triggering double free****
+[   32.991759] (efault): [+] datasize: 0
+[   32.995714] (efault): [+] datasize: 0
+[   32.999876] ****Triggering use after free****
+[   33.003741] ****Triggering use after free****
+[   33.007751] (efault): [+] datasize: 4096
+[   33.013695] (efault): [+] datasize: 4096
+[   33.016678] ****Triggering double free****
+[   33.028633] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.028633] …æúﬁ#!Îä;∫œ
+[   33.032206] (efault): [+] data: 
+[   33.040973] ****Triggering double free****
+[   33.045293] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.045293] …æúﬁ#!Îä;∫œ
+[   33.049598] (efault): [+] datasize: 0
+[   33.054055] (efault): [+] datasize: 0
+[   33.057292] ****Triggering use after free****
+[   33.061789] ****Triggering use after free****
+[   33.072769] (efault): [+] datasize: 4096
+[   33.077318] ****Triggering double free****
+[   33.080403] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.080403] …æúﬁ#!Îä;∫œ
+[   33.091123] (efault): [+] data: 
+[   33.097703] ****Triggering double free****
+[   33.098396] ****Triggering use after free****
+[   33.102334] (efault): [+] datasize: 0
+[   33.106499] (efault): [+] datasize: 4096
+[   33.110346] (efault): [+] data: 
+[   33.114122] (efault): [+] datasize: 0
+[   33.114208] ****Triggering use after free****
+[   33.126051] ****Triggering use after free****
+[   33.128761] (efault): [+] datasize: 4096
+[   33.132829] (efault): [+] datasize: 4096
+[   33.136845] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.136845] …æúﬁ#!Îä;∫œ
+[   33.138710] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.138710] …æúﬁ#!Îä;∫œ
+[   33.141699] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.141699] …æúﬁ#!Îä;∫œ
+[   33.145894] ****Triggering double free****
+[   33.150678] ****Triggering double free****
+[   33.152522] (efault): [+] datasize: 4096
+[   33.155546] (efault): [+] datasize: 0
+[   33.160177] (efault): [+] datasize: 0
+[   33.163581] ****Triggering use after free****
+[   33.168720] ****Triggering double free****
+[   33.178870] (efault): [+] datasize: 4096
+[   33.190719] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.190719] …æúﬁ#!Îä;∫œ
+[   33.203161] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.203161] …æúﬁ#!Îä;∫œ
+[   33.207236] (efault): [+] data: 
+[   33.214557] ****Triggering double free****
+[   33.216226] ****Triggering use after free****
+[   33.219745] (efault): [+] datasize: 0
+[   33.226288] (efault): [+] datasize: 4096
+[   33.228533] (efault): [+] data: 
+[   33.233211] (efault): [+] datasize: 0
+[   33.233289] ****Triggering use after free****
+[   33.237497] ****Triggering use after free****
+[   33.255361] ****Triggering double free****
+[   33.263466] ****Triggering double free****
+[   33.265411] (efault): [+] datasize: 4096
+[   33.269076] (efault): [+] datasize: 4096
+[   33.274574] (efault): [+] datasize: 0
+[   33.277735] (efault): [+] datasize: 0
+[   33.277804] ****Triggering use after free****
+[   33.285708] ****Triggering use after free****
+[   33.289645] (efault): [+] datasize: 4096
+[   33.296050] ****Triggering double free****
+[   33.297769] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.297769] …æúﬁ#!Îä;∫œ
+[   33.308255] ****Triggering double free****
+[   33.312600] (efault): [+] datasize: 4096
+[   33.315524] (efault): [+] datasize: 0
+[   33.324587] ****Triggering double free****
+[   33.331285] (efault): [+] datasize: 0
+[   33.338767] (efault): [+] datasize: 0
+[   33.338831] ****Triggering use after free****
+[   33.338837] (efault): [+] datasize: 4096
+[   33.338850] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.338850] …æúﬁ#!Îä;∫œ
+[   33.341064] (efault): [+] data: 
+[   33.346616] ****Triggering double free****
+[   33.356899] ****Triggering double free****
+[   33.359959] (efault): [+] data: 
+[   33.364335] (efault): [+] datasize: 0
+[   33.367802] (efault): [+] datasize: 0
+[   33.367884] ****Triggering use after free****
+[   33.367891] (efault): [+] datasize: 4096
+[   33.367907] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.367907] …æúﬁ#!Îä;∫œ
+[   33.369639] ****Triggering use after free****
+[   33.373304] ****Triggering use after free****
+[   33.378612] ****Triggering double free****
+[   33.380536] (efault): [+] datasize: 4096
+[   33.386902] (efault): [+] datasize: 4096
+[   33.390300] (efault): [+] data: 
+[   33.407352] (efault): [+] datasize: 0
+[   33.417325] ****Triggering use after free****
+[   33.423535] ****Triggering use after free****
+[   33.429188] (efault): [+] datasize: 4096
+[   33.432982] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.432982] …æúﬁ#!Îä;∫œ
+[   33.444426] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.444426] …æúﬁ#!Îä;∫œ
+[   33.447366] ****Triggering double free****
+[   33.448743] (efault): [+] datasize: 4096
+[   33.461600] ****Triggering double free****
+[   33.466685] ****Triggering double free****
+[   33.468548] (efault): [+] datasize: 0
+[   33.474711] (efault): [+] datasize: 0
+[   33.475626] (efault): [+] datasize: 0
+[   33.480850] ****Triggering double free****
+[   33.482539] ****Triggering use after free****
+[   33.486355] ****Triggering use after free****
+[   33.490353] ****Triggering use after free****
+[   33.494498] (efault): [+] datasize: 0
+[   33.498157] (efault): [+] datasize: 4096
+[   33.509641] (efault): [+] datasize: 4096
+[   33.525497] (efault): [+] datasize: 4096
+[   33.528489] (efault): [+] data: 
+[   33.533016] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.533016] …æúﬁ#!Îä;∫œ
+[   33.536346] ****Triggering use after free****
+[   33.539908] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.539908] …æúﬁ#!Îä;∫œ
+[   33.543361] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.543361] …æúﬁ#!Îä;∫œ
+[   33.550469] (efault): [+] datasize: 4096
+[   33.556391] ****Triggering double free****
+[   33.561068] ****Triggering double free****
+[   33.566869] ****Triggering double free****
+[   33.567803] (efault): [+] datasize: 0
+[   33.571709] (efault): [+] datasize: 0
+[   33.575824] ****Triggering use after free****
+[   33.582195] (efault): [+] datasize: 0
+[   33.582264] ****Triggering use after free****
+[   33.593416] (efault): [+] datasize: 4096
+[   33.604062] (efault): [+] data: 
+[   33.610721] ****Triggering double free****
+[   33.624617] (efault): [+] datasize: 4096
+[   33.628604] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.628604] …æúﬁ#!Îä;∫œ
+[   33.633499] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.633499] …æúﬁ#!Îä;∫œ
+[   33.638183] (efault): [+] datasize: 0
+[   33.641391] ****Triggering use after free****
+[   33.646255] ****Triggering use after free****
+[   33.650735] (efault): [+] datasize: 4096
+[   33.655666] ****Triggering double free****
+[   33.659842] ****Triggering double free****
+[   33.661831] (efault): [+] datasize: 0
+[   33.667862] (efault): [+] datasize: 0
+[   33.669686] (efault): [+] datasize: 4096
+[   33.674288] ****Triggering double free****
+[   33.677217] (efault): [+] data: 
+[   33.689335] (efault): [+] data: 
+[   33.704798] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.704798] …æúﬁ#!Îä;∫œ
+[   33.709854] (efault): [+] datasize: 0
+[   33.716215] ****Triggering use after free****
+[   33.721420] ****Triggering double free****
+[   33.723696] (efault): [+] datasize: 4096
+[   33.727747] ****Triggering use after free****
+[   33.733291] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.733291] …æúﬁ#!Îä;∫œ
+[   33.736795] (efault): [+] data: 
+[   33.743461] (efault): [+] datasize: 0
+[   33.745154] ****Triggering use after free****
+[   33.751244] ****Triggering double free****
+[   33.753201] (efault): [+] datasize: 4096
+[   33.758028] (efault): [+] data: 
+[   33.770382] (efault): [+] datasize: 4096
+[   33.774502] (efault): [+] datasize: 0
+[   33.784616] ****Triggering double free****
+[   33.788305] ****Triggering use after free****
+[   33.792406] ****Triggering double free****
+[   33.806658] ****Triggering use after free****
+[   33.810074] (efault): [+] datasize: 0
+[   33.814048] (efault): [+] datasize: 4096
+[   33.818579] (efault): [+] data: 
+[   33.823236] (efault): [+] datasize: 4096
+[   33.823253] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.823253] …æúﬁ#!Îä;∫œ
+[   33.825770] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.825770] …æúﬁ#!Îä;∫œ
+[   33.828339] (efault): [+] datasize: 0
+[   33.832251] ****Triggering double free****
+[   33.834834] ****Triggering use after free****
+[   33.842880] (efault): [+] datasize: 0
+[   33.842943] ****Triggering use after free****
+[   33.847375] ****Triggering use after free****
+[   33.853666] (efault): [+] datasize: 4096
+[   33.862471] (efault): [+] datasize: 4096
+[   33.867452] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.867452] …æúﬁ#!Îä;∫œ
+[   33.872035] (efault): [+] datasize: 4096
+[   33.882465] ****Triggering double free****
+[   33.891932] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.891932] …æúﬁ#!Îä;∫œ
+[   33.911918] ****Triggering double free****
+[   33.915536] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.915536] …æúﬁ#!Îä;∫œ
+[   33.920687] (efault): [+] datasize: 0
+[   33.932828] ****Triggering double free****
+[   33.934225] (efault): [+] datasize: 0
+[   33.938144] ****Triggering double free****
+[   33.942044] ****Triggering use after free****
+[   33.945679] (efault): [+] datasize: 0
+[   33.957784] ****Triggering use after free****
+[   33.961396] (efault): [+] datasize: 0
+[   33.965539] (efault): [+] datasize: 4096
+[   33.978309] (efault): [+] data: 
+[   33.981064] (efault): [+] datasize: 4096
+[   33.992195] (efault): [+] data: 
+[   33.997181] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   33.997181] …æúﬁ#!Îä;∫œ
+[   34.000925] ****Triggering use after free****
+[   34.004786] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   34.004786] …æúﬁ#!Îä;∫œ
+[   34.008622] ****Triggering use after free****
+[   34.016302] (efault): [+] datasize: 4096
+[   34.022364] ****Triggering double free****
+[   34.029633] ****Triggering double free****
+[   34.031922] (efault): [+] datasize: 4096
+[   34.036546] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   34.036546] …æúﬁ#!Îä;∫œ
+[   34.039320] (efault): [+] datasize: 0
+[   34.051552] (efault): [+] datasize: 0
+[   34.060730] ****Triggering double free****
+[   34.072274] ****Triggering use after free****
+[   34.077581] ****Triggering double free****
+[   34.079516] (efault): [+] datasize: 4096
+[   34.083547] (efault): [+] data: 
+[   34.087667] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   34.087667] …æúﬁ#!Îä;∫œ
+[   34.099373] (efault): [+] datasize: 0
+[   34.105212] (efault): [+] datasize: 0
+[   34.106535] ****Triggering use after free****
+[   34.112504] ****Triggering double free****
+[   34.114936] ****Triggering use after free****
+[   34.119315] (efault): [+] datasize: 0
+[   34.124163] (efault): [+] datasize: 4096
+[   34.127262] (efault): [+] data: 
+[   34.138424] (efault): [+] datasize: 4096
+[   34.142388] (efault): [+] data: 
+[   34.146151] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   34.146151] …æúﬁ#!Îä;∫œ
+[   34.151051] ****Triggering use after free****
+[   34.155031] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   34.155031] …æúﬁ#!Îä;∫œ
+[   34.160261] ****Triggering use after free****
+[   34.167871] ****Triggering double free****
+[   34.171066] (efault): [+] datasize: 4096
+[   34.178897] ****Triggering double free****
+[   34.190413] (efault): [+] datasize: 4096
+[   34.194791] (efault): [+] datasize: 0
+[   34.211943] (efault): [+] datasize: 0
+[   34.220878] ****Triggering use after free****
+[   34.223948] ****Triggering double free****
+[   34.226509] (efault): [+] datasize: 4096
+[   34.231364] ****Triggering double free****
+[   34.234318] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   34.234318] …æúﬁ#!Îä;∫œ
+[   34.238553] (efault): [+] data: 
+[   34.242939] (efault): [+] datasize: 0
+[   34.246835] (efault): [+] datasize: 0
+[   34.250589] ****Triggering use after free****
+[   34.265869] ****Triggering double free****
+[   34.268508] (efault): [+] datasize: 4096
+[   34.272705] ****Triggering use after free****
+[   34.276740] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   34.276740] …æúﬁ#!Îä;∫œ
+[   34.280895] (efault): [+] datasize: 0
+[   34.292286] ****Triggering double free****
+[   34.300701] (efault): [+] datasize: 4096
+[   34.303977] (efault): [+] data: 
+[   34.308047] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   34.308047] …æúﬁ#!Îä;∫œ
+[   34.312060] ****Triggering use after free****
+[   34.315393] (efault): [+] data: 
+[   34.326765] (efault): [+] datasize: 0
+[   34.335389] ****Triggering use after free****
+[   34.337927] (efault): [+] datasize: 4096
+[   34.345756] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   34.345756] …æúﬁ#!Îä;∫œ
+[   34.346602] ****Triggering double free****
+[   34.357188] (efault): [+] data: 
+[   34.361842] (efault): [+] datasize: 4096
+[   34.368548] ****Triggering use after free****
+[   34.368643] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   34.368643] …æúﬁ#!Îä;∫œ
+[   34.375540] (efault): [+] datasize: 4096
+[   34.384666] (efault): [+] datasize: 0
+[   34.388637] ****Triggering double free****
+[   34.392467] ****Triggering use after free****
+[   34.396941] (efault): [+] datasize: 0
+[   34.402478] (efault): [+] datasize: 4096
+[   34.404194] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   34.404194] …æúﬁ#!Îä;∫œ
+[   34.409314] ****Triggering double free****
+[   34.420251] (efault): [+] data: 
+[   34.424772] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+[   34.424772] …æúﬁ#!Îä;∫œ
+[   34.427873] ****Triggering use after free****
+[   34.440761] (efault): [+] datasize: 0
+[   34.448330] ****Triggering double free****
+[   34.448824] ****Triggering use after free****
+[   34.452204] (efault): [+] datasize: 0
+[   34.452470] ****Triggering use after free****
+[   34.457322] (efault): [+] datasize: 4096
+[   34.460007] (efault): [+] datasize: 4096
+[   34.465602] ****Triggering double free****
+[   34.468235] (efault): [+] data: t‹UvIZ9À\Ç5<Ì}]ÛY‹“4ÊFäúÿ9úJmÿ?ÿÔ^°3÷À‰(Dú_L»,[Ôö“ÚÙO·Eka{~°Nø*≥¡
+
+VM DIAGNOSIS:
+14:41:53  Registers:
+info registers vcpu 0
+
+CPU#0
+RAX=dffffc0000000060 RBX=00000000000003fd RCX=0000000000000000 RDX=00000000000003fd
+RSI=0000000000000005 RDI=ffffffff98f694a8 RBP=ffffffff98f694a0 RSP=ffff8880050ef960
+R8 =0000000000000000 R9 =ffff888015cd8000 R10=00000000000fe503 R11=676972542a2a2a2a
+R12=0000000000000823 R13=0000000000000020 R14=fffffbfff31ed2e2 R15=dffffc0000000000
+RIP=ffffffff93e24205 RFL=00000002 [-------] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 00005555634cc500 ffffffff 00c00000
+GS =0000 ffff8880d4186000 ffffffff 00c00000
+LDT=0000 0000000000000000 ffffffff 00c00000
+TR =0040 fffffe2dca3aa000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe2dca3a8000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=0000001b31163fff CR3=00000000037b4002 CR4=00170ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000ffff0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+YMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM01=0000000000000000 0000000000000000 2525252525252525 2525252525252525
+YMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM04=0000000000000000 0000000000000000 ff00000000000000 00000000000000ff
+YMM05=0000000000000000 0000000000000000 0000000000000000 00007f9a5c098728
+YMM06=0000000000000000 0000000000000000 0000000000000000 00007f9a5c09869c
+YMM07=0000000000000000 0000000000000000 0000000000000000 00007f9a5c09871a
+YMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+info registers vcpu 1
+
+CPU#1
+RAX=0000000000000020 RBX=00000000000003f8 RCX=0000000000000000 RDX=00000000000003f8
+RSI=0000000000000000 RDI=ffffffff98f694a8 RBP=ffffffff98f694a0 RSP=ffff88800502f830
+R8 =0000000000000000 R9 =ffff888002cdb480 R10=0000000000000020 R11=20666f2065657246
+R12=0000000000000020 R13=0000000000000020 R14=0000000000000010 R15=ffffffff93e24230
+RIP=ffffffff93e2429d RFL=00000002 [-------] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
+CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
+SS =0000 0000000000000000 ffffffff 00c00000
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 0000555571612500 ffffffff 00c00000
+GS =0000 ffff8880d4286000 ffffffff 00c00000
+LDT=0000 0000000000000000 00000000 00000000
+TR =0040 fffffe50b082e000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe50b082c000 0000007f
+IDT=     fffffe0000000000 00000fff
+CR0=80050033 CR2=0000563822201040 CR3=00000000195d3006 CR4=00170ef0
+DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
+DR6=00000000ffff0ff0 DR7=0000000000000400
+EFER=0000000000000d01
+FCW=037f FSW=0000 [ST=0] FTW=00 MXCSR=00001f80
+FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
+FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
+FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
+FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
+YMM00=0000000000000000 0000000000000000 0000000000000000 ffffffffffffffff
+YMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM04=0000000000000000 0000000000000000 ffffffffffffffff ffff000000000000
+YMM05=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM06=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM12=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM13=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM14=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000

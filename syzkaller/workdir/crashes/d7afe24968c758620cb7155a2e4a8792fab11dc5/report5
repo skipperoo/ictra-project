@@ -1,0 +1,104 @@
+****Triggering Heap out of bound write****
+(efault): [+] datasize: 154
+(efault): [+] data: kx[%xÜàİíT‚•=‚*Ó†çÙµÉù€Ì¸"Ş¥kõıÀ×ß
+==================================================================
+BUG: KASAN: slab-out-of-bounds in Heap_OOBW_IOCTL_Handler.cold+0x158/0x15a lib/dvkm.c:219
+Write of size 1 at addr ffff888001e40dae by task syz.3.4/1907
+
+CPU: 0 UID: 0 PID: 1907 Comm: syz.3.4 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #10 PREEMPT(lazy) 
+Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+Call Trace:
+ <TASK>
+ __dump_stack lib/dump_stack.c:94 [inline]
+ dump_stack_lvl+0x97/0xe0 lib/dump_stack.c:120
+ print_address_description mm/kasan/report.c:378 [inline]
+ print_report+0x157/0x4c9 mm/kasan/report.c:482
+ kasan_report+0xce/0x100 mm/kasan/report.c:595
+ Heap_OOBW_IOCTL_Handler.cold+0x158/0x15a lib/dvkm.c:219
+ dvkm_ioctl.cold+0x55/0x12c lib/dvkm.c:467
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+RIP: 0033:0x7fcc5152acb9
+Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+RSP: 002b:00007fcc4ff87028 EFLAGS: 00000246 ORIG_RAX: 0000000000000010
+RAX: ffffffffffffffda RBX: 00007fcc517a5fa0 RCX: 00007fcc5152acb9
+RDX: 0000200000000100 RSI: 00000000c0184408 RDI: 0000000000000003
+RBP: 00007fcc51598bf7 R08: 0000000000000000 R09: 0000000000000000
+R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+R13: 00007fcc517a6038 R14: 00007fcc517a5fa0 R15: 00007ffcf3750bf8
+ </TASK>
+
+Allocated by task 1907:
+ kasan_save_stack+0x30/0x50 mm/kasan/common.c:57
+ kasan_save_track+0x14/0x30 mm/kasan/common.c:78
+ poison_kmalloc_redzone mm/kasan/common.c:398 [inline]
+ __kasan_kmalloc+0x8f/0xa0 mm/kasan/common.c:415
+ kasan_kmalloc include/linux/kasan.h:263 [inline]
+ __do_kmalloc_node mm/slub.c:5296 [inline]
+ __kmalloc_noprof+0x19d/0x500 mm/slub.c:5308
+ kmalloc_noprof include/linux/slab.h:954 [inline]
+ Heap_OOBW_IOCTL_Handler.cold+0x41/0x15a lib/dvkm.c:207
+ dvkm_ioctl.cold+0x55/0x12c lib/dvkm.c:467
+ pde_ioctl fs/proc/inode.c:374 [inline]
+ proc_reg_unlocked_ioctl+0x229/0x320 fs/proc/inode.c:386
+ vfs_ioctl fs/ioctl.c:51 [inline]
+ __do_sys_ioctl fs/ioctl.c:597 [inline]
+ __se_sys_ioctl fs/ioctl.c:583 [inline]
+ __x64_sys_ioctl+0x18e/0x210 fs/ioctl.c:583
+ do_syscall_x64 arch/x86/entry/syscall_64.c:63 [inline]
+ do_syscall_64+0xee/0x590 arch/x86/entry/syscall_64.c:94
+ entry_SYSCALL_64_after_hwframe+0x77/0x7f
+
+The buggy address belongs to the object at ffff888001e40d00
+ which belongs to the cache kmalloc-192 of size 192
+The buggy address is located 20 bytes to the right of
+ allocated 154-byte region [ffff888001e40d00, ffff888001e40d9a)
+
+The buggy address belongs to the physical page:
+page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x1e40
+flags: 0x100000000000000(node=0|zone=1)
+page_type: f5(slab)
+raw: 0100000000000000 ffff8880010413c0 dead000000000100 dead000000000122
+raw: 0000000000000000 0000000000100010 00000000f5000000 0000000000000000
+page dumped because: kasan: bad access detected
+
+Memory state around the buggy address:
+ ffff888001e40c80: 00 00 00 00 00 00 00 fc fc fc fc fc fc fc fc fc
+ ffff888001e40d00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+>ffff888001e40d80: 00 00 00 02 fc fc fc fc fc fc fc fc fc fc fc fc
+                                  ^
+ ffff888001e40e00: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+ ffff888001e40e80: 00 00 00 00 00 00 00 fc fc fc fc fc fc fc fc fc
+==================================================================
+****Triggering Integer Overflow****
+****Triggering double free****
+(efault): [+] datasize: 128
+(efault): [+] datasize: 4096
+(efault): [+] width: 4
+(efault): [+] data: ;û°3å¸[2˜±pí"ƒb©¸{¸¾—1 ÇœqÛ°İÖĞG+l
+$rRÄğ¥)»J^@'×½Â;¥3VQãv¾Aš³˜ùk¿ Ş~‘6C½÷i³gzõTşÇ9€ïß²6Ùëàmÿu¾nZ÷šIem”Ü7ÿqÍ$/»«öÉQĞŒÉRj¹²@gˆ:êâÅã©ç¼K~ñyehïV<şM+Õ’3d™Ç(°`«^—ûæu7òk"ÄØe.41‡Ø©j\ñH§û\E™²úd´L€ÈÙ”ó\÷pÎa†DãqGæ_«í5?Çù¢¹,&ä™Ü?—¢Èî»,Y}kH¹ëá0¤ÍÆú§&*MÍmõX¥†™ ,ãOœ>¦pç°‘•ñ¨hn9ú{;=(-ârd	&+D'PáÌ‡³»CÂÔnÍkhôÊú^!Oc õŸ<À„MŒéuÜ¯a_’¹KJÈq3şh>Ñ&?eì9…QÕ_H‘éŒOK‘KÀ e¢Ÿ¬•@¢¦ï2fÎ»z‡dLVS&i÷îS*ç:{
+7" ”‡€àLá±y‡œ¢÷?6â,ŸK–¿3GÜÍ—aÌOÎcZÔ:[ø:?h×:â¼hğÓ«P¤À|"»ƒ…Ìç$Œx{Å½éÎ®Âÿ·osÿ™,h!Vcö-1WâãŞ¼@VóÄ¯Ìè1‰”õ²ÔÖfe²¡8ÿAR{¯j4‹cˆÇ¾Óh¼Êeel­†(ÓÍÑób,¯>„{†o=;6d2¬0şÇ½„¢²$Ãvı’’‘<­kCy£Ÿ8yÿiD¨Ğ)ûrni)aäHE“…Iõ˜‘*)+z‘ªnTÑdŞPÌñôõñöº‚",Î×¥ÚU>é&à\Xö“ƒš=``ñGOµq^5ê¾Î­pÀËjŠeh
+µ®‘Ú’Æ¬”ûÑ ÜøªÎ`>ò’€­ÈÇY2*¥œo¨W[æ;€ÔˆicŞR9uş1Oâ´yè¾`á&­˜—$şª÷ÃŠcË©g-œy§¼Cêu‡z°åE"Ò¦5ñv÷¢‡ĞËÀ±¶!
+syz-executor (160) used greatest stack depth: 24352 bytes left
+(efault): [+] Height: 27829
+(efault): [+] datasize: 4096
+(efault): [+] data: ;û°3å¸[2˜±pí"ƒb©¸{¸¾—1 ÇœqÛ°İÖĞG+l
+$rRÄğ¥)»J^@'×½Â;¥3VQãv¾Aš³˜ùk¿ Ş~‘6C½÷i³gzõTşÇ9€ïß²6Ùëàmÿu¾nZ÷šIem”Ü7ÿqÍ$/»«öÉQĞŒÉRj¹²@gˆ:êâÅã©ç¼K~ñyehïV<şM+Õ’3d™Ç(°`«^—ûæu7òk"ÄØe.41‡Ø©j\ñH§û\E™²úd´L€ÈÙ”ó\÷pÎa†DãqGæ_«í5?Çù¢¹,&ä™Ü?—¢Èî»,Y}kH¹ëá0¤ÍÆú§&*MÍmõX¥†™ ,ãOœ>¦pç°‘•ñ¨hn9ú{;=(-ârd	&+D'PáÌ‡³»CÂÔnÍkhôÊú^!Oc õŸ<À„MŒéuÜ¯a_’¹KJÈq3şh>Ñ&?eì9…QÕ_H‘éŒOK‘KÀ e¢Ÿ¬•@¢¦ï2fÎ»z‡dLVS&i÷îS*ç:{
+7" ”‡€àLá±y‡œ¢÷?6â,ŸK–¿3GÜÍ—aÌOÎcZÔ:[ø:?h×:â¼hğÓ«P¤À|"»ƒ…Ìç$Œx{Å½éÎ®Âÿ·osÿ™,h!Vcö-1WâãŞ¼@VóÄ¯Ìè1‰”õ²ÔÖfe²¡8ÿAR{¯j4‹cˆÇ¾Óh¼Êeel­†(ÓÍÑób,¯>„{†o=;6d2¬0şÇ½„¢²$Ãvı’’‘<­kCy£Ÿ8yÿiD¨Ğ)ûrni)aäHE“…Iõ˜‘*)+z‘ªnTÑdŞPÌñôõñöº‚",Î×¥ÚU>é&à\Xö“ƒš=``ñGOµq^5ê¾Î­pÀËjŠeh
+µ®‘Ú’Æ¬”ûÑ ÜøªÎ`>ò’€­ÈÇY2*¥œo¨W[æ;€ÔˆicŞR9uş1Oâ´yè¾`á&­˜—$şª÷ÃŠcË©g-œy§¼Cêu‡z°åE"Ò¦5ñv÷¢‡ĞËÀ±¶!
+(efault): [+] calculated size: 27832
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
+SYZFAIL: failed to recv rpc
+fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
+
+<<<<<<<<<<<<<<< tail report >>>>>>>>>>>>>>>
+
