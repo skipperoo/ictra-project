@@ -1,281 +1,701 @@
 last executing test programs:
 
-16.837073619s ago: executing program 2 (id=44):
-openat(0xffffffffffffff9c, &(0x7f0000000040)='/dev/userio', 0x0, 0x0)
-openat(0xffffffffffffff9c, &(0x7f0000000080)='/dev/userio', 0x1, 0x0)
-openat(0xffffffffffffff9c, &(0x7f00000000c0)='/dev/userio', 0x2, 0x0)
-openat(0xffffffffffffff9c, &(0x7f0000000100)='/dev/userio', 0x800, 0x0)
+709.123386ms ago: executing program 1 (id=503):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+openat$procfs(0xffffffffffffff9c, &(0x7f00000013c0)='/proc/cpuinfo\x00', 0x0, 0x0)
+r1 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000000)='/proc/vmallocinfo\x00', 0x0, 0x0)
+writev(r1, 0x0, 0x0)
+readv(r1, &(0x7f0000000600), 0x0)
+pread64(r1, &(0x7f0000000040)=""/186, 0xba, 0x101)
+setsockopt$netlink_NETLINK_TX_RING(r0, 0x10e, 0x7, &(0x7f0000000140)={0x401, 0x2, 0x2, 0x5}, 0x10)
+write(r0, &(0x7f0000000080)="01", 0xfffffe8d)
+r2 = socket$nl_generic(0x10, 0x3, 0x10)
+setsockopt$netlink_NETLINK_ADD_MEMBERSHIP(r2, 0x10e, 0x1, &(0x7f0000000000)=0xc, 0x4)
+openat$procfs(0xffffffffffffff9c, &(0x7f0000000040)='/proc/bus/input/handlers\x00', 0x0, 0x0)
+openat$nvram(0xffffffffffffff9c, &(0x7f0000000100), 0x402, 0x0)
+openat$dir(0xffffffffffffff9c, &(0x7f00000014c0)='./file1\x00', 0x20301, 0x130)
+r3 = socket$inet_udp(0x2, 0x2, 0x0)
+setsockopt$inet_MCAST_JOIN_GROUP(r3, 0x0, 0x2a, &(0x7f0000000340)={0x6, {{0x2, 0x4e23, @multicast2}}}, 0x88)
+openat$zero(0xffffffffffffff9c, 0x0, 0x200, 0x0)
+openat$binfmt_format(0xffffffffffffff9c, &(0x7f0000001500)='/proc/sys/fs/binfmt_misc/syz3\x00', 0x2, 0x0)
 
-16.832904865s ago: executing program 2 (id=46):
-openat(0xffffffffffffff9c, &(0x7f0000000040)='/selinux/load', 0x2, 0x0)
+561.122691ms ago: executing program 1 (id=511):
+r0 = openat$vga_arbiter(0xffffffffffffff9c, &(0x7f0000000000), 0x42482, 0x0)
+write$vga_arbiter(r0, &(0x7f0000000040)=@unlock_all, 0xb)
+writev(r0, &(0x7f0000000340)=[{&(0x7f0000000080)="6af042bb1c7f4385e2198ce86ecb61fe83eb2277bac5920459f4084608145c65470481a1f0a86db90ed91c2a5bf8961c443191e3c00d15a69cc59c115ecee67a6f7be40d15f18746a6bd7ac5aecdb0e3ab9712abed9d90da11de1a9bdba7858c1593db8bdf5637b6fafdeb961aa112c6e712a5172f397ca38dd6c9b2edb7a6250b29b9d1391ac4d5f6110ca7aac60be2fba12be84bff14bd9ca137764caef6b18d2fce6448318fdd555d0504b9a47c7b5337791647a15df66cd72896e88c1a2ebee5c84309a682a06d2b90f03383e68feeacf48a2218570f26520c37e7ab6d53a3b660c9d4d273", 0xe7}, {&(0x7f0000000180)="95e7ebe7838acd1c6a5f105f15a664e0ef6bb0d84ed82428f0e4728dcfcc366ac4c541d53a2ef298e5bd0665779bd9ff1807d2a9cf562acc95f06f5c0f159d55bfb1415bf4ec82116186d10b2bfe0bd30b1c2ba313771afeed9bd7ea4d2e295b9955ab5fcc6f4287ff7e53de3819da54b66958cff3860f466f25a36f6eec4976494d275fabc7e31b0d94152ce2fbd5c869ae710222843660f7fe1f76d8520ffdca8094c0c78a6cf2d068e659392c77bb75524c94ef55b2de5badea190c76c7f02c4e355ee8f0d30124af111ee249ee83f83f7eb2e3", 0xd5}, {&(0x7f0000000280)="aea4b5dd76715537b9afa8b29a703c99d546f1c2154ac3fee891bde941f7", 0x1e}, {&(0x7f00000002c0)="bc69148a33522094f30e3ae240b38f5f79acd262dfedc91760f1aad09e7cb9870d293c624d756f8161357991ccab112721ea204f568d963b4961210371add95d26a6c75927f688db", 0x48}], 0x4)
+r1 = openat$vcsu(0xffffffffffffff9c, &(0x7f0000000380), 0x28502, 0x0)
+write$selinux_attr(r1, &(0x7f00000003c0)='system_u:object_r:cpu_online_t:s0\x00', 0x22)
+r2 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000400)='/proc/asound/seq/clients\x00', 0x0, 0x0)
+read(r1, &(0x7f0000000440)=""/100, 0x64)
+r3 = openat$autofs(0xffffffffffffff9c, &(0x7f00000004c0), 0x400, 0x0)
+pwrite64(r3, &(0x7f0000000500)="f1f2c5a7071e67b6c844b80b341c7417ab0f284e7b3a370550ffe55a6d9fe0e9f2812320fd779bedc589494b7af31e55e28b07f6baebfd83af8d040648d5dc46da1912e09179cb8eb935dddd318104471eeaa6664ed7a599f66a0e61b5980c5ccfa69358c8cb3c99e08a93bb7dd127d58a96e0a204ec707082f4a8ab3bb0b83df3cdd1056e2524d5f6d0ceae8633ce259e056aed4fa74fb1745530c86dc1bd811d866fcc47b1f21da163803efdd6807a03c0c2a387c54aa757f747258b4236d86660d393b7c8135a6f2eef812612b2b78f642559c5", 0xd5, 0x8)
+r4 = openat$zero(0xffffffffffffff9c, &(0x7f0000000600), 0x4080, 0x0)
+setsockopt$inet6_tcp_TLS_TX(r4, 0x11a, 0x1, &(0x7f0000000640)=@gcm_128={{0x303}, "4407222d86fa4a10", "fead557047052deb8e096781f0c4e00e", "7f3866a3", "596346d0b100ba88"}, 0x28)
+openat$urandom(0xffffffffffffff9c, &(0x7f0000000680), 0x6b2601, 0x0)
+r5 = openat(0xffffffffffffffff, &(0x7f00000006c0)='./file0\x00', 0x200000, 0x28)
+socket$inet_tcp(0x2, 0x1, 0x0)
+setsockopt$inet6_MCAST_MSFILTER(r2, 0x29, 0x30, &(0x7f0000000700)={0x0, {{0xa, 0x4e23, 0x1ff, @private1, 0x3}}, 0x0, 0x5, [{{0xa, 0x4e22, 0x4, @loopback, 0x7}}, {{0xa, 0x4e23, 0x6, @mcast2, 0x7fff}}, {{0xa, 0x4e23, 0x80000001, @private1}}, {{0xa, 0x4e20, 0x3e, @empty, 0x7f}}, {{0xa, 0x4e20, 0x6, @dev={0xfe, 0x80, '\x00', 0x24}, 0xe94}}]}, 0x310)
+setsockopt$IP_VS_SO_SET_DEL(r1, 0x0, 0x484, &(0x7f0000000a40)={0x0, @local, 0x4e20, 0x4, 'dh\x00', 0x8, 0x9, 0xf}, 0x2c)
+r6 = socket$inet6_udp(0xa, 0x2, 0x0)
+setsockopt$inet6_mtu(r6, 0x29, 0x17, &(0x7f0000000a80)=0x2, 0x4)
+setsockopt$inet_tcp_TCP_REPAIR_WINDOW(r4, 0x6, 0x1d, &(0x7f0000000ac0)={0x9, 0x9, 0x0, 0x0, 0x3}, 0x14)
+open$dir(&(0x7f0000000b00)='./file0\x00', 0x8000, 0x9)
+setsockopt$MRT6_TABLE(r5, 0x29, 0xcf, &(0x7f0000000b40), 0x4)
+r7 = socket$igmp6(0xa, 0x3, 0x2)
+setsockopt$MRT6_INIT(r7, 0x29, 0xc8, &(0x7f0000000b80), 0x4)
+setsockopt$MRT_TABLE(0xffffffffffffffff, 0x0, 0xcf, &(0x7f0000000bc0)=0xff, 0x4)
+setsockopt$MRT6_ASSERT(r1, 0x29, 0xcf, &(0x7f0000000c00)=0x1, 0x4)
+setsockopt$inet6_int(r5, 0x29, 0xc9, &(0x7f0000000c40)=0x9f74, 0x4)
+setsockopt$IP_VS_SO_SET_EDITDEST(r5, 0x0, 0x489, &(0x7f0000000c80)={{0x21, @multicast1, 0x4e20, 0x2, 'ovf\x00', 0x2e, 0xd326, 0x37}, {@private=0xa010102, 0x4e24, 0x0, 0x9, 0x8, 0x80}}, 0x44)
+openat$cgroup_ro(r1, &(0x7f0000000d00)='cgroup.kill\x00', 0x0, 0x0)
+readv(r2, &(0x7f0000000ec0)=[{&(0x7f0000000d40)=""/148, 0x94}, {&(0x7f0000000e00)=""/184, 0xb8}], 0x2)
+setsockopt$MRT6_ASSERT(r2, 0x29, 0xcf, &(0x7f0000000f00)=0x1, 0x4)
 
-16.785532192s ago: executing program 2 (id=48):
-socket$inet6_dccp(0xa, 0x6, 0x0)
+560.466434ms ago: executing program 1 (id=512):
+openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000000), 0x1, 0x0)
+r0 = socket$igmp6(0xa, 0x3, 0x2)
+r1 = socket$inet6_tcp(0xa, 0x1, 0x0)
+setsockopt$inet6_tcp_TCP_CONGESTION(r1, 0x6, 0xd, 0x0, 0x0)
+setsockopt$inet6_IPV6_FLOWLABEL_MGR(r0, 0x29, 0x20, &(0x7f0000000000)={@loopback, 0x4000100, 0x0, 0xef6be3c8c945fa61, 0xb, 0x101, 0x6}, 0xfecb)
+openat$vga_arbiter(0xffffffffffffff9c, &(0x7f00000004c0), 0x40002, 0x0)
+r2 = openat$ttyS3(0xffffffffffffff9c, &(0x7f0000000300), 0x0, 0x0)
+readv(r2, &(0x7f00000026c0)=[{0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}], 0x9)
+socket$inet6_icmp(0xa, 0x2, 0x3a)
+r3 = socket$packet(0x11, 0x3, 0x300)
+setsockopt$packet_int(r3, 0x107, 0xc, &(0x7f0000001280)=0x9, 0x4)
+openat$sndseq(0xffffffffffffff9c, &(0x7f0000000100), 0x80420)
+r4 = openat$binfmt_format(0xffffffffffffff9c, &(0x7f0000000040)='/proc/sys/fs/binfmt_misc/syz0\x00', 0x2, 0x0)
+openat$procfs(0xffffffffffffff9c, &(0x7f00000000c0)='/proc/meminfo\x00', 0x0, 0x0)
+write$binfmt_format(r4, &(0x7f0000000080)='0\x00', 0x2)
+openat$vcsa(0xffffffffffffff9c, &(0x7f0000000140), 0x0, 0x0)
+openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000000), 0x1, 0x0) (async)
+socket$igmp6(0xa, 0x3, 0x2) (async)
+socket$inet6_tcp(0xa, 0x1, 0x0) (async)
+setsockopt$inet6_tcp_TCP_CONGESTION(r1, 0x6, 0xd, 0x0, 0x0) (async)
+setsockopt$inet6_IPV6_FLOWLABEL_MGR(r0, 0x29, 0x20, &(0x7f0000000000)={@loopback, 0x4000100, 0x0, 0xef6be3c8c945fa61, 0xb, 0x101, 0x6}, 0xfecb) (async)
+openat$vga_arbiter(0xffffffffffffff9c, &(0x7f00000004c0), 0x40002, 0x0) (async)
+openat$ttyS3(0xffffffffffffff9c, &(0x7f0000000300), 0x0, 0x0) (async)
+readv(r2, &(0x7f00000026c0)=[{0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}, {0x0}], 0x9) (async)
+socket$inet6_icmp(0xa, 0x2, 0x3a) (async)
+socket$packet(0x11, 0x3, 0x300) (async)
+setsockopt$packet_int(r3, 0x107, 0xc, &(0x7f0000001280)=0x9, 0x4) (async)
+openat$sndseq(0xffffffffffffff9c, &(0x7f0000000100), 0x80420) (async)
+openat$binfmt_format(0xffffffffffffff9c, &(0x7f0000000040)='/proc/sys/fs/binfmt_misc/syz0\x00', 0x2, 0x0) (async)
+openat$procfs(0xffffffffffffff9c, &(0x7f00000000c0)='/proc/meminfo\x00', 0x0, 0x0) (async)
+write$binfmt_format(r4, &(0x7f0000000080)='0\x00', 0x2) (async)
+openat$vcsa(0xffffffffffffff9c, &(0x7f0000000140), 0x0, 0x0) (async)
 
-16.775222762s ago: executing program 2 (id=57):
-socket$isdn(0x22, 0x3, 0x0)
+508.338358ms ago: executing program 1 (id=513):
+r0 = socket$packet(0x11, 0x3, 0x300)
+setsockopt$packet_int(r0, 0x107, 0x18, &(0x7f0000000000)=0x6, 0x4)
+r1 = openat$tcp_congestion(0xffffffffffffff9c, &(0x7f0000000200), 0x1, 0x0)
+write(r1, &(0x7f0000000780)="822b3e1dc047299345b16e9f8b49d130", 0x10)
 
-16.75933006s ago: executing program 2 (id=63):
-socket$inet6(0xa, 0x1, 0x0)
+507.691671ms ago: executing program 1 (id=515):
+r0 = openat$sysfs(0xffffffffffffff9c, &(0x7f00000000c0)='/sys/power/resume_offset', 0x0, 0x1)
+write$smack_current(r0, &(0x7f0000000040)=ANY=[@ANYBLOB='/proc/'], 0x1d)
+openat(r0, &(0x7f0000000040)='./file1\x00', 0x204643, 0x1fb)
+r1 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/power/resume', 0x149841, 0x1)
+write$smack_current(r1, &(0x7f0000000100)=ANY=[@ANYBLOB="2f70726f632f7379732f6e65742f697076342f7463705f726d656d71be"], 0x1d)
+r2 = openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000000), 0x1, 0x0)
+write$binfmt_register(r2, &(0x7f0000000100)={0x3a, 'syz0', 0x3a, 'E', 0x3a, 0x7, 0x3a, '^^{', 0x3a, '$\\\'^', 0x3a, './file1', 0x3a, [0x46]}, 0x2f)
+r3 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+pwrite64(r3, &(0x7f0000000300)="e658aed2", 0x4, 0x10000)
+openat$procfs(0xffffffffffffff9c, &(0x7f0000000080)='/proc/stat\x00', 0x0, 0x0)
 
-16.669974051s ago: executing program 2 (id=70):
-mmap(&(0x7efffffff000/0x1000)=nil, 0x1000, 0x0, 0x32, 0xffffffffffffffff, 0x0)
-mmap(&(0x7f0000000000/0x1000000)=nil, 0x1000000, 0x7, 0x32, 0xffffffffffffffff, 0x0)
-mmap(&(0x7f0001000000/0x1000)=nil, 0x1000, 0x0, 0x32, 0xffffffffffffffff, 0x0)
+440.982459ms ago: executing program 1 (id=519):
+r0 = socket$inet_udp(0x2, 0x2, 0x0)
+setsockopt$inet_udp_encap(r0, 0x11, 0x64, 0x0, 0x300)
+r1 = socket$inet_udp(0x2, 0x2, 0x0)
+r2 = openat$sndseq(0xffffffffffffff9c, &(0x7f0000000100), 0x100)
+readv(r2, &(0x7f0000001dc0)=[{&(0x7f0000001cc0)=""/195, 0xc3}], 0x1)
+setsockopt$inet_mreqsrc(r1, 0x0, 0x27, &(0x7f0000000040)={@multicast2, @local, @empty}, 0xc)
+setsockopt$inet_mreqsrc(r1, 0x0, 0x27, &(0x7f0000000040)={@multicast1, @local, @dev={0xac, 0x14, 0x14, 0x21}}, 0xc)
+setsockopt$inet_mreqsrc(r1, 0x0, 0x27, &(0x7f0000000240)={@multicast2, @loopback, @multicast2}, 0xc)
+write$cgroup_type(0xffffffffffffffff, &(0x7f00000000c0), 0x9)
+r3 = socket$nl_route(0x10, 0x3, 0x0)
+setsockopt$sock_int(r3, 0x1, 0xc, &(0x7f0000000b80)=0x9, 0x4)
+openat$selinux_attr(0xffffffffffffff9c, &(0x7f0000000000)='/proc/self/attr/exec\x00', 0x2, 0x0)
+r4 = openat$procfs(0xffffffffffffff9c, &(0x7f0000001340)='/proc/key-users\x00', 0x0, 0x0)
+pread64(r4, &(0x7f0000001500)=""/35, 0x23, 0x7ff)
+r5 = socket$inet_udp(0x2, 0x2, 0x0)
+setsockopt$inet_msfilter(r5, 0x0, 0x29, &(0x7f0000000040)=ANY=[@ANYBLOB="e0000002ac1414d7"], 0x10)
+socket$inet_udp(0x2, 0x2, 0x0)
+r6 = socket$netlink(0x10, 0x3, 0xc)
+write(r6, &(0x7f0000001200)="13000000100003d10dabe5adcc9e6538a53d90aa", 0x14)
+setsockopt$sock_int(r6, 0x1, 0x21, &(0x7f0000000080)=0xfffffff7, 0x4)
 
-713.625661ms ago: executing program 1 (id=383):
-r0 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000200)='/proc/mdstat\x00', 0x0, 0x0)
-pread64(r0, &(0x7f0000000100)=""/193, 0xc1, 0x0)
+388.397888ms ago: executing program 0 (id=522):
+openat$smack_thread_current(0xffffffffffffff9c, 0x0, 0x2, 0x0) (async)
+r0 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000000)='/proc/vmallocinfo\x00', 0x0, 0x0)
+writev(r0, 0x0, 0x0) (async)
+openat$tcp_congestion(0xffffffffffffff9c, &(0x7f0000000340), 0x1, 0x0) (async)
+readv(r0, &(0x7f0000000600)=[{&(0x7f0000000200)=""/153, 0x99}, {&(0x7f0000000380)=""/129, 0x81}, {&(0x7f00000002c0)=""/31, 0x1f}, {&(0x7f0000000440)=""/248, 0xf8}, {0x0}, {&(0x7f0000000300)=""/17, 0x11}, {&(0x7f00000005c0)=""/45, 0x2d}], 0x7) (async)
+openat$smack_thread_current(0xffffffffffffff9c, &(0x7f0000001340), 0x2, 0x0) (async)
+openat$sndtimer(0xffffffffffffff9c, &(0x7f0000001480), 0x100) (async)
+pread64(r0, &(0x7f0000000040)=""/186, 0xba, 0x101)
+ictra_static_oob(0x6, 0x100000001) (async)
+r1 = socket$inet6_icmp_raw(0xa, 0x3, 0x3a)
+r2 = socket$inet_icmp_raw(0x2, 0x3, 0x1)
+setsockopt$inet_mreq(r2, 0x0, 0x24, &(0x7f0000000000)={@loopback, @empty}, 0x8) (async)
+setsockopt$inet6_MCAST_MSFILTER(r1, 0x29, 0x30, &(0x7f0000001d80)={0x9, {{0xa, 0x4e24, 0x428052e8, @initdev={0xfe, 0x88, '\x00', 0x1, 0x0}, 0x100}}, 0x1}, 0x90) (async)
+r3 = socket$igmp6(0xa, 0x3, 0x2)
+setsockopt$sock_int(r3, 0x1, 0x7, &(0x7f0000000040)=0xef, 0x4)
+r4 = openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000000), 0x1, 0x0)
+write(r4, &(0x7f00000003c0)="66cb40d81f51bc6057c0d874aefde8acfd17644d5042eba7a2d3ce1f9455376cf21bfa9be26ee4471589431321225605664d66ecb32098da5d42dc1875181731bf1d1445960d755dac64fd260bcf3cfb6bf599ed8acce7f4ee78ec0d4dff168d5134558dbe21a9bca6b4a238056bff6f2a34e285843bc801393bf963a5cd1a59ec03a6621169fb70bb13fe39b7f92e601ecefe37e7077a2eeef700f162", 0x9d)
 
-605.862641ms ago: executing program 1 (id=390):
-r0 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/power/disk', 0x109101, 0x10)
-write(r0, &(0x7f00000006c0)="8c1a918ba9b7bde677eafe4e4d883a76717cc4cb81a1db679911e5adfb7632d14fcb3cd5f606d61476fad1805d033e5ce5b2754c67dca2371ee54e378536419a30b76bae16579fd0e4e62228181b32683d94dc7b4460fa9b0e33242c602b1f310c89faf87fdbea93f9acd15b169b5651b05ec0f2c2b1c7f93cd964dfc6f07104af19b8613ae3fa266e81693fc52b7a155279c090981e6827353762f569f6c9f42335fbf6cd27b292b707e1511812cb96d7d025a805d314eb057983b87fd2352431ceb16f235db3f45ba96e212f5055eeb72721000a", 0xd5)
+386.527454ms ago: executing program 0 (id=525):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+write$binfmt_format(r0, &(0x7f0000000080)='0\x00', 0x2)
+open$dir(&(0x7f0000000000)='./cgroup/cgroup.procs\x00', 0x141080, 0x10)
 
-582.981994ms ago: executing program 4 (id=393):
-r0 = open(&(0x7f0000000080)='./file0\x00', 0x442, 0x2)
-write$cgroup_devices(r0, &(0x7f00000000c0)={'b', ' *:* ', 'w\x00'}, 0x8)
+338.503622ms ago: executing program 3 (id=526):
+r0 = socket$inet6_icmp(0xa, 0x2, 0x3a)
+setsockopt$inet6_buf(r0, 0x29, 0x6, &(0x7f0000000000)='(]', 0x2)
+r1 = socket$igmp6(0xa, 0x3, 0x2)
+setsockopt$inet6_int(r1, 0x29, 0x43, &(0x7f0000000040)=0x5, 0x4)
+openat$sndseq(0xffffffffffffff9c, &(0x7f0000000100), 0xc8101)
+openat$autofs(0xffffffffffffff9c, &(0x7f0000001b00), 0x0, 0x0)
 
-542.318123ms ago: executing program 4 (id=395):
-r0 = openat$bsg(0xffffffffffffff9c, &(0x7f0000000000)='/dev/bsg/2:0:0:0\x00', 0x41, 0x0)
-openat$cgroup_procs(r0, 0x0, 0x2, 0x0)
+337.653909ms ago: executing program 0 (id=527):
+openat$thread_pidfd(0xffffffffffffff9c, &(0x7f0000000000), 0x92000, 0x0)
+r0 = openat$vcs(0xffffffffffffff9c, &(0x7f0000000000), 0x80000, 0x0)
+socket$igmp(0x2, 0x3, 0x2)
+r1 = openat$thread_pidfd(0xffffffffffffff9c, &(0x7f0000000000), 0x100, 0x0)
+r2 = openat(r1, &(0x7f0000000080)='./cgroup\x00', 0x88000, 0x10)
+readv(r2, &(0x7f0000000140)=[{&(0x7f0000001280)=""/4107, 0x100b}], 0x1)
+setsockopt$MRT_ASSERT(r2, 0x0, 0xcf, 0x0, 0x45)
+openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000080), 0x1, 0x0)
+readv(r0, &(0x7f0000000040)=[{&(0x7f00000019c0)=""/81, 0xfffffe5c}, {0x0}], 0x2)
 
-514.86702ms ago: executing program 1 (id=397):
-r0 = socket$inet6_tcp(0xa, 0x1, 0x0)
-setsockopt$SO_ATTACH_FILTER(r0, 0x1, 0x1a, &(0x7f0000000040)={0x1, &(0x7f0000000080)=[{0x20, 0x5, 0x1, 0xfffff800}]}, 0x10)
+337.401021ms ago: executing program 3 (id=528):
+openat$dir(0xffffffffffffff9c, &(0x7f0000000000)='./file0\x00', 0xac0, 0x8e)
 
-495.822535ms ago: executing program 4 (id=400):
+337.086527ms ago: executing program 3 (id=529):
+r0 = socket$packet(0x11, 0x3, 0x300)
+setsockopt$packet_tx_ring(r0, 0x107, 0xd, &(0x7f0000002380)=@req={0x10000, 0x9, 0x10000, 0x9}, 0x10)
+setsockopt$packet_int(r0, 0x107, 0xa, &(0x7f0000000080)=0x1, 0x4)
+openat$selinux_attr(0xffffffffffffff9c, &(0x7f0000000000)='/proc/thread-self/attr/sockcreate\x00', 0x2, 0x0)
+r1 = openat$sr(0xffffffffffffff9c, &(0x7f0000000040), 0x4e883, 0x0)
+setsockopt$inet6_IPV6_DSTOPTS(r1, 0x29, 0x3b, &(0x7f00000000c0)={0x88, 0x14, '\x00', [@enc_lim={0x4, 0x1, 0x6}, @padn={0x1, 0x3, [0x0, 0x0, 0x0]}, @jumbo={0xc2, 0x4, 0x5}, @pad1, @ra={0x5, 0x2, 0x9}, @pad1, @jumbo={0xc2, 0x4, 0x6}, @generic={0x6, 0x81, "1da5b4b965e063bddd16157abb74fc4e202955f09f1e7f68b4958875a96120b724c66242255998fa94e83f73f82b9658bb96d71cf73d18a66e27e12b8ef1f13655167044e06544543ecb959c2d9ea94bb4669f98d47fbd47e7445f2a28fa4c4137db1659345d4bb03d735ad181de0dc44320b3a13bdc0cb339787aee891dc4d049"}]}, 0xb0)
+r2 = socket$inet6_udp(0xa, 0x2, 0x0)
+setsockopt$inet6_opts(r2, 0x29, 0x37, &(0x7f0000000000)=@fragment={0x0, 0x0, 0xf4, 0x1, 0x0, 0x1c, 0x67}, 0x8)
+openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/power/resume', 0x149841, 0x1)
+socket$packet(0x11, 0x3, 0x300) (async)
+setsockopt$packet_tx_ring(r0, 0x107, 0xd, &(0x7f0000002380)=@req={0x10000, 0x9, 0x10000, 0x9}, 0x10) (async)
+setsockopt$packet_int(r0, 0x107, 0xa, &(0x7f0000000080)=0x1, 0x4) (async)
+openat$selinux_attr(0xffffffffffffff9c, &(0x7f0000000000)='/proc/thread-self/attr/sockcreate\x00', 0x2, 0x0) (async)
+openat$sr(0xffffffffffffff9c, &(0x7f0000000040), 0x4e883, 0x0) (async)
+setsockopt$inet6_IPV6_DSTOPTS(r1, 0x29, 0x3b, &(0x7f00000000c0)={0x88, 0x14, '\x00', [@enc_lim={0x4, 0x1, 0x6}, @padn={0x1, 0x3, [0x0, 0x0, 0x0]}, @jumbo={0xc2, 0x4, 0x5}, @pad1, @ra={0x5, 0x2, 0x9}, @pad1, @jumbo={0xc2, 0x4, 0x6}, @generic={0x6, 0x81, "1da5b4b965e063bddd16157abb74fc4e202955f09f1e7f68b4958875a96120b724c66242255998fa94e83f73f82b9658bb96d71cf73d18a66e27e12b8ef1f13655167044e06544543ecb959c2d9ea94bb4669f98d47fbd47e7445f2a28fa4c4137db1659345d4bb03d735ad181de0dc44320b3a13bdc0cb339787aee891dc4d049"}]}, 0xb0) (async)
+socket$inet6_udp(0xa, 0x2, 0x0) (async)
+setsockopt$inet6_opts(r2, 0x29, 0x37, &(0x7f0000000000)=@fragment={0x0, 0x0, 0xf4, 0x1, 0x0, 0x1c, 0x67}, 0x8) (async)
+openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/power/resume', 0x149841, 0x1) (async)
+
+275.789433ms ago: executing program 2 (id=532):
+r0 = openat$cgroup_root(0xffffffffffffff9c, &(0x7f0000000000)='./cgroup.cpu/syz1\x00', 0x200002, 0x0)
+openat$cgroup_netprio_ifpriomap(r0, &(0x7f0000000040), 0x2, 0x0)
+openat$cgroup_netprio_ifpriomap(r0, &(0x7f0000000080), 0x2, 0x0)
+r1 = open(&(0x7f00000000c0)='./file0\x00', 0x4640c2, 0x2)
+openat$cgroup(r1, &(0x7f0000000100)='syz0\x00', 0x200002, 0x0)
+setsockopt$SO_TIMESTAMP(r1, 0x1, 0x1d, &(0x7f0000000140)=0x5, 0x4)
+r2 = openat$zero(0xffffffffffffff9c, &(0x7f0000000180), 0x422000, 0x0)
+r3 = openat$sr(0xffffffffffffff9c, &(0x7f00000001c0), 0x210301, 0x0)
+r4 = openat$cgroup_ro(r0, &(0x7f0000000200)='blkio.throttle.io_service_bytes_recursive\x00', 0x0, 0x0)
+r5 = openat$binfmt_format(0xffffffffffffff9c, &(0x7f0000000240)='/proc/sys/fs/binfmt_misc/syz1\x00', 0x2, 0x0)
+write$binfmt_format(r5, &(0x7f0000000280)='1\x00', 0x2)
+setsockopt$inet6_udp_int(r2, 0x11, 0xa, &(0x7f00000002c0)=0xa1, 0x4)
+openat$vcsa(0xffffffffffffff9c, &(0x7f0000000300), 0x500, 0x0)
+r6 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000340)='/proc/crypto\x00', 0x0, 0x0)
+r7 = open(&(0x7f0000000380)='./file0\x00', 0x40, 0x4)
+setsockopt$inet_tcp_TCP_ULP(r7, 0x6, 0x1f, &(0x7f00000003c0), 0x3)
+write$binfmt_format(r2, &(0x7f0000000400)='0\x00', 0x2)
+openat$cgroup_freezer_state(r3, &(0x7f0000000440), 0x2, 0x0)
+socket$packet(0x11, 0x2, 0x300)
+setsockopt$inet6_group_source_req(r1, 0x29, 0x2c, &(0x7f0000000480)={0x2, {{0xa, 0x4e21, 0x8000, @private0={0xfc, 0x0, '\x00', 0x1}, 0x800}}, {{0xa, 0x4e21, 0x7, @rand_addr=' \x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01', 0x2}}}, 0x108)
+r8 = socket$inet6_icmp(0xa, 0x2, 0x3a)
+setsockopt$inet_MCAST_MSFILTER(r2, 0x0, 0x30, &(0x7f00000005c0)={0x9f1, {{0x2, 0x4e23, @multicast2}}, 0x0, 0x2, [{{0x2, 0x4e24, @multicast1}}, {{0x2, 0x4e22, @remote}}]}, 0x190)
+setsockopt$inet_udp_encap(r3, 0x11, 0x64, &(0x7f0000000780)=0x4, 0x4)
+setsockopt$netlink_NETLINK_PKTINFO(r1, 0x10e, 0x3, &(0x7f00000007c0)=0xffffffff, 0x4)
+write$apparmor_exec(r1, &(0x7f0000000800)={'exec ', '/proc/crypto\x00'}, 0x12)
+setsockopt$inet_opts(r7, 0x0, 0x9, &(0x7f0000000840)="83427c84a0bbf5aab280300c750abf8836cf599a2b8372fdd1d8c4bc3eb070d33f76f3770709ce2fbf1b2168fbf177dcbe95ad077289f4da58e2ff470d9d7579624f", 0x42)
+setsockopt$inet_tcp_TCP_FASTOPEN_KEY(r4, 0x6, 0x21, &(0x7f00000008c0)="f31337ab86613c8f793898de16c10702", 0x10)
+setsockopt$MRT_TABLE(r2, 0x0, 0xcf, &(0x7f0000000900)=0xfd, 0x4)
+setsockopt$MRT_ADD_MFC_PROXY(r6, 0x0, 0xd2, &(0x7f0000000940)={@private=0xa010101, @rand_addr=0x64010102, 0xffffffffffffffff, "e5c17b93198cf5e0f2cecd8522f59b5cda3b37f923a78a832d241257817c6d1c", 0xe4, 0x4, 0x7fffffff, 0xbec}, 0x3c)
+writev(r8, &(0x7f0000001c80)=[{&(0x7f0000000980)="c6f255a961d1e0ebb9a2504c8d300fb4edc9d1bf66fbbd3da2d6eae744c83d7e462eadca866e5b3ce7363c68492f0ec3dcb81b3e465cc5f5b0d134e8dfd1fca4dda276", 0x43}, {&(0x7f0000000a00)="3f08f9b69f369af6fb16383e", 0xc}, {&(0x7f0000000a40)="b83f76551cd63a51d8822d7d3ed6a92742fe403885495925128bf18a9b1ed7171cbdf8547165ec5931575198902e535b14542c870d1d422d69f25aea418ab9286f29a585f0b43c44b7f0f07b6bf0f03ad0a7c01059e646710fb9dad736b8ada5db09d71ebce48f959f59e018bddbd5e96c9b990cf2f0ca2c62dd54427c20c46719aedea0fdf55288d56a49ffb2229cdfe8a467f09df12111dcaa0bced470abc0a19f21497820996a9fc7903e04d52602b9cf450f0dcfe6da313bc449d97e952b1a0bc9e1832ee353308ae899b5757a2db144de3263a68565f9c0d3b1ae98414ea61d6695044f99a5c6c4f791572148736edd9502e29617d31e5072fb61208336406870a99295c20c02a88f4cb32b5db7dc17c98cf993b69f1b06ecbd63c91981167195df5f78d7470c1203e598eec1aa59a0ff74d81120e203e4d782a5053913e44a23852139a1b42a3acb1ea6803b29fbaea098fdf7be0b73770c11e467e267168e3c6d17cb6f3a4b679cd91f4355231e3d59e2610edcd2ad67762c5a229709c48b8fac449d772c68f2568dda5a36856f1c56d4a46468d5b9a89458887ff1250ad3908f5864e22ebdccf9cf4da93b64316cd2a2a166f45629a29d1e3aedfaf1502b9fd4459939cc9badcfddd5ce5f87f9e790ecd71e8abd8e68840c4040f9a752c39b5faed1c2c4828ea35500a9b297a2c85bf67cd805878f1077f6dac779e56712d952a89ad42a51611664510b8254172b2112fade23f31bb695591d739258751aba9f77e0d87fdc994d1b6b2d4f88dd5259cb1bc8c20655cfeebb00d7341d704f50d0a8c1f1f2dea8c179f934274652ed44da2558d397af41720abf4d6ff3687204bd6f3749968ea1f54ae78e8f246557c6c2b771f182c53df237f8f75b72e01692cb474d670e29ff00065bae7eac5ef1139cca86cae01ec2dc97189482a5af14a14788e1a820c5aa24ff4978b9c2cdcae3e9759ed5f2e898a42f87fb4e166e088b8f8630fc94af0aba5afa0fd7668ce93791c510c69ca9f0f04bfe99357935d8888de12aa65f28d867362edd1fe14bb9b43850d0e29f6f8e5c78c5ac6a5436c412d4171542a54e204f7bcb01c933b4ac21e6218f74056515aaefe3e6369c5fe00da440dd32547d04504bce97a0439d544d1e46fc45d240b04afbb4ad7bf6a543e75d1bb56d88ca4d6045dc494ba3fb05513367bf940f4250a4239a7c6b67afc296d670e865d5403f8d25351c054c0b32fffd5125d6649d7b5e58130110a596fb36263a8fb9fd94c9228b25baa2b512e08b6add68306bf20081a60c95c162f6817735d56c3af51beae1821753bd7e5450ad9e3e46ed1c97d2bc09672ce0d0500938fbb4e5d9215a8472c473dc1e6d53c7ebec9e6302aafc2637157d92199bf21c967b2e3d3c2f8e007ecaa6341fa5958cac2df249ff6008bc30efb6200229b4dc490c9d33ffa06c685da92100119bc10966b33b0b6c6c47eb3e8969c5f21a5e548167805b5b10b335f380be426d3084efcce5c3cb9bc1bc0111918bc73ff30738b4fbef09c1c860e3054ba467441ebf013a6436213cfd9942433a0c562fb2b6d458facd3be9e57159b5f52e1cd08293d0d590b493db818cd698aa98c8757b66c5d276dd29a5b3feea96ca85638aeef7efc652eefd950ecc838423625ad8120462b1332cce5a0e14b47a7bda33db144f3a5b9d8da903ea368ef4a1d0874626f0580d1cd588dd7bbd8d1ca498f650462717cbef6da6689f5f4cbc6bbbce4eff83e692333a06712ca9fc2c92c3fb3e788c05b86102f91e5af26a97965f28dacfb936d3350e9b69c50b2dbb7a6870e3cff498c5beab7325e7381098e4a570167fa44c99ede3379f1c7702463899402c7f0396e5467746f70501a381f119f4bba3080c7dae0f692bc39923383f6eaaa98bacbb7105ccd1a83157bd5ccbf80ebb7be2d1d5517979c68b1de8be0e3bd68ae45fd7ba798a42414ffb1c4998dc64b92f63a175166ee7e75986dd216642390b13d0b3e3197323fbe56348e54b77015a2f32df4de2075c86605c2cc9616dadfed318569619f3c1de9d5fb8d714f7469b8ad7e610cb85f37f4329c3b42abed6d45158f0555e42aced7bf71ce530a6a89be6415e3e067e26a3fd6882d7e2255d8360df0f51709b6a71642d2ba23927855d34f9033b8ecd3dee3945d4edafe91ca62f1f67d5127cfcb70197c73623a6484034d92c947aa48495806cabd50bc1c3dd6a478f383751e6e19b42ae17c3cbb3dc1e9b9a121383b37686057f6e272639995130b53970f80fc9347fca12ee6070d45d67f5c80f38cb71149ab4677dcb09aa7d844985105de6e50d775b7127d42ef0e938e03f3ad5e652f585ef9c07da4a943d1f308639e109a8a35a976eac2e822c134b84afd32234ec5cc969948ab2bc1f1a316c43830343591fa29f67d5b79c60b4a770516455dda64ff614ae0631c7c92e5bac77c55f61740b19c26e4df234523b172b663388e760eb658de66b94309693d608b02c0414356f80eca63a3dfd7087c391437d3ef6798518a7a67d6c039aad6f55a1c937d12725c83976be37304297872c84ab9b5a78758fb46cce19f78f684ba51c01200c23f4cc291690d90fc26151dac2733dc2128b986f41dbbf092b682454fb140da20e69f09d15cd4f0009538804eb480b62d4d5613b447a5e4340c8f62cb474825eb3aa2532990ceee2894ec91d366948fd025d0fbd940b6801adf37f1d26b681cceb549806e0b6fb96ee9d4a9ddf95a20ccc41c693d7dc57d70dd9cebd897ca4cb66431a25358c986e3702eb07bebdfccace770760ada3ac4180bf8c62eadba6962da26c3fac8a6aeaf72cd0d1c2e5ac46bafbe83b29b186fe4722effa44d95783cdc4334bd95e6cef60c87323ebb8898a74919c494d13e83bd089de5aaa363e1d93d83ef0bc9dc3078d71947f2126bcb71551e87c6334940b829b87dd8ac65788d56f9274e51377b4ded1c689ac9b27c3098c77a40b3bee5d70a271a24a5eddaf2740b63ba868611d3e246c5fe2c951fbdc533dde4dffe9f62f28ba5d166845c2646c9c985eeac39f771af48aa758f817de1f55fb3e5ad0cc4dd0dd0255874f2999440b278160be4420488e9131aa6af853f1d3062e06ef95e71e53840dd7a56c404b0bd982384d2c3575cf97ccc24716df00f882a3019642ebbc4b71171ca3e2d845d3798882d19c2bb99fcb9dbfc1f98bb391084686d5ff27175d560aa4ee54ea159257e85733b31193a79ece660e43e0972dc8d58b1a8c099235b7a7effbe3aa1730031f05b048f078f92fbeff14e56d8aececf6ed658c36e91e0b45808831c22e1457c95669e64699c7ee1112aeb8733bfd78e079430e48b4da77b6b0af5c338a791dde49395ee53433b41f8855563540e85db9146cfbcaad7a0d291a9a7920a48db49c852f2c8eb7553f08b2c2bd38f320096777e25207c3c0118bc7651c0cab496c8b176a922e9eaba075924a62b431b34c03406ae9ad449d8aa63e4c7961448fe9d47d07f8e86f233ecc183a7941a2865054e17b8ef42ba2830b4f20fac10533918f92e31f90b4d981da5f19a53fe8036884f0837e90aad6c6821e8cac4d24b972be421cc39d71b43cecadb1ba96b1a96a333f2e418ce050301b72317487fbbd62556df9518ef599f474a4b9ca5ab178dea6cb4730077ddae40a65964288d9c9987661d75db906bae1f0f1c7432cab6a3d085054b10936940bc768967c7ca786d6d64d68a4d7bbd7c52f403b24edcfd3c630c7850ae7c38edeeb5ea6e82f7330a4fb7c1cf96d5e2d9b34e5d1afcb0921f1e83091b1c81694e006603a982dca68051cde2cc024ce4d6cacb38a6ea8835055a77a75db349f40f5fe524172a36b6d5bb5645da80e1aa48053f83a28cd9f22dde8be743721a3cd3aa711db9ee6de3ae53b1780f3a8e9b649dc0466ff1a170071ec5f5f31f06eb72f092a89b3e94b0f84c84335a4c71e3c0870ec17e09e212be779aed804e2f0f5c214911af106a28a2ba2816c64b65b771df3628911757f7e6163ebb0e50dd966b010188691102e2b0160776772eaa64878a4cb5e22f51ae1101f4b61ff74175dc586de46b259bf0252943c046544b0d56272d6ac7713aa6f5b62f1d972360c727fb42b24e53c1dd2f2cce00f7582e1f24dddff4413731b5f2791610953e28c6a721cbd1794dedf61eb475217d84b8f05a6f3b418add32a43487f60ec7474fe46041c5c0fbef921a02f9ee1d85a0f6853607e53a977b28bc82670216028568828ce9bee715bcd5a53be6318eb03ee76e3d5ec69cf149107e8a15c1d6a88b768fa4210412172ab64838c8857f28dcf9b0f2cc1548c3ee49d9812c4322ce2e964a8e247bd6578242e0aff6581a6c173052fc2db4e0b5b948df2de0c1e0f609059df836c145d4b17a8110df3470b419ae75b401029bdc6791396b0f2e4f6f71dc16dcb963178ac46af8ca0533c0ffe7129544a723799dc6302293692c37d904595e1f0d5a44a3373d00dc5c95c426867cf00e7236ef67e97b5fc79be141116f25dc6fdb27441ccec3cb4d68969bec35a9d6e5a64e4004340481c693b9b03210edf9bcc0e8931945459011a95e804c4304cc475445881fd8dcce8d1f624ebc01d9e463fbf243cd8eae32fc4a38d1bce8784245cb36c9d3d64ee4c3ceff4cab3198356e9362602fcdef90d048089dd8e5604d5a7f59bb0c9f6fbb92b06fd32262d10900d7f03c62fa952f84d7722db3bfc8ee5fcdb82e63317460bf3bddab8c864413fd6d4b7edf13ace722df68c12b84946a2bc87d21378621819fd6c5278fbb05116656a99dca71189985ef32789be1659c9deb8ae1116cd7197064e2b40f1ee66ec68db8c29a07eed2dcbb7fe2734ecbdb2d4535fb6bfb2f13271b079415042ce8010ffa90007acc2b65df12586fcbd3bd56bc8119637e6cd4dd321ea6833dab762f439aa965902429bb1a63f0048d1e3420ea3bb01453fc4b5630b6f5b3bd0a3cb79a1683dbd1b60bfb5b205996ea210eb243e0337aff4490ac125ade0fe5af1f64119ca017c1dc5d9938e07cc15431e29499d4fd3d52621428c656dfe518d9c09f2030459a9eb962a580cdf58418f80710f61287a79ba7278696fd74a32c4245c80ea4cddb48d6b056e0ca8dda63e47172b40a3cb7ef92270cf4a6015c9214488b3fda845bedde5a5a2545ee04897bf7ed8baf7d8c144a99c5d9020097223bf3c119b1e263545d871fc87f5ecb4f61d29c7b7e7e8bd2e71cc39eac65fb78dcc401fe8b1aace67c3fe25b8bcbbdc379e0f913abd70791b4373a842e71da4bd2a066c9c40bddde6736ea00f31e8d95d2e01d52bd387f95b2c782e7424d046ddb2d317b3edee75164c897ebf4dd8c20ad18aeee797e7d47217d97ec9c41c8ccb680d9e9880d023eca81f932ae4713b9bc84b5b261a0e41c5392f152f9228dbf4dfeb38d3cfe4282f273bd8756a312e9e51124d4a8402e776d467207cf7a075e0d5bf31339e01645cea371cf68ba5d2b6e88110ed888a42a2d9a7f563d65cf72995304d51429faa780627f05828ef6bcef6eb7d4fae723bba9610aca086850d5928cdfddb802782143df7137f6c5b060008bb179382513e7c51cc2fd73fbd51f535f3fd7fa4d9228ca09ec2c6fc7fa9fe3088c8f2fc290de680c16b7831b86b2e4d03792b17648203b3a166d0cba534fe8708be1aae578b4f7d7abccb5022d7404997dd61557306e789f82f2c9c59bd039087267669ada16648bd3af8019d1a918be18998e79f94972974caa350c0dac8a1", 0x1000}, {&(0x7f0000001a40)="2fb8b7f1397b417e93174bf2febd8505bc73118460ead6552fdafabe36ed8ef3d51423ece48b4748d0a501d169cab4b688421d47368a192616654285cbfafe346b4ef5ae66ab5cc9d78900c3ad2a9bdbee04a7087c6d36fd2feb9f1653dece9c2517c6ccbb938d5d567a7d08d7e8ee82a9575ed2e4ef1c8bf8c8158eca372f2556fae2f58da667ebca9e1f2a5c88a6647036dea982c0d8d8b4e6fb990c6034a14a23d245fc70e923dbc6a0ed87e386", 0xaf}, {&(0x7f0000001b00)="06f38b2216ca587a4f2aac25bd7103d9a92c9f113286da3dc8f33b98a4dd41e49d63c17a01b1b80418f56a114ec44912a177b4c2e2f68b54e78944af6fd721371565656d76f6b3ddd5b8a01c1c460861bad70bd2b6b1c1f47d05cf0e70166c0d9e2a5fda8a72676d757af4d3e8588db6cf3efd8e5ffa2676b8ad924ea07ce24a2a6f75624a942093b0d25b57b14c9e5cb43420b453de43a231ab9269927f058e3a9dcefad6403b1225c90f0850b5e930cae137929cc8260ae07f02", 0xbb}, {&(0x7f0000001bc0)="804d47ee089308f78e8518ce1b2533738490ce333a056b142c6da8ea4efb6bcd27bb56cc2ca99cf2919d5408ac6c762eefb3d9b8517823ae34ac1091c95ab27641f59bd86cecc81213479496d9043334e473759d0337c29c5065d378f8a9013e9985ede623b3919ee1e03ed0af532c272e7f61ee30f051416f09fa4ee96891f39e6c9e42167789df75355217110da16b012e1e9626d0e6a7ae1f0b22bc", 0x9d}], 0x6)
+
+275.609833ms ago: executing program 3 (id=533):
+r0 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000080)='/proc/diskstats\x00', 0x0, 0x0)
+read(r0, &(0x7f0000000840)=""/243, 0xf3)
+openat$hpet(0xffffffffffffff9c, &(0x7f0000000040), 0x311400, 0x0)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+write(r1, &(0x7f0000000080)="01", 0xfffffe8d)
+r2 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x40042, 0x1ff)
+write(r2, &(0x7f0000000080)="01", 0xfffffe8d)
+openat$procfs(0xffffffffffffff9c, &(0x7f0000000080)='/proc/diskstats\x00', 0x0, 0x0) (async)
+read(r0, &(0x7f0000000840)=""/243, 0xf3) (async)
+openat$hpet(0xffffffffffffff9c, &(0x7f0000000040), 0x311400, 0x0) (async)
+openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff) (async)
+write(r1, &(0x7f0000000080)="01", 0xfffffe8d) (async)
+openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x40042, 0x1ff) (async)
+write(r2, &(0x7f0000000080)="01", 0xfffffe8d) (async)
+
+163.952459ms ago: executing program 3 (id=534):
+r0 = socket$inet6_icmp_raw(0xa, 0x3, 0x3a)
+setsockopt$inet6_MCAST_JOIN_GROUP(r0, 0x29, 0x2a, &(0x7f0000000200)={0x1, {{0xa, 0x4e23, 0x6, @mcast2, 0xd3}}}, 0x88)
+setsockopt$inet6_MCAST_MSFILTER(r0, 0x29, 0x30, &(0x7f0000000800)={0x1, {{0xa, 0x4e24, 0x4, @mcast2, 0x4}}, 0x0, 0x2, [{{0xa, 0x4e21, 0xfffffffc, @rand_addr=' \x01\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x01', 0x7}}, {{0xa, 0x4e1f, 0xffff, @mcast1, 0x5}}]}, 0x190)
+r1 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x40042, 0x0)
+r2 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x20)
+writev(r2, &(0x7f0000000000)=[{&(0x7f00000000c0)="2be6", 0x2}], 0x1)
+r3 = openat(0xffffffffffffff9c, &(0x7f0000000180)='./file1\x00', 0x42, 0x197)
+write(r3, &(0x7f0000000080)="01", 0xfffffe8d)
+write$sndseq(0xffffffffffffffff, &(0x7f0000000080)=[{0x7, 0x0, 0x5, 0x88, @time={0x3, 0x9}, {0x7, 0x7}, {0x3, 0x9}, @raw8={"2e39dc255056bd0ca997aa2f"}}], 0x1c)
+ictra_static_oob(0x66f, 0xdd8)
+openat$sysfs(0xffffffffffffff9c, &(0x7f0000000080)='/sys/power/mem_sleep', 0x109101, 0x1)
+r4 = socket$igmp6(0xa, 0x3, 0x2)
+setsockopt$IP6T_SO_SET_ADD_COUNTERS(r4, 0x29, 0x41, 0x0, 0x0)
+setsockopt$inet6_opts(r3, 0x29, 0x39, &(0x7f0000000100)=@routing={0x1d, 0x4, 0x2, 0x8, 0x0, [@local, @remote]}, 0x28)
+writev(r1, &(0x7f0000000380)=[{&(0x7f00000001c0)="8d83056cb383974c7558c921a9055d8366e1acb25ea5b63bb44a56812cb55368f9880756a66dda67eea211e03eaa340f143812bad4ce539a69f5ccaa761f2da936013bf584cfc56730eda5dacdbba29b0f3aa0af41cd456fd8844a3d8021728c7bac13dc648443a44fbc1e01daaff5db45f76a2bd05f4621ecc3af4c4d05de016584d35cac800a3d5a80de785b3f", 0x8e}, {0x0}, {&(0x7f00000000c0)="9a07117b", 0xffffffe9}], 0x3)
+r5 = socket$inet6_icmp_raw(0xa, 0x3, 0x3a)
+setsockopt$inet6_MCAST_JOIN_GROUP(r5, 0x29, 0x2a, &(0x7f0000000200)={0x1, {{0xa, 0x4e23, 0x6, @mcast2, 0xd3}}}, 0x88)
+setsockopt$inet6_MCAST_MSFILTER(r5, 0x29, 0x30, &(0x7f0000000380)=ANY=[@ANYBLOB="01000000000000000a004e2400000800ff02000000000000000000000000000108000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000003"], 0x210)
+setsockopt$inet6_MCAST_MSFILTER(r5, 0x29, 0x30, &(0x7f0000000440)={0x1, {{0xa, 0x4e24, 0x4004, @mcast2, 0x4}}, 0x1, 0x1, [{{0xa, 0x4e24, 0x8, @empty, 0x10}}]}, 0x110)
+
+62.647883ms ago: executing program 2 (id=535):
 r0 = socket$inet6_icmp(0xa, 0x2, 0x3a)
 write(r0, &(0x7f00000023c0)="a0b68a216e405528", 0x8)
+openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/kernel/cpu_byteorder', 0x604003, 0x53)
 
-480.458083ms ago: executing program 1 (id=401):
-r0 = socket$netlink(0x10, 0x3, 0x6)
-write(r0, &(0x7f0000000280)="2300000028001fd10dabe5adcc317c142ac280c100000000be2540a874133d5008a893", 0x23)
-
-417.467691ms ago: executing program 4 (id=404):
+61.215267ms ago: executing program 0 (id=536):
+openat$ptmx(0xffffffffffffff9c, &(0x7f0000002380), 0x80801, 0x0)
+openat$pidfd(0xffffffffffffff9c, &(0x7f00000012c0), 0xa0c00, 0x0)
 r0 = socket$inet6_icmp(0xa, 0x2, 0x3a)
-setsockopt$sock_int(r0, 0x1, 0x29, &(0x7f0000000000)=0xffff, 0x4)
+setsockopt$inet6_int(r0, 0x29, 0x31, 0x0, 0x0)
+r1 = openat$sr(0xffffffffffffff9c, &(0x7f0000000040), 0x4ec00, 0x0)
+readv(r1, &(0x7f0000000140)=[{&(0x7f00000013c0)=""/4096, 0x1000}], 0x1)
 
-416.239824ms ago: executing program 4 (id=406):
-r0 = openat$tcp_mem(0xffffffffffffff9c, &(0x7f00000003c0)='/proc/sys/net/ipv4/tcp_wmem\x00', 0x1, 0x0)
-pwrite64(r0, &(0x7f0000000400)="414304bea5ac895b949cc8686e25d74a018bcaa3731967be357d81e864e1d5f003230dd1571b5dc7c5740a3760a49c45bb8adfadd8a88af1879023779cf2563b9631b9b5662f0e280ef13c78e9150140d1e98c8e688978aca2", 0x59, 0x4)
+61.001886ms ago: executing program 2 (id=537):
+r0 = socket$inet_tcp(0x2, 0x1, 0x0)
+setsockopt$inet_tcp_int(r0, 0x6, 0x25, &(0x7f0000000000)=0xffffffff, 0x4)
+r1 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/power/resume', 0x149841, 0x1)
+write$cgroup_int(0xffffffffffffffff, &(0x7f0000000040)=0x9, 0x12)
+write$smack_current(r1, &(0x7f0000000040)=ANY=[@ANYBLOB='/proc/'], 0x1d)
 
-341.785652ms ago: executing program 1 (id=409):
-r0 = openat$sr(0xffffffffffffff9c, &(0x7f0000000480), 0xc0c02, 0x0)
-pread64(r0, &(0x7f00000023c0)=""/4096, 0x1000, 0x8001)
+60.822242ms ago: executing program 2 (id=538):
+r0 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000040)='/sys/power/mem_sleep', 0x61893eaba55a5659, 0x0)
+write$binfmt_format(r0, &(0x7f0000000000)='-1\x00', 0x3)
 
-323.528547ms ago: executing program 4 (id=412):
-r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f0000000100), 0x100)
-readv(r0, &(0x7f0000001dc0)=[{&(0x7f0000001cc0)=""/195, 0xc3}], 0x1)
+51.572671ms ago: executing program 3 (id=539):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+write$cgroup_int(r0, &(0x7f00000000c0)=0x1ff, 0x12)
+r1 = socket$inet_udp(0x2, 0x2, 0x0)
+r2 = socket$nl_generic(0x10, 0x3, 0x10)
+r3 = openat$zero(0xffffffffffffff9c, &(0x7f0000000100), 0x80a00, 0x0)
+read$snapshot(r3, &(0x7f00000003c0)=""/4096, 0xffffff59)
+readv(r3, &(0x7f0000000080)=[{&(0x7f0000000280)=""/188, 0xbc}, {&(0x7f0000000040)=""/41, 0xffffff79}], 0x2)
+r4 = socket$netlink(0x10, 0x3, 0xa)
+setsockopt$sock_int(r4, 0x1, 0x2c, &(0x7f0000000040)=0xf, 0x4)
+setsockopt$sock_int(r4, 0x1, 0x2c, &(0x7f0000000000)=0x1, 0x4)
+openat$binfmt_format(0xffffffffffffff9c, &(0x7f0000000000)='/proc/sys/fs/binfmt_misc/syz1\x00', 0x2, 0x0)
+setsockopt$sock_int(r2, 0x1, 0x22, &(0x7f0000000180)=0xff, 0x4)
+setsockopt$inet_msfilter(r1, 0x0, 0x29, 0x0, 0x10)
 
-258.213101ms ago: executing program 0 (id=417):
-r0 = openat$hpet(0xffffffffffffff9c, &(0x7f0000000380), 0xd00, 0x0)
-pread64(r0, 0x0, 0x0, 0x9)
-
-204.67319ms ago: executing program 0 (id=418):
-r0 = openat$ptmx(0xffffffffffffff9c, &(0x7f0000000840), 0x100e82, 0x0)
-writev(r0, &(0x7f0000000400)=[{&(0x7f0000000480)="af240b74e074652f77d16159484cde8812c878851eee9a05d069784a642d0745197000b38e8f6b81bba003c31d92419963c93e6a5c27d16237c4eb52cbebe85ccbf11526f1c464d3fd9e7fe08f734343904d4b09e4414f72b9103b3c4868add70c5a8572b04f61c272089ba9bab7a62413ddc78026005ad0bf238c5016fc4675a71d4c4a69228ffe7664a91b6d6c21c24f089784366d480b701eb4a5f44e92409df2da66b94fc63a599de3226bfc3e3fa898901dd002f57799727420f1e641ca32e159", 0xc3}, {&(0x7f0000000880)="067c59e3b6044fcbc1dff49bb02bd0a740f24a0915ee5f23a7194c99195e39853aa2b4d11d5a46fd04c414bda8970ce8b0647cf17bc9d9d5ee4a4ff60d82b6c836c83a87ce0695ba0034308b64632a9beed560878a0d0e7c29822abadc24a6ce544d5bbd7c066dc8e3ff4defa530a80ab3a431f9207f960f73bbc230406cc36a4e68e55beea4132013f2acfdc8c8dd9d9817c3a83c428e7ef176f016518c4c414c33e0aed4223461ebca49b93f12c171aea8e0802afefcbf53ba4eeff15f91e60e6d695958b392b12bb2e3fe5d23b55d7cb4a91c12029be31a4d4e59db577ea01bdb86368d54568b5525dd3f5d373125005408f8372881f6afee458995b99512a85f5b53f28232373dd5875ec2a07ac0021b02a7e15922ec812b20886994e4f391b02aff6b27e2fa29031223517e0c582f33b9d64b5deda456fa4cfc740dd2c26f869ea2ac8688bc3b975d599fe5e6ae0c0c73649d591cb81ca4a994f704505e5042beebf0c188df2c3e33bbd78497a5774c387cd479d3623f85837f1be32ad556ce0640175a6029249e8f34be5f163546045cbd13bcf4dd092f2649143fdc64c19b2a0c6245cbe53dee778d9e4d86f6554e02e29123a028a94b82fb6554b2b3c882fa29e5fa35ce4260be4b2a51920ee0350d623a68e18bbaabbd51e60780cbc868d8014eeff1d1a01e052d99ac0841ac04e463f1743e3ad7b8d5014bd117a68a30ccd9599170ced437010e011bd884adad30c4cc3de7603f83eef75e762f0a2b84d7a2aba577b32d1a8ee9c6d4f00cc5f4e7efebbef2cde286ce04387770d0bd033057562cec60e7998b9a477df21312e240afdde9cff16a12a3b7f114e9ec2a66ef2968ed24dd98114059c0c7ab91509b4cd3da4fe530f879d84c1a100ad2482b1d56d71a77d82753432b1727ccda39d3bf8109f12f4f7374959cb675284cfe808c2ac4a976f41139bb8aad3fdaca3a2223b51a70c1f56867a853b1451cdb44b00c7fe9ffec8428f63a272c0d5f6558f97c1ba97b09a88a0590ffb8edbce177c691fb064e88f57d67a98619c3a518e28c101444dc6de248903457bae6ee54748cb3b98625d52a04217214140c42c64f6bb1f7d75551c4892326f26e9202e6f1170788785eef131222814b1b14d3acbed5a0e9a5468991007b74694145740be74b2b7544414a48f2bfc52b3b699d7025c5fb6880d7229c4f2d232154dc909b736d35333110210cc6f17066586bd5ec082d0dd1838bd9a508b899a9eea5ba3d427b9bb8fabc490e330b9c2acb26693905010169b3c4becdd37450b739eaea3b60d8756c0892ad6ae6d0ce35819c24345872e42a84e0629399bbceb28ffe9d2b0df80d1377a350ee339b227fd849ea93277c2ce0f8bd612b0aac76560b56e3b6345e3a93750aa52d4719394f5fce2302e5d384a4b8fb2c9124a4b1bdc5f52866b40d99735910c1aad1c01ed3a540dc43a3776f44dc274e7f75871cd769c6c00b48499596f10c249324476f514400a1e21cfe7a41f05aeaaabfd07368539bdf9c1497d6eed8971829af06a90e1549862110ccaf1ce9827c2201c8c111fd531028a1f29e54faf0a6f6d4513c253d2c613d49a33202701971608fb5e9cfdd88760170dfd0b877fa3e07c097a1607ddeb180312a6b8677ed8a2b95020fd4a13cf6263c36595795a025a6675e0f97342cfefd1da0875355d784177d8a88bf496b884e9b489c4d17a8befaa4d9158e7a3b8feec65acbe8625cd349670ce83c90e21b33bf45d303fb7095897f4dd88d7ed7301c89f3e04385a55918a1dcb6f0c5871a228272fe484e2eef3ecbe02e5efc9fc06288d7c2b3e31b0529117913cf18c21c21f4b0f65843c8ac7776b0ae48e5c82c1804c4653f12fbb5af99b547273e01e119a9adfa808f794f671168568c2bf8b4c22825ab1bca457a60bae45e64f4049efbadc3853542bfad804373dcd51e40195f9352ea76aa4bb4301afb44aab83f125254502bab605f2c8382110105e3b03535d611c875ff018b3f833400e2a5f2ea99cb5d9fafc8c1367dea5b2d4b3e3fad1cec389ed92fb73c74d48b806374c4c7716b53d3b96476e44a09edf1e12b1e58917ba81a1fd8f14dc7b23d8303333578d26a6113c5a4ac6b06540336b463f91c2034c0ae87c8b93e68fdcf041178681391f5ff60e8d6321040e96f11388ce9bc7394679c8229b0c189f99a93be5c9acacd5a96ea3956330939c534f9ec180356439d2091ef15a5f4b623ec07b99fc87f60773e58da49b729fcc8d305a6f66103c7ec2d52b27cbb0b740bc3261b82545f68cfc298052b8cf04b20d8b703a5d14741731c07625d913e2307604b469cde4b62a928e9db83cedfd977894c88ab5a222f51cf911c054b09ec53f67954a1c24d49ccad00a00c172b3b452d42162c2c13fb657b7a893244e33745ab6c2b9e4e674e0e8a8c99cad6ae11c610b0bd8fd50210159d5543d2d5d77400f3bcce6aa120c9704b61921a17f80d5e549d00e2e5b5aafcd5e88ab32fd7000864d8d8f05a2059578e184427ed60a6c70c67393d766530317c53b5bf5a4a8dca722f5ba4153757bb30b4b32be7aa65620e290df9ec899128267f4d96297c7045ae718ace3436158971248c5faa2f7303fb7a8591cfe509545782de7fa2d0cad87fc3ca2d1083863aeb75a0e16bf9d7543a2123bb42b6e83f92757c2030b602c534a8d0c5c1f23bf169754b2b0909b4d4b6a9300fc9f750270e67fcd7387e788fbfb18a8a8d73cbdc4c4f219655b21b54aa82a54c5585766f77c8cbe68678e51fa391371aca28c1beebb1bc48dfc527ab21818a6bb7adfba0f80137e47f06c80c0aba69fda22857604048b6a3ff58598501f8a07f9fd6f6da39c16193a5567c425f3643f3cd7e81079c85b04be9acc25c36af16179d760c91f56848fc64623431476fdbfe04e8d0840535b72ca3a5547abb535a7afca7b300d6508da478af5da3e5115c4272bff3f33bec24f9012fd1747c62d484ea556bd638f8ec469e132c42080df2eea461da08b440591090e2b93aeab850b4e98418eed66e9f50a2f5f371e7f97ebd8610117e2acccbaf29697b36be21c1d41b05905c82588af11fbf2da1db7048f98e296f8f7fe8b1b30034464b9465a7ec8d5560f92efeccdda1cabede7ac604f9acbd5438087df357d7d299bed7a73609620b9bddc64d0e4e8603cc87f6681e69b61a562389d48406c4597e52589365c31fd17926f25d4e01acebac4ffe559962cce9a3a3dad9cd79bfe19caa8475637007c8e3fc8125b7f52f20f16ec8614d647fec85971e8e331eaa752844e204ffb10115fd6eda48088c0317a547378abdfb9ac517ff62686aa49d860db141e6f342f71cbbc9dbc69f53d10138354c55532ea443acfaee7c20daa644da39a9414a6954d592575b6affb35b1dad2c69465c66ec413f48a28a9986fb0858019af5f26b46173837fe7762f52c9aaf2aa749eff50b308e01810fb8352093c3291c610118de977ec6115d685384cb0dc60f5f92b86f148f4b6fcedf38d7781ff8009d8147b094fde7ad849d230dd997ce66a86cf8fc9efd0552127917573bd783302777e7600741648b85abbc843de83d03e31df236ebadc57613f4a4b4c84056d2a3a2eee842581b6ba5c054f1a401403bbb902d98c887cead3e6d97ba56cb13ef53cc05127a8c7d985573b225738232fe4b01a1d958753eb790ec08e55d9da63fd7095cd290a050c0c3fc10fa19c86ce885dac1c07823584e8c1288ff935d6ee5636df1a5b0d4a2633778843cda7621a985404f51255a978d1296a358af97697fc3c0590d9f4116992f2f123558ac3e13f737642a3a0b742422716325fe0e2b8d7ccdd94a7707c6fa6e5556484dd5cc360f4fa679b8a032076a6ef8363e06f77e5f137c3c880266ba0e1f822dcaea06f17f5b0857c11327b47934c68d890f55ef287c88fd8cfb805ddd0498d784ddb3f379200510d096c14d3c39abf1cb887da2aacfab4796e4dcc442f1966e72a6ba1dd79d4eac3c7a60985ffd97268b63d8e772c5f33934a54e1cbb8cf49a87dec27b0dbd831f689e16521d5b370ca3c5dac6640f2172527f689c059299f492ad9bfcd93ad64575347b2a8e3cbbf297c34de24bf5e189a474a57e068241a9f00126cf33c7ecdd2a48f330965523fa651f5825a83641654f9334e0959f99bbfef6cff33dbf5b1e259ea37f04d4cc994309ed2407392e81e603e63bc37542655d345b81e0ab711df772f5431a48fc9b22877f0e8178a47c0c10fb9c061ec915e36a6f3edbc6ffbd7cd1a5f053941a8b85cc84fce4eaa21f90f9119e166e61613cb3b79fde1d88b98c8e7c8f1613242b9baef914f591fe9c8e97a71fb590bd77fe9198dd35623fbfd7e253aaa47ac80e8d6ba7589e1e4de3a92428e535820b71be59c981546bc1913639f86095d3e430720a0feaf2f51d8a61cd2a9cfddadf74f5e0c8bee357450c2018f57b90aa466134e87f3f9ec722189e909f21ebe22d60f3d7ff0973798ea9117222e3eb9e3c987504f17a9c39da676aa8e148a4497a977c981da427490f99db8d4bc5cd9e84f758a536a6fd9a91ecbf765e667b14cee661b0f172fec8faa7a53e51734d4c74d6c3cb19bfeed25022f299d52dbc9f85d7114431044ed1cac9d6a49d0e32aa7778ad4cea33fe34d39ffe926ad42065ca7237c3df7c334914dc2b051d330f7a935f706840346cb86800c05288ebe56c5b720167e408649b0bb73cc19e128daec6fc7df610f8f0b19ec7c23d9c61ca27a793f8945d26b4a6750ff6d0d8a119fc1094801349f1fedd684e8db697d6642eaa690e25fd880af705ee20221a67d6a9cbaafd7283738d8e9fdcf1fcdd386c2618b908ee0656dded745f93ff28fe1e8309b9c3ccbf72ce66b2c24f5f8fdd6fe039c476387fff372058420580fafea3dc551e5c575e82b349bc621843295157669216a4f4a10fe0d3e007203aa1eda3370666aaaf923d68e0529e1b4abc58f58ef565d7ea9b4d87dbb07b6be5ca6c82e099eaf66a6ad93b8f36195c0a8533aecc65756f7c3f27f35953f93da2116ea9ecfe0e7b24e8e6b562cafbdf1140e1a852e0f194cbe921dfddd65f72b696a333e1087efa81766581081817c8385ea53157c4a966ed34ebbef06e1a98672eeff6e4b22d5f7d90421056c60509076fef107b5d4c4838b2270f8696f4dc0946ade9895a4617073af31a09949485c841d0f79420ca3c964fb8d5cd4e76be44a781b23535a524af47a4752ad01e83bbe45e8129f4c7128d4d13dd8ff8e8fb48bf24b05411abce862271f455aab90f2f1df8d983514afe241642d9f956dc7b0ebebafb9ec7c6ff243440d703ec7f98c05c8cd0d197fa3daab806b6f68963113d2da8f632276a69c964388661421a234c2d6eb6fd771682140e92234b2911a6a7d052d132c4bd1aa5233dc28546126f9c088d8378d360be6d97e7afb0096f3a31858d2d1d28a4bdae8ad7f33000c8f947e35242b9b819c32b86c4374bd1eebb6547914fa8d071f65020331f918f6dad033c4e55c156e9f03ef9c38b2533f10a273b7f69a3dacdb5896c1fe07886574765f52c1a45fc5badfb109f8e25c1d15623dbce7ebe909dc04d8e4069749510b45ba671a85ac82e3982d5fb4bea3ac6ef5b5dfe5a92be74db5b7f4bf146dd859f921e24525bbd1fd1cc0e2d69fa43cbdc2a97f3a1a52e4ebd8197a4d179d647d858462be11357cfb5057a112d4b62807ec1bf7a0fda8a5bc6fc1c876c68b8d8c2a01b9d892ff69ea3e8c89b58dfa3489b1d", 0x1000}, {&(0x7f0000000080)="0b1cd36ee096c2dbdfad4254d0f827b8634968b1bcb40410a28c664d1089abc48ade7e1051aa00c7014e25b9f6897a1c2283ff8e59fb11b2a4ab6baec3b46632dba3af832d05c1546d652e", 0x4b}, {&(0x7f0000000600)="f55db41e3fee3578148d738acc0fbe71e53b54cfd20ed825af25562013034a08e4d14a956f999eaa4cfcb7d7f90ddd08280d22c4f6dc236191a7a63c890ab4c80c264267f68bf5384c30d88f2e77e24b9d555a8728acc9c4e55212f043ce5e4b6d79b7df06ad8e838ed2873aba8fe63f08aeada1d5270cbf2837fe8fc8941dfa8e87c26f6be50d3a6d711fef958c7fd9f96116b87c7efcaa", 0x98}, {&(0x7f0000001880)="69e63c631f40a403a19de81310fa176451b32082c5ccf19bdbc424c55abdf00399b378b81624559c561bf8842270bc32bb2851138af4c57f2a498ce6fc8b07fd212426a99c5a7c5c841b28c85761f650645f63e79f7fad438decc9f3918173f5becfb7dc326a64aaf226c392bf280c7e7f0cd6c9926a28227239e412723a99d385fa69184bf55d0eb58d3fa5bfd45f2ec55a4488d83501f9ee521d24769e7dfd80d041f1304ae2c63b872262e899dd7995f8ef514517b5f6b45d47ab2858debf453c31b431a05eac447767a58d4f0b8603fa6a09deb4115485948f1aad640659de82208412594dab084fd038ab4e4df8cfe5ec6fec784c17602fb8734ea3e10730a4f033f182532a45f2fe53f8f5da76c5584199617ad363787df8685f0240f5eaf1463fa71727afbaac9133f2c4b733ce75de0facb7c984eb149c9028f4e992799480973f6c071d4edf4f07f72ad76a7da0e5e524ac3407b74a184550c4c9ae2927007e8429afa3e230d5928ee960163d59ed03ae7d76807d600759549b08bac1d3dccff14bce718a24f5991683dd2539d30af3c3107f3b8dc5deeaa587d6ae537f51cd03f45884f97dab1836294229682e94f55763268675bfb427243d0642a88e398746a3ccd336a293bfc0b5cc688c54fba3996df52d7f52508c55b3a62b99074573edafffa6c31e333a67aa1cde52ec5f28ad207c11a2e57332ca53f48a82da99b47c12bbb40eeb25f1bf7e7b7135a8873bd047dddb52f1bcc2394b08caba93b78d07db32b269260c7cf631897baf79d7864756c4c984e2b8505b29c246fc6292d89d337a38efd022d7fd9a13d92706145a91a082c099cddcf9f734294050b9030526c9b0d5a4a05d294067291b624aaac54b76c48a6806f6304f7fedf9cab51203270319cd9b75e42aca11cdc4e312e767c3b7caf8bb170af2241e80ff4a607da74d406d0357b58e364b9cd83b0eb667f14db038e671c2703c9aa91e01f8200bc660bb0d18ac3951745031bb854e7f58ccf26fc53e0c1bb506fa59895262f66c4698f67baabbbff81061b4e26c86de901ea9efa9eef9e142a9d9e4a79caf93dd90738fe7b798c4485bcba7cd8a83712bdfcc32096f1255974d4a9d3ec0ad665cb8db2ef32153b9974a1245d10bc5259d9541192fb746f940bae1fd8a68fdcffeeadf9401cd18551a649ea922922be8d27e51ea4bda68a843707adfa1447d173905dde4cac8b29821d4efd1aaee999253657ff92c28539d08bc2b805c130ca98952dd72267f37f939e8f506b3bb6ea8c4bebbf18805e138050d1eb3a3475863aa26d3cad419d70a1f011dfc88fe9f3045a2538147254d70fbdefa154b01620e35eb1afc541a174755ff26fac05b5ae623b943d63c8a79b493a50f58eb7c592b4e4917c0e0506302b4cb8ad77fc3256de930571732096f9aa99e98376336ebd8ac93120274a26ba4fa78d21b0d10cb438934f399165d764deb6c99d2ea7518bcf9728399054012a61557031606cb15a809f525d15c7274a346edfdb8716b130b988b4541bff3d57933a765fddcdd555df8ab0a5ba6a3b38b88e4b79334a46cc59d4f910c9e59c68e9a03eff650d6ec04530a4cbac01dba6f5b5b20f79c6582511f5b40b1ab964e6019ffeeb5fc0b8de32fd0a8a23cab61f04a9512b74caf1e018162f2352a77d5040f03a7318dcb4d6cbe3bc6568b6ee7b4041635463cd8b8a3356b6b0357ecc5ab9a3b452330ae4b0dd38062df87bc200d78a47e13f48a106de94bbd5da3d7005dde5db7dc1cce8f40921200e1b89c686df5d9e90bd7c923a2143771c41a8abefed0f53a707271ed53c9f9444ae8e665dbe19421f11c0630d609e9f001b2c296c7c13c9d545839f47188ebe148d7125bc7ac0fb18d6869c182efa1eca17b18316cb4a7a2df25f749a329417bee2fb9d418230c8c0d998b7032ed6b3bf1133f68fbe7548c851db71698a569819b7cb1af5edce4a02eb7fd3c48bd2f3940dc13d652b96da0f203628a1fe761747068f18f8f1afbfd781ef9db8bcd0f65aa6f54007c54e93e354a7898f180d24c3d10932018748ae248760be387729c20911f3d060889f3e8e035d66a0b08b465972cab89ce67c6bba1373c57d55fb0f3885ebeb65af66daa32cf6333d42ba53d45628510066afc115a237432396666ddd5fb90a6876f12d6720977f9684468b9b9e968fbb9dccb0b8571d57f223fe4f69865002dbadb088fe24c77ed548f4dbf2d8b2b76296dd09488d1b16443baa0acc2993a14109337e730508ed6abb246b91faaebb2db0a4cdf051510cff5373c44ef919a5dce91f5289a1d65cffa67e105514f8a8d5467802777fa3674100b280287db8f57c4b5dffba7f9cca6463ee30095b250b71d3fb626115e176d23aa2ca234633e6bc2377ff8d9567356d337d86b0c4e22e089610c7c73dab73e354012dfeb96d721ba1c6480331e620f3691bf56e0aed9ad6164a9eb8545b72889664965102e7b0ba3ce557bb8adc42086a608532f33c0ae00ef0924f7e1ee64b5361dda67bd37892009122e9e2570e1f1752dbc6843e244aa9da559124ac11a2fd4b06b11a5af1395f421ee3b33bde253a3a1c37d55860da65e591c836c5ce4d6a04daa63048c89558724adb05760f2f755bb81655f01a809ea7d42befa7331ebe3240bd3aa69e983d045bc5276026499ef7b872cd6f6763e63b3e645a14e3bd9e358e2b714e5524e9005d57fb0efa8fdfbed70da99375604d3666d6410bb4e95e82b857baee4bc6bc5e1964b09a7ba9765251ad1ed38578ecfc38c9265c6a6443f73c97e4cb61ec8ddee919a2bf04fe39fc2ad5c9c4535fd9fbc9237305babcd65caff33f3852c66cf049cefe7d0d60feadbb9ce02bd0a269ecbce9ab18850ed960cb2c384343c03e92e3e6f707adfe488835aebfbdd50feaaec5aa4a908f8538d95bfdca64aebce9e86858ee9b5cd23e3394898bc2e7e7a5bb0c326788b934204962a223b0be00413098bebe6a031107cdd920ce81593f451987fd025899a595d33907df60588171cc0ef4b36f3dc75539cddf53ba523c54edcca2e27f525a37de514ec2d04b15147f29533bc8ea3cb26a3856ee38b0fc01f248ea7311533629da8af0a15ae48ea3bba97bdf2e76701dca14b306760bfc7b8a4e6ab5cd99df2d3a915ac6c4a07e884f75daaf835c10e2545c41909d90b854905658cd19f015a0ba24989ebf409eadd9b638c04d7a1eab16560b283aba36b1df616fa0655f3813b8d0f1d0d6d8041a597a5240e085c88c6011901e665be9e0f66a21926aeb020f6686ef1c21d986c622a1f7807b93f8913e4756eb553ac4f778a0ccb45113e346c494a7613c8d14cd0d76870ea9811394b57c65ee2ea0cd00d38016dd94a56682d5645504371359c068037a541067b0f861a9bd4603bb026bc75d33a0d5023b025bfad82a44e3a18e73d17feec0a49c84540636a723aaa0fab63750290a1654318d0068afb6de096e5ccd5e508240d891d1f0d0e0bbdb732677e79913023d24a26e874f59950e3900c75f65daec0728d6d5ad6eba2e2896a9b6a3cfef9330ea46608fdd8fe5b289b8b1e85167c799dfd477c7ce2c142f9dd514bff7447526c891536e10e964016684db34220a2c1ec58a7565efc5564fb5004322a0aebb44d9cfb8f8065b8042d9b8ca001cd0a76924fe2a4c40b37f81b3729f46150d3b287a454121769f4e1ba7c54147af39c1c21290f26184c331dee6f179f711af93b86a846fe1a4b931eedf5ff4ca771e8b92fdeeb8842412d946fdf896024e1ae3a5a08a446f6411e4c094fad4204bdefda7406ea6e576ab122c996c9aa638f8a804c4d5f6f629e75533fbd19374f5ca3c1b1e120abddee9f8e61312f649dfa6fa27d6bbcae9c031494d5d4f357caaf850c9926e603ddb09abd16316cd7a41e52d364ef72824703ef5334d05d319ef98d9cff3547ec76e0640e1b47c019c6b62cafdc3aa5f7869290092c3498e808f25bae54492a6067486f5607cf0d335e9ff93fb3c001bd02ca475d4d7f4762dd223facc373e1bfa8893ec38a76a1f12dd26d0bd09df12b2daf0041e3f9d38d806527759c380ab5c49b14974dd7726b0e81498f9e5cb61e4325bab45f9407bcc37f2356c34ca95fff00b051bdfc5ca165cd2098d926465a7a055ec600d10aa8d92b9bedc36dec1ab4ac95ca9c80dab90e4acf2e0fe15034e46a32826e996d321b4e289bb997a426ce448982244df51aa428a6f92adf3866fb215fd52a68b1670adf01eab204865782fd3ec5ba924ac791d700a8bdbfe6948681ffd4d5fd6f84d690289b9ca930d6ecb93e9a63df34d2332e9af2df17064d76714d44a4001495ffcedb3938fa59b3069250483c94b3117939162ef87b319f56019852e7144404900c606bcd211ad8a9a5add0c8e8ea8461d6554e51297bde98a7e4665e15952608a94c0a0818196e0eeef2f91e3444d201c8b893feb26febc35bdb2b009a8ab58bb04335e846b3151b9989b60463c731c7af3470f3bedc29c4b705deed499d5d6f7043b2e8bbca0a66b1fd79fe2ac66bf9adde239118800484a98e4f46f19454adaa67f0581f076881188820f28638df4c1489ae440096bf7261637677239a9c8c8ce1d6d716677aa729b5cfb4b4c9d648b8195cf2574a7d99a049481468d44e8481b274afa82d3dfe37a4c96b9ea8d214601075e9fc199275620d7d577d16832ed6f04bd400c3e33c16ffaf75d465b28f6e7158a5f4a8f6b61b26261c2feb7dc1fe46b055df7e0e50f0beaf8454ece822e3e0c45a3fa461db99f8e1a12519897eee7354839816f2bffcb600ae1f2e5bdc34592945ad10a0019ef81e2eb61d4cc55d770ddd2912d73332b2e3fb0dcee85585f0f7f5ea04b6df62f6d6364cc6a454075bf7e3d47e85b2037a8f548e3bca30dc7b144fd9e7f8ba66f3e072d1b747d120227a5c9ccd459f9940dc26b95ca3d6f63a054d0f3d4a8e3bcce7b4f943fc5f706b4dfaed5f95c022b32072d4c5006aad25bbfc1d71e18005efb6a1be5ca202e4a5ddcadf72ff292e6be5c9ef21e39853b0c155ffdd12a830b91262d8d0c3203cfcca0d8e22e7d7fee431ca4c98bbacd5cf1a2a0c67bf049cec2a17273b6f919159245c2b4c2bf4f5e0e1b866f77d54c1a703703b7304904fc593acf3d9c2794a7f7d6e8b15911b19335cc1d5f84db718e1536c89e68d630d415a01c3b42e2ab76e91239e60163251e734b2e1c89785dc8c6f880ec868d8cc8599f73f125ff5b5f0bd1810c2ad5b8d33bebf20d1287ba955ac215eb3172d976ad9a4eab443747ce7832d6948f5e6ad5f1215b6a3b8108ab4212ccb8790a07ac44176b06ee854192b234c002459e317f1d04b7b2b0bab93e05e0bd716234cc500a06a10313470ae5f0d76c628d7937d7fede0672a5550e00737f54ae3f6a9b87db2d75e44ce8dff4308e05d685e2a3050ab999bb81dd8a9ea40caa34d94493b745c5564e924488daba63192870ee8ba6ba0dee0fe8428abed4c7ba7a8e5cc3d3df5498cb57bff073656ac9d79713c3418303254c6ed238abf6879871d8af328968ad9d7592623a764b554306c22a363bcb72f6675449c9b101386cc951732587803649e5e8995cc8ce14f071d1859967b0aeee4283443d67a4bfdbd719d47546fd5e3d9aa4f17eefed94538517214e39718f8d3469178cda52c313d0a4994decb8dc9320369168798914a3fa2bbc3525ec04e4599c36d4410210d50b604bbdaee271c11207f12078bc4328a5cc927c754552fa5db6111ebc2af", 0x1000}, {&(0x7f0000002880)="e33d865ef2bf97affc76725a63d3c28f828fea94a46b33011ac4c80590171ea7f69af61805a5dc98178d43f6e52d2a380db7fc5ce7301a6553d26d48a8c4a2740714d8700c5f3b830068ce89b72beda7d214372307e46b6f4dcfafc88c5589af21a2f5467b090217e6291f55ccf69c6ef589d75a61d7719305fcf2c28fc2bbef71be908ed4de6ad607d5f6bf6d3fd2f7890d123a306a5b1cb34b3cd0fc1cc20cad681f2a28fec7a6a27fc253e8d6134e8db67ab130abdb266168f8426b622bc5b580553d98dbac017049e75fc9cb92543c9b7b137e6f91c98945a2f720a013a87b8849ec56ff60a48e795e022931d0fe1291ef98ae48ed3a9b2968b4ad23e6a2896191a0f940e4e94fdef96fef192f53a5909d9973a96250bf862a94872f5b5330fd542b0b54da1c5534f0eb52913c788b0e8bc66380d0e744ab6da102bc444e85d3b89dc6f7624fd501317bbf6fed79078594c651748a91d3e06f067e020fe4508a91e9fa65283afd4d13b8a9e9bee7da52f3a1e017c11fef90146020704431b831fd34afc6c096db93a899f3224acad72b2a306db5ddefffb3c3423b14e7b8c3c74b0783bc1fd61bba81937c9a963448e1814f5c7cc4b4ca2c3f2bcd6ff49e41b54d058a0804024a09cdae969bcf4e69183c0c6dff51f19e0c59fae59561aa8695137f771dcd1b5f55d2844627bd2b02110454da3a2895e765f3a900e6a36d456700c47c87f23d518a2741f9e57459b66cf8aa99cd8675611d8425a02d2379e8845c2b62a5accc67461ebcdec7d21717825b147a50ed9e899a4411f9a348403465fcb3e375a14ffa4b3732d48d190e754d270ecd6cd3c460c0c4e1621d2ed0b78ee38685e9248607463bd2da419292743a1f36552e6643fec653a3cfc891b481d06bf847bcb0d8ad3387fa8e4aa852e8b58de464c92b146849dc505e959651deb09c3790a938dd57cd3c7b6e29bcb9ccfbeb52ecef2c6da6cb830ee8054ab7d63e28fd595f94aadee9810c2269dee927190faedcfc9b09ff3dcc5d71528a400df9a711ebd8d659c694ccc739b88cebb799cf44ead23980679c25cfa109346a94213c2c52a1e1ca14aab8dc8013353024c018316f58ae54a549cd93a325aa29d90caa918646cff6bf487c4df132815f156497da9af46f3512093d3f5cf16f4d9f616eb114dbf47c17e89c6e43c9a15bd223feabfcd1af3c7862ffe455ba2fa26f07ed214eb15523a2592fb4fa9271d3615428562fe839e30d32dac3023595c28fc9652a8a2f4abb77efb1a5350c401cc30d97ce7918a4f4841bd48ab7d3982e25a15254dcc61800169ac49bc04b0f9ed77276eeab1b3a0bbec6d3ba7d7d0d0c445ee5e6b715292abab9832df7a7ed240acae008141a7f843bf249a17c679a961a254dbf759d93769ca7d6bf7fbb1c626c372a14c6c8c7d50c8ad707db217050b303a0530009a9553be92fa16a373d7c4b157098a91655abf753d6864c74b276e672c5a339745af85e72f8632f7274134216191791d7376d02194362e253dc08f529e30ef86810ce8be48d8467191d715fa3b549eb3d70dce10b919c55e637e7c2d3e77b32ef0e00c7a0a3f9c9c913e60f68b187eed427b740267fd0e11d0c5957bd808afcdcb4a02a2ceeb88ad44cac44eadee07b78cdd456bb00ab487d4c7482bfc17b441a679e40bb4da917d0e10e7b4daf20c0b08a79c1db7b26b9ee1cc62dbaf9fcd7cfa14252fa99adfc100f814764943a151e5828f00d5d53f5885c6ff575c227c5c4f32cb7c2edd8ec24b9834ba80ab288a0b1fcbf78f83455160dfb12096ebabefea61ea24805453098db3d4b9e568d422d774f20bef718a7b4ef14ba7313caf83dc134957960f8ef2a5ed990f521a1a0d47d59362acf69b6b9b3810de92705f06730fe02cfe07d1a6f3e94a1c46dcee131e9776bb0b42e8d9b83b2929bcf08eacc0885869ae812b08a175ca7db0457d3e143b34a9434471f74f3ecf3b9f937cdbdcae6ffbd747102637d21bdef981a7f6c12c7aa676b4aaafa21ec0eb39bf3bb6ff4e5bcf32a4474ead81f98816abd4cf457e001409fa26347735115696efdd116d32dd3f18f76b92bc17d1b551128e411b3af752cbd9be391d29f4bad8f1f6a60dacf17a2b3925f36a51f7d8c443b3f6ab977478c4ca4ab8453de249efde679a1a1c8978314b88064b4e46d89f71ad6f80a64e5760383c33ea5209b31850ea26b583109a3ebeebf94d9f9de9a7c27e477c2fc27de1adc608ac079fedeb5963e344a1a010ce94f25d21c1fb937feedceb73d3d88d9d6bc9f8bc0f19842176ed78b8624609a521e66cb17cfc80334791f4078ffd95c2034876201fdce6c7e3dcb2edaa22643f863b9938835030cd18b0f042bcd00431f57c4df6c724ba1fd90828f3b9dac38ecd263c86b808fc4fc87302b4cd6f14e907f2aabd29bf280fc9dac5af41f81a439696c772d82b9c6f05dd1f9cd135453c17194c585193b9be00e0599b2dddb63e5486f2f3e1789298d0a973734308b184dfc10acab28df3e078856a708f932943564758c92ce2cd4bebd97041b62a313aacea69c2ae29f6685ceea773b5c5f7f23ff93d3c0ed84306b9b2cfa94493f66f6e1771b04ce6fa1c241ecd7a379bf14b70601190d0c2208903e37f0300a93fa413f6532cd2e2828f2bcec74d6df868e1f07547ac80c90eecf5a9c4fdaa6e257b2fad355dfd242dbcd2cb7e0740d783955105ee63c91f3ef0e1e11498810ccf6adae1d6c15951f2a11c1f240022e9ce0c139c703740d37b86fdfc26c06a64e6067796ee77afe1c5fcce75438b1d271d961400942077a76f7d7d07ff00e3fb3b6eb59dd5f64203bb3fdbd1b9cdfcdd0c9c4c4d511e64309d4b65f7a17605d4547ae8f42911c4cca251c49798c1df123b55cc2e7e9cb43a949fb537cad880a39d13799abe8dda8389bd190d46a31ee53338963f9681a4638b18f69e09d27b0881c1a069165720b9a134fd5fb06c9abebf3f855171c3a815ab3dd01aba64fea060bb9628b54f832aa1fef09dfd8b8c88ea7b2c2a31a163bb71f42c8b5f6d9bc568911e346f99a633d16fc72c6f480e449ce46718fac4fbe6dbf02b2a379dd9bec9315b69a1f5f3a6fa8854c535c63891db645d281398ccfcc1d18df782f7d8a07739c60c487f50d4f4f26476a49906640a17fcd4486b6420150d8eb28cc388a2f910de8a30a3fd6e6f434a3fe59923583ac19a5ed6595672d0c3e0cc24769df10ef2089a4418432e4076539eeb6b50c95311a1157ad12ab10c7ad4d74c6620e40b334876eb984bec3a6e7a8ae71cc0aae733aa311d96b976e28f8a389a17e864215a41d287e8255e118bf9402927b02146e658a36cf7dfc34281ee60d303655c339ef0801c34519bf623c33a9b49f817f3b702eee1e23240669dd860dfb3b5cdb3875595ecefcb6a23cee2c40f152383b7989a5b606e61f93a9b1296c5a3dc04a40afbd8d937bbe602f01ef8947f39db0a39a17cfa82b8143ffe6bd3d8366f7835ff5aa044e68b4f7bfda04544f0f0318277af1db8c9485fb1fa9c39745ef73bef29c52232458f91dcf7c90cc9dd9b1c385a26ccedf9b32c5f51346ec86695e2b305b371202fbb4923fce314dc47506c0d229e88d184fbbea54e627a5f45c036dfdaa88f8d2ac2e0bddaf01852598d3e8a1f33dc97634fbb59b766698bdb180c09acd180375faa64a6ce6143f696e4f4f06d97a2e0fc18b2997773aab63efc04ac2fea71c521c4822517198722a21590a20fbd6f1cd06ef63bbb6b8e131bed953b6d41b17ccc65bbfd8f9b1f13fea8e8f649c6fc27814356731a6cfca67a1db5556801b0b29118133e37fac2f360529b44295c7dac814d6713d31ad95d831f9a86905266bc8dbd6a13309c695f64bf59f362198c51b8a1fd43a878ffa2d0b658d2a0ac0eb76f0d19cf89170b71729394105642bff72e2c5b820812009aa39c544d93b3d8c2e1a0bda4b4266a3501087147103dc709ed1c7d2aa1f4761ca4f7d795d33ed6f82269f0a119c5170355b9ca5eccaee0eaf14ad7fe4c8d7cebeb0c865f6899747084c1bf0ea3f75c02bf3342dd940ba7e98dd27b38979a85ba9487f3f70907dbcb341a6928ed166f0617085f264d456552ffe2c0fcf9ee65ed539620d3ea76a90768bca954b63652aae3c6d4d8e5ae5f482643584b87c83526fc62ca33481c4ed44cdf54d27c6a962456ab649bae1b7ea882546aa51c98cdc658bc962a34b978a20e2d438ae70db62355ab1351998f4448fece23f7eb917c1d052262d148f7f66c2d12c5cc367c7804d6646df17cfc1c7d296847b4d21fecaf5d87379f1c3f2be7a3042f5ba0f0b67fc47e969dff00ae5b8b05d0bc1087fea0a4894e6091c072bd853c986acae739670cd68a4f44e0f7a040821beb3d4339660a81a8f413fed1366a8317dfb749574a86f734d08625876e33b121003312cfb2a8a1f658811", 0xc5b}, {&(0x7f0000000300)="cf459d609f", 0x5}], 0x7)
-
-141.090583ms ago: executing program 0 (id=423):
-r0 = socket$inet6_udp(0xa, 0x2, 0x0)
-setsockopt$sock_int(r0, 0x1, 0x2f, &(0x7f0000000280)=0xffffffff, 0x4)
-
-131.683669ms ago: executing program 3 (id=424):
-r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f00000005c0), 0x800)
-read(r0, &(0x7f0000000600)=""/50, 0x32)
-
-115.939965ms ago: executing program 3 (id=425):
-r0 = socket$inet_udp(0x2, 0x2, 0x0)
-setsockopt$inet_int(r0, 0x0, 0x1, &(0x7f0000000000)=0x7fff, 0x4)
-
-58.301913ms ago: executing program 3 (id=426):
-r0 = socket$netlink(0x10, 0x3, 0xc)
-write(r0, &(0x7f0000001200)="13000000100003d10dabe5adcc9e6538a53d90aa", 0x14)
-
-58.124099ms ago: executing program 0 (id=427):
-r0 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/power/pm_freeze_timeout', 0x18bd40, 0xa)
-pread64(r0, &(0x7f0000000180)=""/12, 0xc, 0x6)
-
-57.868447ms ago: executing program 3 (id=428):
-r0 = socket$inet_udp(0x2, 0x2, 0x0)
-setsockopt$sock_int(r0, 0x1, 0x35, &(0x7f0000000100)=0x1, 0x4)
-
-57.675847ms ago: executing program 3 (id=429):
-r0 = socket$netlink(0x10, 0x3, 0xa)
-write(r0, &(0x7f0000000080)="2400000077a203d10dabe5adcc317c142ad280c5670953cebe4240a874133d5008a89316", 0x24)
-
-57.396729ms ago: executing program 0 (id=430):
+49.033588ms ago: executing program 2 (id=540):
 r0 = socket$inet6_tcp(0xa, 0x1, 0x0)
-setsockopt$inet6_tcp_TCP_REPAIR(r0, 0x6, 0x13, &(0x7f0000000040)=0x1, 0x4)
+setsockopt$inet6_tcp_int(r0, 0x6, 0x9, &(0x7f0000000000)=0x1, 0x4)
+r1 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000000)='/proc/tty/drivers\x00', 0x0, 0x0)
+pread64(r1, &(0x7f0000001500)=""/35, 0x23, 0x7ff)
 
-11.458692ms ago: executing program 1 (id=431):
-r0 = openat$vcsa(0xffffffffffffff9c, &(0x7f0000003c40), 0x502, 0x0)
-readv(r0, &(0x7f0000000840)=[{&(0x7f0000000440)=""/167, 0xa7}, {&(0x7f0000000500)=""/72, 0x48}], 0x2)
+44.701062ms ago: executing program 2 (id=541):
+r0 = openat$zero(0xffffffffffffff9c, &(0x7f0000000000), 0x200, 0x0)
+openat$procfs(0xffffffffffffff9c, &(0x7f0000000740)='/proc/vmstat\x00', 0x0, 0x0) (async)
+read$snapshot(r0, &(0x7f00000003c0)=""/4096, 0xffffff59) (async)
+r1 = openat$sr(0xffffffffffffff9c, &(0x7f0000000040), 0x4ec00, 0x0)
+readv(r1, &(0x7f0000000140)=[{&(0x7f00000013c0)=""/4096, 0xfffffe92}], 0x1)
 
-167.459Âµs ago: executing program 3 (id=432):
-r0 = socket$packet(0x11, 0x3, 0x300)
-setsockopt$packet_int(r0, 0x107, 0xe, &(0x7f0000000040)=0x9, 0x4)
+458.983Âµs ago: executing program 0 (id=542):
+socket$inet_icmp(0x2, 0x2, 0x1)
+r0 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000040)='/sys/power/image_size', 0xc8800, 0x1d1)
+write$tcp_mem(r0, 0x0, 0x0)
+write$cgroup_int(r0, &(0x7f0000000080)=0x722, 0x12)
 
-0s ago: executing program 0 (id=433):
-r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000b40), 0x2802, 0x0)
-readv(r0, &(0x7f00000015c0)=[{&(0x7f0000000680)=""/188, 0xbc}], 0x1)
+0s ago: executing program 0 (id=543):
+r0 = openat$apparmor_task_exec(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
+read(r0, &(0x7f0000000040)=""/47, 0x2f) (async, rerun: 32)
+write(r0, &(0x7f0000000080)="c4457c6205217149c83e65002fa8b3a3444ed61177b0bc982d7b1c851993e823884a55763b2b24c7717a35e4a6d7e3b69f2b62a488cf213f5dbd3e0ccab1265b03da52b7a0ea53e8394283c1acc7a8ad2aff95abba08775dbcad351d0f765d675e10be240b538edc807fcc464890a987b3e760ad676e023e1cdf2d5ee3b4dd444a7734d4de4856", 0x87) (rerun: 32)
+r1 = openat$cgroup(0xffffffffffffffff, &(0x7f0000000140)='syz0\x00', 0x200002, 0x0)
+openat$cgroup_procs(r1, &(0x7f0000000180)='tasks\x00', 0x2, 0x0) (async)
+openat$cgroup_freezer_state(r1, &(0x7f00000001c0), 0x2, 0x0)
+openat$cgroup_devices(0xffffffffffffffff, &(0x7f0000000200)='devices.deny\x00', 0x2, 0x0) (async, rerun: 64)
+r2 = openat$cgroup_ro(r1, &(0x7f0000000240)='blkio.throttle.io_serviced\x00', 0x0, 0x0) (async, rerun: 64)
+r3 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000800)='/proc/asound/timers\x00', 0x0, 0x0) (async)
+openat$cgroup_freezer_state(r1, &(0x7f00000002c0), 0x2, 0x0) (async)
+r4 = openat$cgroup_root(0xffffffffffffff9c, &(0x7f0000000300)='./cgroup.cpu/syz0\x00', 0x200002, 0x0)
+openat$zero(0xffffffffffffff9c, &(0x7f0000000340), 0x100, 0x0) (async)
+openat$cgroup_root(0xffffffffffffff9c, &(0x7f0000000380)='./cgroup.net/syz0\x00', 0x200002, 0x0) (async)
+openat$cgroup_int(r4, &(0x7f00000003c0)='hugetlb.2MB.rsvd.max_usage_in_bytes\x00', 0x2, 0x0) (async)
+openat$cgroup_devices(r3, &(0x7f0000000400)='devices.deny\x00', 0x2, 0x0) (async)
+write$cgroup_int(r2, &(0x7f0000000580)=0x8, 0x12)
+r5 = openat$vcsa(0xffffffffffffff9c, &(0x7f0000000480), 0x210000, 0x0)
+openat$cgroup(r5, &(0x7f00000004c0)='syz1\x00', 0x200002, 0x0)
+openat$sr(0xffffffffffffff9c, &(0x7f0000000500), 0x20403, 0x0) (async)
+write$binfmt_register(r3, &(0x7f0000000540)={0x3a, 'syz2', 0x3a, 'M', 0x3a, 0x9ac4, 0x3a, '-', 0x3a, '/dev/zero\x00', 0x3a, './file0', 0x3a, [0x1f, 0x46, 0x0, 0x4f, 0x50]}, 0x37) (async)
+writev(0xffffffffffffffff, &(0x7f0000000640)=[{&(0x7f00000005c0)="45cd522b1a279f378802eec15365aa893d7a246b0d39a9ef09f90dba0de89770ead59288db1ade30c3ea19dfddb96544d219d83c451b2323531afa2edba7ec62a5d02321e32b20a6407760d1001a75cf", 0x50}], 0x1) (async)
+r6 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000680)='/sys/power/hibernate_compression_threads', 0x8100, 0x1a0)
+openat$vcs(0xffffffffffffff9c, &(0x7f00000006c0), 0x402800, 0x0) (async)
+write$cgroup_type(r6, &(0x7f0000000700), 0x9) (async)
+openat$cgroup_root(0xffffffffffffff9c, &(0x7f0000000740)='./cgroup/syz1\x00', 0x200002, 0x0)
+openat$cgroup_subtree(0xffffffffffffffff, &(0x7f0000000780), 0x2, 0x0) (async)
+write$cgroup_pressure(0xffffffffffffffff, &(0x7f00000007c0)={'some', 0x20, 0x6, 0x20, 0x3}, 0x2f) (async)
+r7 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000040)='/proc/bus/input/handlers\x00', 0x0, 0x0)
+pread64(r7, &(0x7f0000000080)=""/103, 0x67, 0x1)
 
-0s ago: executing program 1 (id=437):
-r0 = openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000000), 0x1, 0x0)
-write$binfmt_register(r0, &(0x7f0000000100)={0x3a, 'syz0', 0x3a, 'E', 0x3a, 0x7, 0x3a, '^^{', 0x3a, '$\\\'^', 0x3a, './file1'}, 0x1337)
+0s ago: executing program 3 (id=544):
+r0 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000002640)='/sys/power/resume_offset', 0x20000, 0x1f1)
+r1 = openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000000), 0x1, 0x0)
+write$binfmt_register(r1, &(0x7f0000000100)={0x3a, 'syz0', 0x3a, 'E', 0x3a, 0x7, 0x3a, '^^{', 0x3a, '$\\\'^', 0x3a, './file1'}, 0x1337)
+read(r0, &(0x7f0000003d00)=""/67, 0x43)
+r2 = openat$sr(0xffffffffffffff9c, &(0x7f0000000480), 0xc0c02, 0x0)
+pread64(r2, &(0x7f0000000000)=""/132, 0x84, 0x8)
+pread64(r2, &(0x7f0000000640)=""/4105, 0x1009, 0x127e)
 
 kernel console output (not intermixed with test programs):
 
-Warning: Permanently added '[localhost]:52214' (ED25519) to the list of known hosts.
-buildroot login: [   15.333488] cgroup: Unknown subsys name 'net'
-[   15.351628] cgroup: Unknown subsys name 'cpuset'
-[   15.355030] cgroup: Unknown subsys name 'rlimit'
-[   15.356445] cgroup: Unknown subsys name 'memory'
-mkswap: image is too small
-[   30.155263] random: crng reseeded on system resumption
-[   30.628494] syz.4.137 uses obsolete (PF_INET,SOCK_PACKET)
-[   32.040956] random: crng reseeded on system resumption
-[   32.057135] Unrecognized hibernate image header format!
-[   32.071324] PM: hibernation: Image mismatch: architecture specific data
-[   32.127419] block device autoloading is deprecated and will be removed.
-[   32.222755] random: crng reseeded on system resumption
-[   32.481050] Can not set IPV6_FL_F_REFLECT if flowlabel_consistency sysctl is enable
-[   33.102145] md: async del_gendisk mode will be removed in future, please upgrade to mdadm-4.5+
-[   33.108191] block device autoloading is deprecated and will be removed.
-[   33.265958] block device autoloading is deprecated and will be removed.
-[   33.967716] netlink: 15 bytes leftover after parsing attributes in process `syz.1.401'.
-[   34.137624] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
-[   34.140770] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
-[   34.149916] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
-[   34.155331] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 10 00 00 04 00
-[   34.164178] I/O error, dev sr0, sector 64 op 0x0:(READ) flags 0x80700 phys_seg 2 prio class 2
-[   34.174111] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   34.182013] I/O error, dev sr0, sector 64 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   34.186486] Buffer I/O error on dev sr0, logical block 64, async page read
-[   34.190387] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   34.192340] I/O error, dev sr0, sector 65 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   34.195582] Buffer I/O error on dev sr0, logical block 65, async page read
-[   34.200741] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   34.203410] I/O error, dev sr0, sector 66 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   34.212282] Buffer I/O error on dev sr0, logical block 66, async page read
-[   34.214818] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   34.217742] I/O error, dev sr0, sector 67 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   34.226454] Buffer I/O error on dev sr0, logical block 67, async page read
-[   34.241051] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   34.248316] I/O error, dev sr0, sector 68 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   34.252320] Buffer I/O error on dev sr0, logical block 68, async page read
-[   34.257626] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   34.259362] I/O error, dev sr0, sector 69 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   34.265221] Buffer I/O error on dev sr0, logical block 69, async page read
-[   34.268271] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   34.271503] I/O error, dev sr0, sector 70 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   34.295135] Buffer I/O error on dev sr0, logical block 70, async page read
-[   34.308296] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   34.315879] I/O error, dev sr0, sector 71 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   34.326621] Buffer I/O error on dev sr0, logical block 71, async page read
-[   34.468921] netlink: 'syz.0.434': attribute type 33 has an invalid length.
-[   34.472243] ==================================================================
-[   34.484274] BUG: KASAN: slab-use-after-free in vfs_write+0xe4c/0xec0
-[   34.491065] Write of size 1 at addr ffff888001e3a5c0 by task syz.1.437/2841
-[   34.496014] 
-[   34.496592] CPU: 1 UID: 0 PID: 2841 Comm: syz.1.437 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #9 PREEMPT(lazy) 
-[   34.496629] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.17.0-9.fc43 06/10/2025
-[   34.496651] Call Trace:
-[   34.496668]  <TASK>
-[   34.496679]  dump_stack_lvl+0x97/0xe0
-[   34.496714]  print_report+0x157/0x4c9
-[   34.496744]  ? __pfx__raw_spin_lock_irqsave+0x10/0x10
-[   34.496788]  ? vfs_write+0xe4c/0xec0
-[   34.496827]  kasan_report+0xce/0x100
-[   34.496843]  ? vfs_write+0xe4c/0xec0
-[   34.496862]  vfs_write+0xe4c/0xec0
-[   34.496884]  ? __pfx_vfs_write+0x10/0x10
-[   34.496904]  ? do_futex+0x192/0x350
-[   34.496922]  ? mutex_lock+0x81/0xe0
-[   34.496939]  ? __pfx_mutex_lock+0x10/0x10
-[   34.496958]  ? fdget_pos+0x209/0x5a0
-[   34.496987]  ? __x64_sys_futex+0x2b0/0x490
-[   34.497006]  ksys_write+0x12d/0x250
-[   34.497028]  ? __pfx_ksys_write+0x10/0x10
-[   34.497049]  ? restore_fpregs_from_fpstate+0x65/0x120
-[   34.497068]  do_syscall_64+0xee/0x590
-[   34.497089]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
-[   34.497106] RIP: 0033:0x7fcb2506acb9
-[   34.497127] Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
-[   34.497142] RSP: 002b:00007fcb23ac7028 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
-[   34.497168] RAX: ffffffffffffffda RBX: 00007fcb252e5fa0 RCX: 00007fcb2506acb9
-[   34.497180] RDX: 0000000000001337 RSI: 0000200000000100 RDI: 0000000000000003
-[   34.497192] RBP: 00007fcb250d8bf7 R08: 0000000000000000 R09: 0000000000000000
-[   34.497203] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
-[   34.497213] R13: 00007fcb252e6038 R14: 00007fcb252e5fa0 R15: 00007fff9b843b98
-[   34.497228]  </TASK>
-[   34.497234] 
-[   34.593418] Allocated by task 2841:
-[   34.594413]  kasan_save_stack+0x30/0x50
-[   34.595472]  kasan_save_track+0x14/0x30
-[   34.596759]  __kasan_kmalloc+0x8f/0xa0
-[   34.599434]  vfs_write+0xaae/0xec0
-[   34.601063]  ksys_write+0x12d/0x250
-[   34.602921]  do_syscall_64+0xee/0x590
-[   34.604356]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
-[   34.606649] 
-[   34.607120] Freed by task 2841:
-[   34.608464]  kasan_save_stack+0x30/0x50
-[   34.610586]  kasan_save_track+0x14/0x30
-[   34.612373]  kasan_save_free_info+0x3b/0x70
-[   34.614247]  __kasan_slab_free+0x43/0x70
-[   34.615405]  kfree+0x149/0x3a0
-[   34.616603]  vfs_write+0xac7/0xec0
-[   34.618283]  ksys_write+0x12d/0x250
-[   34.619584]  do_syscall_64+0xee/0x590
-[   34.623881]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
-[   34.625347] 
-[   34.625779] The buggy address belongs to the object at ffff888001e3a5c0
-[   34.625779]  which belongs to the cache kmalloc-16 of size 16
-[   34.628629] The buggy address is located 0 bytes inside of
-[   34.628629]  freed 16-byte region [ffff888001e3a5c0, ffff888001e3a5d0)
-[   34.631645] 
-[   34.632100] The buggy address belongs to the physical page:
-[   34.633437] page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x1e3a
-[   34.638633] flags: 0x100000000000000(node=0|zone=1)
-[   34.641070] page_type: f5(slab)
-[   34.643037] raw: 0100000000000000 ffff888001041640 dead000000000100 dead000000000122
-[   34.646172] raw: 0000000000000000 0000000000800080 00000000f5000000 0000000000000000
-[   34.652614] page dumped because: kasan: bad access detected
-[   34.654188] 
-[   34.656105] Memory state around the buggy address:
-[   34.658360]  ffff888001e3a480: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
-[   34.664476]  ffff888001e3a500: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
-[   34.667252] >ffff888001e3a580: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
-[   34.673167]                                            ^
-[   34.674500]  ffff888001e3a600: 00 06 fc fc fa fb fc fc fa fb fc fc fa fb fc fc
-[   34.680266]  ffff888001e3a680: fa fb fc fc fa fb fc fc 00 06 fc fc fa fb fc fc
-[   34.684810] ==================================================================
-SYZFAIL: failed to recv rpc
-fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
-[   34.709750] Disabling lock debugging due to kernel taint
-[   34.861645] syz-executor (285) used greatest stack depth: 24560 bytes left
+Warning: Permanently added '[localhost]:4770' (ED25519) to the list of known hosts.
+buildroot login: [   15.235525] cgroup: Unknown subsys name 'net'
+[   15.273993] cgroup: Unknown subsys name 'cpuset'
+[   15.280867] cgroup: Unknown subsys name 'rlimit'
+[   15.286132] cgroup: Unknown subsys name 'memory'
+[   22.591370] random: crng reseeded on system resumption
+[   22.605939] binfmt_misc: register: failed to install interpreter file ./cgroup
+[   22.684844] kernel profiling enabled (shift: 0)
+[   22.706461] md: async del_gendisk mode will be removed in future, please upgrade to mdadm-4.5+
+[   22.722609] block device autoloading is deprecated and will be removed.
+[   22.736425] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   22.769967] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   22.793485] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   22.833373] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 00 00 00 08 00
+[   22.868315] I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 4 prio class 2
+[   22.932905] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   22.959103] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   22.977847] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   23.000825] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 00 00 00 02 00
+[   23.021116] I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x0 phys_seg 8 prio class 2
+[   23.030446] Buffer I/O error on dev sr0, logical block 0, async page read
+[   23.038039] Buffer I/O error on dev sr0, logical block 1, async page read
+[   23.045903] Buffer I/O error on dev sr0, logical block 2, async page read
+[   23.059313] Buffer I/O error on dev sr0, logical block 3, async page read
+[   23.070744] Buffer I/O error on dev sr0, logical block 4, async page read
+[   23.082660] Buffer I/O error on dev sr0, logical block 5, async page read
+[   23.093548] Buffer I/O error on dev sr0, logical block 6, async page read
+[   23.106350] Buffer I/O error on dev sr0, logical block 7, async page read
+[   23.353017] block device autoloading is deprecated and will be removed.
+[   23.401995] block device autoloading is deprecated and will be removed.
+[   23.416444] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   23.416484] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   23.416512] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   23.416535] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 00 00 00 08 00
+[   23.416550] I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x80700 phys_seg 4 prio class 2
+[   23.416742] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   23.416764] I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   23.416800] Buffer I/O error on dev sr0, logical block 0, async page read
+[   23.416950] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   23.416971] I/O error, dev sr0, sector 1 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   23.416991] Buffer I/O error on dev sr0, logical block 1, async page read
+[   23.417055] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   23.417074] I/O error, dev sr0, sector 2 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   23.417141] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   23.417159] I/O error, dev sr0, sector 3 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   23.418458] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   23.418479] I/O error, dev sr0, sector 4 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   23.418549] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   23.418567] I/O error, dev sr0, sector 5 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   23.418639] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   23.418657] I/O error, dev sr0, sector 6 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   23.418724] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   23.438672] random: crng reseeded on system resumption
+[   23.442413] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   23.442446] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   23.442474] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   23.442488] Unrecognized hibernate image header format!
+[   23.442500] PM: hibernation: Image mismatch: architecture specific data
+[   23.442509] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 08 00 00 10 00
+[   23.462072] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   23.462103] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   23.462130] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   23.462152] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 02 00 00 02 00
+[   23.494124] TCP: TCP_TX_DELAY enabled
+[   23.852843] block device autoloading is deprecated and will be removed.
+[   23.872399] md: async del_gendisk mode will be removed in future, please upgrade to mdadm-4.5+
+[   23.883832] block device autoloading is deprecated and will be removed.
+[   24.002378] md: async del_gendisk mode will be removed in future, please upgrade to mdadm-4.5+
+[   24.012783] block device autoloading is deprecated and will be removed.
+[   24.119097] random: crng reseeded on system resumption
+[   24.136348] Unrecognized hibernate image header format!
+[   24.146453] PM: hibernation: Image mismatch: architecture specific data
+[   24.159137] binfmt_misc: register: failed to install interpreter file ./file0
+[   24.237632] syz.2.56 uses obsolete (PF_INET,SOCK_PACKET)
+[   24.263061] binfmt_misc: register: failed to install interpreter file ./file1
+[   24.651493] pci 0000:00:02.0: vgaarb: VGA decodes changed: olddecodes=io+mem,decodes=none:owns=io+mem
+[   24.786434] binfmt_misc: register: failed to install interpreter file ./file0
+[   25.217032] sock: sock_timestamping_bind_phc: sock not bind to device
+[   25.230418] sock: sock_timestamping_bind_phc: sock not bind to device
+[   25.648408] binfmt_misc: register: failed to install interpreter file ./file0
+[   25.824412] netlink: 15 bytes leftover after parsing attributes in process `syz.1.119'.
+[   25.933645] binfmt_misc: register: failed to install interpreter file ./cgroup
+[   26.443890] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   26.462319] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   26.471821] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   26.478774] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 00 00 00 08 00
+[   26.506282] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   26.520523] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   26.525407] netlink: 15 bytes leftover after parsing attributes in process `syz.0.148'.
+[   26.527800] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   26.527838] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 08 00 00 10 00
+[   26.562357] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   26.578908] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   26.586386] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   26.592951] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 00 00 00 02 00
+[   26.616581] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   26.626965] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   26.635704] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   26.643042] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 02 00 00 02 00
+[   26.812385] netlink: 15 bytes leftover after parsing attributes in process `syz.3.162'.
+[   26.881685] audit: type=1107 audit(1780736242.859:2): pid=2448 uid=0 auid=4294967295 ses=4294967295 msg='*Ò€Åg	SÎ¾B@¨t=P¨'
+[   26.929925] random: crng reseeded on system resumption
+[   26.965399] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   26.976158] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   26.986345] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   26.994503] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 00 00 00 08 00
+[   27.420865] random: crng reseeded on system resumption
+[   27.455778] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   27.472097] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   27.508450] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   27.578324] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   28.213678] PM: Enabling pm_trace changes system date and time during resume.
+[   28.213678] PM: Correct system time has to be restored manually after resume.
+[   28.763282] scsi_io_completion_action: 3 callbacks suppressed
+[   28.763326] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   28.763354] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   28.763378] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   28.763398] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 10 00 00 04 00
+[   28.763410] blk_print_req_error: 15 callbacks suppressed
+[   28.763419] I/O error, dev sr0, sector 64 op 0x0:(READ) flags 0x80700 phys_seg 2 prio class 2
+[   28.764454] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   28.764487] I/O error, dev sr0, sector 64 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   28.764513] buffer_io_error: 54 callbacks suppressed
+[   28.764523] Buffer I/O error on dev sr0, logical block 64, async page read
+[   28.764594] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   28.764612] I/O error, dev sr0, sector 65 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   28.764632] Buffer I/O error on dev sr0, logical block 65, async page read
+[   28.764691] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   28.764709] I/O error, dev sr0, sector 66 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   28.764729] Buffer I/O error on dev sr0, logical block 66, async page read
+[   28.764788] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   28.764807] I/O error, dev sr0, sector 67 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   28.764825] Buffer I/O error on dev sr0, logical block 67, async page read
+[   28.764883] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   28.764901] I/O error, dev sr0, sector 68 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   28.764920] Buffer I/O error on dev sr0, logical block 68, async page read
+[   28.764977] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   28.764996] I/O error, dev sr0, sector 69 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   28.765016] Buffer I/O error on dev sr0, logical block 69, async page read
+[   28.765075] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   28.765094] I/O error, dev sr0, sector 70 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   28.765113] Buffer I/O error on dev sr0, logical block 70, async page read
+[   28.765171] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   28.765189] I/O error, dev sr0, sector 71 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   28.765343] Buffer I/O error on dev sr0, logical block 71, async page read
+[   29.427391] random: crng reseeded on system resumption
+[   29.461974] binfmt_misc: register: failed to install interpreter file ./cgroup/cgroup.procs
+[   29.518929] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   29.528436] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   29.535607] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   29.542694] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 00 00 00 02 00
+[   29.551524] I/O error, dev sr0, sector 0 op 0x0:(READ) flags 0x800 phys_seg 2 prio class 2
+[   30.022653] random: crng reseeded on system resumption
+[   30.528171] random: crng reseeded on system resumption
+[   30.737456] netlink: 3 bytes leftover after parsing attributes in process `syz.2.316'.
+[   30.873059] md: async del_gendisk mode will be removed in future, please upgrade to mdadm-4.5+
+[   30.883562] block device autoloading is deprecated and will be removed.
+[   30.916427] random: crng reseeded on system resumption
+[   30.922513] Unrecognized hibernate image header format!
+[   30.927797] PM: hibernation: Image mismatch: architecture specific data
+[   30.936043] binfmt_misc: register: failed to install interpreter file ./file0
+[   30.972035] random: crng reseeded on system resumption
+[   31.003974] binfmt_misc: register: failed to install interpreter file ./file0
+[   31.046161] block device autoloading is deprecated and will be removed.
+[   31.058162] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   31.067341] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   31.077359] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   31.083827] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 00 00 00 10 00
+[   31.105870] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   31.116015] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   31.123681] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   31.130358] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 00 00 00 02 00
+[   31.137808] Buffer I/O error on dev sr0, logical block 0, async page read
+[   31.146036] Buffer I/O error on dev sr0, logical block 1, async page read
+[   31.174066] random: crng reseeded on system resumption
+[   31.485789] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   31.506401] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   31.516541] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   31.525332] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 0e 00 00 04 00
+[   31.591100] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   31.601488] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   31.610297] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   31.619191] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 0e 00 00 02 00
+[   32.065838] netlink: 3 bytes leftover after parsing attributes in process `syz.0.384'.
+[   32.076941] netlink: 3 bytes leftover after parsing attributes in process `syz.0.384'.
+[   32.325095] pci 0000:00:02.0: vgaarb: VGA decodes changed: olddecodes=none,decodes=none:owns=io+mem
+[   32.413662] random: crng reseeded on system resumption
+[   32.414918] Unrecognized hibernate image header format!
+[   32.414927] PM: hibernation: Image mismatch: architecture specific data
+[   32.444786] random: crng reseeded on system resumption
+[   32.445625] Unrecognized hibernate image header format!
+[   32.455372] PM: hibernation: Image mismatch: architecture specific data
+[   32.461563] binfmt_misc: register: failed to install interpreter file ./file0
+[   32.538099] binfmt_misc: register: failed to install interpreter file ./file0
+[   32.654157] pci 0000:00:02.0: vgaarb: VGA decodes changed: olddecodes=none,decodes=io+mem:owns=io+mem
+[   32.677839] netlink: 19 bytes leftover after parsing attributes in process `syz.0.422'.
+[   32.769912] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   32.778893] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   32.785628] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   32.791864] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 0e 00 00 40 00
+[   32.814061] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   32.823417] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   32.830048] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   32.835922] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 03 63 4a 00 00 02 00
+[   32.869716] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   32.878332] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   32.884620] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   32.890383] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 03 63 4a 00 00 02 00
+[   32.932043] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   32.940595] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   32.947423] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   32.955977] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 0e 00 00 02 00
+[   33.228448] binfmt_misc: register: failed to install interpreter file ./cgroup
+[   33.414655] random: crng reseeded on system resumption
+[   33.424076] Unrecognized hibernate image header format!
+[   33.431574] PM: hibernation: Image mismatch: architecture specific data
+[   33.443758] binfmt_misc: register: failed to install interpreter file ./file0
+[   33.459394] pci 0000:00:02.0: vgaarb: VGA decodes changed: olddecodes=io+mem,decodes=none:owns=io+mem
+[   33.534023] netlink: 15 bytes leftover after parsing attributes in process `syz.1.471'.
+[   33.562812] PM: Enabling pm_trace changes system date and time during resume.
+[   33.562812] PM: Correct system time has to be restored manually after resume.
+[   33.633299] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   33.638604] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   33.643919] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   33.649416] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   33.655482] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   33.661834] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   33.668588] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   33.687309] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   33.845704] pci 0000:00:02.0: vgaarb: VGA decodes changed: olddecodes=none,decodes=io+mem:owns=io+mem
+[   33.855142] pci 0000:00:02.0: vgaarb: VGA decodes changed: olddecodes=io+mem,decodes=io+mem:owns=io+mem
+[   33.889018] binfmt_misc: register: failed to install interpreter file ./file1
+[   34.103870] binfmt_misc: register: failed to install interpreter file ./file0
+[   34.475162] binfmt_misc: register: failed to install interpreter file ./file1
+[   34.491088] netlink: 19 bytes leftover after parsing attributes in process `syz.2.518'.
+[   35.017446] ==================================================================
+[   35.019804] BUG: KASAN: slab-use-after-free in vfs_write+0xe4c/0xec0
+[   35.019804] Write of size 1 at addr ffff8880019eaa60 by task syz.3.544/3526
+[   35.037329] 
+[   35.037329] CPU: 0 UID: 0 PID: 3526 Comm: syz.3.544 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #8 PREEMPT(lazy) 
+[   35.037329] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+[   35.037329] Call Trace:
+[   35.037329]  <TASK>
+[   35.037329]  dump_stack_lvl+0x97/0xe0
+[   35.037329]  print_report+0x157/0x4c9
+[   35.037329]  ? __pfx__raw_spin_lock_irqsave+0x10/0x10
+[   35.037329]  ? vfs_write+0xe4c/0xec0
+[   35.037329]  kasan_report+0xce/0x100
+[   35.037329]  ? vfs_write+0xe4c/0xec0
+[   35.037329]  vfs_write+0xe4c/0xec0
+[   35.037329]  ? __pfx_vfs_write+0x10/0x10
+[   35.037329]  ? kvm_clock_get_cycles+0x40/0x70
+[   35.037329]  ? mutex_lock+0x81/0xe0
+[   35.037329]  ? __pfx_mutex_lock+0x10/0x10
+[   35.037329]  ? put_timespec64+0xce/0x130
+[   35.037329]  ? fdget_pos+0x209/0x5a0
+[   35.037329]  ? __x64_sys_futex+0x2b0/0x490
+[   35.037329]  ksys_write+0x12d/0x250
+[   35.037329]  ? __pfx_ksys_write+0x10/0x10
+[   35.037329]  ? __pfx___x64_sys_clock_gettime+0x10/0x10
+[   35.037329]  do_syscall_64+0xee/0x590
+[   35.037329]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   35.037329] RIP: 0033:0x7feb8311acb9
+[   35.037329] Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+[   35.037329] RSP: 002b:00007feb81b77028 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+[   35.037329] RAX: ffffffffffffffda RBX: 00007feb83395fa0 RCX: 00007feb8311acb9
+[   35.037329] RDX: 0000000000001337 RSI: 0000200000000100 RDI: 0000000000000004
+[   35.037329] RBP: 00007feb83188bf7 R08: 0000000000000000 R09: 0000000000000000
+[   35.037329] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[   35.037329] R13: 00007feb83396038 R14: 00007feb83395fa0 R15: 00007ffee6ea2da8
+[   35.037329]  </TASK>
+[   35.037329] 
+[   35.221994] Allocated by task 3526:
+[   35.221994]  kasan_save_stack+0x30/0x50
+[   35.221994]  kasan_save_track+0x14/0x30
+[   35.233619]  __kasan_kmalloc+0x8f/0xa0
+[   35.233619]  vfs_write+0xaae/0xec0
+[   35.233619]  ksys_write+0x12d/0x250
+[   35.233619]  do_syscall_64+0xee/0x590
+[   35.233619]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   35.233619] 
+[   35.233619] Freed by task 3526:
+[   35.233619]  kasan_save_stack+0x30/0x50
+[   35.233619]  kasan_save_track+0x14/0x30
+[   35.233619]  kasan_save_free_info+0x3b/0x70
+[   35.233619]  __kasan_slab_free+0x43/0x70
+[   35.233619]  kfree+0x149/0x3a0
+[   35.233619]  vfs_write+0xac7/0xec0
+[   35.233619]  ksys_write+0x12d/0x250
+[   35.233619]  do_syscall_64+0xee/0x590
+[   35.233619]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   35.233619] 
+[   35.233619] The buggy address belongs to the object at ffff8880019eaa60
+[   35.233619]  which belongs to the cache kmalloc-16 of size 16
+[   35.233619] The buggy address is located 0 bytes inside of
+[   35.233619]  freed 16-byte region [ffff8880019eaa60, ffff8880019eaa70)
+[   35.233619] 
+[   35.233619] The buggy address belongs to the physical page:
+[   35.233619] page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff8880019ead00 pfn:0x19ea
+[   35.233619] flags: 0x100000000000200(workingset|node=0|zone=1)
+[   35.233619] page_type: f5(slab)
+[   35.233619] raw: 0100000000000200 ffff888001041640 ffffea0000075410 ffffea0000190c90
+[   35.233619] raw: ffff8880019ead00 000000000080005f 00000000f5000000 0000000000000000
+[   35.233619] page dumped because: kasan: bad access detected
+[   35.233619] 
+[   35.233619] Memory state around the buggy address:
+[   35.233619]  ffff8880019ea900: 00 03 fc fc 00 06 fc fc 00 03 fc fc 00 03 fc fc
+[   35.233619]  ffff8880019ea980: 00 03 fc fc 00 05 fc fc fa fb fc fc fa fb fc fc
+[   35.233619] >ffff8880019eaa00: fa fb fc fc fa fb fc fc 00 06 fc fc fa fb fc fc
+[   35.233619]                                                        ^
+[   35.233619]  ffff8880019eaa80: 00 06 fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+[   35.233619]  ffff8880019eab00: 00 06 fc fc 00 03 fc fc 00 06 fc fc 00 03 fc fc
+[   35.233619] ==================================================================
+[   35.235146] Disabling lock debugging due to kernel taint
 
 VM DIAGNOSIS:
-12:25:41  Registers:
+10:57:33  Registers:
 info registers vcpu 0
 
 CPU#0
-RAX=0000000000000000 RBX=0000000000000001 RCX=ffffffff965cb112 RDX=ffff888003fd2400
-RSI=0000000000000000 RDI=0000000000000005 RBP=ffff88806d139a40 RSP=ffff888004e3f4f8
-R8 =0000000000000000 R9 =ffff888003fd2400 R10=0000000000000001 R11=0000000000000000
-R12=0000000000000003 R13=ffffed100da27349 R14=ffff88806d036900 R15=ffff88806d139a48
-RIP=ffffffff965cb114 RFL=00000293 [--S-A-C] CPL=0 II=0 A20=1 SMM=0 HLT=0
+RAX=0000000000000020 RBX=00000000000003f8 RCX=0000000000000000 RDX=00000000000003f8
+RSI=ffffc9000148d000 RDI=ffffffffa0d67468 RBP=ffffffffa0d67460 RSP=ffff8880275a7730
+R8 =0000000000000000 R9 =ffff88800344e900 R10=0000000000000020 R11=666f206574697257
+R12=0000000000000020 R13=0000000000000020 R14=0000000000000010 R15=ffffffff9bc22d70
+RIP=ffffffff9bc22ddd RFL=00000002 [-------] CPL=0 II=0 A20=1 SMM=0 HLT=0
 ES =0000 0000000000000000 ffffffff 00c00000
 CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
 SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
 DS =0000 0000000000000000 ffffffff 00c00000
-FS =0000 0000000000000000 ffffffff 00c00000
-GS =0000 ffff8880d0788000 ffffffff 00c00000
+FS =0000 00007feb81b776c0 ffffffff 00c00000
+GS =0000 ffff8880cc388000 ffffffff 00c00000
 LDT=0000 0000000000000000 ffffffff 00c00000
-TR =0040 fffffe01431b3000 00004087 00008b00 DPL=0 TSS64-busy
-GDT=     fffffe01431b1000 0000007f
+TR =0040 fffffe28923ac000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe28923aa000 0000007f
 IDT=     fffffe0000000000 00000fff
-CR0=80050033 CR2=0000001b2eb20ff8 CR3=0000000003acf002 CR4=00370ef0
+CR0=80050033 CR2=00007feb82ff06c0 CR3=00000000129c4004 CR4=00170ef0
 DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
 DR6=00000000ffff0ff0 DR7=0000000000000400
 EFER=0000000000000d01
@@ -284,15 +704,15 @@ FPR0=0000000000000000 0000 FPR1=0000000000000000 0000
 FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
 FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
 FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
-YMM00=0000000000000000 0000000000000000 00007fffb057caa0 00007fffb057caa0
-YMM01=0000000000000000 0000000000000000 00007f85a2b346c3 00007f85a2b346c3
-YMM02=0000000000000000 0000000000000000 0000000000000000 0000000000ff0000
-YMM03=0000000000000000 0000000000000000 0000000000000000 0000000000ff0000
-YMM04=0000000000000000 0000000000000000 7cf674020004da03 31656c69662f2e01
-YMM05=0000000000000000 0000000000000000 04ca035e275c2401 ffffffffffffffff
-YMM06=0000000000000000 0000000000000000 00000000ff000000 0000000000000000
-YMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000
-YMM08=0000000000000000 0000000000000000 261af9d12a4a7980 fe05accc0032804e
+YMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM01=0000000000000000 0000000000000000 2525252525252525 2525252525252525
+YMM02=0000000000000000 0000000000000000 00007feb83364488 00007feb833644b8
+YMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM04=0000000000000000 0000000000000000 0000000000000000 00000000000000ff
+YMM05=0000000000000000 0000000000000000 00007feb83364470 00007feb833644b0
+YMM06=0000000000000000 0000000000000000 00007feb83364498 00007feb83364468
+YMM07=0000000000000000 0000000000000000 00007feb833644a0 00007feb83364480
+YMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000
 YMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000
 YMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000
 YMM11=0000000000000000 0000000000000000 0000000000000000 0000000000000000
@@ -303,22 +723,22 @@ YMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000
 info registers vcpu 1
 
 CPU#1
-RAX=0000000000000030 RBX=00000000000003f8 RCX=0000000000000000 RDX=00000000000003f8
-RSI=ffffc900038b1000 RDI=ffffffff9c967468 RBP=ffffffff9c967460 RSP=ffff88800c36f730
-R8 =0000000000000000 R9 =ffff888005656c00 R10=0000000000000030 R11=725f746e69727020
-R12=0000000000000030 R13=0000000000000030 R14=0000000000000010 R15=ffffffff97822d70
-RIP=ffffffff97822ddd RFL=00000002 [-------] CPL=0 II=0 A20=1 SMM=0 HLT=0
+RAX=0000000000000000 RBX=000000007f6ef000 RCX=00000000000003c0 RDX=0000000000080000
+RSI=ffffc90000c85000 RDI=0000200000911000 RBP=0000000000001000 RSP=ffff888001f3fca0
+R8 =0000000000000000 R9 =ffff888011d06900 R10=00002000009103c0 R11=0000000000000000
+R12=0000000000911000 R13=ffff888011d06900 R14=dffffc0000000000 R15=00002000009103c0
+RIP=ffffffff9a201280 RFL=00000002 [-------] CPL=0 II=0 A20=1 SMM=0 HLT=0
 ES =0000 0000000000000000 ffffffff 00c00000
 CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
 SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
 DS =0000 0000000000000000 ffffffff 00c00000
-FS =0000 00007fcb23ac76c0 ffffffff 00c00000
-GS =0000 ffff8880d0888000 ffffffff 00c00000
+FS =0000 00007fb8a98476c0 ffffffff 00c00000
+GS =0000 ffff8880cc488000 ffffffff 00c00000
 LDT=0000 0000000000000000 00000000 00000000
-TR =0040 fffffe71169d6000 00004087 00008b00 DPL=0 TSS64-busy
-GDT=     fffffe71169d4000 0000007f
+TR =0040 fffffe51afc9f000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe51afc9d000 0000007f
 IDT=     fffffe0000000000 00000fff
-CR0=80050033 CR2=00007fcb24f406c0 CR3=000000000656d003 CR4=00370ef0
+CR0=80050033 CR2=0000200000911000 CR3=0000000006473006 CR4=00170ef0
 DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
 DR6=00000000ffff0ff0 DR7=0000000000000400
 EFER=0000000000000d01
@@ -328,13 +748,13 @@ FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
 FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
 FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
 YMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000
-YMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000
-YMM02=0000000000000000 0000000000000000 0000000000000000 00000000000000ff
-YMM03=0000000000000000 0000000000000000 0000000000000000 00000000000000ff
-YMM04=0000000000000000 0000000000000000 0000000000000000 00007fcb250d86dc
-YMM05=0000000000000000 0000000000000000 0000000000000000 00007fcb250d8728
-YMM06=0000000000000000 0000000000000000 ffffffffffffffff 0000000000000000
-YMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM01=0000000000000000 0000000000000000 2525252525252525 2525252525252525
+YMM02=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM04=0000000000000000 0000000000000000 0000000000000000 000000ffffffffff
+YMM05=0000000000000000 0000000000000000 0000000000000000 00007fb8aae58728
+YMM06=0000000000000000 0000000000000000 0000000000000000 00007fb8aae5869c
+YMM07=0000000000000000 0000000000000000 0000000000000000 00007fb8aae5871a
 YMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000
 YMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000
 YMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000

@@ -1,251 +1,443 @@
 last executing test programs:
 
-144.608805ms ago: executing program 0 (id=396):
-r0 = socket$inet6(0xa, 0x801, 0x6)
-read(r0, &(0x7f0000000000)=""/35, 0x23)
+1.022173511s ago: executing program 2 (id=93):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+openat$apparmor_thread_current(0xffffffffffffff9c, &(0x7f0000000180), 0x2, 0x0)
+write(r0, &(0x7f0000000000)="3405e1fc3283fe14d4d86cc2096895ba870fdd2d9f4a00"/33, 0x21)
+openat$sr(0xffffffffffffff9c, &(0x7f0000000100), 0x311080, 0x0)
 
-137.62972ms ago: executing program 0 (id=400):
-r0 = socket(0x11, 0xa, 0x92d)
-writev(r0, &(0x7f0000001440)=[{&(0x7f0000000f40)="acf45a55", 0x4}], 0x1)
+1.021532664s ago: executing program 2 (id=94):
+r0 = openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000140), 0x1, 0x0)
+write$binfmt_register(r0, &(0x7f0000000180)={0x3a, 'syz3', 0x3a, 'E', 0x3a, 0x7ff, 0x3a, ']\xa8\xbf,', 0x3a, ':.*+:Z\'%{,\xf2\x0e\x8e', 0x3a, './file0'}, 0x38) (async, rerun: 32)
+r1 = openat$vcsa(0xffffffffffffff9c, &(0x7f0000000880), 0x20002, 0x0) (rerun: 32)
+writev(r1, &(0x7f0000002dc0)=[{&(0x7f0000001a80)="1f2f5f7c3f0189d3ee6790338a96aad6c98aca2cfd24c9450c476703ce0cce611cb2042b7af2d90cbee4cdccfaa048001dc745b906fab741452f3fa0dae00fd3d33615b2b12ec2895d054f0c07596c62da4ccce1eebdb66c7261d65b04270c8cdb5e5b5404bbb32f51bd", 0x6a}, {&(0x7f0000001b00)="4477c7dc6b3d2deddc92f4781e00b24e98750a", 0x13}, {&(0x7f0000001c00)}], 0x3) (async)
+openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
 
-84.854103ms ago: executing program 3 (id=403):
-r0 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000100)='/proc/asound/seq/clients\x00', 0x0, 0x0)
-pread64(r0, &(0x7f0000001500)=""/35, 0x23, 0x7ff)
-
-84.688706ms ago: executing program 1 (id=404):
-r0 = openat$sndseq(0xffffffffffffff9c, &(0x7f00000000c0), 0x2)
-writev(r0, &(0x7f0000000100)=[{&(0x7f0000000280)="8495d2fd0002d3bf2f4f5d77c3cc001f00000000000000005b409886", 0x1c}], 0x1)
-
-84.566104ms ago: executing program 0 (id=405):
-r0 = socket$inet_tcp(0x2, 0x1, 0x0)
-setsockopt$inet_tcp_int(r0, 0x6, 0x6, &(0x7f0000000000)=0x7, 0x4)
-
-84.331416ms ago: executing program 2 (id=407):
-r0 = socket$netlink(0x10, 0x3, 0x4)
-write(r0, &(0x7f0000000440)="23000000120003d10dabe5adcc317c142ad71887670953cec94240a874133d5008a893", 0x23)
-
-80.123411ms ago: executing program 0 (id=408):
-r0 = socket$igmp6(0xa, 0x3, 0x2)
-setsockopt$inet6_MCAST_MSFILTER(r0, 0x29, 0x30, &(0x7f0000000740)={0x1, {{0xa, 0x4e23, 0x498, @mcast2, 0x10000}}, 0x1}, 0x90)
-
-79.935215ms ago: executing program 1 (id=409):
+973.616481ms ago: executing program 2 (id=97):
+openat$sysfs(0xffffffffffffff9c, &(0x7f0000000980)='/sys/kernel/rcu_normal', 0x10bd40, 0x0)
 r0 = socket$inet_udp(0x2, 0x2, 0x0)
-setsockopt$inet_msfilter(r0, 0x0, 0x29, &(0x7f0000000080)=ANY=[], 0x20000)
+setsockopt$inet_msfilter(0xffffffffffffffff, 0x0, 0x29, &(0x7f0000000000)={@broadcast, @broadcast}, 0x10)
+r1 = socket$inet6_tcp(0xa, 0x1, 0x0)
+setsockopt$inet6_int(r1, 0x29, 0x12, &(0x7f0000000240), 0x4)
+setsockopt$inet_msfilter(r0, 0x0, 0x29, &(0x7f0000000000)=ANY=[@ANYBLOB="e000dd017f"], 0x14)
+openat$sysfs(0xffffffffffffff9c, &(0x7f0000000980)='/sys/kernel/rcu_normal', 0x10bd40, 0x0)
 
-79.696442ms ago: executing program 3 (id=410):
-r0 = socket$netlink(0x10, 0x3, 0x6)
-write(r0, &(0x7f0000000440)="23000000120003d10dabe5adcc317c1413001887670953cec94240a874133d5008a893", 0x23)
+966.738795ms ago: executing program 2 (id=98):
+openat(0xffffffffffffff9c, &(0x7f0000000280)='./file1\x00', 0x42, 0x1ff) (async)
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000280)='./file1\x00', 0x42, 0x1ff)
+openat$procfs(0xffffffffffffff9c, &(0x7f0000000180)='/proc/cgroups\x00', 0x0, 0x0)
+write(r0, &(0x7f0000000080)="01", 0xfffffe8d)
+socket$igmp(0x2, 0x3, 0x2)
+openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/power/resume', 0x149841, 0x1) (async)
+r1 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/power/resume', 0x149841, 0x1)
+write$smack_current(r1, &(0x7f0000000300)={'/proc/thread-self/attr/exec\x00'}, 0x1d)
+openat(r0, &(0x7f0000000100)='./file1\x00', 0x84042, 0x1f9)
 
-72.835695ms ago: executing program 0 (id=411):
-r0 = socket$unix(0x1, 0x1, 0x0)
-setsockopt$sock_int(r0, 0x1, 0x54, &(0x7f00000001c0), 0x4)
+800.045687ms ago: executing program 2 (id=106):
+r0 = openat$thread_pidfd(0xffffffffffffff9c, &(0x7f0000000100), 0x21c002, 0x0) (async)
+r1 = socket$igmp(0x2, 0x3, 0x2)
+setsockopt$MRT_DEL_MFC_PROXY(r1, 0x0, 0xd3, &(0x7f0000000000)={@remote, @private=0xa010101, 0xffffffffffffffff, "17fe01ba0d6973574e4e10c67dadf1efb31785ddd99d14ac85ddc3577d719487", 0x9, 0xc8ef, 0x1, 0x6}, 0x3c) (async)
+r2 = socket$inet_udp(0x2, 0x2, 0x0)
+setsockopt$inet_mreq(r2, 0x0, 0x20, 0x0, 0xb)
+openat$cgroup_ro(r0, &(0x7f00000000c0)='pids.events\x00', 0x0, 0x0)
 
-72.565604ms ago: executing program 2 (id=412):
-r0 = socket$inet_tcp(0x2, 0x1, 0x0)
-setsockopt$inet_opts(r0, 0x0, 0x6, 0x0, 0x0)
+702.862162ms ago: executing program 2 (id=112):
+openat$null(0xffffffffffffff9c, &(0x7f0000002680), 0x80000, 0x0)
+r0 = socket$packet(0x11, 0x3, 0x300)
+setsockopt$packet_int(r0, 0x107, 0x18, 0x0, 0x0)
+readv(r0, &(0x7f0000003a00)=[{&(0x7f0000000000)=""/166, 0xa6}], 0x1)
 
-65.921628ms ago: executing program 1 (id=413):
-r0 = socket$inet6_icmp_raw(0xa, 0x3, 0x3a)
-setsockopt$inet6_opts(r0, 0x29, 0x39, &(0x7f0000000040)=ANY=[@ANYBLOB="2c0e04"], 0x78)
-
-63.818555ms ago: executing program 3 (id=414):
-r0 = socket$inet6_icmp_raw(0xa, 0x3, 0x3a)
-setsockopt$inet6_int(r0, 0x29, 0x4e, 0x0, 0x3b)
-
-15.425456ms ago: executing program 0 (id=415):
-openat$sr(0xffffffffffffff9c, &(0x7f0000000000), 0x82, 0x0)
-
-15.23288ms ago: executing program 2 (id=416):
-r0 = openat$snapshot(0xffffffffffffff9c, &(0x7f0000000000), 0x1, 0x0)
-writev(r0, &(0x7f00000005c0)=[{&(0x7f0000000240)="a050a53e27", 0x5}, {&(0x7f0000000180)="2ddfdac9a136", 0x6}], 0x2)
-
-15.081334ms ago: executing program 3 (id=417):
-r0 = openat$ptmx(0xffffffffffffff9c, &(0x7f0000000000), 0x900, 0x0)
-readv(r0, &(0x7f0000001300)=[{&(0x7f0000000040)=""/68, 0x44}], 0x1)
-
-14.944259ms ago: executing program 1 (id=418):
-r0 = socket$igmp6(0xa, 0x3, 0x2)
-setsockopt$inet6_IPV6_ADDRFORM(r0, 0x29, 0x1e, &(0x7f0000001780), 0x0)
-
-14.729748ms ago: executing program 2 (id=419):
-r0 = openat$tcp_mem(0xffffffffffffff9c, &(0x7f0000000000)='/proc/sys/net/ipv4/tcp_wmem\x00', 0x1, 0x0)
-writev(r0, &(0x7f0000000280)=[{&(0x7f0000000500)="b71de27a48eb9737950000000000000000f94d54618f84216ba9e1eeba33779e56081181b896706b79e51e636d2dcdb9c654b1a1c6102364c57d153d61f3238fcd2c8ee9757fb5ea7c4034b4940e0f1f443271cb0d36997a28aabf6950fbbede5f07a2a3561153888469062263cd23d100712844285c40eadce7b48e1ffc08c6bfdd592d5547375b9160a53f3a8f1b10b13341f686ff1066d38b5339c3d849b7d932bb4e9f0049068ef08bb096047150d6bef8593b198eb965353f25c28d8cc58486f56400", 0xc5}, {&(0x7f0000000180)="c76b17f3d99ef5c3a1a5b55e406dbb2c3ca0dac917839888f6e03418d15d0431ce31e519aadca328dc1806d3928f25d7047fff42498ffe535fab0e25c22e6b34bfe29dd079b177c103b794b8c6fa7faa8262cd3dbc19fce4378b1cee5529af9b2e4c18", 0x63}], 0x2)
-
-14.465153ms ago: executing program 1 (id=420):
-r0 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/power/mem_sleep', 0x109101, 0x1cb)
-writev(r0, &(0x7f00000001c0)=[{&(0x7f0000000080)="e393e95530d86e90be7ab7156672c6760a", 0x11}], 0x1)
-
-8.037379ms ago: executing program 3 (id=421):
-r0 = socket$inet6_icmp(0xa, 0x2, 0x3a)
-setsockopt$inet6_buf(r0, 0x29, 0x6, &(0x7f0000000000)='(]', 0x2)
-
-752.435µs ago: executing program 2 (id=422):
-r0 = socket$igmp6(0xa, 0x3, 0x2)
-setsockopt$inet6_int(r0, 0x29, 0x3, &(0x7f0000000080)=0xff800000, 0x4)
-
-557.635µs ago: executing program 2 (id=423):
-r0 = openat$urandom(0xffffffffffffff9c, &(0x7f0000000000), 0x2, 0x0)
-write(r0, 0x0, 0x55)
-
-148.982µs ago: executing program 1 (id=424):
-r0 = openat$loop_ctrl(0xffffffffffffff9c, &(0x7f0000000180), 0x80000, 0x0)
-read(r0, 0x0, 0x0)
-
-0s ago: executing program 3 (id=425):
+628.895588ms ago: executing program 3 (id=116):
 r0 = socket$inet_icmp(0x2, 0x2, 0x1)
-setsockopt$sock_int(r0, 0x1, 0xf, &(0x7f00000005c0), 0x4)
+setsockopt$inet_int(r0, 0x0, 0x15, &(0x7f0000000040)=0x2, 0x4)
+openat$sr(0xffffffffffffff9c, &(0x7f0000000280), 0x4200, 0x0)
 
-0s ago: executing program 2 (id=429):
-r0 = openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000000), 0x1, 0x0)
-write$binfmt_register(r0, &(0x7f0000000100)={0x3a, 'syz0', 0x3a, 'E', 0x3a, 0x7, 0x3a, '^^{', 0x3a, '$\\\'^', 0x3a, './file1'}, 0x1337)
+521.245835ms ago: executing program 3 (id=117):
+r0 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/power/resume', 0x149841, 0x1)
+writev(r0, &(0x7f0000000240)=[{&(0x7f0000000080)="e68b72c0427da45be678bce857d87255d88b8378a2b8f0ddc8f03f128825cebe768b7e95ae2ccc7cb81daedae3c7d6f2ff556644ab804b70b6274924c0a29fe3c3d995ff4fbe02bef7a94b81fa767c0286975abfec1ea81ea741698f1e0982b4812312ee087c12bc9c01a63d29eb6855ef5564180aa929f2c97bbfa6f76d57ea80edd61d31682697f6c37da72898ae524a62c1cfde9907202bb240d52ea1ce5e247fde9c177bfec951fd37123b227a171d677b0c361660e2473809e4b888e0cb767dd4a1add57cf4c07dfb0f25efa6e222e64ea946085556cf4d277e62fa2d8c01f3e6835cee83b33fd41658324f62b27494bc7ca6103d903ef86324e0eb87b6ecd9e12ec0a2acdb23ef7824ac5961b0331c21eeb25111aa2fae96f28fcc79dadf7a0c939247368b39b03bd3525e2295f8d1c79b1de548471318a80420ef1feab1352c5118967b47", 0x148}, {&(0x7f0000000040)="53b6742dadaeee87f1fdf8eee28460765511081d4eee9b21a605ad6874816d", 0x1f}, {0xfffffffffffffffe}], 0x3)
+
+520.798114ms ago: executing program 3 (id=118):
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1dd)
+r1 = socket$inet6_udp(0xa, 0x2, 0x0)
+setsockopt$inet6_IPV6_FLOWLABEL_MGR(r1, 0x29, 0x20, &(0x7f0000000040)={@mcast1, 0x4000000, 0x0, 0xff, 0x1, 0x0, 0x2}, 0x20) (async)
+write(r0, &(0x7f0000000080)="01", 0xfffffe8d)
+open$dir(&(0x7f0000000440)='./file1\x00', 0x4300, 0x0) (async)
+r2 = socket$inet_tcp(0x2, 0x1, 0x0)
+setsockopt$inet_opts(r2, 0x0, 0x4, &(0x7f0000000040)="5e1b8d0712fef92c000000764fc4e5753956a89e3c83ce1749000400b8", 0x1d)
+openat$dir(0xffffffffffffff9c, &(0x7f00000014c0)='./file1\x00', 0x20301, 0x130) (async)
+r3 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+write(r3, 0x0, 0x500)
+
+420.219141ms ago: executing program 3 (id=119):
+setsockopt$inet_tcp_TLS_RX(0xffffffffffffffff, 0x11a, 0x2, &(0x7f0000000000)=@ccm_128={{0x304}, "50ceaa7b00d059f4", "7dd733b9202bdb87a0ccfdbb125873e1", "95d1bfae", "24f77646efeed88e"}, 0x28)
+r0 = openat$tcp_mem(0xffffffffffffff9c, &(0x7f00000003c0)='/proc/sys/net/ipv4/tcp_wmem\x00', 0x1, 0x0)
+pwrite64(r0, &(0x7f0000000400)="414304bea5ac895b949cc8686e25d74a018bcaa3731967be357d81e864e1d5f003230dd1571b5dc7c5740a3760a49c45bb8adfadd8a88af1879023779cf2563b9631b9b5662f0e280ef13c78e9150140d1e98c8e688978aca2", 0x59, 0x4)
+
+417.295408ms ago: executing program 3 (id=121):
+write$sndseq(0xffffffffffffffff, &(0x7f0000000080)=[{0x7, 0x0, 0x5, 0x88, @time={0x3, 0x9}, {0x7, 0x7}, {0x3, 0x9}, @raw8={"2e39dc255056bd0ca997aa2f"}}], 0x1c)
+openat$sysfs(0xffffffffffffff9c, &(0x7f0000000080)='/sys/power/mem_sleep', 0x109101, 0x1)
+openat$dir(0xffffffffffffff9c, 0x0, 0x0, 0x0)
+openat$sr(0xffffffffffffff9c, &(0x7f0000000040), 0x759d81, 0x0)
+
+413.531654ms ago: executing program 3 (id=123):
+r0 = socket$inet_icmp_raw(0x2, 0x3, 0x1)
+setsockopt(r0, 0xff, 0x1, 0x0, 0x0) (async, rerun: 32)
+r1 = openat$sr(0xffffffffffffff9c, &(0x7f0000000480), 0x1c1d43, 0x0) (rerun: 32)
+pread64(r1, &(0x7f0000000000)=""/132, 0x84, 0x8) (async)
+pread64(r1, &(0x7f0000000640)=""/4105, 0x1009, 0x127e)
+
+250.109222ms ago: executing program 1 (id=126):
+openat$rfkill(0xffffffffffffff9c, &(0x7f0000001800), 0x107080, 0x0)
+openat$binfmt_format(0xffffffffffffff9c, &(0x7f0000000000)='/proc/sys/fs/binfmt_misc/syz2\x00', 0x2, 0x0)
+
+249.462866ms ago: executing program 1 (id=127):
+r0 = socket$netlink(0x10, 0x3, 0xa)
+r1 = openat$nvram(0xffffffffffffff9c, &(0x7f0000000640), 0x1, 0x0)
+write$cgroup_freezer_state(r1, 0x0, 0x0)
+write(r0, &(0x7f0000000080)="2400000077a203d10dabe5adcc317c142ad280c5670953cebe4240a874133d5008a89316", 0x24)
+
+248.817343ms ago: executing program 1 (id=129):
+socket$netlink(0x10, 0x3, 0xe) (async)
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000240)='./file0\x00', 0x42, 0x408)
+write(r0, &(0x7f0000001a40)="c53d73da59646d", 0xfffffe88)
+write$cgroup_pressure(r0, &(0x7f0000000080)={'some', 0x20, 0x0, 0x20, 0x7}, 0x2f)
+write(r0, &(0x7f00000000c0)="230000001500030400000000000006b4f6e2094e09000001f5b198e60558079f3f15496d7f8671031e78c97c6a89112e0cd6f173be03f5f40c6ecb1c7594f9f1274615b65e02ee5bc1e0cbf5639d7db5e9ac26d23b503da526a67724520debc81332d3000000000000000000", 0x4f)
+r1 = socket$inet_tcp(0x2, 0x1, 0x0)
+setsockopt$inet_buf(r1, 0x0, 0x2f, 0x0, 0x0) (async)
+pwrite64(r1, &(0x7f0000000180)="7907b85998a30df856caa715a6fd8473dd1143a852601a21ce6b75f562d52b", 0x1f, 0x7a9)
+r2 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x2, 0x0)
+write$rfkill(r2, &(0x7f0000000000)={0x9, 0x5, 0x2}, 0x8) (async, rerun: 64)
+r3 = socket$unix(0x1, 0x1, 0x0) (rerun: 64)
+setsockopt$SO_TIMESTAMPING(r3, 0x1, 0x41, &(0x7f0000000140)=0x81a, 0x4) (async)
+setsockopt$SO_TIMESTAMPING(r3, 0x1, 0x41, &(0x7f0000000040), 0x4) (async)
+socket$inet6(0xa, 0x2, 0x0) (async)
+r4 = socket$nl_sock_diag(0x10, 0x3, 0x4)
+setsockopt$netlink_NETLINK_CAP_ACK(r4, 0x10e, 0xa, &(0x7f0000000000)=0xffffff80, 0x4)
+
+169.115468ms ago: executing program 0 (id=131):
+r0 = socket$inet6_icmp_raw(0xa, 0x3, 0x3a)
+r1 = socket$inet_udp(0x2, 0x2, 0x0)
+setsockopt$inet_int(r1, 0x0, 0x19, &(0x7f0000000000)=0x7fff, 0x4)
+r2 = socket$inet6_icmp(0xa, 0x2, 0x3a)
+setsockopt$inet6_buf(r2, 0x29, 0x2d, &(0x7f0000000080)="fbdd5cd53104f6d2fdbb19e6213ab74c78ac70ca8f40cd7821e04619c011821bf7cb30d100d1af1a4d7d715b307064ec65c4cc8d2574583e7b6595bb9e672ba6896e192d59aed2bfce9da52b584c1cf606b4ae2992be05bad01d8af9a77add225291d09a18ca788af6116a47816f0b06fdd0781b2ab025b611dca1aa837c03d934ba4d7b43b2a15dc0", 0x89)
+setsockopt$inet6_opts(r0, 0x29, 0x39, &(0x7f0000000040)=ANY=[@ANYBLOB="2c0e04"], 0x78)
+setsockopt$inet6_IPV6_DSTOPTS(r0, 0x29, 0x3b, &(0x7f0000000100)=ANY=[], 0xf8)
+r3 = socket$inet_icmp(0x2, 0x2, 0x1)
+setsockopt$inet_int(r3, 0x0, 0x10, &(0x7f0000000040)=0x10000, 0x4)
+setsockopt$inet6_IPV6_HOPOPTS(r0, 0x29, 0x36, &(0x7f00000000c0)=ANY=[], 0x10)
+r4 = openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000040), 0x1, 0x0)
+r5 = openat$nvram(0xffffffffffffff9c, &(0x7f0000000040), 0x10f501, 0x0)
+setsockopt$inet6_opts(r5, 0x29, 0x3b, &(0x7f0000000140)=@hopopts={0x0, 0xa, '\x00', [@hao={0xc9, 0x10, @mcast2}, @enc_lim={0x4, 0x1, 0x5}, @calipso={0x7, 0x40, {0x2, 0xe, 0x8, 0x3, [0x8, 0x6b737521, 0x9, 0x0, 0x1, 0x3, 0xef8]}}]}, 0x60)
+r6 = socket$igmp(0x2, 0x3, 0x2)
+setsockopt$inet_int(r6, 0x0, 0x3, 0x0, 0x0)
+r7 = socket$inet_udp(0x2, 0x2, 0x0)
+setsockopt$inet_msfilter(r7, 0x0, 0x29, &(0x7f0000002fc0)=ANY=[@ANYBLOB="e0000002ac1414aa01"], 0x10)
+r8 = openat$sndseq(0xffffffffffffff9c, &(0x7f00000000c0), 0x2)
+setsockopt$inet6_IPV6_DSTOPTS(r0, 0x29, 0x3b, &(0x7f00000001c0)={0x32}, 0x8)
+writev(r8, &(0x7f0000000100)=[{&(0x7f0000000280)="8495d2fd0002d3bf2f4f5d77c3cc001f00000000000000005b409886", 0x1c}], 0x1)
+write$binfmt_register(r4, &(0x7f0000000000)={0x3a, 'syz0', 0x3a, 'E', 0x3a, 0x8000, 0x3a, 'syz2', 0x3a, 'M', 0x3a, './cgroup/cgroup.procs', 0x3a, [0x46]}, 0x3b)
+
+116.697062ms ago: executing program 0 (id=132):
+r0 = socket$inet6_tcp(0xa, 0x1, 0x0)
+setsockopt$inet6_int(r0, 0x29, 0x42, &(0x7f0000000000)=0x6e11, 0x4)
+r1 = openat$zero(0xffffffffffffff9c, &(0x7f0000000000), 0x200, 0x0)
+read(r1, &(0x7f0000000180)=""/4096, 0x1000)
+readv(r1, &(0x7f0000000140)=[{&(0x7f00000023c0)=""/4083, 0xc2eeae1563f91de}], 0x1)
+setsockopt$netlink_NETLINK_NO_ENOBUFS(r1, 0x10e, 0x5, &(0x7f0000000040)=0xfff, 0x4)
+
+56.507166ms ago: executing program 1 (id=133):
+openat$vcsa(0xffffffffffffff9c, 0x0, 0x414000, 0x0)
+r0 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000080)='/sys/kernel/profiling', 0x1ad841, 0x32)
+write(r0, &(0x7f00000006c0)="8c1a918ba9b7bde677eafe4e4d883a76717cc4cb81a1db679911e5adfb7632d14fcb3cd5f606d61476fad1805d033e5ce5b2754c67", 0x35)
+
+55.927691ms ago: executing program 0 (id=134):
+r0 = socket$packet(0x11, 0x2, 0x300)
+setsockopt$packet_int(r0, 0x107, 0x13, &(0x7f0000000000)=0x5, 0x4) (async)
+r1 = socket$inet_tcp(0x2, 0x1, 0x0)
+setsockopt$inet_tcp_int(r1, 0x6, 0x8, &(0x7f0000000000)=0x7ff, 0x4) (async)
+r2 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/power/resume', 0x149841, 0x1) (async)
+r3 = socket$inet6_icmp(0xa, 0x2, 0x3a)
+setsockopt$inet6_int(r3, 0x29, 0x10, 0x0, 0x0) (async)
+setsockopt$inet6_IPV6_RTHDRDSTOPTS(r2, 0x29, 0x37, &(0x7f0000000040)={0x89, 0x6, '\x00', [@calipso={0x7, 0x18, {0x0, 0x4, 0x3, 0x9, [0xd, 0x7fffffff]}}, @calipso={0x7, 0x18, {0x1, 0x4, 0x0, 0x4, [0x4, 0x1]}}]}, 0x40) (async)
+setsockopt$inet_mreq(r2, 0x0, 0x0, &(0x7f0000000100)={@empty, @loopback}, 0x8)
+r4 = socket$inet6_icmp(0xa, 0x2, 0x3a)
+setsockopt$sock_int(r4, 0x1, 0x3d, &(0x7f0000000040)=0xfffffff7, 0x4) (async)
+write$smack_current(r2, &(0x7f00000000c0)=ANY=[@ANYBLOB='/'], 0x1d)
+
+55.420511ms ago: executing program 1 (id=135):
+r0 = socket$inet6(0xa, 0x2, 0x0)
+r1 = socket$igmp6(0xa, 0x3, 0x2)
+setsockopt$inet6_MCAST_MSFILTER(r1, 0x29, 0x30, &(0x7f0000000740)={0x1, {{0xa, 0x4e23, 0x498, @mcast2, 0x10000}}, 0x1}, 0x90)
+r2 = socket$inet6_tcp(0xa, 0x1, 0x0)
+setsockopt$SO_ATTACH_FILTER(r2, 0x1, 0x1a, &(0x7f0000000140)={0x2, &(0x7f0000000180)=[{0x20, 0x8, 0x1, 0xfffff030}, {0x6, 0x3, 0x35, 0x20f}]}, 0x10)
+openat$rtc(0xffffffffffffff9c, &(0x7f0000000040), 0x44000, 0x0)
+setsockopt$SO_TIMESTAMPING(r0, 0x1, 0x25, &(0x7f0000000000)=0x6042, 0x4)
+open(&(0x7f0000000080)='.\x00', 0x414481, 0x27)
+
+55.200821ms ago: executing program 0 (id=136):
+r0 = openat$procfs(0xffffffffffffff9c, &(0x7f00000005c0)='/proc/locks\x00', 0x0, 0x0)
+read$rfkill(r0, &(0x7f0000000000), 0x18)
+setsockopt$inet6_int(r0, 0x29, 0xce, &(0x7f0000000080)=0x90000000, 0x4)
+r1 = openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000040), 0x1, 0x0)
+setsockopt$IP_VS_SO_SET_DELDEST(r0, 0x0, 0x488, &(0x7f00000000c0)={{0x2f, @multicast2, 0x4e21, 0x2, 'lblc\x00', 0x3d, 0x1, 0x75}, {@initdev={0xac, 0x1e, 0x1, 0x0}, 0x4e22, 0x1, 0x5, 0x0, 0x9}}, 0x44)
+write$binfmt_register(r1, &(0x7f0000000000)={0x3a, 'syz2', 0x3a, 'M', 0x3a, 0x10001, 0x3a, '\'\\', 0x3a, '$\xb8^[-@%+,\'*},^!&,o', 0x3a, './file0'}, 0x3b)
+
+2.08244ms ago: executing program 1 (id=137):
+pread64(0xffffffffffffffff, 0x0, 0xfffffffffffffd6a, 0x9)
+openat$zero(0xffffffffffffff9c, 0x0, 0x200, 0x0)
+socket$netlink(0x10, 0x3, 0x1)
+r0 = openat(0xffffffffffffff9c, &(0x7f0000000040)='./file1\x00', 0x42, 0x1ff)
+openat(0xffffffffffffff9c, &(0x7f0000000040)='./cgroup/cgroup.procs\x00', 0x84820, 0x20)
+pwrite64(r0, &(0x7f00000023c0)="3bfbedb077cebc7002f3511fc0b0130d48da91d2b99bb8c21cde2e82c1d00d30978801841770ddf873a7183ea4dd26b3a4152d0942e256bd4fdd4ea0b44110ec1c31f906278eca5da1c1f0168f00a7dbd0decc0f97e1c0b4e00949d413176e9386b80ad1b686cbabe1f9ce2cafb5646c6e5b42f71fa33465b5d173bac37b7792c4897b1ba76daf652847be93d06a70c4ec5cc77347a1a33e2f56cd827bcde54c30b7c30dceb5299fc2d1affe9966b4d24cf4ba111ed5a0fa58f3296d70bfbe30c1793fff02ddb73535d6ad2b1655da156a384b1c4ec21cef6056f95a744f5bcb96a7a52d890eb737c168a884f7e8440aa18d744dab510366176b970f799413e185c49718ced533e88de75cd9cc15d60406a15a528ff05a13d4faab84132bc8051a6920fda74c25e07c3c4f9ce876f6ee11997cb0f006b4f24fbddf8c3706371620934e7aa222bb7687e173efd31c50e2ee939f3e59c6f2bd30e79711104120f0f06a31b6e6763e1bc79647e35976350bc00d631d062496ec4b0e673afa5ee09c6a0b1cffd841ea1c50239fbcb80f4e801b9a4ae7b4e41fbb1c419b6553cb863df61073fb125240121a476a5fd8b9359112133837b612d9423f59ccbe6329055dac6e0fe629a88c30544da0fd4fdab463d6fa21891a8fb72ead145154eea1e792019c10847004a71d880874d8b177a6f6a8ba11b777644a34b8de5c73a28a1717f28064d6c6c01de0020580478c25c700447dffa6949871f8c148db331ff111ed3639f3da3dee86f7812a4a92ad29efc30fa33227aec9da2733aff8bbe219e2dfa1ad82ab2b67fe2e2c7bcaef5ea8e530d2c946499ca63a6f7892ea603006f28cdddc44160d1536f5b1820657c1244e69cb813cea529f395af9f61908b366a6cc94c2917b8ee31c0a93644d0b18211185b298145ee12fff39fa9ec453fec9fb6ab214a171767f41c17c0c572a66fba7571cc31f0bddd306211b631c7e76474cbb491de4efbe81bdbb3b0d857c74c89573b9ef652e8a5e0d4102c8076379c66d79ec5216c9f7c9f5e0756ba721be5e66d4efc80f58251342d673558bf0a597c4d6ad6bc7e06da0040d0567ddf6da565d640cad9283ac67ba75d32c72f0064b568979837c02844bcea7ce6e74f188f9067b258256419c5adde64e7a85bee108f5866ab4d1bb3566019c8fdb33efa42623836c16fa2efd2fcd159ac38a438371896af56ae2141ed08fc757d46cb776070af82d382ed30667290bef5c061a83892a68d2ec7fe437787fb5964892027fa955b8661072828242d66bc773f18412503731180013b7819da6871b6d8d976f4fabeafe5153fa38683c72a8141d686b86eb97c24d7a06821beeceb7634675f4ab520dc9ac3aea13546e08caa2487fda5564007fd5ee3e70747b5e64a185bf73c74788143639caad1685112210d1faec459c5de463c422ab65255d1eddb463a9db29d6eae6a37ef247e24366d226411fdfb409d21b94bc2b38970fc2732ac2cbbbae2c839b0c97923c797bbb1fc36293708c07173606c646447766efc252363687fe9d407c6c48207f9bb97beb4fd67abb3e1604d1edc0ee1a0fd01b1a0b17694b71cde8f51076ad8fc9501032078ca887f4413220136bc18d5eaa3539eeb444724d390b04132eae129fb2648f04751b6188f765e9bc9de9807102e792634f2cf88009fb5f49af5ebb0d1e1a06cebe9e62db88c6426860106f5eedf5af6cdf8cb9efb619ff38cca5bb75e8c4d16bfadb9b78e6cf5b28c9ce2f5e026d17ae61a0ecda17999334d06d70ae75fc29f483886e32f99db5a8b049eed7021e793b37f5939db820046ea2f5b18641c03a5b2baaf69672f3ced56100af021e51eb4f9b09b5536df9384a1e1a38799ad8cad7a38939359a7e99640461871defe6624182c1f9447cd0278f2cda891aeabb7ab2f8cefa5dac09085cdae9258ca12059e1292cd71f4ac397549927a98fe2fc8e0b1262bfd4eb5064f795c27b3797bf84249086af031ac48862afc69f73ac25bbf8d0bd3af8b7edddbf4895afae2e8d987fa89b3fe5f50d5f17baccb7960bc571d6e7c1b6637673de746780ed8364f287bd44c5a95a08c1f5156fc73a7a4d4afbcaef68b622c2a299e36f4524710c3157d4eba33153def741ddaa0ca49b26765e9cc0b1d81ef317ac4bb56d13f7cae38ac164d23358304bf1b0e019866180173ce2a6bde12b5f069a0af1bee4803ea407b050d7fd03601f2eb9e8b66fb8ccc09a6b2af06eb5d243e876ba939696de3b5d8a4a6bd0c149d1b864111be6993fffb75d2ec85e5629df954a3a91ffe639c770de5cd3f7d14792ad874e21cb68f273479a0108e1e1f26658537fd1bfb852562650d7cd11eb58875dfb89d13cf6f2b783e7b70113b71a51cb4fa9f33d05626f78f12e57bbd838345a25dfc73068291adc6ff963da56eac6fa2006d4dc87b126d0893f3233834b6b845521f7493e9397fa1366ccbaeb8d29d460d7fc26e4b08739b00f61b5ef2dc6b6c79281e5d7d69b35ccf04d2c28b8c7b4dfc72a7da682b8daadc8b932e21953615ba9717a3112d0b1485fc6aebc1f73b452c04f7774562f831b6e60ad98455f3e67b0ac33cc441010018beb4fe3d2bb47f88818147225e36ffb0b16cb854e6577b8e42b410b930730e112b99dca5ffe7a68ae00f2e9b7b93bee53c26617762d4e373feb1741a774239c89526a69c516670e87fe23e9baddc2e3a3b65b4fda2ab1766eb84a59901d2ec9d91003ab6af2ec615c10ee2bdd55f905a9b0458f8742e0f729320e27c1dd2270bf28b568e24190340e0454d18982fc069bd183251a821b9348af64be844031e3ebfe071fd4af6319179c2ee1fe18bc8b9915cfd5b0168c8326766fd30a6b7f096d49596ddd0b86fe5c423014646e1ade682f32223518df6eac7ec1886cf48ec16f7f1ca856f8c7c8dc97f5df24998ef60e0921b67d1489231afbcac4be52fa728425826f3bde43aeacd51e40fd9be4fba5bd3e2edb1499f1042cb43ae884802face434be9dfbb12d25f7220bee1dc894b34612ce1650af5b8135627300f39be2ac35eec61d11383ff5246b56e6ae2473748655ca89f4cf50c5f7b7f0aa5448ecd3126c2e92c3a06c09044f2895eea77934aad24c7d2357fe7c43a92d2b95b327ce07076e6e1c8c1a88291848ee32bb7e44b6fafcfa8fc8df56da6d4644d11dfd0f7db3758b72d59b650868b615aa9008b1fcea60a632abecea5493219881ff738cadccea267b653577647cd243825dad61292292a1383066c68cab5a2e41dd144142851de82f38e642880673ae3d7dcdf4a2026813da4de9c025d588771fadf4c2c8f5aedf5175601f40e07a4cf80309d33915b035f1a6d53092acf4db3368d448d2e5f7f68ff3601c82d336f3c23149e9dec64e11fe575a9fa02935dc9f66285b62033142caa26faaf9a9b9a3830e0a4259cd33255c78e9ec29f0b066f6b0b05ec36a2886d0ec5869da69ddd4195054039f97bb940a7b84974b0fe330c6cfba32d274314bf88b05fe6f2d61e7668406e9341e7e9cbc54cc06a06ac0bd12ce44d1ae20bf13629e50de7ac4282407b4c1b36acc8e9f3de84353af61f8d443746918b4a85552929408fdd97f70769286a824d13c542c07728e67868b3db065f31cd6169104d3326d3f6b1a5e34dd2a4779e6c568a09f03c38196a6478bb3e02068ccfbc2d71876f46485ee06d3a033aa470a929ea5c46bd59cd78f14eae5cb0170532da7f2bbbcf0021760a61063f611d0047bf41a0fd6fda0dfde0a402a8184a1c806871c46d9c733f2947f4ece6a9675317c188045cbeebc6b75bd680c9df5922fc5c80912680b25be0a69ee4c4bf1556d9cf2453d1fc2f0851d1451615449fd39385e35b64538a07cba56fe01f85b830044a08b82fa530d3a61e32d548248303bd7fa3c8fd5fc4af072f7506ee18542cb2779aab3e3b36347956a6f7d6df488d31f985f5140a9f247a3d8f7e77bbca813eb012678a990114ba707ab0529b954af2c40ab71b821fbb880cf7a706be437d3d0138c93", 0xb30, 0x4d1)
+openat$sr(0xffffffffffffff9c, &(0x7f0000000000), 0x101000, 0x0)
+r1 = openat$sr(0xffffffffffffff9c, &(0x7f0000000040), 0x4ec00, 0x0)
+readv(r1, &(0x7f0000000140)=[{&(0x7f00000013c0)=""/4096, 0xfffffe92}], 0x1)
+
+1.027713ms ago: executing program 0 (id=138):
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000000), 0x90001, 0x0)
+read$rfkill(0xffffffffffffffff, &(0x7f0000000040), 0x8)
+readv(r0, &(0x7f0000000280)=[{&(0x7f0000000080)=""/64, 0x40}, {&(0x7f00000000c0)=""/239, 0xef}, {&(0x7f00000001c0)=""/9, 0x9}, {&(0x7f0000000200)=""/82, 0x52}], 0x4) (async)
+readv(r0, &(0x7f0000000280)=[{&(0x7f0000000080)=""/64, 0x40}, {&(0x7f00000000c0)=""/239, 0xef}, {&(0x7f00000001c0)=""/9, 0x9}, {&(0x7f0000000200)=""/82, 0x52}], 0x4)
+write$rfkill(r0, &(0x7f00000002c0)={0x1, 0x4}, 0x8)
+write$rfkill(r0, &(0x7f0000000300)={0x8000, 0x0, 0x3}, 0x8)
+r1 = socket$inet_udp(0x2, 0x2, 0x0)
+r2 = openat$cgroup_root(0xffffffffffffff9c, &(0x7f0000000340)='./cgroup.net/syz0\x00', 0x200002, 0x0)
+openat$cgroup_subtree(r2, &(0x7f0000000380), 0x2, 0x0)
+setsockopt$IP_VS_SO_SET_TIMEOUT(r1, 0x0, 0x48a, &(0x7f00000003c0)={0x7a36, 0xb6, 0xfff}, 0xc)
+setsockopt$packet_int(0xffffffffffffffff, 0x107, 0xe, &(0x7f0000000400), 0x4) (async)
+setsockopt$packet_int(0xffffffffffffffff, 0x107, 0xe, &(0x7f0000000400), 0x4)
+setsockopt$SO_BINDTODEVICE_wg(r1, 0x1, 0x19, &(0x7f0000000440)='wg2\x00', 0x4) (async)
+setsockopt$SO_BINDTODEVICE_wg(r1, 0x1, 0x19, &(0x7f0000000440)='wg2\x00', 0x4)
+openat$apparmor_thread_current(0xffffffffffffff9c, &(0x7f0000000480), 0x2, 0x0)
+r3 = openat$zero(0xffffffffffffff9c, &(0x7f00000004c0), 0xf8a02, 0x0)
+read$rfkill(r0, &(0x7f0000000500), 0x8)
+socket$inet_udp(0x2, 0x2, 0x0)
+setsockopt$inet_mreq(r3, 0x0, 0x23, &(0x7f0000000540)={@empty, @loopback}, 0x8) (async)
+setsockopt$inet_mreq(r3, 0x0, 0x23, &(0x7f0000000540)={@empty, @loopback}, 0x8)
+r4 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000580)='/sys/kernel/cpu_byteorder', 0xc000, 0x5)
+r5 = openat$zero(0xffffffffffffff9c, &(0x7f00000005c0), 0x4101, 0x0)
+setsockopt$IP_VS_SO_SET_TIMEOUT(r5, 0x0, 0x48a, &(0x7f0000000600)={0xd5bd8c00, 0x8}, 0xc)
+setsockopt$netlink_NETLINK_CAP_ACK(r5, 0x10e, 0xa, &(0x7f0000000640)=0x40000, 0x4)
+write$tcp_congestion(r4, &(0x7f0000000680)='hybla\x00', 0x6)
+readv(r0, &(0x7f0000000780)=[{&(0x7f00000006c0)=""/182, 0xb6}], 0x1)
+openat$cgroup_type(r5, &(0x7f00000007c0), 0x2, 0x0)
+setsockopt$MRT_ADD_MFC_PROXY(r3, 0x0, 0xd2, &(0x7f0000000800)={@rand_addr=0x64010101, @local, 0xffffffffffffffff, "516b367a6afeb4e77b58dd0e669e0d41b012d6ef5eba23e65540202102c3fad6", 0xff, 0x1, 0x554d, 0x9}, 0x3c) (async)
+setsockopt$MRT_ADD_MFC_PROXY(r3, 0x0, 0xd2, &(0x7f0000000800)={@rand_addr=0x64010101, @local, 0xffffffffffffffff, "516b367a6afeb4e77b58dd0e669e0d41b012d6ef5eba23e65540202102c3fad6", 0xff, 0x1, 0x554d, 0x9}, 0x3c)
+openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000840), 0x1, 0x0) (async)
+r6 = openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000840), 0x1, 0x0)
+write$binfmt_register(r6, &(0x7f0000000880)={0x3a, 'syz2', 0x3a, 'E', 0x3a, 0x7, 0x3a, '', 0x3a, '@:', 0x3a, './file0', 0x3a, [0x0, 0x4f, 0x46, 0x46, 0x50, 0x4f]}, 0x2f) (async)
+write$binfmt_register(r6, &(0x7f0000000880)={0x3a, 'syz2', 0x3a, 'E', 0x3a, 0x7, 0x3a, '', 0x3a, '@:', 0x3a, './file0', 0x3a, [0x0, 0x4f, 0x46, 0x46, 0x50, 0x4f]}, 0x2f)
+setsockopt$inet_udp_encap(r5, 0x11, 0x64, &(0x7f00000008c0)=0x5, 0x4)
+setsockopt$inet_group_source_req(r1, 0x0, 0x2c, &(0x7f0000000900)={0x100, {{0x2, 0x4e20, @remote}}, {{0x2, 0x4e21, @dev={0xac, 0x14, 0x14, 0x33}}}}, 0x108) (async)
+setsockopt$inet_group_source_req(r1, 0x0, 0x2c, &(0x7f0000000900)={0x100, {{0x2, 0x4e20, @remote}}, {{0x2, 0x4e21, @dev={0xac, 0x14, 0x14, 0x33}}}}, 0x108)
+pwrite64(r1, &(0x7f0000000a40)="ff940c40dfa98535310e631ac2629dd61f3a29c8bb681dda48985ed71fc9debe7f1d721492d2f3f47e17d702f5cd1145240895b4b6c9497ba2d58d63c179b16d13323029e156281d1feb764705c680e64f0f1f9eb3b7611cfc91b83eded4e732afee6d20d254253db69cb996e9b96f", 0x6f, 0xdbb) (async)
+pwrite64(r1, &(0x7f0000000a40)="ff940c40dfa98535310e631ac2629dd61f3a29c8bb681dda48985ed71fc9debe7f1d721492d2f3f47e17d702f5cd1145240895b4b6c9497ba2d58d63c179b16d13323029e156281d1feb764705c680e64f0f1f9eb3b7611cfc91b83eded4e732afee6d20d254253db69cb996e9b96f", 0x6f, 0xdbb)
+pwrite64(r3, &(0x7f0000000ac0)="dcb31303563e44472638ce2bba6139158b57e53301097abf65146db8b61ac234047bfc02cfffaad9da0646531baa909c51cdf48ff57d600b26914a3e7850e740c661d0ce4191091f555f59e21539283cddce2f6917215c7e9f245865a0ba0e735077", 0x62, 0x8) (async)
+pwrite64(r3, &(0x7f0000000ac0)="dcb31303563e44472638ce2bba6139158b57e53301097abf65146db8b61ac234047bfc02cfffaad9da0646531baa909c51cdf48ff57d600b26914a3e7850e740c661d0ce4191091f555f59e21539283cddce2f6917215c7e9f245865a0ba0e735077", 0x62, 0x8)
+
+0s ago: executing program 0 (id=139):
+openat$sysfs(0xffffffffffffff9c, &(0x7f0000000040)='/sys/kernel/rcu_stall_count', 0xee9a0b7e660cd41d, 0x0) (async)
+r0 = socket$igmp6(0xa, 0x3, 0x2)
+setsockopt$inet6_int(r0, 0x29, 0x16, &(0x7f0000000000)=0xff7ffffc, 0x4) (async)
+r1 = openat$nvram(0xffffffffffffff9c, &(0x7f0000000040), 0x123800, 0x0)
+setsockopt$inet6_tcp_TCP_MD5SIG(r1, 0x6, 0xe, &(0x7f00000001c0)={@in={{0x2, 0x4e21, @empty}}, 0x0, 0x0, 0x35, 0x0, "c400bae06c4ba1e63c47ac17a4be194b151e258a019919b235692a43d654338588d6be99113e53c3a5a98fd9e3ff723aa995719357ea0f2d5117b61eb5371a3fbf8d5883c83ad8b920d5d83c7afd46b0"}, 0xd8) (async)
+r2 = socket$inet6_tcp(0xa, 0x1, 0x0)
+setsockopt$inet6_IPV6_DSTOPTS(r2, 0x29, 0x3b, &(0x7f0000000180)={0x87, 0x200002b9}, 0x8) (async)
+r3 = openat$sysfs(0xffffffffffffff9c, &(0x7f0000000000)='/sys/power/resume', 0x149841, 0x1)
+write$cgroup_int(r3, &(0x7f0000000080)=0x99c, 0x12) (async)
+r4 = socket$inet6_tcp(0xa, 0x1, 0x0) (async)
+r5 = socket$unix(0x1, 0x1, 0x0)
+setsockopt(r5, 0x9, 0xfffffff9, 0x0, 0x0) (async)
+setsockopt$inet6_tcp_TCP_REPAIR_OPTIONS(r4, 0x6, 0x16, &(0x7f0000000080)=[@mss={0x2, 0x2d4}, @sack_perm, @mss={0x2, 0xa54}, @mss={0x2, 0x88}, @window={0x3, 0x2}, @sack_perm, @mss={0x2, 0x4}, @sack_perm, @timestamp, @sack_perm], 0xa)
+
+0s ago: executing program 0 (id=141):
+r0 = openat$rfkill(0xffffffffffffff9c, &(0x7f0000000b40), 0x2802, 0x0)
+write$rfkill(r0, &(0x7f0000000040)={0x5, 0xff, 0x2, 0x5}, 0x8)
+r1 = openat$cgroup_root(0xffffffffffffff9c, &(0x7f00000000c0)='./cgroup.cpu/syz0\x00', 0x200002, 0x0)
+openat$cgroup_procs(r1, &(0x7f0000000140)='tasks\x00', 0x2, 0x0)
+r2 = socket$igmp(0x2, 0x3, 0x2)
+setsockopt$inet_opts(r2, 0x0, 0x9, 0x0, 0x0)
+r3 = openat$procfs(0xffffffffffffff9c, &(0x7f0000000580)='/proc/bus/input/devices\x00', 0x0, 0x0)
+read(r3, &(0x7f0000000840)=""/243, 0xf3)
+r4 = openat$binfmt_register(0xffffffffffffff9c, &(0x7f0000000000), 0x1, 0x0)
+r5 = openat$sndseq(0xffffffffffffff9c, &(0x7f00000000c0), 0x2)
+writev(r5, &(0x7f0000000100)=[{&(0x7f0000000240)="840800fd0002d3bf2f1f00000000000080005b4098860000b56bc8cc", 0x1c}], 0x1)
+openat$full(0xffffffffffffff9c, &(0x7f0000000080), 0x101000, 0x0)
+write$binfmt_register(r4, &(0x7f0000000100)={0x3a, 'syz0', 0x3a, 'E', 0x3a, 0x7, 0x3a, '^^{', 0x3a, '$\\\'^', 0x3a, './file1'}, 0x1337)
+setsockopt$inet_mtu(r3, 0x0, 0xa, &(0x7f0000000180), 0x4)
 
 kernel console output (not intermixed with test programs):
 
-Warning: Permanently added '[localhost]:36856' (ED25519) to the list of known hosts.
-buildroot login: [   10.349702] cgroup: Unknown subsys name 'net'
-[   10.374817] cgroup: Unknown subsys name 'cpuset'
-[   10.377189] cgroup: Unknown subsys name 'rlimit'
-[   10.378565] cgroup: Unknown subsys name 'memory'
-[   14.238638] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
-[   14.242622] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
-[   14.245398] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
-[   14.246703] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 10 00 00 04 00
-[   14.251259] I/O error, dev sr0, sector 64 op 0x0:(READ) flags 0x80700 phys_seg 2 prio class 2
-[   14.253261] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   14.254542] I/O error, dev sr0, sector 64 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   14.256330] Buffer I/O error on dev sr0, logical block 64, async page read
-[   14.257896] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   14.259804] I/O error, dev sr0, sector 65 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   14.262321] Buffer I/O error on dev sr0, logical block 65, async page read
-[   14.265010] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   14.267108] I/O error, dev sr0, sector 66 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   14.268946] Buffer I/O error on dev sr0, logical block 66, async page read
-[   14.270579] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   14.272369] I/O error, dev sr0, sector 67 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   14.276398] Buffer I/O error on dev sr0, logical block 67, async page read
-[   14.278434] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   14.280012] I/O error, dev sr0, sector 68 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   14.282035] Buffer I/O error on dev sr0, logical block 68, async page read
-[   14.284373] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   14.287124] I/O error, dev sr0, sector 69 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   14.289105] Buffer I/O error on dev sr0, logical block 69, async page read
-[   14.290546] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   14.291682] I/O error, dev sr0, sector 70 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   14.293396] Buffer I/O error on dev sr0, logical block 70, async page read
-[   14.295060] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
-[   14.296453] I/O error, dev sr0, sector 71 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
-[   14.298270] Buffer I/O error on dev sr0, logical block 71, async page read
-[   14.389749] syz.2.45 uses obsolete (PF_INET,SOCK_PACKET)
-[   14.968693] netlink: 15 bytes leftover after parsing attributes in process `syz.1.188'.
-[   15.037091] netlink: 'syz.1.204': attribute type 33 has an invalid length.
-[   15.762939] md: async del_gendisk mode will be removed in future, please upgrade to mdadm-4.5+
-[   15.766125] block device autoloading is deprecated and will be removed.
-[   15.785591] random: crng reseeded on system resumption
-[   15.811253] Can not set IPV6_FL_F_REFLECT if flowlabel_consistency sysctl is enable
-[   15.886515] netlink: 15 bytes leftover after parsing attributes in process `syz.3.373'.
-[   16.120262] random: crng reseeded on system resumption
-[   16.197932] ==================================================================
-[   16.199687] BUG: KASAN: slab-use-after-free in vfs_write+0xe4c/0xec0
-[   16.201285] Write of size 1 at addr ffff888001b91000 by task syz.2.429/2843
-[   16.203278] 
-[   16.204067] CPU: 1 UID: 0 PID: 2843 Comm: syz.2.429 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #9 PREEMPT(lazy) 
-[   16.204097] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.17.0-9.fc43 06/10/2025
-[   16.204116] Call Trace:
-[   16.204124]  <TASK>
-[   16.204134]  dump_stack_lvl+0x97/0xe0
-[   16.204162]  print_report+0x157/0x4c9
-[   16.204189]  ? __pfx__raw_spin_lock_irqsave+0x10/0x10
-[   16.204229]  ? vfs_write+0xe4c/0xec0
-[   16.204264]  kasan_report+0xce/0x100
-[   16.204286]  ? vfs_write+0xe4c/0xec0
-[   16.204322]  vfs_write+0xe4c/0xec0
-[   16.204358]  ? __pfx_vfs_write+0x10/0x10
-[   16.204392]  ? do_futex+0x192/0x350
-[   16.204418]  ? mutex_lock+0x81/0xe0
-[   16.204442]  ? __pfx_mutex_lock+0x10/0x10
-[   16.204469]  ? fdget_pos+0x209/0x5a0
-[   16.204506]  ? __x64_sys_futex+0x2b0/0x490
-[   16.204533]  ksys_write+0x12d/0x250
-[   16.204568]  ? __pfx_ksys_write+0x10/0x10
-[   16.204604]  ? restore_fpregs_from_fpstate+0x65/0x120
-[   16.204631]  do_syscall_64+0xee/0x590
-[   16.204656]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
-[   16.204686] RIP: 0033:0x7f2769baacb9
-[   16.204712] Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
-[   16.204730] RSP: 002b:00007f2768607028 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
-[   16.204757] RAX: ffffffffffffffda RBX: 00007f2769e25fa0 RCX: 00007f2769baacb9
-[   16.204772] RDX: 0000000000001337 RSI: 0000200000000100 RDI: 0000000000000003
-[   16.204792] RBP: 00007f2769c18bf7 R08: 0000000000000000 R09: 0000000000000000
-[   16.204799] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
-[   16.204806] R13: 00007f2769e26038 R14: 00007f2769e25fa0 R15: 00007ffed51022a8
-[   16.204816]  </TASK>
-[   16.204820] 
-[   16.249435] Allocated by task 2843:
-[   16.250559]  kasan_save_stack+0x30/0x50
-[   16.251860]  kasan_save_track+0x14/0x30
-[   16.252991]  __kasan_kmalloc+0x8f/0xa0
-[   16.254050]  vfs_write+0xaae/0xec0
-[   16.255011]  ksys_write+0x12d/0x250
-[   16.255911]  do_syscall_64+0xee/0x590
-[   16.256915]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
-[   16.258170] 
-[   16.258573] Freed by task 2843:
-[   16.259405]  kasan_save_stack+0x30/0x50
-[   16.260374]  kasan_save_track+0x14/0x30
-[   16.261502]  kasan_save_free_info+0x3b/0x70
-[   16.262833]  __kasan_slab_free+0x43/0x70
-[   16.264020]  kfree+0x149/0x3a0
-[   16.264989]  vfs_write+0xac7/0xec0
-[   16.266056]  ksys_write+0x12d/0x250
-[   16.267141]  do_syscall_64+0xee/0x590
-[   16.268210]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
-[   16.269640] 
-[   16.270143] The buggy address belongs to the object at ffff888001b91000
-[   16.270143]  which belongs to the cache kmalloc-16 of size 16
-[   16.273500] The buggy address is located 0 bytes inside of
-[   16.273500]  freed 16-byte region [ffff888001b91000, ffff888001b91010)
-[   16.277012] 
-[   16.277532] The buggy address belongs to the physical page:
-[   16.279225] page: refcount:0 mapcount:0 mapping:0000000000000000 index:0x0 pfn:0x1b91
-[   16.281205] flags: 0x100000000000000(node=0|zone=1)
-[   16.282431] page_type: f5(slab)
-[   16.283261] raw: 0100000000000000 ffff888001041640 dead000000000100 dead000000000122
-[   16.285232] raw: 0000000000000000 0000000000800080 00000000f5000000 0000000000000000
-[   16.287166] page dumped because: kasan: bad access detected
-[   16.288849] 
-[   16.289334] Memory state around the buggy address:
-[   16.290606]  ffff888001b90f00: fa fb fb fb fb fb fb fb fb fb fb fb fb fb fb fb
-[   16.292581]  ffff888001b90f80: fb fb fb fb fb fb fb fb fc fc fc fc fc fc fc fc
-[   16.294551] >ffff888001b91000: fa fb fc fc fa fb fc fc 00 06 fc fc fa fb fc fc
-[   16.296531]                    ^
-[   16.297468]  ffff888001b91080: 00 06 fc fc fa fb fc fc 00 03 fc fc 00 03 fc fc
-[   16.299470]  ffff888001b91100: 00 03 fc fc fa fb fc fc fa fb fc fc fa fb fc fc
-[   16.301451] ==================================================================
-SYZFAIL: failed to recv rpc
-fd=3 want=4 recv=0 n=0 (errno 9: Bad file descriptor)
-[   16.319634] Disabling lock debugging due to kernel taint
+Warning: Permanently added '[localhost]:30881' (ED25519) to the list of known hosts.
+buildroot login: [   17.227773] cgroup: Unknown subsys name 'net'
+[   17.259098] cgroup: Unknown subsys name 'cpuset'
+[   17.266872] cgroup: Unknown subsys name 'rlimit'
+[   17.273984] cgroup: Unknown subsys name 'memory'
+[   24.183995] binfmt_misc: register: failed to install interpreter file ./file0
+[   24.301789] random: crng reseeded on system resumption
+[   24.315373] Unrecognized hibernate image header format!
+[   24.325849] PM: hibernation: Image mismatch: architecture specific data
+[   24.595028] sock: sock_set_timeout: `syz.0.16' (pid 2023) tries to set negative timeout
+[   24.609218] pci 0000:00:02.0: vgaarb: VGA decodes changed: olddecodes=io+mem,decodes=none:owns=io+mem
+[   24.613477] TCP: TCP_TX_DELAY enabled
+[   24.947279] block device autoloading is deprecated and will be removed.
+[   25.258987] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   25.272603] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   25.280199] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   25.287767] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 10 00 00 02 00
+[   25.296160] I/O error, dev sr0, sector 64 op 0x0:(READ) flags 0x80700 phys_seg 1 prio class 2
+[   25.305874] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   25.314061] I/O error, dev sr0, sector 64 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   25.322862] Buffer I/O error on dev sr0, logical block 64, async page read
+[   25.330488] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   25.336153] I/O error, dev sr0, sector 65 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   25.345751] Buffer I/O error on dev sr0, logical block 65, async page read
+[   25.354911] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   25.361885] I/O error, dev sr0, sector 66 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   25.370885] Buffer I/O error on dev sr0, logical block 66, async page read
+[   25.380389] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   25.386199] I/O error, dev sr0, sector 67 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   25.395487] Buffer I/O error on dev sr0, logical block 67, async page read
+[   25.403065] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   25.409318] I/O error, dev sr0, sector 68 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   25.418024] Buffer I/O error on dev sr0, logical block 68, async page read
+[   25.425922] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   25.432804] I/O error, dev sr0, sector 69 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   25.441548] Buffer I/O error on dev sr0, logical block 69, async page read
+[   25.467956] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   25.473743] I/O error, dev sr0, sector 70 op 0x0:(READ) flags 0x0 phys_seg 2 prio class 2
+[   25.482579] Buffer I/O error on dev sr0, logical block 70, async page read
+[   25.490173] Buffer I/O error on dev sr0, logical block 71, async page read
+[   25.493390] block device autoloading is deprecated and will be removed.
+[   25.696900] random: crng reseeded on system resumption
+[   26.058364] block device autoloading is deprecated and will be removed.
+[   26.182892] md: async del_gendisk mode will be removed in future, please upgrade to mdadm-4.5+
+[   26.182992] block device autoloading is deprecated and will be removed.
+[   26.434412] binfmt_misc: register: failed to install interpreter file ./file1
+[   27.743569] sr 1:0:0:0: [sr0] tag#0 FAILED Result: hostbyte=DID_OK driverbyte=DRIVER_OK cmd_age=0s
+[   27.743607] sr 1:0:0:0: [sr0] tag#0 Sense Key : Not Ready [current] 
+[   27.743720] sr 1:0:0:0: [sr0] tag#0 Add. Sense: Medium not present
+[   27.743742] sr 1:0:0:0: [sr0] tag#0 CDB: Read(10) 28 00 00 00 00 0e 00 00 40 00
+[   27.743756] I/O error, dev sr0, sector 56 op 0x0:(READ) flags 0x80700 phys_seg 32 prio class 2
+[   27.744026] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   27.744047] I/O error, dev sr0, sector 56 op 0x0:(READ) flags 0x0 phys_seg 1 prio class 2
+[   27.744066] Buffer I/O error on dev sr0, logical block 56, async page read
+[   27.744124] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   27.744141] Buffer I/O error on dev sr0, logical block 57, async page read
+[   27.744193] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   27.744250] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   27.744305] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   27.744361] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   27.744417] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   27.744530] sr 1:0:0:0: [sr0] tag#0 unaligned transfer
+[   28.244357] md: async del_gendisk mode will be removed in future, please upgrade to mdadm-4.5+
+[   28.252513] block device autoloading is deprecated and will be removed.
+[   28.310335] binfmt_misc: register: failed to install interpreter file ./cgroup/cgroup.procs
+[   28.489243] md: async del_gendisk mode will be removed in future, please upgrade to mdadm-4.5+
+[   28.499056] block device autoloading is deprecated and will be removed.
+[   28.534568] ==================================================================
+[   28.535762] BUG: KASAN: slab-use-after-free in vfs_write+0xe4c/0xec0
+[   28.543284] Write of size 1 at addr ffff8880019e5ee0 by task syz.0.141/2392
+[   28.543284] 
+[   28.543284] CPU: 0 UID: 0 PID: 2392 Comm: syz.0.141 Not tainted 7.1.0-rc5-ge8c2f9fdadee-dirty #8 PREEMPT(lazy) 
+[   28.543284] Hardware name: QEMU Standard PC (i440FX + PIIX, 1996), BIOS 1.16.3-debian-1.16.3-2 04/01/2014
+[   28.543284] Call Trace:
+[   28.543284]  <TASK>
+[   28.543284]  dump_stack_lvl+0x97/0xe0
+[   28.543284]  print_report+0x157/0x4c9
+[   28.543284]  ? __pfx__raw_spin_lock_irqsave+0x10/0x10
+[   28.543284]  ? vfs_write+0xe4c/0xec0
+[   28.543284]  kasan_report+0xce/0x100
+[   28.543284]  ? vfs_write+0xe4c/0xec0
+[   28.543284]  vfs_write+0xe4c/0xec0
+[   28.543284]  ? finish_task_switch.isra.0+0x1e3/0x940
+[   28.543284]  ? __switch_to+0x816/0x1140
+[   28.543284]  ? __pfx_vfs_write+0x10/0x10
+[   28.543284]  ? kvm_clock_get_cycles+0x40/0x70
+[   28.543284]  ? mutex_lock+0x81/0xe0
+[   28.543284]  ? __pfx_mutex_lock+0x10/0x10
+[   28.543284]  ? put_timespec64+0xce/0x130
+[   28.543284]  ? fdget_pos+0x209/0x5a0
+[   28.543284]  ? __x64_sys_futex+0x2b0/0x490
+[   28.543284]  ksys_write+0x12d/0x250
+[   28.543284]  ? __pfx_ksys_write+0x10/0x10
+[   28.543284]  ? __pfx___x64_sys_clock_gettime+0x10/0x10
+[   28.543284]  do_syscall_64+0xee/0x590
+[   28.543284]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   28.543284] RIP: 0033:0x7f1bf593acb9
+[   28.543284] Code: ff c3 66 2e 0f 1f 84 00 00 00 00 00 0f 1f 44 00 00 48 89 f8 48 89 f7 48 89 d6 48 89 ca 4d 89 c2 4d 89 c8 4c 8b 4c 24 08 0f 05 <48> 3d 01 f0 ff ff 73 01 c3 48 c7 c1 e8 ff ff ff f7 d8 64 89 01 48
+[   28.543284] RSP: 002b:00007f1bf4397028 EFLAGS: 00000246 ORIG_RAX: 0000000000000001
+[   28.543284] RAX: ffffffffffffffda RBX: 00007f1bf5bb5fa0 RCX: 00007f1bf593acb9
+[   28.543284] RDX: 0000000000001337 RSI: 0000200000000100 RDI: 0000000000000006
+[   28.543284] RBP: 00007f1bf59a8bf7 R08: 0000000000000000 R09: 0000000000000000
+[   28.543284] R10: 0000000000000000 R11: 0000000000000246 R12: 0000000000000000
+[   28.543284] R13: 00007f1bf5bb6038 R14: 00007f1bf5bb5fa0 R15: 00007fffdefe56d8
+[   28.543284]  </TASK>
+[   28.543284] 
+[   28.589873] Allocated by task 2392:
+[   28.589873]  kasan_save_stack+0x30/0x50
+[   28.589873]  kasan_save_track+0x14/0x30
+[   28.589873]  __kasan_kmalloc+0x8f/0xa0
+[   28.589873]  vfs_write+0xaae/0xec0
+[   28.589873]  ksys_write+0x12d/0x250
+[   28.589873]  do_syscall_64+0xee/0x590
+[   28.589873]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   28.589873] 
+[   28.589873] Freed by task 2392:
+[   28.589873]  kasan_save_stack+0x30/0x50
+[   28.589873]  kasan_save_track+0x14/0x30
+[   28.589873]  kasan_save_free_info+0x3b/0x70
+[   28.589873]  __kasan_slab_free+0x43/0x70
+[   28.589873]  kfree+0x149/0x3a0
+[   28.589873]  vfs_write+0xac7/0xec0
+[   28.589873]  ksys_write+0x12d/0x250
+[   28.589873]  do_syscall_64+0xee/0x590
+[   28.589873]  entry_SYSCALL_64_after_hwframe+0x77/0x7f
+[   28.589873] 
+[   28.589873] The buggy address belongs to the object at ffff8880019e5ee0
+[   28.589873]  which belongs to the cache kmalloc-16 of size 16
+[   28.589873] The buggy address is located 0 bytes inside of
+[   28.589873]  freed 16-byte region [ffff8880019e5ee0, ffff8880019e5ef0)
+[   28.589873] 
+[   28.589873] The buggy address belongs to the physical page:
+[   28.589873] page: refcount:0 mapcount:0 mapping:0000000000000000 index:0xffff8880019e5340 pfn:0x19e5
+[   28.589873] flags: 0x100000000000200(workingset|node=0|zone=1)
+[   28.589873] page_type: f5(slab)
+[   28.589873] raw: 0100000000000200 ffff888001041640 ffff888001040290 ffffea0000084b90
+[   28.589873] raw: ffff8880019e5340 0000000000800078 00000000f5000000 0000000000000000
+[   28.589873] page dumped because: kasan: bad access detected
+[   28.589873] 
+[   28.589873] Memory state around the buggy address:
+[   28.589873]  ffff8880019e5d80: 00 03 fc fc 00 03 fc fc 00 06 fc fc fa fb fc fc
+[   28.589873]  ffff8880019e5e00: 00 04 fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+[   28.589873] >ffff8880019e5e80: fa fb fc fc fa fb fc fc fa fb fc fc fa fb fc fc
+[   28.589873]                                                        ^
+[   28.589873]  ffff8880019e5f00: fa fb fc fc 00 00 fc fc fa fb fc fc 00 00 fc fc
+[   28.589873]  ffff8880019e5f80: 00 01 fc fc 00 01 fc fc 00 00 fc fc 00 01 fc fc
+[   28.589873] ==================================================================
+[   28.980483] Disabling lock debugging due to kernel taint
 
 VM DIAGNOSIS:
-16:09:54  Registers:
+11:04:44  Registers:
 info registers vcpu 0
 
 CPU#0
-RAX=0000000000000000 RBX=0000000000000001 RCX=ffffffff84dcb112 RDX=ffff888007395a00
-RSI=0000000000000000 RDI=0000000000000005 RBP=ffff888066539a40 RSP=ffff888007057608
-R8 =0000000000000001 R9 =ffff888007395a00 R10=0000000000000001 R11=0000000000000001
-R12=0000000000000003 R13=ffffed100cca7349 R14=ffff888066436900 R15=ffff888066539a48
-RIP=ffffffff84dcb114 RFL=00000293 [--S-A-C] CPL=0 II=0 A20=1 SMM=0 HLT=0
-ES =0000 0000000000000000 ffffffff 00c00100
+RAX=0000000000000069 RBX=00000000000003f8 RCX=0000000000000000 RDX=00000000000003f8
+RSI=ffffc90000881000 RDI=ffffffffb6967468 RBP=ffffffffb6967460 RSP=ffff88800758f730
+R8 =0000000000000000 R9 =ffff88800306e900 R10=0000000000000069 R11=666f206574697257
+R12=0000000000000069 R13=0000000000000069 R14=0000000000000010 R15=ffffffffb1822d70
+RIP=ffffffffb1822ddd RFL=00000002 [-------] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =0000 0000000000000000 ffffffff 00c00000
 CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
 SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
-DS =0000 0000000000000000 ffffffff 00c00100
-FS =0000 0000000000000000 ffffffff 00c00100
-GS =0000 ffff8880db388000 ffffffff 00c00100
+DS =0000 0000000000000000 ffffffff 00c00000
+FS =0000 00007f1bf43976c0 ffffffff 00c00000
+GS =0000 ffff8880b6788000 ffffffff 00c00000
 LDT=0000 0000000000000000 ffffffff 00c00000
-TR =0040 fffffe1e00f77000 00004087 00008b00 DPL=0 TSS64-busy
-GDT=     fffffe1e00f75000 0000007f
+TR =0040 fffffe19a8adf000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe19a8add000 0000007f
 IDT=     fffffe0000000000 00000fff
-CR0=80050033 CR2=00007f2769a806c0 CR3=00000000041a8002 CR4=00370ef0
+CR0=80050033 CR2=00007f1bf58106c0 CR3=00000000138f6006 CR4=00170ef0
 DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
 DR6=00000000ffff0ff0 DR7=0000000000000400
 EFER=0000000000000d01
@@ -255,13 +447,13 @@ FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
 FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
 FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
 YMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000
-YMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000
-YMM02=0000000000000000 0000000000000000 0000000000000000 00000000000000ff
-YMM03=0000000000000000 0000000000000000 0000000000000000 00000000000000ff
-YMM04=0000000000000000 0000000000000000 0000000000000000 00007f2769c186dc
-YMM05=0000000000000000 0000000000000000 0000000000000000 00007f2769c18728
-YMM06=0000000000000000 0000000000000000 ffffffffffffffff 0000000000000000
-YMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM01=0000000000000000 0000000000000000 2525252525252525 2525252525252525
+YMM02=0000000000000000 0000000000000000 00007f1bf5b84488 00007f1bf5b844b8
+YMM03=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM04=0000000000000000 0000000000000000 0000000000000000 00000000000000ff
+YMM05=0000000000000000 0000000000000000 00007f1bf5b84470 00007f1bf5b844b0
+YMM06=0000000000000000 0000000000000000 00007f1bf5b84498 00007f1bf5b84468
+YMM07=0000000000000000 0000000000000000 00007f1bf5b844a0 00007f1bf5b84480
 YMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000
 YMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000
 YMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000
@@ -273,22 +465,22 @@ YMM15=0000000000000000 0000000000000000 0000000000000000 0000000000000000
 info registers vcpu 1
 
 CPU#1
-RAX=dffffc0000000005 RBX=00000000000003f9 RCX=0000000000000000 RDX=00000000000003f9
-RSI=ffffc9000148d000 RDI=ffffffff8b167468 RBP=ffffffff8b167460 RSP=ffff888018147738
-R8 =0000000000000001 R9 =ffff88800421a400 R10=0000000000000000 R11=322e7a7973205043
-R12=0000000000000000 R13=ffffffff8b1676c0 R14=ffffffff8b167478 R15=0000000000000000
-RIP=ffffffff86022d45 RFL=00000006 [-----P-] CPL=0 II=0 A20=1 SMM=0 HLT=0
+RAX=ffff8880b6888000 RBX=ffff88800131a300 RCX=ffffffffb384b09b RDX=0000000000000001
+RSI=0000000000000004 RDI=000000000000da7c RBP=0000000000000001 RSP=ffff888001367e60
+R8 =0000000000000001 R9 =ffffed100da2624a R10=ffff88806d131253 R11=0000000000000000
+R12=ffffed1000263460 R13=ffffffffb5591650 R14=1ffff1100026cfd2 R15=0000000000000000
+RIP=ffffffffb384a43f RFL=00000216 [----AP-] CPL=0 II=0 A20=1 SMM=0 HLT=1
 ES =0000 0000000000000000 ffffffff 00c00000
 CS =0010 0000000000000000 ffffffff 00a09b00 DPL=0 CS64 [-RA]
 SS =0018 0000000000000000 ffffffff 00c09300 DPL=0 DS   [-WA]
 DS =0000 0000000000000000 ffffffff 00c00000
-FS =0000 00007f27686076c0 ffffffff 00c00000
-GS =0000 ffff8880db488000 ffffffff 00c00000
+FS =0000 0000000000000000 ffffffff 00c00000
+GS =0000 ffff8880b6888000 ffffffff 00c00000
 LDT=0000 0000000000000000 00000000 00000000
-TR =0040 fffffe75c7e09000 00004087 00008b00 DPL=0 TSS64-busy
-GDT=     fffffe75c7e07000 0000007f
+TR =0040 fffffe5ddcd21000 00004087 00008b00 DPL=0 TSS64-busy
+GDT=     fffffe5ddcd1f000 0000007f
 IDT=     fffffe0000000000 00000fff
-CR0=80050033 CR2=00007f671f0556b8 CR3=00000000041a8003 CR4=00370ef0
+CR0=80050033 CR2=00007f1bf58c9f80 CR3=00000000030be005 CR4=00170ef0
 DR0=0000000000000000 DR1=0000000000000000 DR2=0000000000000000 DR3=0000000000000000 
 DR6=00000000ffff0ff0 DR7=0000000000000400
 EFER=0000000000000d01
@@ -298,13 +490,13 @@ FPR2=0000000000000000 0000 FPR3=0000000000000000 0000
 FPR4=0000000000000000 0000 FPR5=0000000000000000 0000
 FPR6=0000000000000000 0000 FPR7=0000000000000000 0000
 YMM00=0000000000000000 0000000000000000 0000000000000000 0000000000000000
-YMM01=0000000000000000 0000000000000000 0000000000000000 0000000000000000
-YMM02=0000000000000000 0000000000000000 0000000000000000 00000000000000ff
-YMM03=0000000000000000 0000000000000000 0000000000000000 00000000000000ff
-YMM04=0000000000000000 0000000000000000 0000000000000000 00007f2769c186dc
-YMM05=0000000000000000 0000000000000000 0000000000000000 00007f2769c18728
-YMM06=0000000000000000 0000000000000000 ffffffffffffffff 0000000000000000
-YMM07=0000000000000000 0000000000000000 0000000000000000 0000000000000000
+YMM01=0000000000000000 0000000000000000 0000000000000000 00007f7916dfd560
+YMM02=0000000000000000 0000000000000000 00007f7916294488 00007f79162944b8
+YMM03=0000000000000000 0000000000000000 00007f79162944a0 00007f7916294480
+YMM04=0000000000000000 0000000000000000 00007f7916dfd020 00007f7916294460
+YMM05=0000000000000000 0000000000000000 00007f7916294470 00007f79162944b0
+YMM06=0000000000000000 0000000000000000 00007f7916294498 00007f7916294468
+YMM07=0000000000000000 0000000000000000 00007f79162944a0 00007f7916294480
 YMM08=0000000000000000 0000000000000000 0000000000000000 0000000000000000
 YMM09=0000000000000000 0000000000000000 0000000000000000 0000000000000000
 YMM10=0000000000000000 0000000000000000 0000000000000000 0000000000000000
