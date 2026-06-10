@@ -25,14 +25,14 @@ The project consists in fuzzing a custom Linux kernel with intentionally vulnera
 > [!NOTE]
 > You can clone the project, then move to a new directory and copy the overlay changes contained in `image`, `linux` and `syzkaller`, or you can simply apply the patches and execute the scripts.
 
-1. Clone repositories
+Clone repositories
 
 ```bash
 git clone --depth=1 https://github.com/torvalds/linux.git
 git clone https://github.com/google/syzkaller.git
 ```
 
-1. Copy project files
+Copy project files
 
 ```bash
 cp /path/to/ictra_project/*.sh .
@@ -41,7 +41,7 @@ cp -r /path/to/ictra_project/syzkaller/sys/linux/ictra_*.txt syzkaller/sys/linux
 cp -r /path/to/ictra_project/syzkaller/sys/linux/ictra_*.const syzkaller/sys/linux/
 ```
 
-1. Apply patches
+Apply patches
 
 ```bash
 cd linux
